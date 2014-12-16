@@ -1,13 +1,16 @@
 /*global app, me, $*/
-var _ = require('underscore');
-var logger = require('andlog');
-var config = require('clientconfig');
-
-var Router = require('./router');
-var MainView = require('./views/main');
-var Me = require('./models/me');
-var Products = require('./models/products');
+var _        = require('underscore');
 var domReady = require('domready');
+var logger   = require('andlog');
+var config   = require('clientconfig');
+
+var Router   = require('./router');
+
+var MainView = require('./views/main');
+var Me       = require('./models/me');
+var Products = require('./models/products');
+var Code     = require('./models/received-code-collection');
+
 
 
 module.exports = {
@@ -18,6 +21,11 @@ module.exports = {
         // create our global 'me' object and an empty collection for our people models.
         window.me = new Me();
         this.products = new Products();
+        this.newCode = new Code();
+
+        // this.newCode.on('sync', function(){
+        //     alert('IT SYNCED BITCHES');
+        // });
 
         // init our URL handlers and the history tracker
         this.router = new Router();
@@ -30,6 +38,7 @@ module.exports = {
                 model: me,
                 el: document.body
             });
+
 
             // ...and render it
             mainView.render();

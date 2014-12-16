@@ -46,5 +46,17 @@ exports.list = function (req, res) {
 exports.get = function (req, res) {
     var found = get(req.params.id);
     res.status(found ? 200 : 404);
-    res.send(found);
+    // res.send(found);
+    res.send('I GOT IT DONT WORRY ABOUT IT');
+};
+
+exports.request = function (req, res) {
+    // var ticket = req.body;
+    var newCode = {
+        id: '1',
+        date: new Date().toLocaleDateString(),
+        code: 'THIS IS THE CODE WHICH I HATH GIVEN YOU     '
+    };
+
+    res.status(201).send(newCode);
 };

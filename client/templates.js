@@ -17,7 +17,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense</a></div><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a href="/products">products</a></li></ul></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
+        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense</a></div><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a href="/products">products</a></li><li><a href="/requestCode">Request Code</a></li></ul></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
     };
 
     // head.jade compiled template
@@ -25,9 +25,24 @@
         return '<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/><meta name="apple-mobile-web-app-capable" content="yes"/>';
     };
 
+    // includes/code.jade compiled template
+    templatizer["includes"]["code"] = function tmpl_includes_code() {
+        return '<li class="code list-group-item"><a data-hook="code"></a><a data-hook="date"></a></li>';
+    };
+
+    // includes/formInput.jade compiled template
+    templatizer["includes"]["formInput"] = function tmpl_includes_formInput() {
+        return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
+    };
+
     // includes/product.jade compiled template
     templatizer["includes"]["product"] = function tmpl_includes_product() {
         return '<li class="product list-group-item"><a data-hook="title"></a><a data-hook="isbn13"></a></li>';
+    };
+
+    // pages/codeReceived.jade compiled template
+    templatizer["pages"]["codeReceived"] = function tmpl_pages_codeReceived() {
+        return '<section class="page receivedCode"><h2>New Code:</h2><ul data-hook="code" class="list-group"></ul></section>';
     };
 
     // pages/home.jade compiled template
@@ -38,6 +53,11 @@
     // pages/products.jade compiled template
     templatizer["pages"]["products"] = function tmpl_pages_products() {
         return '<section class="page pageThree"><h2>Products Test Page</h2><ul data-hook="products-list" class="list-group"></ul></section>';
+    };
+
+    // pages/requestCode.jade compiled template
+    templatizer["pages"]["requestCode"] = function tmpl_pages_requestCode() {
+        return '<section class="page request-code"><h2>Request Code</h2><p>This form and all behavior is defined by the form view in <code>client/forms/studentForm.js</code>.</p><form data-hook="person-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
     return templatizer;
