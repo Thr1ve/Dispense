@@ -27,7 +27,7 @@
 
     // includes/code.jade compiled template
     templatizer["includes"]["code"] = function tmpl_includes_code() {
-        return '<li class="code list-group-item"><a data-hook="code"></a><a data-hook="date"></a></li>';
+        return '<li class="code list-group-item container-fluid"><a data-hook="code"></a><a data-hook="date" class="pull-right"></a></li>';
     };
 
     // includes/formInput.jade compiled template
@@ -37,7 +37,7 @@
 
     // includes/product.jade compiled template
     templatizer["includes"]["product"] = function tmpl_includes_product() {
-        return '<li class="product list-group-item"><a data-hook="title"></a><a data-hook="isbn13"></a></li>';
+        return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13" class="pull-right"></div></li>';
     };
 
     // pages/codeReceived.jade compiled template

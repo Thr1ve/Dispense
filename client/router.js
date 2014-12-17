@@ -20,27 +20,23 @@ module.exports = Router.extend({
     // ------- ROUTE HANDLERS ---------
     home: function () {
         this.trigger('page', new HomePage({
-            model: me
         }));
     },
 
     products: function () {
         this.trigger('page', new ProductsPage({
-            model: me,
             collection: app.products
         }));
     },
 
     requestCode: function () {
         this.trigger('page', new RequestCodePage({
-            model: me,
             collection: app.newCode
         }));
     },
 
     codeReceived: function () {
         this.trigger('page', new CodeReceived({
-            model: me,
             collection: app.newCode
         }));
     },

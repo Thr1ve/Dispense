@@ -16,11 +16,6 @@ module.exports = PageView.extend({
                         app.newCode.create(data, {
                             wait: true,
                             success: function () {
-                                // this may not be needed -- test without? does the wait already wait for the modeo to sync?
-                                //DO NOT THINK THIS IS NEEDED -- test when removing permanently, however.
-                                // app.newCode.on('sync' , function() {
-                                //     console.log('it synced!');
-                                // });
 
                                 app.navigate('/codeReceived');
 

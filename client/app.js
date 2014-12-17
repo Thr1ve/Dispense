@@ -7,7 +7,6 @@ var config   = require('clientconfig');
 var Router   = require('./router');
 
 var MainView = require('./views/main');
-var Me       = require('./models/me');
 var Products = require('./models/products');
 var Code     = require('./models/received-code-collection');
 
@@ -18,14 +17,9 @@ module.exports = {
     blastoff: function () {
         var self = window.app = this;
 
-        // create our global 'me' object and an empty collection for our people models.
-        window.me = new Me();
+        // create our global empty collections for products and a received code
         this.products = new Products();
         this.newCode = new Code();
-
-        // this.newCode.on('sync', function(){
-        //     alert('IT SYNCED BITCHES');
-        // });
 
         // init our URL handlers and the history tracker
         this.router = new Router();
@@ -35,10 +29,8 @@ module.exports = {
         domReady(function () {
             // init our main view
             var mainView = self.view = new MainView({
-                model: me,
                 el: document.body
             });
-
 
             // ...and render it
             mainView.render();
