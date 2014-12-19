@@ -40,6 +40,18 @@
         return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13" class="pull-right"></div></li>';
     };
 
+    // pages/B_home.jade compiled template
+    templatizer["pages"]["B_home"] = function tmpl_pages_B_home(locals) {
+        var buf = [];
+        var jade_mixins = {};
+        var jade_interp;
+        var locals_for_with = locals || {};
+        (function(container, label, message, text) {
+            buf.push('<section class="page home"><h2>Tell me what you\'re looking for...</h2><label><input class="form-input"/><span' + jade.attr("data-hook~", label, true, false) + "></span><div" + jade.attr("data-hook~", message - container, true, false) + ' class="message message-below message-error"><p' + jade.attr("data-hook~", message - text, true, false) + "></p></div></label></section>");
+        }).call(this, "container" in locals_for_with ? locals_for_with.container : typeof container !== "undefined" ? container : undefined, "label" in locals_for_with ? locals_for_with.label : typeof label !== "undefined" ? label : undefined, "message" in locals_for_with ? locals_for_with.message : typeof message !== "undefined" ? message : undefined, "text" in locals_for_with ? locals_for_with.text : typeof text !== "undefined" ? text : undefined);
+        return buf.join("");
+    };
+
     // pages/codeReceived.jade compiled template
     templatizer["pages"]["codeReceived"] = function tmpl_pages_codeReceived() {
         return '<section class="page receivedCode"><h2>New Code:</h2><ul data-hook="code" class="list-group"></ul></section>';
@@ -51,8 +63,15 @@
     };
 
     // pages/products.jade compiled template
-    templatizer["pages"]["products"] = function tmpl_pages_products() {
-        return '<section class="page pageThree"><h2>Products Test Page</h2><ul data-hook="products-list" class="list-group"></ul></section>';
+    templatizer["pages"]["products"] = function tmpl_pages_products(locals) {
+        var buf = [];
+        var jade_mixins = {};
+        var jade_interp;
+        var locals_for_with = locals || {};
+        (function(container, label, message, search, text) {
+            buf.push('<section class="page pageThree"><h2>Products Test Page</h2><label><input' + jade.attr("data-hook~", search, true, false) + ' class="form-input"/><span' + jade.attr("data-hook~", label, true, false) + "></span><div" + jade.attr("data-hook~", message - container, true, false) + ' class="message message-below message-error"><p' + jade.attr("data-hook~", message - text, true, false) + '></p></div></label><ul data-hook="products-list" class="list-group"></ul></section>');
+        }).call(this, "container" in locals_for_with ? locals_for_with.container : typeof container !== "undefined" ? container : undefined, "label" in locals_for_with ? locals_for_with.label : typeof label !== "undefined" ? label : undefined, "message" in locals_for_with ? locals_for_with.message : typeof message !== "undefined" ? message : undefined, "search" in locals_for_with ? locals_for_with.search : typeof search !== "undefined" ? search : undefined, "text" in locals_for_with ? locals_for_with.text : typeof text !== "undefined" ? text : undefined);
+        return buf.join("");
     };
 
     // pages/requestCode.jade compiled template

@@ -50,7 +50,7 @@ app.set('view engine', 'jade');
 // -----------------
 var api = require('./fakeApi');
 app.get('/api/products', api.list);
-app.get('/api/products/:id', api.get);
+// app.get('/api/products/:id', api.get);
 app.post('/api/received-code-collection', api.request);
 
 // -----------------
