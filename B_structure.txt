@@ -1,0 +1,71 @@
+--STRUCTURE--
+
+
+NOTE: All files labeled with "B_*" are part of this structure. Files without the "B_*" may or may not be integral for the new structure.
+
+
+Pages:
+
+    "Tell me What you're looking for" (Home)
+        -This is the home page. It should be blank with the exception of the instructions to type and an input field (preferably borderless so all you see is the cursor blinking -- can we get a cursor?)
+            <UIRant>
+            This should a translucent, pearlish kinda background that remains in place regardless of view changes. Concept would be a bunch of hovering tiles, which you can fuzzy search to locate. fuzzy search would populate the floating 'index cards' for each product and update with every keypress, can use key combo to move "selection" in list while still fuzzy searching. Press enter to select that card and flip it over to reveal the input fields to request a code for that product.
+            </UIRant>
+
+    "Do things the hard way" (Browse)
+        -This is the "secondary" view of the tool. The Alt-Fire Mode if you will. It will display all of the index cards floating together, which you can manipulate with your mouse. You can also make the pool of cards smaller with the filter options at the side of the page.
+
+    "Is this what you wanted?"
+        -Some evolution of the panel that displays the new code. Transition from panel back needs to make the user feel as if he has "created" the code. As in, the shape and form of this object needs to be something plausably evolved from the panel.
+        -This needs to be Copy-Pastable to a RN ticket
+            <UIRant>
+            This is where the users make a choice in HOW to create the new code object. They chose which of the copy-pastable snippets with their code information they would like to create
+            For instance:
+                Machine (asking user): "Would you like to record this in a ticket? Or is this something you'd like to provide to a student immediately"
+                User: "Provide to Student"
+                ...
+                    "Your new Code is: XXX-XXXXX-XXXX"
+                ...
+            This object is what creates authority for the user within the app by letting them directly decide which option THEY think correct for the situation, letting them take part in the creation of the what they are about to receive.
+            </UIRant>
+
+
+Views:
+
+    "floating panel front"
+        -A "panel" or "index card" that floats with the others when it can. When activated, flips over and comes into view to reveal 'back' for the user.
+
+    "floating panel back"
+        -Side of panel which allows user to input data to receive a code.
+
+
+Models:
+
+    Product (panel front)
+        -Information needed may be different for different kinds of products. For instance, some products may not even have an ISBN. Can we get away without having to make separate models for all of these?
+
+    Products (array of all panel fronts)
+        -Organization should happen with the attributes held by the meta-data for the product
+        -Organize by...
+            ~ DIVISION (HE, PD, T)
+            ~ SUB-GROUPS (Moac Products, Finance, Sybex, Geography, etc.)
+
+    New Code (transformed panel)
+        -Includes:
+            ~ TITLE
+            ~ ISBN
+            ~ DATE
+            ~ TICKET / CHAT
+            ~ CUSTOMER NAME
+            ~ CODE
+
+
+Forms:
+
+    Customer Information
+        -Includes:
+            ~ CUSTOMER NAME
+            ~ CUSTOMER EMAIL
+            ~ UNIVERSITY (Optional)
+            ~ REPRESENTATIVE
+            ~ INCIDENT / CHAT
