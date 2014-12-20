@@ -4,6 +4,25 @@
 NOTE: All files labeled with "B_*" are part of this structure. Files without the "B_*" may or may not be integral for the new structure.
 
 
+Current recgode Form Input fields
+    "PT"
+        -Customer's Full Name
+        -Ticket Number / Chat
+        -Technician's Name
+    "WileyPLUS / Higher Education Products"
+        -Student's Full Name
+        -Student's Email Address
+        -University's Name
+        -Ticket Number / Chat
+        -Technician's Name
+    "Blackwell Product"
+        -Customer's Full Name
+        -Ticket Number / Chat
+        -Technician's Name
+
+Can we make a "config" file with the types of Inputs the form takes "checked off"
+
+
 Pages:
 
     "Tell me What you're looking for" (Home)
@@ -28,6 +47,13 @@ Pages:
                 ...
             This object is what creates authority for the user within the app by letting them directly decide which option THEY think correct for the situation, letting them take part in the creation of the what they are about to receive.
             </UIRant>
+
+    "Use the hotkey's, Luke. That's what they're there for..."
+        -This view simply shows you the hotkeys (preferably on the left hand to prevent having to make the right hand shift away from mouse) for specific filters, for instance:
+            ~ PRESS M TO ADD MOAC FILTER
+            ~ PRESS W TO ADD WILEYPLUS FILTER
+            ~ PRESS D TO ADD DUMMIES FILTER
+            ~ PRESS Q TO ADD PT FILTER
 
 
 Views:

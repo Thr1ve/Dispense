@@ -17,7 +17,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense</a></div><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a href="/products">products</a></li><li><a href="/requestCode">Request Code</a></li></ul></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
+        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense</a></div><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a href="/requestCode">Request Code</a></li></ul></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
     };
 
     // head.jade compiled template
@@ -46,9 +46,9 @@
         var jade_mixins = {};
         var jade_interp;
         var locals_for_with = locals || {};
-        (function(container, label, message, text) {
-            buf.push('<section class="page home"><h2>Tell me what you\'re looking for...</h2><label><input class="form-input"/><span' + jade.attr("data-hook~", label, true, false) + "></span><div" + jade.attr("data-hook~", message - container, true, false) + ' class="message message-below message-error"><p' + jade.attr("data-hook~", message - text, true, false) + "></p></div></label></section>");
-        }).call(this, "container" in locals_for_with ? locals_for_with.container : typeof container !== "undefined" ? container : undefined, "label" in locals_for_with ? locals_for_with.label : typeof label !== "undefined" ? label : undefined, "message" in locals_for_with ? locals_for_with.message : typeof message !== "undefined" ? message : undefined, "text" in locals_for_with ? locals_for_with.text : typeof text !== "undefined" ? text : undefined);
+        (function(container, message) {
+            buf.push('<section class="page pageThree"><h2>Tell me what you\'re looking for...</h2><label><input data-hook="input" class="form-input"/><span data-hook~="label"></span><div' + jade.attr("data-hook~", message - container, true, false) + ' class="message message-below message-error"><p data-hook~="message-text"></p></div></label><ul data-hook="products-list" class="list-group"></ul></section>');
+        }).call(this, "container" in locals_for_with ? locals_for_with.container : typeof container !== "undefined" ? container : undefined, "message" in locals_for_with ? locals_for_with.message : typeof message !== "undefined" ? message : undefined);
         return buf.join("");
     };
 
@@ -68,9 +68,9 @@
         var jade_mixins = {};
         var jade_interp;
         var locals_for_with = locals || {};
-        (function(container, label, message, search, text) {
-            buf.push('<section class="page pageThree"><h2>Products Test Page</h2><label><input' + jade.attr("data-hook~", search, true, false) + ' class="form-input"/><span' + jade.attr("data-hook~", label, true, false) + "></span><div" + jade.attr("data-hook~", message - container, true, false) + ' class="message message-below message-error"><p' + jade.attr("data-hook~", message - text, true, false) + '></p></div></label><ul data-hook="products-list" class="list-group"></ul></section>');
-        }).call(this, "container" in locals_for_with ? locals_for_with.container : typeof container !== "undefined" ? container : undefined, "label" in locals_for_with ? locals_for_with.label : typeof label !== "undefined" ? label : undefined, "message" in locals_for_with ? locals_for_with.message : typeof message !== "undefined" ? message : undefined, "search" in locals_for_with ? locals_for_with.search : typeof search !== "undefined" ? search : undefined, "text" in locals_for_with ? locals_for_with.text : typeof text !== "undefined" ? text : undefined);
+        (function(container, message) {
+            buf.push('<section class="page pageThree"><h2>Products Test Page</h2><label><input data-hook="input" class="form-input"/><span data-hook~="label"></span><div' + jade.attr("data-hook~", message - container, true, false) + ' class="message message-below message-error"><p data-hook~="message-text"></p></div></label><ul data-hook="products-list" class="list-group"></ul></section>');
+        }).call(this, "container" in locals_for_with ? locals_for_with.container : typeof container !== "undefined" ? container : undefined, "message" in locals_for_with ? locals_for_with.message : typeof message !== "undefined" ? message : undefined);
         return buf.join("");
     };
 
