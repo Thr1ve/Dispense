@@ -7,7 +7,14 @@ var ExtendedInput = InputView.extend({
 });
 
 module.exports = FormView.extend({
-    fields: function () {
+
+    props : {
+        category : 'string'
+
+    }
+
+    fields : function () {
+        console.log(this.category);
         return [
 
             new ExtendedInput({

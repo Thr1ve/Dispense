@@ -1,5 +1,5 @@
 var PageView      = require('./base');
-var AmpCollection = require('ampersand-collection');
+var AmpCollection = require('ampersand-rest-collection');
 var templates     = require('../templates');
 var ProductView   = require('../views/product');
 var Fuse          = require('fuse.js');
@@ -11,7 +11,7 @@ module.exports = PageView.extend({
         this.filtered = new AmpCollection(this.collection.models);
     },
 
-    template: templates.pages.products,
+    template: templates.pages.B_Home,
 
     events : {
         'keyup [data-hook=input]' : 'filter'

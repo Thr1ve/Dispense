@@ -89,7 +89,7 @@ new Moonboots({
             fixPath('public/css/app.css')
         ],
         browserify: {
-            debug: false
+            debug: true
         },
         beforeBuildJS: function () {
             // This re-builds our template files from jade each time the app's main

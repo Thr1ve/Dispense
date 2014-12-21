@@ -5,44 +5,125 @@ var ExtendedInput = InputView.extend({
     template: templates.includes.formInput()
 });
 
+
+//this needs to be made to accept an actual array OR the preset template
+//so we can later allow manager to individually configure which input forms
+//are included
+
+
+
 module.exports = FormView.extend({
+
+    setUp : function() {
+        console.log(this.el);
+        console.log('Setting up the Form...');
+
+        var presets = this.inputTemplates.apply(this);
+
+        console.dir('Config set to: ' + this.data.config);
+        console.dir('inputTemplates:');
+        console.dir(this.inputTemplates());
+
+        if(this.data.config === 'HIGHERED') {
+
+            this.includedInputs = presets.higherEd;
+
+            console.dir('Obtained HIGHERED config...');
+            console.dir(this.includedInputs);
+            console.log('\n');
+            console.log('\n');
+            // return presets.higherEd;
+        }
+        else {
+
+            this.includedInputs = presets.def;
+
+            console.dir('Obtained DEFAULT config...');
+            console.dir(this.includedInputs);
+            console.log('\n');
+            console.log('\n');
+            // return presets.def;
+        }
+    },
+
+    data : this.data || {
+        config : 'DEFAULT'
+    },
+
+    includedInputs : [],
+
+    inputTemplates : function() {
+        return {
+            higherEd: [
+                this.student,
+                this.studentEmail,
+                this.university,
+                this.chatOrTicket,
+                this.representative
+            ],
+
+             def : [
+                this.customerName,
+                this.chatOrTicket,
+                this.representative
+            ]
+        };
+    },
+
+
+    representative : new ExtendedInput({
+
+        label      : 'Representative',
+        name       : 'representative',
+        placeholder: 'Name',
+        parent     : this
+    }),
+
+
+    student : new ExtendedInput({
+
+        label      : 'Student',
+        name       : 'customerName',
+        placeholder: 'Name',
+        parent     : this
+    }),
+
+
+    studentEmail : new ExtendedInput({
+
+        label      : 'Student Email',
+        name       : 'customerEmail',
+        placeholder: 'Email',
+        parent     : this
+    }),
+
+
+    university : new ExtendedInput({
+        label      : 'University',
+        name       : 'university',
+        placeholder: 'University',
+        parent     : this
+    }),
+
+
+    chatOrTicket : new ExtendedInput({
+        label      : 'Chat / Incident Number',
+        name       : 'incident',
+        placeholder: 'Enter "Chat" or an Incident Number',
+        parent     : this
+    }),
+
+
+    customerName : new ExtendedInput({
+        label      : 'Customer',
+        name       : 'customerName',
+        placeholder: 'Name',
+        parent     : this
+    }),
+
     fields: function () {
-        return [
-
-            new ExtendedInput({
-                label: 'Representative',
-                name: 'representative',
-                placeholder: 'Name',
-                parent: this
-            }),
-
-            new ExtendedInput({
-                label: 'Student',
-                name: 'customerName',
-                placeholder: 'Name',
-                parent: this
-            }),
-
-            new ExtendedInput({
-                label: 'Student Email',
-                name: 'customerEmail',
-                placeholder: 'Email',
-                parent: this
-            }),
-
-            new ExtendedInput({
-                label: 'University',
-                name: 'university',
-                placeholder: 'University',
-                parent: this
-            }),
-
-            new ExtendedInput({
-                label: 'Chat / Incident Number',
-                name: 'incident',
-                placeholder: 'Enter "Chat" or an Incident Number',
-                parent: this
-            }),
-        ];
+        this.setUp();
+        // return this.setUp();
+        return this.includedInputs;
     }
 });

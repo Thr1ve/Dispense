@@ -8,33 +8,51 @@ var CodeReceived = require('./pages/codeReceived');
 
 
 module.exports = Router.extend({
+
     routes: {
+
         '': 'home',
-        'requestCode': 'requestCode',
+        'requestCode/:id': 'requestCode',
         'codeReceived': 'codeReceived',
         '(*path)': 'catchAll'
+
     },
 
     // ------- ROUTE HANDLERS ---------
-    home: function () {
+    home: function() {
+
         this.trigger('page', new HomePage({
+
             collection: app.products
+
         }));
     },
 
-    requestCode: function () {
+    requestCode: function(id) {
+
+        var findModel = app.products.get(id);
+
         this.trigger('page', new RequestCodePage({
-            collection: app.newCode
+
+            collection: app.newCode,
+            model: findModel,
+            productId: id
+
         }));
     },
 
-    codeReceived: function () {
+    codeReceived: function() {
+
         this.trigger('page', new CodeReceived({
+
             collection: app.newCode
+
         }));
     },
 
-    catchAll: function () {
+    catchAll: function() {
+
         this.redirectTo('');
+
     }
 });

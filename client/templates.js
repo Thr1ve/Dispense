@@ -17,7 +17,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense</a></div><ul class="nav navbar-nav"><li><a href="/">home</a></li><li><a href="/requestCode">Request Code</a></li></ul></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
+        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense</a></div><!--ul.nav.navbar-nav--><!--  li--><!--      a(href="/") home--></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
     };
 
     // head.jade compiled template
@@ -40,14 +40,14 @@
         return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13" class="pull-right"></div></li>';
     };
 
-    // pages/B_home.jade compiled template
-    templatizer["pages"]["B_home"] = function tmpl_pages_B_home(locals) {
+    // pages/B_Home.jade compiled template
+    templatizer["pages"]["B_Home"] = function tmpl_pages_B_Home(locals) {
         var buf = [];
         var jade_mixins = {};
         var jade_interp;
         var locals_for_with = locals || {};
         (function(container, message) {
-            buf.push('<section class="page pageThree"><h2>Tell me what you\'re looking for...</h2><label><input data-hook="input" class="form-input"/><span data-hook~="label"></span><div' + jade.attr("data-hook~", message - container, true, false) + ' class="message message-below message-error"><p data-hook~="message-text"></p></div></label><ul data-hook="products-list" class="list-group"></ul></section>');
+            buf.push('<section class="page pageThree"><h4>Tell me what you\'re looking for...</h4><label><input data-hook="input" class="form-input"/><span data-hook~="label"></span><div' + jade.attr("data-hook~", message - container, true, false) + ' class="message message-below message-error"><p data-hook~="message-text"></p></div></label><ul data-hook="products-list" class="list-group"></ul></section>');
         }).call(this, "container" in locals_for_with ? locals_for_with.container : typeof container !== "undefined" ? container : undefined, "message" in locals_for_with ? locals_for_with.message : typeof message !== "undefined" ? message : undefined);
         return buf.join("");
     };
@@ -57,26 +57,9 @@
         return '<section class="page receivedCode"><h2>New Code:</h2><ul data-hook="code" class="list-group"></ul></section>';
     };
 
-    // pages/home.jade compiled template
-    templatizer["pages"]["home"] = function tmpl_pages_home() {
-        return '<section class="page home"><h2>Welcome to a skeleton for Dispense</h2><p>If you "view source" you\'ll see it\'s 100% client rendered.</p><p>Click around the site using the nav bar at the top.</p><p>Things to note:<ul><li>The url changes, no requests are made to the server.</li><li>Refreshing the page will always get you back to the same page</li><li>Page changes are nearly instantaneous</li><li>In development mode, you don\'t need to restart the server to see changes, just edit and refresh.</li><li>In production mode, it will serve minfied, uniquely named files with super agressive cache headers. To test:<ul><li>in dev_config.json set <code>isDev</code> to <code>false</code>.</li><li>restart the server.</li><li>view source and you\'ll see minified css and js files with unique names.</li><li>open the "network" tab in chrome dev tools (or something similar). You\'ll also want to make sure you haven\'t disabled your cache.</li><li>without hitting "refresh" load the app again (selecting current URL in url bar and hitting "enter" works great).</li><li>you should now see that the JS and CSS files were both served from cache without making any request to the server at all.</li></ul></li></ul></p></section>';
-    };
-
-    // pages/products.jade compiled template
-    templatizer["pages"]["products"] = function tmpl_pages_products(locals) {
-        var buf = [];
-        var jade_mixins = {};
-        var jade_interp;
-        var locals_for_with = locals || {};
-        (function(container, message) {
-            buf.push('<section class="page pageThree"><h2>Products Test Page</h2><label><input data-hook="input" class="form-input"/><span data-hook~="label"></span><div' + jade.attr("data-hook~", message - container, true, false) + ' class="message message-below message-error"><p data-hook~="message-text"></p></div></label><ul data-hook="products-list" class="list-group"></ul></section>');
-        }).call(this, "container" in locals_for_with ? locals_for_with.container : typeof container !== "undefined" ? container : undefined, "message" in locals_for_with ? locals_for_with.message : typeof message !== "undefined" ? message : undefined);
-        return buf.join("");
-    };
-
     // pages/requestCode.jade compiled template
     templatizer["pages"]["requestCode"] = function tmpl_pages_requestCode() {
-        return '<section class="page request-code"><h2>Request Code</h2><p>This form and all behavior is defined by the form view in <code>client/forms/studentForm.js</code>.</p><form data-hook="person-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
+        return '<section class="page request-code"><h2>Request Code for<span data-hook="product"></span></h2><p>This form and all behavior is defined by the form view in <code>client/forms/studentForm.js</code>.</p><form data-hook="product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
     return templatizer;

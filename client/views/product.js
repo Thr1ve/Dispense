@@ -7,5 +7,11 @@ module.exports = View.extend({
     bindings: {
         'model.isbn13': '[data-hook~=isbn13]',
         'model.title': '[data-hook~=title]'
+    },
+    events : {
+        'click' : 'requestCode'
+    },
+    requestCode : function() {
+        app.navigate('requestCode/' + this.model.id);
     }
 });
