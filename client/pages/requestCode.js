@@ -6,6 +6,7 @@ var StudentForm = require('../forms/studentForm.js');
 module.exports = PageView.extend({
     initialize: function() {
         // PageView.prototype.initialize.apply(this, arguments);
+        var self = this;
         if (!this.model) {
 
             // console.dir('Model not found. Fetching model with id: ' + this.productId + '...');
@@ -22,7 +23,7 @@ module.exports = PageView.extend({
 
                 } else {
 
-                    this.model = model;
+                    self.model = model;
                     // this.subviews.model = model;
 
                     // console.dir('...found Model!');
@@ -32,7 +33,6 @@ module.exports = PageView.extend({
             });
         } else {
 
-            this.model = this.model;
             // console.dir('The Model was found!');
             // console.dir(this.model);
 
@@ -52,7 +52,7 @@ module.exports = PageView.extend({
         form: {
 
             container: '[data-hook=product-form]',
-            // waitFor: 'model.config',
+            waitFor: 'model',
 
             prepareView: function(el) {
                 // console.dir('prepareView Started...');
