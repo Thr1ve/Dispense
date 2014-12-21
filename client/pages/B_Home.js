@@ -31,6 +31,7 @@ module.exports = PageView.extend({
 
     render: function () {
         this.renderWithTemplate();
+        this.filter();
         this.renderCollection(this.filtered, ProductView, this.queryByHook('products-list'));
         if (!this.collection.length) {
             this.fetchCollection();
