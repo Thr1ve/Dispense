@@ -1,5 +1,8 @@
 --STRUCTURE--
 
+--CHAPTER 06 HUMAN JAVASCRIPT : READ THIS AND MIMICK IN APP TO FIX ALL OF THE THINGS
+--ADD CURRENT CUSTOMER OVERLAY OPTION
+    -- ability to switch between "customers" and have it autofill their name / information for you in tools we've built
 
 NOTE: All files labeled with "B_*" are part of this structure. Files without the "B_*" may or may not be integral for the new structure.
 

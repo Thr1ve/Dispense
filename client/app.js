@@ -1,12 +1,14 @@
-/*global app, me, $*/
-var _        = require('underscore');
+/*global app, $*/
+
+// var _        = require('underscore');
 var domReady = require('domready');
-var logger   = require('andlog');
-var config   = require('clientconfig');
+// var logger   = require('andlog');
+// var config   = require('clientconfig');
 
 var Router   = require('./router');
 
 var MainView = require('./views/main');
+var User     = require('./models/user-state');
 var Products = require('./models/products');
 var Code     = require('./models/received-code-collection');
 
@@ -15,14 +17,16 @@ var Code     = require('./models/received-code-collection');
 module.exports = {
     // this is the the whole app initter
     blastoff: function () {
-        var self = window.app = this;
+
+        var self      = window.app = this;
 
         // create our global empty collections for products and a received code
+        this.user     = new User();
         this.products = new Products();
-        this.newCode = new Code();
+        this.newCode  = new Code();
 
         // init our URL handlers and the history tracker
-        this.router = new Router();
+        this.router   = new Router();
 
         // wait for document ready to render our main view
         // this ensures the document has a body, etc.

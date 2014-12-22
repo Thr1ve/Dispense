@@ -5,40 +5,29 @@ var StudentForm = require('../forms/studentForm.js');
 
 module.exports = PageView.extend({
     initialize: function() {
-        // PageView.prototype.initialize.apply(this, arguments);
         var self = this;
         if (!this.model) {
-
-            // console.dir('Model not found. Fetching model with id: ' + this.productId + '...');
-
+            console.log('Model not found. Fetching model with id: ' + this.productId + '...');
             app.products.getOrFetch(this.productId, {
-
                 all: true
-
             }, function(err, model) {
-
                 if (err) {
-
-                    // console.dir(err);
-
+                    console.dir(err);
                 } else {
-
                     self.model = model;
-                    // this.subviews.model = model;
-
-                    // console.dir('...found Model!');
-                    // console.dir(this.model);
-
+                    console.log('...found Model!');
+                    console.dir(model);
+                    console.log('\n');
+                    console.log('\n');
                 }
             });
         } else {
-
-            // console.dir('The Model was found!');
-            // console.dir(this.model);
-
+            console.log('The Model was found!');
+            console.dir(this.model);
         }
     },
 
+    //this may actually need to be in a session variable?
     props: {
         productId: 'string'
     },
@@ -55,18 +44,19 @@ module.exports = PageView.extend({
             waitFor: 'model',
 
             prepareView: function(el) {
-                // console.dir('prepareView Started...');
-                // console.dir(this);
+                console.log('prepareView Started...');
+                console.dir(this);
                 return new StudentForm({
 
-                    data : {
-                        config : this.model.config
+                    data: {
+                        config: this.model.config
                     },
 
-                    el : el,
+                    el: el,
+
+                    model : this.model,
 
                     submitCallback: function(data) {
-                        console.dir('WE SUBMITTD A CALLBACK');
                         app.newCode.create(data, {
 
                             wait: true,

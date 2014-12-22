@@ -7,7 +7,7 @@ var ExtendedInput = InputView.extend({
 
 
 //this needs to be made to accept an actual array OR the preset template
-//so we can later allow manager to individually configure which input forms
+//so we can later allow manager to individually configure which input fields
 //are included
 
 
@@ -15,34 +15,30 @@ var ExtendedInput = InputView.extend({
 module.exports = FormView.extend({
 
     setUp : function() {
-        console.log(this.el);
-        console.log('Setting up the Form...');
 
         var presets = this.inputTemplates.apply(this);
 
-        console.dir('Config set to: ' + this.data.config);
-        console.dir('inputTemplates:');
-        console.dir(this.inputTemplates());
+        console.log('\n');
+        console.log('Setting up the Form...');
+        console.log('   Config set to: ' + this.data.config + ' ...');
 
         if(this.data.config === 'HIGHERED') {
 
             this.includedInputs = presets.higherEd;
 
-            console.dir('Obtained HIGHERED config...');
+            console.log('   ... Obtained HIGHERED config');
             console.dir(this.includedInputs);
             console.log('\n');
             console.log('\n');
-            // return presets.higherEd;
         }
         else {
 
             this.includedInputs = presets.def;
 
-            console.dir('Obtained DEFAULT config...');
+            console.dir('   ...Obtained DEFAULT config');
             console.dir(this.includedInputs);
             console.log('\n');
             console.log('\n');
-            // return presets.def;
         }
     },
 
@@ -123,7 +119,7 @@ module.exports = FormView.extend({
 
     fields: function () {
         this.setUp();
-        // return this.setUp();
+        console.log('...Sending Input Fields!!');
         return this.includedInputs;
     }
 });

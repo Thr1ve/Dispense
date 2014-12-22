@@ -1,4 +1,4 @@
-/*global me, app*/
+/*global app*/
 var Router = require('ampersand-router');
 
 //pages
@@ -20,9 +20,12 @@ module.exports = Router.extend({
 
     // ------- ROUTE HANDLERS ---------
     home: function() {
-
+        //not sure if I want this here...this
+        //resets displayed products on home page
+        app.user.clear();
+        // app.products.reset();
         this.trigger('page', new HomePage({
-
+            model: app.user,
             collection: app.products
 
         }));
