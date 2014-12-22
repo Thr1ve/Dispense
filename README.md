@@ -13,6 +13,7 @@
     * **A Note about Windows**: Some things in NPM world involve rebuilding the node-gyp. In order to do this, you'll need to have Python install and added to your PATH:
         * Python 2.7: https://www.python.org/downloads/release/python-279/
         * Be sure to manually tell the Python installer to add the program to your path; it is disabled by default. (drop-down box, "add full feature to hard drive" or something like that)
+        * Also: http://www.microsoft.com/en-us/download/confirmation.aspx?id=19988   (?)
 
 2. Navigate to the directory of your choice and Clone the git repository
     ```
