@@ -1,6 +1,6 @@
 var PageView      = require('./base');
 var templates     = require('../templates');
-var ProductView   = require('../views/product');
+var ProductView   = require('../views/B_PanelFront');
 
 
 module.exports = PageView.extend({

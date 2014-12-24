@@ -22,9 +22,11 @@ module.exports = Router.extend({
     home: function() {
         //not sure if I want this here...this
         //resets displayed products on home page
+
         app.user.clear();
-        // app.products.reset();
+
         this.trigger('page', new HomePage({
+
             model: app.user,
             collection: app.products
 

@@ -10,13 +10,15 @@ var ExtendedInput = InputView.extend({
 //so we can later allow manager to individually configure which input fields
 //are included
 
+//Form fields / makeup / etc. needs to be abstracted to a model
 
 
 module.exports = FormView.extend({
 
     setUp : function() {
 
-        var presets = this.inputTemplates.apply(this);
+        var self = this;
+        var presets = self.inputTemplates.apply(this);
 
         console.log('\n');
         console.log('Setting up the Form...');
