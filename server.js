@@ -52,7 +52,7 @@ app.set('view engine', 'jade');
 var api = require('./fakeApi');
 app.get('/api/products', api.list);
 // app.get('/api/products/:id', api.get);
-app.post('/api/received-code-collection', api.request);
+app.put('/api/request-collection/:id', api.request);
 
 // -----------------
 // Enable the functional test site in development
@@ -77,48 +77,7 @@ app.use(function (req, res, next) {
 // ---------------------------------------------------
 // Configure Moonboots to serve our client application
 // ---------------------------------------------------
-// new Moonboots({
-//     moonboots: {
-//         jsFileName: 'Dispense',
-//         cssFileName: 'Dispense',
-//         main: fixPath('client/app.js'),
-//         developmentMode: config.isDev,
-//         libraries: [
-//         ],
-//         stylesheets: [
-//             fixPath('public/css/bootstrap.css'),
-//             fixPath('public/css/app.css')
-//         ],
-//         browserify: {
-//             debug: true
-//         },
-//         beforeBuildJS: function () {
-//             // This re-builds our template files from jade each time the app's main
-//             // js file is requested. Which means you can seamlessly change jade and
-//             // refresh in your browser to get new templates.
-//             if (config.isDev) {
-//                 templatizer(fixPath('templates'), fixPath('client/templates.js'));
-//             }
-//         },
-//         beforeBuildCSS: function (done) {
-//             // This re-builds css from stylus each time the app's main
-//             // css file is requested. Which means you can seamlessly change stylus files
-//             // and see new styles on refresh.
-//             if (config.isDev) {
-//                 stylizer({
-//                     infile: fixPath('public/css/app.styl'),
-//                     outfile: fixPath('public/css/app.css'),
-//                     development: true
-//                 }, done);
-//             } else {
-//                 done();
-//             }
-//         }
-//     },
-//     server: app
-// });
-
-var moonboots = new sMoonboots({
+new Moonboots({
     moonboots: {
         jsFileName: 'Dispense',
         cssFileName: 'Dispense',
@@ -156,22 +115,63 @@ var moonboots = new sMoonboots({
             }
         }
     },
-    // Contents from the public directory
-    // will be copied to the target directory
-    // public: __dirname + '/public',
-    // Directory to build files into
-    directory: __dirname + '/_build',
-    // Log build items
-    verbose: true
+    server: app
 });
 
-moonboots.on('ready', function (err) {
-    if (err) {
-        // Oh no something went wrong
-    } else {
-        // Yay, we built our files!
-    }
-});
+// var moonboots = new sMoonboots({
+//     moonboots: {
+//         jsFileName: 'Dispense',
+//         cssFileName: 'Dispense',
+//         main: fixPath('client/app.js'),
+//         developmentMode: config.isDev,
+//         libraries: [
+//         ],
+//         stylesheets: [
+//             fixPath('public/css/bootstrap.css'),
+//             fixPath('public/css/app.css')
+//         ],
+//         browserify: {
+//             debug: true
+//         },
+//         beforeBuildJS: function () {
+//             // This re-builds our template files from jade each time the app's main
+//             // js file is requested. Which means you can seamlessly change jade and
+//             // refresh in your browser to get new templates.
+//             if (config.isDev) {
+//                 templatizer(fixPath('templates'), fixPath('client/templates.js'));
+//             }
+//         },
+//         beforeBuildCSS: function (done) {
+//             // This re-builds css from stylus each time the app's main
+//             // css file is requested. Which means you can seamlessly change stylus files
+//             // and see new styles on refresh.
+//             if (config.isDev) {
+//                 stylizer({
+//                     infile: fixPath('public/css/app.styl'),
+//                     outfile: fixPath('public/css/app.css'),
+//                     development: true
+//                 }, done);
+//             } else {
+//                 done();
+//             }
+//         }
+//     },
+//     // Contents from the public directory
+//     // will be copied to the target directory
+//     // public: __dirname + '/public',
+//     // Directory to build files into
+//     directory: __dirname + '/_build',
+//     // Log build items
+//     verbose: true
+// });
+
+// moonboots.on('ready', function (err) {
+//     if (err) {
+//         // Oh no something went wrong
+//     } else {
+//         // Yay, we built our files!
+//     }
+// });
 
 
 // listen for incoming http requests on the port as specified in our config

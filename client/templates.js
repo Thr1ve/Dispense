@@ -27,7 +27,7 @@
 
     // includes/code.jade compiled template
     templatizer["includes"]["code"] = function tmpl_includes_code() {
-        return '<li class="code list-group-item container-fluid"><a data-hook="code"></a><a data-hook="date" class="pull-right"></a></li>';
+        return '<li class="code list-group-item container-fluid"><ul><li><a data-hook="code"></a></li><li><a data-hook="date"></a></li><li><a data-hook="representative"></a></li><li><a data-hook="chatOrTicket"></a></li><li><a data-hook="customerName"></a></li><li><a data-hook="customerEmail"></a></li><li><a data-hook="university"></a></li></ul></li>';
     };
 
     // includes/formInput.jade compiled template
@@ -59,7 +59,7 @@
 
     // pages/requestCode.jade compiled template
     templatizer["pages"]["requestCode"] = function tmpl_pages_requestCode() {
-        return '<section class="page request-code"><h2>Request Code for<span data-hook="product"></span></h2><p>This form and all behavior is defined by the form view in <code>client/forms/studentForm.js</code>.</p><form data-hook="product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
+        return '<section class="page request-code"><h4>Request Code for<h4 data-hook="title"></h4></h4><p>This form and all behavior is defined by the form view in <code>client/forms/studentForm.js</code>.</p><form data-hook="product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
     return templatizer;

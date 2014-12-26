@@ -10,7 +10,7 @@ var Router   = require('./router');
 var MainView = require('./views/main');
 var User     = require('./models/user-state');
 var Products = require('./models/products');
-var Code     = require('./models/received-code-collection');
+var Code     = require('./models/request-collection');
 
 
 

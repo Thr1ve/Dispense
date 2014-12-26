@@ -32,6 +32,10 @@ module.exports = PageView.extend({
         productId: 'string'
     },
 
+    bindings : {
+        'model.title': '[data-hook~=title]'
+    },
+
     pageTitle: 'Request Code',
 
     template: templates.pages.requestCode,
@@ -40,7 +44,8 @@ module.exports = PageView.extend({
 
         form: {
 
-            container: '[data-hook=product-form]',
+            // container: '[data-hook=product-form]',
+            container: 'form',
             waitFor: 'model',
 
             prepareView: function(el) {
@@ -54,15 +59,24 @@ module.exports = PageView.extend({
 
                     el: el,
 
-                    model : this.model,
+                    // model : this.model,
 
                     submitCallback: function(data) {
+                        var id = this.parent.productId;
+                        data.id = id;
+                        console.log('SUBMITTING: ');
+                        console.log(data);
+                        app.newCode.reset();
                         app.newCode.create(data, {
 
                             wait: true,
 
-                            success: function() {
-
+                            success: function(model , resp) {
+                                console.log(model);
+                                if(!model.code){
+                                    alert('NO CODES LEFT');
+                                }
+                                console.log(resp);
                                 app.navigate('/codeReceived');
 
                             }

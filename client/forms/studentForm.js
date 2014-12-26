@@ -15,113 +15,155 @@ var ExtendedInput = InputView.extend({
 
 module.exports = FormView.extend({
 
-    setUp : function() {
+     fields: function () {
+        // this.setUp();
+        // console.log('...Sending Input Fields!!');
+        // return this.includedInputs;
+        return [
 
-        var self = this;
-        var presets = self.inputTemplates.apply(this);
+            new ExtendedInput({
 
-        console.log('\n');
-        console.log('Setting up the Form...');
-        console.log('   Config set to: ' + this.data.config + ' ...');
+                label      : 'Student',
+                name       : 'customerName',
+                placeholder: 'Name',
+                parent     : this
+            }),
 
-        if(this.data.config === 'HIGHERED') {
+            new ExtendedInput({
 
-            this.includedInputs = presets.higherEd;
+                label      : 'Student Email',
+                name       : 'customerEmail',
+                placeholder: 'Email',
+                parent     : this
+            }),
 
-            console.log('   ... Obtained HIGHERED config');
-            console.dir(this.includedInputs);
-            console.log('\n');
-            console.log('\n');
-        }
-        else {
+            new ExtendedInput({
+                label      : 'University',
+                name       : 'university',
+                placeholder: 'University',
+                parent     : this
+            }),
 
-            this.includedInputs = presets.def;
+            new ExtendedInput({
 
-            console.dir('   ...Obtained DEFAULT config');
-            console.dir(this.includedInputs);
-            console.log('\n');
-            console.log('\n');
-        }
-    },
+                label      : 'Representative',
+                name       : 'representative',
+                placeholder: 'Name',
+                parent     : this
+            }),
 
-    data : this.data || {
-        config : 'DEFAULT'
-    },
-
-    includedInputs : [],
-
-    inputTemplates : function() {
-        return {
-            higherEd: [
-                this.student,
-                this.studentEmail,
-                this.university,
-                this.chatOrTicket,
-                this.representative
-            ],
-
-             def : [
-                this.customerName,
-                this.chatOrTicket,
-                this.representative
-            ]
-        };
-    },
-
-
-    representative : new ExtendedInput({
-
-        label      : 'Representative',
-        name       : 'representative',
-        placeholder: 'Name',
-        parent     : this
-    }),
-
-
-    student : new ExtendedInput({
-
-        label      : 'Student',
-        name       : 'customerName',
-        placeholder: 'Name',
-        parent     : this
-    }),
-
-
-    studentEmail : new ExtendedInput({
-
-        label      : 'Student Email',
-        name       : 'customerEmail',
-        placeholder: 'Email',
-        parent     : this
-    }),
-
-
-    university : new ExtendedInput({
-        label      : 'University',
-        name       : 'university',
-        placeholder: 'University',
-        parent     : this
-    }),
-
-
-    chatOrTicket : new ExtendedInput({
-        label      : 'Chat / Incident Number',
-        name       : 'incident',
-        placeholder: 'Enter "Chat" or an Incident Number',
-        parent     : this
-    }),
-
-
-    customerName : new ExtendedInput({
-        label      : 'Customer',
-        name       : 'customerName',
-        placeholder: 'Name',
-        parent     : this
-    }),
-
-    fields: function () {
-        this.setUp();
-        console.log('...Sending Input Fields!!');
-        return this.includedInputs;
+            new ExtendedInput({
+                label      : 'Chat / Incident Number',
+                name       : 'chatOrTicket',
+                placeholder: 'Enter "Chat" or an Incident Number',
+                parent     : this
+            }),
+        ];
     }
+
+    ////OLD CODE -- THIS DID NOT WORK
+    // setUp : function() {
+    //     var self = this;
+    //     var presets = self.inputTemplates.apply(this);
+
+    //     console.log('\n');
+    //     console.log('Setting up the Form...');
+    //     console.log('   Config set to: ' + this.data.config + ' ...');
+
+    //     if(this.data.config === 'HIGHERED') {
+
+    //         this.includedInputs = presets.higherEd;
+
+    //         console.log('   ... Obtained HIGHERED config');
+    //         console.dir(this.includedInputs);
+    //         console.log('\n');
+    //         console.log('\n');
+    //     }
+    //     else {
+
+    //         this.includedInputs = presets.def;
+
+    //         console.dir('   ...Obtained DEFAULT config');
+    //         console.dir(this.includedInputs);
+    //         console.log('\n');
+    //         console.log('\n');
+    //     }
+    // },
+
+    // data : this.data || {
+    //     config : 'DEFAULT'
+    // },
+
+    // includedInputs : [],
+
+    // inputTemplates : function() {
+    //     return {
+    //         higherEd: [
+    //             this.student,
+    //             this.studentEmail,
+    //             this.university,
+    //             this.chatOrTicket,
+    //             this.representative
+    //         ],
+
+    //          def : [
+    //             this.customerName,
+    //             this.chatOrTicket,
+    //             this.representative
+    //         ]
+    //     };
+    // },
+
+
+    // representative : new ExtendedInput({
+
+    //     label      : 'Representative',
+    //     name       : 'representative',
+    //     placeholder: 'Name',
+    //     parent     : this
+    // }),
+
+
+    // student : new ExtendedInput({
+
+    //     label      : 'Student',
+    //     name       : 'customerName',
+    //     placeholder: 'Name',
+    //     parent     : this
+    // }),
+
+
+    // studentEmail : new ExtendedInput({
+
+    //     label      : 'Student Email',
+    //     name       : 'customerEmail',
+    //     placeholder: 'Email',
+    //     parent     : this
+    // }),
+
+
+    // university : new ExtendedInput({
+    //     label      : 'University',
+    //     name       : 'university',
+    //     placeholder: 'University',
+    //     parent     : this
+    // }),
+
+
+    // chatOrTicket : new ExtendedInput({
+    //     label      : 'Chat / Incident Number',
+    //     name       : 'incident',
+    //     placeholder: 'Enter "Chat" or an Incident Number',
+    //     parent     : this
+    // }),
+
+
+    // customerName : new ExtendedInput({
+    //     label      : 'Customer',
+    //     name       : 'customerName',
+    //     placeholder: 'Name',
+    //     parent     : this
+    // }),
+
+
 });
