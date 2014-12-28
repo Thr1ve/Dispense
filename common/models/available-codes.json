@@ -1,0 +1,27 @@
+{
+  "name": "availableCodes",
+  "plural": "availableCodes-collection",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "properties": {
+    "productId": {
+      "type": "string",
+      "required": true
+    },
+    "codes": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {
+    "product": {
+      "type": "belongsTo",
+      "model": "product",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

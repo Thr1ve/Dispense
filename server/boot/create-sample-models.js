@@ -8,7 +8,7 @@ module.exports = function(app) {
         productsJSON.products.forEach(function(val){
             app.models.product.create([
                 {
-                    id: val.id,
+                    productId: val.id,
                     title: val.title,
                     isbn13: val.isbn13,
                     config: val.config,

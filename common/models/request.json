@@ -21,7 +21,6 @@
     "representative": {
       "type": "string"
     },
-
     "university": {
       "type": "string"
     },

@@ -26,6 +26,51 @@ app.use(loopback.static(landing));
 //********
 //moonboots testing
 //********
+// var dispenseManager = new Moonboots({
+//     moonboots: {
+//         appPath : '*/dispenseManager',
+//         jsFileName: 'DispenseManager',
+//         cssFileName: 'DispenseManager',
+//         main: require('path')
+//             .resolve(__dirname, '../client/dispenseManager/client/app.js'),
+//         developmentMode: true,
+//         libraries: [
+//         ],
+//         stylesheets: [
+//             fixPath('client/dispenseManager/public/css/bootstrap.css'),
+//             fixPath('client/dispenseManager/public/css/app.css')
+//         ],
+//         browserify: {
+//             debug: true
+//         },
+//         beforeBuildJS: function () {
+//             // This re-builds our template files from jade each time the app's main
+//             // js file is requested. Which means you can seamlessly change jade and
+//             // refresh in your browser to get new templates.
+
+//             // if (config.isDev) {
+//                 templatizer(fixPath('client/dispenseManager/templates'),
+//                     fixPath('client/dispenseManager/client/templates.js'));
+//             // }
+//         },
+//         beforeBuildCSS: function (done) {
+//             // This re-builds css from stylus each time the app's main
+//             // css file is requested. Which means you can seamlessly change stylus files
+//             // and see new styles on refresh.
+
+//             // if (config.isDev) {
+//                 stylizer({
+//                     infile: fixPath('client/dispenseManager/public/css/app.styl'),
+//                     outfile: fixPath('client/dispenseManager/public/css/app.css'),
+//                     development: true
+//                 }, done);
+//             // } else {
+//                 // done();
+//             // }
+//         }
+//     },
+//     server: app,
+// });
 
 var moonboots = new Moonboots({
     moonboots: {
@@ -34,7 +79,7 @@ var moonboots = new Moonboots({
         cssFileName: 'Dispense',
         main: require('path')
             .resolve(__dirname, '../client/dispense/client/app.js'),
-        developmentMode: true,
+        // developmentMode: true,
         libraries: [
         ],
         stylesheets: [
@@ -42,7 +87,7 @@ var moonboots = new Moonboots({
             fixPath('client/dispense/public/css/app.css')
         ],
         browserify: {
-            debug: true
+            // debug: true
         },
         beforeBuildJS: function () {
             // This re-builds our template files from jade each time the app's main
@@ -63,7 +108,8 @@ var moonboots = new Moonboots({
                 stylizer({
                     infile: fixPath('client/dispense/public/css/app.styl'),
                     outfile: fixPath('client/dispense/public/css/app.css'),
-                    development: true
+                    // development: true
+                    development: false
                 }, done);
             // } else {
                 // done();
@@ -72,6 +118,7 @@ var moonboots = new Moonboots({
     },
     server: app,
 });
+
 
 
 

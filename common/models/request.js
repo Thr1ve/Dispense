@@ -13,7 +13,7 @@ module.exports = function(Request) {
         var response = requestObject;
         var product = app.datasources.mysqlDs.models.product;
 
-        product.find({where: {id: productId}},
+        product.find({where: {prodictId: productId}},
 
             function(err , instance){
 

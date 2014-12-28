@@ -33,5 +33,9 @@
   "request": {
     "dataSource": "mysqlDs",
     "public": true
+  },
+  "availableCodes": {
+    "dataSource": "mysqlDs",
+    "public": true
   }
 }
