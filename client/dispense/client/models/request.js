@@ -4,7 +4,7 @@ var AmpersandModel = require('ampersand-model');
 //RENAME TO REQUEST?
 module.exports = AmpersandModel.extend({
     props: {
-        id: 'any',
+        productId: 'any',
         customerName: 'string',
         customerEmail: 'string',
         university: 'string',

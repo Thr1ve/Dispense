@@ -12,6 +12,6 @@ module.exports = View.extend({
         'click' : 'requestCode'
     },
     requestCode : function() {
-        app.navigate('requestCode/' + this.model.id);
+        app.navigate('/dispense/requestCode/' + this.model.id);
     }
 });
