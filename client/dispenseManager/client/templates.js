@@ -59,7 +59,7 @@
 
     // pages/productStatus.jade compiled template
     templatizer["pages"]["productStatus"] = function tmpl_pages_productStatus() {
-        return '<section class="page request-code"><h4>Request Code for<h4 data-hook="title"></h4></h4></section>';
+        return '<section class="page request-code"><h4>Currently Available Codes for ...<h4 data-hook="title"></h4></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
     };
 
     return templatizer;

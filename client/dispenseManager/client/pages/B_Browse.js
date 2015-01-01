@@ -1,3 +1,4 @@
+//placeholder file for second filter view
 var PageView = require('./base');
 var templates = require('../templates');
 

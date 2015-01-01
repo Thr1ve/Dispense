@@ -4,7 +4,6 @@ var Router = require('ampersand-router');
 //pages
 var HomePage = require('./pages/B_Home');
 var ProductStatusPage = require('./pages/productStatus');
-var CodeReceived = require('./pages/codeReceived');
 
 
 module.exports = Router.extend({
@@ -13,7 +12,6 @@ module.exports = Router.extend({
 
         'dispenseManager': 'home',
         'dispenseManager/productStatus/:id': 'productStatus',
-        'dispenseManager/codeReceived': 'codeReceived',
         '(*path)': 'catchAll'
 
     },
@@ -39,18 +37,8 @@ module.exports = Router.extend({
 
         this.trigger('page', new ProductStatusPage({
 
-            collection: app.newCode,
             model: findModel,
             productId: id
-
-        }));
-    },
-
-    codeReceived: function() {
-
-        this.trigger('page', new CodeReceived({
-
-            collection: app.newCode
 
         }));
     },

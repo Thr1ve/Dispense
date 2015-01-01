@@ -1,4 +1,5 @@
 //not yet rewritten
+//THIS SHOULD BE WHERE WE ADD CODES
 var FormView      = require('ampersand-form-view');
 var InputView     = require('ampersand-input-view');
 var templates     = require('../templates');
@@ -11,7 +12,7 @@ module.exports = FormView.extend({
     props : {
         category : 'string'
 
-    }
+    },
 
     fields : function () {
         console.log(this.category);
