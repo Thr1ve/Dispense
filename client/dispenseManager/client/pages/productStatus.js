@@ -6,7 +6,7 @@ var StudentForm = require('../forms/studentForm.js');
 //later, this should simply hold smaller pieces(views) such as "available codes"
 //"current trending issues" "server status for product (if it is service such as WileypLUS)"
 module.exports = PageView.extend({
-    pageTitle: 'Request Code',
+    pageTitle: 'View Codes',
 
     template: templates.pages.productStatus,
 

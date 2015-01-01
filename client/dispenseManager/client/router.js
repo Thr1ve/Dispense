@@ -4,6 +4,7 @@ var Router = require('ampersand-router');
 //pages
 var HomePage = require('./pages/B_Home');
 var ProductStatusPage = require('./pages/productStatus');
+var ModifyProductPage = require('./pages/modifyProduct');
 
 
 module.exports = Router.extend({
@@ -12,6 +13,7 @@ module.exports = Router.extend({
 
         'dispenseManager': 'home',
         'dispenseManager/productStatus/:id': 'productStatus',
+        'dispenseManager/modifyProduct/:id': 'modifyProduct',
         '(*path)': 'catchAll'
 
     },
@@ -36,6 +38,18 @@ module.exports = Router.extend({
         var findModel = app.products.get(id);
 
         this.trigger('page', new ProductStatusPage({
+
+            model: findModel,
+            productId: id
+
+        }));
+    },
+
+    modifyProduct : function(id) {
+
+        var findModel = app.products.get(id);
+
+        this.trigger('page', new ModifyProductPage({
 
             model: findModel,
             productId: id

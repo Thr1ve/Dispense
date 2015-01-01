@@ -37,7 +37,7 @@
 
     // includes/product.jade compiled template
     templatizer["includes"]["product"] = function tmpl_includes_product() {
-        return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13" class="pull-right"></div></li>';
+        return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13"></div><span class="btn-group pull-right"><a class="btn btn-default viewCodes">View Codes</a><a class="btn btn-danger addCodes">Add Codes</a></span></li>';
     };
 
     // pages/B_Home.jade compiled template
@@ -52,9 +52,9 @@
         return buf.join("");
     };
 
-    // pages/codeReceived.jade compiled template
-    templatizer["pages"]["codeReceived"] = function tmpl_pages_codeReceived() {
-        return '<section class="page receivedCode"><h2>New Code:</h2><ul data-hook="code" class="list-group"></ul></section>';
+    // pages/modifyProduct.jade compiled template
+    templatizer["pages"]["modifyProduct"] = function tmpl_pages_modifyProduct() {
+        return '<section class="page request-code"><h4>Add Codes for ...<h4 data-hook="title"></h4></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
     };
 
     // pages/productStatus.jade compiled template
