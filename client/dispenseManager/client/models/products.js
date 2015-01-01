@@ -11,7 +11,7 @@ module.exports = AmpCollection.extend({
 
     filter : function(string) {
 
-        console.log(string);
+        // console.log(string);
 
         var fuse = new Fuse(this.models , {
             keys : ['isbn13', 'title'],

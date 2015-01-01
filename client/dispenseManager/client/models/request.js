@@ -11,7 +11,7 @@ module.exports = AmpersandModel.extend({
         representative: 'string',
         chatOrTicket: 'string',
         date: 'string',
-        code:'string'
+        code:['string', false, ' ']
     }
 
 });

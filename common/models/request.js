@@ -11,34 +11,31 @@ module.exports = function(Request) {
         var newCode, newData;
         var productId = requestObject.productId;
         var response = requestObject;
-        var product = app.datasources.mysqlDs.models.product;
+        var availableCodes = app.datasources.mysqlDs.models.availableCodes;
 
-        product.find({where: {prodictId: productId}},
+        availableCodes.find({where:{productId: productId}}, function(err, cInstance){
+            var codes = cInstance[0].codes;
 
-            function(err , instance){
+            if(codes.length >= 1){
 
-                var codes = instance[0].codes;
+                newCode = cInstance[0].codes.shift();
+                newData = cInstance;
+                response.code = newCode;
+                response.id = 5;
 
-                if(codes.length >= 1){
-
-                    newCode = instance[0].codes.shift();
-                    newData = instance;
-                    response.code = newCode;
-
-                    cb(null, response);
-
-                    product.updateAll({id: productId},
-                        {codes: newData[0].codes}, function(err, count){});
-                }
-                else {
-                    cb(null, 'There are no codes left!');
-                }
-
+                cb(null, response);
+                availableCodes.updateAll({id: productId},
+                    {codes: newData[0].codes}, function(err, count){});
+            }
+            else {
+                cb(null, 'There are no codes left!');
+            }
         });
     };
 
     Request.beforeCreate = function(next, modelInstance) {
         Request.process(modelInstance, function(err, response){
+            console.log(response);
 
         });
         next();
@@ -48,7 +45,7 @@ module.exports = function(Request) {
         'process',
         {
           accepts: {arg: 'requestObject', type: 'Object'},
-          returns: {arg: 'receivedCode', type: 'object'}
+          returns: {arg: 'receivedCode', type: 'Object'}
         }
     );
 

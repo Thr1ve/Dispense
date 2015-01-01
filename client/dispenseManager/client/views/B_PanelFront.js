@@ -12,6 +12,6 @@ module.exports = View.extend({
         'click' : 'navigate'
     },
     navigate : function() {
-        app.navigate('/dispenseManager/productStatus/' + this.model.id);
+        app.navigate('/dispenseManager/productStatus/' + this.model.productId);
     }
 });

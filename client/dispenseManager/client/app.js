@@ -11,6 +11,10 @@ var MainView = require('./views/main');
 var User     = require('./models/user-state');
 var Products = require('./models/products');
 var Code     = require('./models/request-collection');
+var Codes    = require('./models/availableCodes-collection');
+
+//testing
+var test = require('./models/availableCodes');
 
 
 
@@ -21,9 +25,11 @@ module.exports = {
         var self      = window.app = this;
 
         // create our global empty collections for products and a received code
-        this.user     = new User();
-        this.products = new Products();
-        this.newCode  = new Code();
+        this.user           = new User();
+        this.products       = new Products();
+        this.newCode        = new Code();
+        this.availableCodes = new Codes();
+
 
         // init our URL handlers and the history tracker
         this.router   = new Router();

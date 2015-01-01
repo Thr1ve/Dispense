@@ -34,9 +34,9 @@ module.exports = Router.extend({
     },
 
     requestCode: function(id) {
-
+        console.log(app.products);
         var findModel = app.products.get(id);
-
+        console.log(findModel);
         this.trigger('page', new RequestCodePage({
 
             collection: app.newCode,

@@ -26,68 +26,22 @@ app.use(loopback.static(landing));
 //********
 //moonboots testing
 //********
-// var dispenseManager = new Moonboots({
-//     moonboots: {
-//         appPath : '*/dispenseManager',
-//         jsFileName: 'DispenseManager',
-//         cssFileName: 'DispenseManager',
-//         main: require('path')
-//             .resolve(__dirname, '../client/dispenseManager/client/app.js'),
-//         developmentMode: true,
-//         libraries: [
-//         ],
-//         stylesheets: [
-//             fixPath('client/dispenseManager/public/css/bootstrap.css'),
-//             fixPath('client/dispenseManager/public/css/app.css')
-//         ],
-//         browserify: {
-//             debug: true
-//         },
-//         beforeBuildJS: function () {
-//             // This re-builds our template files from jade each time the app's main
-//             // js file is requested. Which means you can seamlessly change jade and
-//             // refresh in your browser to get new templates.
-
-//             // if (config.isDev) {
-//                 templatizer(fixPath('client/dispenseManager/templates'),
-//                     fixPath('client/dispenseManager/client/templates.js'));
-//             // }
-//         },
-//         beforeBuildCSS: function (done) {
-//             // This re-builds css from stylus each time the app's main
-//             // css file is requested. Which means you can seamlessly change stylus files
-//             // and see new styles on refresh.
-
-//             // if (config.isDev) {
-//                 stylizer({
-//                     infile: fixPath('client/dispenseManager/public/css/app.styl'),
-//                     outfile: fixPath('client/dispenseManager/public/css/app.css'),
-//                     development: true
-//                 }, done);
-//             // } else {
-//                 // done();
-//             // }
-//         }
-//     },
-//     server: app,
-// });
-
-var moonboots = new Moonboots({
+var dispenseManager = new Moonboots({
     moonboots: {
-        appPath : '*/dispense',
-        jsFileName: 'Dispense',
-        cssFileName: 'Dispense',
+        appPath : '*/dispenseManager',
+        jsFileName: 'DispenseManager',
+        cssFileName: 'DispenseManager',
         main: require('path')
-            .resolve(__dirname, '../client/dispense/client/app.js'),
-        // developmentMode: true,
+            .resolve(__dirname, '../client/dispenseManager/client/app.js'),
+        developmentMode: true,
         libraries: [
         ],
         stylesheets: [
-            fixPath('client/dispense/public/css/bootstrap.css'),
-            fixPath('client/dispense/public/css/app.css')
+            fixPath('client/dispenseManager/public/css/bootstrap.css'),
+            fixPath('client/dispenseManager/public/css/app.css')
         ],
         browserify: {
-            // debug: true
+            debug: true
         },
         beforeBuildJS: function () {
             // This re-builds our template files from jade each time the app's main
@@ -95,8 +49,8 @@ var moonboots = new Moonboots({
             // refresh in your browser to get new templates.
 
             // if (config.isDev) {
-                templatizer(fixPath('client/dispense/templates'),
-                    fixPath('client/dispense/client/templates.js'));
+                templatizer(fixPath('client/dispenseManager/templates'),
+                    fixPath('client/dispenseManager/client/templates.js'));
             // }
         },
         beforeBuildCSS: function (done) {
@@ -106,10 +60,9 @@ var moonboots = new Moonboots({
 
             // if (config.isDev) {
                 stylizer({
-                    infile: fixPath('client/dispense/public/css/app.styl'),
-                    outfile: fixPath('client/dispense/public/css/app.css'),
-                    // development: true
-                    development: false
+                    infile: fixPath('client/dispenseManager/public/css/app.styl'),
+                    outfile: fixPath('client/dispenseManager/public/css/app.css'),
+                    development: true
                 }, done);
             // } else {
                 // done();
@@ -118,6 +71,53 @@ var moonboots = new Moonboots({
     },
     server: app,
 });
+
+// var moonboots = new Moonboots({
+//     moonboots: {
+//         appPath : '*/dispense',
+//         jsFileName: 'Dispense',
+//         cssFileName: 'Dispense',
+//         main: require('path')
+//             .resolve(__dirname, '../client/dispense/client/app.js'),
+//         // developmentMode: true,
+//         libraries: [
+//         ],
+//         stylesheets: [
+//             fixPath('client/dispense/public/css/bootstrap.css'),
+//             fixPath('client/dispense/public/css/app.css')
+//         ],
+//         browserify: {
+//             // debug: true
+//         },
+//         beforeBuildJS: function () {
+//             // This re-builds our template files from jade each time the app's main
+//             // js file is requested. Which means you can seamlessly change jade and
+//             // refresh in your browser to get new templates.
+
+//             // if (config.isDev) {
+//                 templatizer(fixPath('client/dispense/templates'),
+//                     fixPath('client/dispense/client/templates.js'));
+//             // }
+//         },
+//         beforeBuildCSS: function (done) {
+//             // This re-builds css from stylus each time the app's main
+//             // css file is requested. Which means you can seamlessly change stylus files
+//             // and see new styles on refresh.
+
+//             // if (config.isDev) {
+//                 stylizer({
+//                     infile: fixPath('client/dispense/public/css/app.styl'),
+//                     outfile: fixPath('client/dispense/public/css/app.css'),
+//                     // development: true
+//                     development: false
+//                 }, done);
+//             // } else {
+//                 // done();
+//             // }
+//         }
+//     },
+//     server: app,
+// });
 
 
 

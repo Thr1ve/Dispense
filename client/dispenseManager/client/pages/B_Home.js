@@ -2,11 +2,10 @@ var PageView      = require('./base');
 var templates     = require('../templates');
 var ProductView   = require('../views/B_PanelFront');
 
+//for testing
+var availableCodesModel = require('../models/availableCodes.js');
 
 module.exports = PageView.extend({
-
-    // initialize : function() {
-    // },
 
     template: templates.pages.B_Home,
 
@@ -21,7 +20,6 @@ module.exports = PageView.extend({
     },
 
     render: function () {
-        console.log('THIS IS THE ADMIN APP');
         this.renderWithTemplate();
         this.renderCollection(app.products.filtered, ProductView, this.queryByHook('products-list'));
         if (!this.collection.length) {

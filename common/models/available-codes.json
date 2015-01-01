@@ -3,25 +3,21 @@
   "plural": "availableCodes-collection",
   "base": "PersistedModel",
   "idInjection": false,
+  "dataSource": "mysqlDs",
   "properties": {
-    "productId": {
-      "type": "string",
-      "required": true
-    },
     "codes": {
       "type": [
         "string"
       ]
+    },
+    "productId": {
+      "type": "string",
+      "id": true,
+      "required": true
     }
   },
   "validations": [],
-  "relations": {
-    "product": {
-      "type": "belongsTo",
-      "model": "product",
-      "foreignKey": ""
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": []
 }

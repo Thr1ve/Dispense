@@ -5,6 +5,7 @@ var StudentForm = require('../forms/studentForm.js');
 
 module.exports = PageView.extend({
     initialize: function() {
+        console.log(this.productId);
         var self = this;
         if (!this.model) {
             console.log('Model not found. Fetching model with id: ' + this.productId + '...');

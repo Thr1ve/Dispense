@@ -2,21 +2,24 @@ var AmpersandModel = require('ampersand-model');
 
 
 module.exports = AmpersandModel.extend({
+
     props: {
+
         productId: 'any',
-        isbn13: 'string',
-        title: 'string',
-        author: 'string',
-        category: 'string',
-        config: 'string'
+        codes:'array'
+
     },
+
     session: {
-        selected: ['boolean', true, false]
+
     },
 
     derived: {
-        id : function() {
+        id: function() {
             return this.productId;
         }
-    }
+
+    },
+    url: '/api/availableCodes-collection'
+
 });

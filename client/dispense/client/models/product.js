@@ -3,7 +3,8 @@ var AmpersandModel = require('ampersand-model');
 
 module.exports = AmpersandModel.extend({
     props: {
-        id: 'any',
+        // id: ['any', false, this.productId],
+        productId: 'any',
         isbn13: 'string',
         title: 'string',
         author: 'string',
@@ -12,10 +13,14 @@ module.exports = AmpersandModel.extend({
     },
     session: {
         selected: ['boolean', true, false]
+    },
+    //fix for changing to  productId when separating codes from products:
+    derived: {
+        id : function() {
+            return this.productId;
+        }
+        // isbn13Dashless:
+        // isbn10:
+        // isbn10Dashless:
     }
-    // derived: {
-    //     isbn13Dashless:
-    //     isbn10:
-    //     isbn10Dashless:
-    // }
 });
