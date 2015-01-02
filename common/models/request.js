@@ -21,10 +21,9 @@ module.exports = function(Request) {
                 newCode = cInstance[0].codes.shift();
                 newData = cInstance;
                 response.code = newCode;
-                response.id = 5;
 
                 cb(null, response);
-                availableCodes.updateAll({id: productId},
+                availableCodes.updateAll({productId: productId},
                     {codes: newData[0].codes}, function(err, count){});
             }
             else {

@@ -65,10 +65,6 @@ module.exports = PageView.extend({
                     submitCallback: function(data) {
                         var id = this.parent.productId;
                         data.productId = id;
-                        console.log('SUBMITTING: ');
-                        console.log(data);
-                        console.log(JSON.stringify(data));
-                        var stringified = JSON.stringify(data);
                         app.newCode.reset();
                         app.newCode.create(data, {
 

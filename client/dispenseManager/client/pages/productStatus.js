@@ -58,7 +58,7 @@ module.exports = PageView.extend({
             });
         } else {
             console.log('The Models or Codes were found!');
-            app.availableCodes.getOrFetch(self.productId, {
+            app.availableCodes.getOrFetch(this.productId, {
                 all: true
             }, function(err, model) {
                 if (err) {
@@ -88,5 +88,14 @@ module.exports = PageView.extend({
     bindings : {
         'model.title': '[data-hook~=title]',
     },
+
+    events: {
+        'click .navigateAdd': 'navigateAdd'
+    },
+
+
+    navigateAdd: function() {
+        app.navigate('/dispenseManager/modifyProduct/' + this.model.productId);
+    }
 
 });

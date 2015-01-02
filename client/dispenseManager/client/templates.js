@@ -54,12 +54,12 @@
 
     // pages/modifyProduct.jade compiled template
     templatizer["pages"]["modifyProduct"] = function tmpl_pages_modifyProduct() {
-        return '<section class="page request-code"><h4>Add Codes for ...<h4 data-hook="title"></h4></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
+        return '<section class="page request-code"><h4>Add Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger pull-right addButton">Add</a><a class="btn btn-danger navigateView">View Codes</a></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
     };
 
     // pages/productStatus.jade compiled template
     templatizer["pages"]["productStatus"] = function tmpl_pages_productStatus() {
-        return '<section class="page request-code"><h4>Currently Available Codes for ...<h4 data-hook="title"></h4></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
+        return '<section class="page request-code"><h4>Currently Available Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger navigateAdd">Add Codes</a></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
     };
 
     return templatizer;

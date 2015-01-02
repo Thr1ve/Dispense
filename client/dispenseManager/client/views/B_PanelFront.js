@@ -16,6 +16,7 @@ module.exports = View.extend({
         'click .addCodes' : 'toAddCodes'
     },
 
+
     toViewCodes : function() {
         app.navigate('/dispenseManager/productStatus/' + this.model.productId);
     },

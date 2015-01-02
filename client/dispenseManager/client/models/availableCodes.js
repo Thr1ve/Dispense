@@ -6,7 +6,8 @@ module.exports = AmpersandModel.extend({
     props: {
 
         productId: 'any',
-        codes:'array'
+        codes:'array',
+        adding:['boolean', false, false]
 
     },
 
