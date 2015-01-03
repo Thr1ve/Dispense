@@ -2,7 +2,7 @@
 
 // var _        = require('underscore');
 var domReady = require('domready');
-logger = require('andlog');
+var logger = require('andlog');
 // var config   = require('clientconfig');
 
 var Router   = require('./router');
@@ -11,11 +11,6 @@ var MainView = require('./views/main');
 var User     = require('./models/user-state');
 var Products = require('./models/products');
 var Codes    = require('./models/availableCodes-collection');
-
-//testing
-var test = require('./models/availableCodes');
-
-
 
 module.exports = {
     // this is the the whole app initter
