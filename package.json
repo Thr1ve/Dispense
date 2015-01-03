@@ -14,6 +14,7 @@
     "ampersand-router": "^1.0.6",
     "ampersand-view": "^7.2.0",
     "ampersand-view-switcher": "^1.1.2",
+    "bows": "^1.3.2",
     "browserify": "^8.0.2",
     "compression": "^1.0.3",
     "domify": "^1.3.1",

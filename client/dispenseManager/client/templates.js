@@ -25,14 +25,9 @@
         return '<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/><meta name="apple-mobile-web-app-capable" content="yes"/>';
     };
 
-    // includes/code.jade compiled template
-    templatizer["includes"]["code"] = function tmpl_includes_code() {
-        return '<li class="code list-group-item container-fluid"><ul><li><a data-hook="code"></a></li><li><a data-hook="date"></a></li><li><a data-hook="representative"></a></li><li><a data-hook="chatOrTicket"></a></li><li><a data-hook="customerName"></a></li><li><a data-hook="customerEmail"></a></li><li><a data-hook="university"></a></li></ul></li>';
-    };
-
     // includes/formInput.jade compiled template
     templatizer["includes"]["formInput"] = function tmpl_includes_formInput() {
-        return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
+        return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><textarea class="form-control"></textarea></div>';
     };
 
     // includes/product.jade compiled template
@@ -54,7 +49,7 @@
 
     // pages/modifyProduct.jade compiled template
     templatizer["pages"]["modifyProduct"] = function tmpl_pages_modifyProduct() {
-        return '<section class="page request-code"><h4>Add Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger pull-right addButton">Add</a><a class="btn btn-danger navigateView">View Codes</a></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
+        return '<section class="page request-code"><h4>Add Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger navigateView">View Codes</a></h4><form data-hook="addCodesForm"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Add Codes</button></div></form></section>';
     };
 
     // pages/productStatus.jade compiled template
