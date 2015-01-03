@@ -6,16 +6,16 @@ var HomePage = require('./pages/B_Home');
 var RequestCodePage = require('./pages/requestCode');
 var CodeReceived = require('./pages/codeReceived');
 
+var log = require('bows')("Router");
 
 module.exports = Router.extend({
 
     routes: {
 
-        'dispense': 'home',
-        'dispense/requestCode/:id': 'requestCode',
-        'dispense/codeReceived': 'codeReceived',
+        'dispenseApp': 'home',
+        'dispenseApp/requestCode/:id': 'requestCode',
+        'dispenseApp/codeReceived': 'codeReceived',
         '(*path)': 'catchAll'
-        // 'dispense/(*path)': 'catchAll'
 
     },
 
@@ -35,9 +35,9 @@ module.exports = Router.extend({
     },
 
     requestCode: function(id) {
-        console.log(app.products);
+        log(app.products);
         var findModel = app.products.get(id);
-        console.log(findModel);
+        log(findModel);
         this.trigger('page', new RequestCodePage({
 
             collection: app.newCode,
@@ -58,7 +58,7 @@ module.exports = Router.extend({
 
     catchAll: function() {
 
-        this.redirectTo('dispense');
+        this.redirectTo('dispenseApp');
 
     }
 });

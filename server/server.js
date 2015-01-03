@@ -23,23 +23,15 @@ var landing = require('path').resolve(__dirname, '../client/landing');
 
 app.use(loopback.static(landing));
 
-app.use('/', function(req, res, next){
-    console.log(req.method + ' : ' +req.originalUrl);
-    next();
-});
-
-//********
-//moonboots testing
-//********
 var dispenseManager = new Moonboots({
     server: app,
-    appPath : '/dispenseManager/*',
+    appPath : '/dispenseManager*',
     moonboots: {
         jsFileName: 'DispenseManager',
         cssFileName: 'DispenseManager',
         main: require('path')
             .resolve(__dirname, '../client/dispenseManager/client/app.js'),
-        developmentMode: true,
+        // developmentMode: true,
         libraries: [
         ],
         stylesheets: [
@@ -47,7 +39,7 @@ var dispenseManager = new Moonboots({
             fixPath('client/dispenseManager/public/css/app.css')
         ],
         browserify: {
-            debug: true
+            // debug: true
         },
         beforeBuildJS: function () {
             // This re-builds our template files from jade each time the app's main
@@ -68,7 +60,8 @@ var dispenseManager = new Moonboots({
                 stylizer({
                     infile: fixPath('client/dispenseManager/public/css/app.styl'),
                     outfile: fixPath('client/dispenseManager/public/css/app.css'),
-                    development: true
+                    // development: true
+                    development: false
                 }, done);
             // } else {
                 // done();
@@ -77,23 +70,23 @@ var dispenseManager = new Moonboots({
     }
 });
 
-var moonboots = new Moonboots({
+var dispenseApp = new Moonboots({
     server: app,
-    appPath : '/dispense/*',
+    appPath : '/dispenseApp*',
     moonboots: {
-        jsFileName: 'Dispense',
-        cssFileName: 'Dispense',
+        jsFileName: 'DispenseApp',
+        cssFileName: 'DispenseApp',
         main: require('path')
-            .resolve(__dirname, '../client/dispense/client/app.js'),
-        developmentMode: true,
+            .resolve(__dirname, '../client/dispenseApp/client/app.js'),
+        // developmentMode: true,
         libraries: [
         ],
         stylesheets: [
-            fixPath('client/dispense/public/css/bootstrap.css'),
-            fixPath('client/dispense/public/css/app.css')
+            fixPath('client/dispenseApp/public/css/bootstrap.css'),
+            fixPath('client/dispenseApp/public/css/app.css')
         ],
         browserify: {
-            debug: true
+            // debug: true
         },
         beforeBuildJS: function () {
             // This re-builds our template files from jade each time the app's main
@@ -101,8 +94,8 @@ var moonboots = new Moonboots({
             // refresh in your browser to get new templates.
 
             // if (config.isDev) {
-                templatizer(fixPath('client/dispense/templates'),
-                    fixPath('client/dispense/client/templates.js'));
+                templatizer(fixPath('client/dispenseApp/templates'),
+                    fixPath('client/dispenseApp/client/templates.js'));
             // }
         },
         beforeBuildCSS: function (done) {
@@ -112,10 +105,10 @@ var moonboots = new Moonboots({
 
             // if (config.isDev) {
                 stylizer({
-                    infile: fixPath('client/dispense/public/css/app.styl'),
-                    outfile: fixPath('client/dispense/public/css/app.css'),
-                    development: true
-                    // development: false
+                    infile: fixPath('client/dispenseApp/public/css/app.styl'),
+                    outfile: fixPath('client/dispenseApp/public/css/app.css'),
+                    // development: true
+                    development: false
                 }, done);
             // } else {
                 // done();

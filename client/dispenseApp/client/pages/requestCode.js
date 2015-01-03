@@ -3,28 +3,28 @@ var PageView = require('./base');
 var templates = require('../templates');
 var StudentForm = require('../forms/studentForm.js');
 
+var log = require('bows')("Request Code Page");
+
 module.exports = PageView.extend({
     initialize: function() {
-        console.log(this.productId);
+        log(this.productId);
         var self = this;
         if (!this.model) {
-            console.log('Model not found. Fetching model with id: ' + this.productId + '...');
+            log('Model not found. Fetching model with id: ' + this.productId + '...');
             app.products.getOrFetch(this.productId, {
                 all: true
             }, function(err, model) {
                 if (err) {
-                    console.dir(err);
+                    log(err);
                 } else {
                     self.model = model;
-                    console.log('...found Model!');
-                    console.dir(model);
-                    console.log('\n');
-                    console.log('\n');
+                    log('...found Model!');
+                    log(model);
                 }
             });
         } else {
-            console.log('The Model was found!');
-            console.dir(this.model);
+            log('The Model was found!');
+            log(this.model);
         }
     },
 
@@ -50,8 +50,8 @@ module.exports = PageView.extend({
             waitFor: 'model',
 
             prepareView: function(el) {
-                console.log('prepareView Started...');
-                console.dir(this);
+                log('prepareView Started...');
+                log(this);
                 return new StudentForm({
 
                     // data: {
@@ -71,12 +71,12 @@ module.exports = PageView.extend({
                             wait: true,
 
                             success: function(model , resp) {
-                                console.log(model);
+                                log(model);
                                 if(!model.code){
                                     alert('NO CODES LEFT');
                                 }
-                                console.log(resp);
-                                app.navigate('/dispense/codeReceived');
+                                log(resp);
+                                app.navigate('/dispenseApp/codeReceived');
 
                             }
                         });

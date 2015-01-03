@@ -3,6 +3,8 @@ var AmpCollection = require('ampersand-rest-collection');
 var product       = require('./product');
 var Fuse          = require('fuse.js');
 
+var log = require('bows')("Products Collection");
+
 module.exports = AmpCollection.extend({
 
     model: product,
@@ -11,7 +13,7 @@ module.exports = AmpCollection.extend({
 
     filter : function(string) {
 
-        console.log(string);
+        // log(string);
 
         var fuse = new Fuse(this.models , {
             keys : ['isbn13', 'title'],
