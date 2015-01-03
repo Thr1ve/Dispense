@@ -16,14 +16,15 @@ module.exports = Router.extend({
         'dispenseManager/productStatus/:id': 'productStatus',
         'dispenseManager/modifyProduct/:id': 'modifyProduct',
         '(*path)': 'catchAll'
+        // 'dispenseManager/*': 'catchAll'
 
     },
 
     // ------- ROUTE HANDLERS ---------
     home: function() {
+
         //not sure if I want this here...this
         //resets displayed products on home page
-
         app.user.clear();
 
         this.trigger('page', new HomePage({

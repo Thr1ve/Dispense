@@ -15,6 +15,7 @@ module.exports = Router.extend({
         'dispense/requestCode/:id': 'requestCode',
         'dispense/codeReceived': 'codeReceived',
         '(*path)': 'catchAll'
+        // 'dispense/(*path)': 'catchAll'
 
     },
 

@@ -59,7 +59,7 @@
 
     // pages/requestCode.jade compiled template
     templatizer["pages"]["requestCode"] = function tmpl_pages_requestCode() {
-        return '<section class="page request-code"><h4>Request Code for<h4 data-hook="title"></h4></h4><p>This form and all behavior is defined by the form view in <code>client/forms/studentForm.js</code>.</p><form data-hook="product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
+        return '<section class="page request-code"><h4>Request Code for<h4 data-hook="title"></h4></h4><form data-hook="product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
     return templatizer;

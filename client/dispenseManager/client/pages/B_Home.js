@@ -2,9 +2,6 @@ var PageView      = require('./base');
 var templates     = require('../templates');
 var ProductView   = require('../views/B_PanelFront');
 
-//for testing
-var availableCodesModel = require('../models/availableCodes.js');
-
 module.exports = PageView.extend({
 
     template: templates.pages.B_Home,
