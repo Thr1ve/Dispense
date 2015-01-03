@@ -6,8 +6,7 @@ module.exports = AmpersandModel.extend({
     props: {
 
         productId: 'any',
-        codes:'array',
-        adding:['boolean', false, false]
+        codes:'array'
 
     },
 
@@ -19,8 +18,8 @@ module.exports = AmpersandModel.extend({
         id: function() {
             return this.productId;
         }
-
     },
+
     url: '/api/availableCodes-collection'
 
 });

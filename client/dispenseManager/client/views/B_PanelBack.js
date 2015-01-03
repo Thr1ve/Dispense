@@ -15,7 +15,7 @@ module.exports = FormView.extend({
     },
 
     fields : function () {
-        console.log(this.category);
+        logger.log(this.category);
         return [
 
             new ExtendedInput({

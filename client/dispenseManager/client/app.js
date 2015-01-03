@@ -2,7 +2,7 @@
 
 // var _        = require('underscore');
 var domReady = require('domready');
-// var logger   = require('andlog');
+logger = require('andlog');
 // var config   = require('clientconfig');
 
 var Router   = require('./router');

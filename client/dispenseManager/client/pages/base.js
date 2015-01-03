@@ -5,6 +5,7 @@
 // base view for pages
 var View = require('ampersand-view');
 var _ = require('underscore');
+var logger = require('andlog');
 //var key = require('keymaster');
 
 

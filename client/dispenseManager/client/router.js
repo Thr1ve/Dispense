@@ -1,5 +1,6 @@
 /*global app*/
 var Router = require('ampersand-router');
+logger = require('andlog');
 
 //pages
 var HomePage = require('./pages/B_Home');

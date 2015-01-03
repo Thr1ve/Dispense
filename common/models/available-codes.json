@@ -14,11 +14,6 @@
       "type": "string",
       "id": true,
       "required": true
-    },
-    "adding": {
-        "type": "boolean",
-        "required": false,
-        "defaultl": false
     }
   },
   "validations": [],

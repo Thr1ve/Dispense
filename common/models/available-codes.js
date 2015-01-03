@@ -1,37 +1,44 @@
 var app = require('../../server/server');
 
 module.exports = function(AvailableCodes) {
-    AvailableCodes.add = function(requestObject, cb) {
+    AvailableCodes.add = function(productId, codes, cb) {
 
         var availableCodes = app.datasources.mysqlDs.models.availableCodes;
-        var productId = requestObject.productId;
-        var response = requestObject;
 
         availableCodes.find({where:{productId: productId}}, function(err, cInstance){
 
-            cInstance[0].codes = cInstance[0].codes.concat(response.codes);
+            cInstance[0].codes = cInstance[0].codes.concat(codes);
 
             var newCodes = cInstance;
 
+            cb(null, newCodes[0].productId, newCodes[0].codes);
+
             availableCodes.updateAll({productId: productId},
-                {codes: newCodes[0].codes, adding: false}, function(err, count){});
+                {codes: newCodes[0].codes}, function(err, count){});
         });
 
 
 
     };
-    AvailableCodes.beforeUpdate = function(next, modelInstance){
-        if(modelInstance.adding){
-            AvailableCodes.add(modelInstance, function(err, response){});
-        }
-        next();
-    };
+
+    // AvailableCodes.beforeUpdate = function(next, modelInstance){
+    //     logger.log('Before Update...');
+    //     AvailableCodes.add(modelInstance, function(err, response){});
+    //     next();
+    // };
 
     AvailableCodes.remoteMethod(
         'add',
         {
-            accepts: {arg: 'requestObject', type: 'Object'},
-            returns: {arg: 'newCodes', type: 'Object'}
+            accepts: [
+                {arg: 'productId', type: 'string'},
+                {arg: 'codes', type: 'array'},
+            ],
+            returns: [
+                {arg: 'productId', type: 'string'},
+                {arg: 'codes', type: 'array'},
+            ],
+            http: {path: '/addCodes' }
         }
     );
 

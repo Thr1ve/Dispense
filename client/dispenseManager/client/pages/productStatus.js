@@ -1,7 +1,7 @@
 /*global app*/
 var PageView = require('./base');
 var templates = require('../templates');
-var StudentForm = require('../forms/studentForm.js');
+logger = require('andlog');
 
 //later, this should simply hold smaller pieces(views) such as "available codes"
 //"current trending issues" "server status for product (if it is service such as WileypLUS)"
@@ -18,18 +18,18 @@ module.exports = PageView.extend({
     initialize: function() {
         var self = this;
         if (!this.model) {
-            console.log('Model not found. Fetching model with id: ' + this.productId + '...');
+            logger.log('Model not found. Fetching model with id: ' + this.productId + '...');
 
             app.products.getOrFetch(this.productId, {
                 all: true
             }, function(err, model) {
                 if (err) {
-                    console.dir(err);
+                    logger.log(err);
                 } else {
-                    console.log('...found Model!');
-                    console.dir(model);
-                    console.log('\n');
-                    console.log('\n');
+                    logger.log('...found Model!');
+                    logger.log(model);
+                    logger.log('\n');
+                    logger.log('\n');
 
                     self.model = model;
                 }
@@ -38,12 +38,12 @@ module.exports = PageView.extend({
                 all: true
             }, function(err, model) {
                 if (err) {
-                    console.dir(err);
+                    logger.log(err);
                 } else {
-                    console.log('...found Codes!');
-                    console.dir(model);
-                    console.log('\n');
-                    console.log('\n');
+                    logger.log('...found Codes!');
+                    logger.log(model);
+                    logger.log('\n');
+                    logger.log('\n');
 
                     self.availableCodes = model;
                     for(var i = 0; i < self.availableCodes.codes.length ;i++){
@@ -57,17 +57,17 @@ module.exports = PageView.extend({
                 }
             });
         } else {
-            console.log('The Models or Codes were found!');
+            logger.log('The Models or Codes were found!');
             app.availableCodes.getOrFetch(this.productId, {
                 all: true
             }, function(err, model) {
                 if (err) {
-                    console.dir(err);
+                    logger.log(err);
                 } else {
-                    console.log('...found Codes!');
-                    console.dir(model);
-                    console.log('\n');
-                    console.log('\n');
+                    logger.log('...found Codes!');
+                    logger.log(model);
+                    logger.log('\n');
+                    logger.log('\n');
 
                     self.availableCodes= model;
                     self.renderWithTemplate();

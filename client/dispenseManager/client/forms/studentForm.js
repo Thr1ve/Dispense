@@ -17,7 +17,7 @@ module.exports = FormView.extend({
 
      fields: function () {
         // this.setUp();
-        // console.log('...Sending Input Fields!!');
+        // logger.log('...Sending Input Fields!!');
         // return this.includedInputs;
         return [
 
@@ -66,27 +66,27 @@ module.exports = FormView.extend({
     //     var self = this;
     //     var presets = self.inputTemplates.apply(this);
 
-    //     console.log('\n');
-    //     console.log('Setting up the Form...');
-    //     console.log('   Config set to: ' + this.data.config + ' ...');
+    //     logger.log('\n');
+    //     logger.log('Setting up the Form...');
+    //     logger.log('   Config set to: ' + this.data.config + ' ...');
 
     //     if(this.data.config === 'HIGHERED') {
 
     //         this.includedInputs = presets.higherEd;
 
-    //         console.log('   ... Obtained HIGHERED config');
-    //         console.dir(this.includedInputs);
-    //         console.log('\n');
-    //         console.log('\n');
+    //         logger.log('   ... Obtained HIGHERED config');
+    //         logger.log(this.includedInputs);
+    //         logger.log('\n');
+    //         logger.log('\n');
     //     }
     //     else {
 
     //         this.includedInputs = presets.def;
 
-    //         console.dir('   ...Obtained DEFAULT config');
-    //         console.dir(this.includedInputs);
-    //         console.log('\n');
-    //         console.log('\n');
+    //         logger.log('   ...Obtained DEFAULT config');
+    //         logger.log(this.includedInputs);
+    //         logger.log('\n');
+    //         logger.log('\n');
     //     }
     // },
 
