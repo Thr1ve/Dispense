@@ -76,7 +76,7 @@ module.exports = PageView.extend({
                                     alert('NO CODES LEFT');
                                 }
                                 log(resp);
-                                app.navigate('/dispenseApp/codeReceived');
+                                app.navigate('/famousTest/codeReceived');
 
                             }
                         });

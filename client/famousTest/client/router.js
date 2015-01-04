@@ -12,9 +12,9 @@ module.exports = Router.extend({
 
     routes: {
 
-        'dispenseApp': 'home',
-        'dispenseApp/requestCode/:id': 'requestCode',
-        'dispenseApp/codeReceived': 'codeReceived',
+        'famousTest': 'home',
+        'famousTest/requestCode/:id': 'requestCode',
+        'famousTest/codeReceived': 'codeReceived',
         '(*path)': 'catchAll'
 
     },
@@ -58,7 +58,7 @@ module.exports = Router.extend({
 
     catchAll: function() {
 
-        this.redirectTo('dispenseApp');
+        this.redirectTo('famousTest');
 
     }
 });
