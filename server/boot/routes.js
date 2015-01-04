@@ -25,7 +25,10 @@ module.exports = function(app) {
                 fixPath('client/dispenseManager/public/css/app.css')
             ],
             browserify: {
-                debug: true
+                debug: true,
+                transforms: [
+                    'famousify'
+                ]
             },
             beforeBuildJS: function () {
                 // This re-builds our template files from jade each time the app's main
@@ -72,7 +75,10 @@ module.exports = function(app) {
                 fixPath('client/dispenseApp/public/css/app.css')
             ],
             browserify: {
-                debug: true
+                debug: true,
+                transforms: [
+                    'famousify'
+                ]
             },
             beforeBuildJS: function () {
                 // This re-builds our template files from jade each time the app's main

@@ -30,6 +30,31 @@ module.exports = {
         // wait for document ready to render our main view
         // this ensures the document has a body, etc.
         domReady(function () {
+   ///////////////////////////////////
+            //SHOVE FAMOUS IN HERE
+    var Engine  = require("famous/core/Engine");
+    var Surface = require("famous/core/Surface");
+
+    var el = document.createElement('div');
+    el.id = 'test';
+    document.body.appendChild(el);
+
+    var mainContext = Engine.createContext(el);
+
+    var surface = new Surface({
+        size: [200, 200],
+        content: "Hello World",
+        classes: ["red-bg"],
+        properties: {
+            lineHeight: "200px",
+            textAlign: "center"
+        }
+    });
+
+    mainContext.add(surface);
+
+    //////////////////////////////////
+
             // init our main view
             var mainView = self.view = new MainView({
                 el: document.body
