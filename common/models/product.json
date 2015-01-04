@@ -1,0 +1,28 @@
+{
+  "name": "product",
+  "plural": "products",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "dataSource": "mysqlDs",
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "isbn13": {
+      "type": "string"
+    },
+    "config": {
+      "type": "string"
+    },
+    "productId": {
+      "type": "string",
+      "id": true,
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

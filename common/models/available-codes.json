@@ -1,0 +1,23 @@
+{
+  "name": "availableCodes",
+  "plural": "availableCodes-collection",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "dataSource": "mysqlDs",
+  "properties": {
+    "codes": {
+      "type": [
+        "string"
+      ]
+    },
+    "productId": {
+      "type": "string",
+      "id": true,
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

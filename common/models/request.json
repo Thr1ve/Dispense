@@ -1,0 +1,35 @@
+{
+  "name": "request",
+  "plural": "request-collection",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "dataSource": "mysqlDs",
+  "properties": {
+    "chatOrTicket": {
+      "type": "string"
+    },
+    "customerEmail": {
+      "type": "string"
+    },
+    "customerName": {
+      "type": "string"
+    },
+    "productId": {
+      "type": "string",
+      "required": true
+    },
+    "representative": {
+      "type": "string"
+    },
+    "university": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
