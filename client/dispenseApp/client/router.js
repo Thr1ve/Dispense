@@ -8,8 +8,14 @@ var CodeReceived = require('./pages/codeReceived');
 
 var log = require('bows')("Router");
 
+//this is where we define what happens when the user enters
+//or navigates to a given URL
+// https://github.com/ampersandjs/ampersand-router
+// http://read.humanjavascript.com/ch09-clientside-routing.html
+
 module.exports = Router.extend({
 
+    //these map URL's to specific functions below
     routes: {
 
         'dispenseApp': 'home',
@@ -21,13 +27,15 @@ module.exports = Router.extend({
 
     // ------- ROUTE HANDLERS ---------
     home: function() {
-        //not sure if I want this here...this
-        //resets displayed products on home page
 
+        //clearing the user data clears the search text, since search text
+        //is currently stored in the User Model
         app.user.clear();
 
         this.trigger('page', new HomePage({
 
+            //the below makes app.user available in the code for our home page as "this.model"
+            //and app.products available as "this.collection"
             model: app.user,
             collection: app.products
 
@@ -35,9 +43,9 @@ module.exports = Router.extend({
     },
 
     requestCode: function(id) {
-        log(app.products);
+
         var findModel = app.products.get(id);
-        log(findModel);
+
         this.trigger('page', new RequestCodePage({
 
             collection: app.newCode,
@@ -56,6 +64,7 @@ module.exports = Router.extend({
         }));
     },
 
+    //this makes it so that unrecognized URL's will reroute the user back to the homepage
     catchAll: function() {
 
         this.redirectTo('dispenseApp');

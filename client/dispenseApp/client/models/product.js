@@ -1,9 +1,12 @@
 var AmpersandModel = require('ampersand-model');
 
+//this is where we define what attributes we want available for each product
+//we'll create as many of these as needed for each individual product and store them in
+//our collection "products.js"
 
 module.exports = AmpersandModel.extend({
+
     props: {
-        // id: ['any', false, this.productId],
         productId: 'any',
         isbn13: 'string',
         title: 'string',
@@ -11,10 +14,11 @@ module.exports = AmpersandModel.extend({
         category: 'string',
         config: 'string'
     },
+
     session: {
         selected: ['boolean', true, false]
     },
-    //fix for changing to  productId when separating codes from products:
+
     derived: {
         id : function() {
             return this.productId;

@@ -1,7 +1,9 @@
-// receivedCode Model - received-code.js
 var AmpersandModel = require('ampersand-model');
 
-//RENAME TO REQUEST?
+//this is the request model.
+//when a representative requests a code, a new request model is created,
+//sent to the server, and returned with a code
+
 module.exports = AmpersandModel.extend({
     props: {
         productId: 'any',

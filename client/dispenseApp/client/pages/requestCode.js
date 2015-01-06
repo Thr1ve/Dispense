@@ -5,30 +5,16 @@ var StudentForm = require('../forms/studentForm.js');
 
 var log = require('bows')("Request Code Page");
 
-module.exports = PageView.extend({
-    initialize: function() {
-        log(this.productId);
-        var self = this;
-        if (!this.model) {
-            log('Model not found. Fetching model with id: ' + this.productId + '...');
-            app.products.getOrFetch(this.productId, {
-                all: true
-            }, function(err, model) {
-                if (err) {
-                    log(err);
-                } else {
-                    self.model = model;
-                    log('...found Model!');
-                    log(model);
-                }
-            });
-        } else {
-            log('The Model was found!');
-            log(this.model);
-        }
-    },
+//this is the page that gives the user a form with which to
+//request a code.
 
-    //this may actually need to be in a session variable?
+module.exports = PageView.extend({
+
+    pageTitle: 'Request Code',
+
+    template: templates.pages.requestCode,
+
+
     props: {
         productId: 'string'
     },
@@ -37,45 +23,71 @@ module.exports = PageView.extend({
         'model.title': '[data-hook~=title]'
     },
 
-    pageTitle: 'Request Code',
+    initialize: function() {
 
-    template: templates.pages.requestCode,
+        var self = this;
+
+        //if we don't have a model attached yet...
+        if (!this.model) {
+
+            log('Model not found. Fetching model with id: ' + this.productId + '...');
+
+            //... then search for the model with the product id...
+            app.products.getOrFetch(this.productId, {
+                all: true
+            }, function(err, model) {
+                if (err) {
+                    log(err);
+                } else {
+                    //... and add it
+                    self.model = model;
+                    log('...found Model!', model);
+                }
+            });
+        } else {
+            //otherwise, let us know that we already had a model
+            log('The Model was found!', this.model);
+        }
+    },
 
     subviews: {
 
         form: {
 
-            // container: '[data-hook=product-form]',
             container: 'form',
+
             waitFor: 'model',
 
+            //here, we set up and render the form
             prepareView: function(el) {
-                log('prepareView Started...');
-                log(this);
-                return new StudentForm({
 
-                    // data: {
-                    //     config: this.model.config
-                    // },
+                log('prepareView Started...', this);
+                return new StudentForm({
 
                     el: el,
 
-                    // model : this.model,
-
                     submitCallback: function(data) {
+
                         var id = this.parent.productId;
+
                         data.productId = id;
                         app.newCode.reset();
                         app.newCode.create(data, {
 
+                            //this tells the app to wait for a response from the server
+                            //before moving to the success callback
                             wait: true,
 
                             success: function(model , resp) {
+
                                 log(model);
+
                                 if(!model.code){
-                                    alert('NO CODES LEFT');
+                                    //this most certainly needs to be handled better than
+                                    //just throwing an alert at the user.
+                                    alert('NO CODES LEFT FOR THIS PRODUCT');
                                 }
-                                log(resp);
+
                                 app.navigate('/dispenseApp/codeReceived');
 
                             }
