@@ -5,21 +5,12 @@ var ExtendedInput = InputView.extend({
     template: templates.includes.formInput()
 });
 
-//this defines the input fields that a representative is asked
-//to fill out when requesting a code. Form View and Input View work together more or less
-//as one piece
-// https://github.com/AmpersandJS/ampersand-form-view
-// https://github.com/AmpersandJS/ampersand-input-view
-// http://ampersandjs.com/learn/forms
 
-
-
-//future work (?):
 //this needs to be made to accept an actual array OR the preset template
 //so we can later allow manager to individually configure which input fields
 //are included
 
-//Form fields / makeup / etc. needs to be abstracted to a model ??
+//Form fields / makeup / etc. needs to be abstracted to a model
 
 
 module.exports = FormView.extend({

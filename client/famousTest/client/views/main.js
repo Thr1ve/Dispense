@@ -13,9 +13,7 @@ var setFavicon = require('favicon-setter');
 
 
 module.exports = View.extend({
-
     template: templates.body,
-
     initialize: function () {
         // this marks the correct nav item selected
         this.listenTo(app.router, 'page', this.handleNewPage);

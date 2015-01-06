@@ -2,7 +2,7 @@
 
 // var _        = require('underscore');
 var domReady = require('domready');
-var logger = require('andlog');
+// var logger   = require('andlog');
 // var config   = require('clientconfig');
 
 var Router   = require('./router');
@@ -10,7 +10,9 @@ var Router   = require('./router');
 var MainView = require('./views/main');
 var User     = require('./models/user-state');
 var Products = require('./models/products');
-var Codes    = require('./models/availableCodes-collection');
+var Code     = require('./models/request-collection');
+
+
 
 module.exports = {
     // this is the the whole app initter
@@ -19,10 +21,9 @@ module.exports = {
         var self      = window.app = this;
 
         // create our global empty collections for products and a received code
-        this.user           = new User();
-        this.products       = new Products();
-        this.availableCodes = new Codes();
-
+        this.user     = new User();
+        this.products = new Products();
+        this.newCode  = new Code();
 
         // init our URL handlers and the history tracker
         this.router   = new Router();
@@ -30,7 +31,6 @@ module.exports = {
         // wait for document ready to render our main view
         // this ensures the document has a body, etc.
         domReady(function () {
-
             // init our main view
             var mainView = self.view = new MainView({
                 el: document.body

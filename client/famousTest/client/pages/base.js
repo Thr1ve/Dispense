@@ -1,3 +1,6 @@
+//these represent the various frames in the slideshow of
+//the presentation we create -- the experience we design
+
 /*global $*/
 // base view for pages
 var View = require('ampersand-view');

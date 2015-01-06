@@ -55,8 +55,7 @@ module.exports = PageView.extend({
                 if (err) {
                     log(err);
                 } else {
-                    log('...found Model!');
-                    log(model);
+                    log('...found Model!', model);
 
                     self.model = model;
                 }
@@ -67,8 +66,7 @@ module.exports = PageView.extend({
                 if (err) {
                     log(err);
                 } else {
-                    log('...found Codes!');
-                    log(model);
+                    log('...found Codes!', model);
 
                     self.availableCodes = model;
                 }
@@ -81,8 +79,7 @@ module.exports = PageView.extend({
                 if (err) {
                     log(err);
                 } else {
-                    log('...found Codes!');
-                    log(model);
+                    log('...found Codes!', model);
 
                     self.availableCodes = model;
                 }

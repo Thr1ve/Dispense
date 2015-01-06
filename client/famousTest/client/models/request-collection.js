@@ -1,9 +1,8 @@
+// receivedCode Collection - received-code-collection.js
 var AmpCollection = require('ampersand-rest-collection');
 var request = require('./request');
 
-//this holds the requests for codes that the user
-//has received
-
+//rename to requests? or request-collection ?
 module.exports = AmpCollection.extend({
     model: request,
     url: '/api/request-collection'

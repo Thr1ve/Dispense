@@ -1,6 +1,10 @@
 // userState Model - user-state.js
 var AmpModel = require('ampersand-model');
 
+//this is the user-state model.
+//Currently, I am using it more as a way to store
+//the current user-specific states between views and such.
+//for instance, we store the contents of the search box here
 
 module.exports = AmpModel.extend({
 
@@ -15,11 +19,7 @@ module.exports = AmpModel.extend({
     type: 'user',
 
     props: {
-        //here we will store server side information
-        id: ['string'] ,
-        firstName: ['string', true, 'defaultUserFirstName'],
-        lastName: ['string', true, 'defaultUserLastName'],
-        username: ['string']
+
     },
 
     derived: {
@@ -27,24 +27,9 @@ module.exports = AmpModel.extend({
     },
 
     session: {
-        //here we will put app side stat information
 
+        //this holds the current content of the search box of the home page
         searchValue: ['string', false, ''],
-
-        //Current codes we've generated
-        // receivedCodes: [],
-
-        //Should we store the form input we've entered so far?
-        //store data for current 'client'?
-
-        //store data for current 'product'?
-        workingProduct : ['string', false, ''] //product id?? or store entire model??
-
-        //can we store current input field values for each
-        //requestCode page we have open?
-        // currentForms: 'array', // ??
-
-        // selectedForm:
 
     },
 

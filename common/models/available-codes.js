@@ -1,6 +1,7 @@
 var app = require('../../server/server');
 
 module.exports = function(AvailableCodes) {
+
     AvailableCodes.add = function(productId, codes, cb) {
 
         var availableCodes = app.datasources.mysqlDs.models.availableCodes;
@@ -20,12 +21,6 @@ module.exports = function(AvailableCodes) {
 
 
     };
-
-    // AvailableCodes.beforeUpdate = function(next, modelInstance){
-    //     logger.log('Before Update...');
-    //     AvailableCodes.add(modelInstance, function(err, response){});
-    //     next();
-    // };
 
     AvailableCodes.remoteMethod(
         'add',
