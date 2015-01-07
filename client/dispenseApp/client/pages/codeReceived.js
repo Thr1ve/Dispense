@@ -5,6 +5,9 @@ var CodeView = require('../views/code');
 //this is the page where we view the code we have requested.
 //The user is sent here by requestCode.js.
 
+//Idea -- this should display different blocks of text containing the received
+//code that are copy/pastable for different use-cases
+
 module.exports = PageView.extend({
 
     pageTitle: 'Received Code',

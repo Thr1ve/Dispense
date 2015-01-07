@@ -1,9 +1,6 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var path = require('path');
-var Moonboots = require('moonboots-express');
-var templatizer = require('templatizer');
-var stylizer = require('stylizer');
 var app = module.exports = loopback();
 
 var fixPath = function (pathString) {
