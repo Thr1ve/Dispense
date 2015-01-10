@@ -32,6 +32,9 @@ module.exports = function(Request) {
                 newData = cInstance;
                 //add our new code to our response
                 response.code = newCode;
+                //add the date
+                var date = new Date().toLocaleDateString();
+                response.date = date;
 
                 //send the callback
                 cb(null, response);

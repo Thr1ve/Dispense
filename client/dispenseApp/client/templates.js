@@ -25,9 +25,14 @@
         return '<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/><meta name="apple-mobile-web-app-capable" content="yes"/>';
     };
 
+    // includes/chatTemplate_wp.jade compiled template
+    templatizer["includes"]["chatTemplate_wp"] = function tmpl_includes_chatTemplate_wp() {
+        return '<div class="list-group-item container-fluid"><p>Your new registration code is: <spanspan data-hook="code"></spanspan></p><p>Could you possibly use the above registration code to register for your correct class section while we\'re on chat so I can be sure you\'re all set?</p></div>';
+    };
+
     // includes/code.jade compiled template
     templatizer["includes"]["code"] = function tmpl_includes_code() {
-        return '<li class="code list-group-item container-fluid"><ul><li><a data-hook="code"></a></li><li><a data-hook="date"></a></li><li><a data-hook="representative"></a></li><li><a data-hook="chatOrTicket"></a></li><li><a data-hook="customerName"></a></li><li><a data-hook="customerEmail"></a></li><li><a data-hook="university"></a></li></ul></li>';
+        return '<div class="list-group-item container-fluid"><p>Code: <span data-hook="code"></span></p><p>Date: <span data-hook="date"></span></p><p>Representative: <span data-hook="representative"></span></p><p>Chat / Ticket: <span data-hook="chatOrTicket"></span></p><p>Customer\'s Name: <span data-hook="customerName"></span></p><p>Customer\'s Email: <span data-hook="customerEmail"></span></p><p>University Or Business: <span data-hook="universityOrBusiness"></span></p></div>';
     };
 
     // includes/formInput.jade compiled template
@@ -54,7 +59,7 @@
 
     // pages/codeReceived.jade compiled template
     templatizer["pages"]["codeReceived"] = function tmpl_pages_codeReceived() {
-        return '<section class="page receivedCode"><h2>New Code:</h2><ul data-hook="code" class="list-group"></ul></section>';
+        return '<section class="page receivedCode"><h2>New Code:</h2><div data-hook="codeHolder" class="list-group"></div></section>';
     };
 
     // pages/requestCode.jade compiled template

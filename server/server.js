@@ -1,4 +1,5 @@
 var loopback = require('loopback');
+var ghost = require('ghost');
 var boot = require('loopback-boot');
 var path = require('path');
 var app = module.exports = loopback();
@@ -17,9 +18,19 @@ boot(app, __dirname);
 // Example:
 // app.use(loopback.static(path.resolve(__dirname, '../client')));
 
-var landing = require('path').resolve(__dirname, '../client/landing');
+// var landing = require('path').resolve(__dirname, '../client/landing');
 
-app.use(loopback.static(landing));
+// app.use(loopback.static(landing));
+
+
+    // express = require('express'),
+    // parentApp = express();
+
+ghost().then(function (ghostServer) {
+    app.use(ghostServer.config.paths.subdir, ghostServer.rootApp);
+
+    ghostServer.start(app);
+});
 
 ////////////////////////////////
 

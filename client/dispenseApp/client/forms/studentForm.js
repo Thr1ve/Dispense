@@ -29,7 +29,7 @@ module.exports = FormView.extend({
 
             new ExtendedInput({
 
-                label      : 'Student',
+                label      : 'Customer',
                 name       : 'customerName',
                 placeholder: 'Name',
                 parent     : this
@@ -37,15 +37,15 @@ module.exports = FormView.extend({
 
             new ExtendedInput({
 
-                label      : 'Student Email',
+                label      : 'Customer Email',
                 name       : 'customerEmail',
                 placeholder: 'Email',
                 parent     : this
             }),
 
             new ExtendedInput({
-                label      : 'University',
-                name       : 'university',
+                label      : 'University or Business',
+                name       : 'universityOrBusiness',
                 placeholder: 'University',
                 parent     : this
             }),
@@ -61,7 +61,7 @@ module.exports = FormView.extend({
             new ExtendedInput({
                 label      : 'Chat / Incident Number',
                 name       : 'chatOrTicket',
-                placeholder: 'Enter "Chat" or an Incident Number',
+                placeholder: 'Enter the word "Chat" or an Incident Number',
                 parent     : this
             }),
         ];
