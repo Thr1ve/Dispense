@@ -9,7 +9,7 @@ module.exports = AmpersandModel.extend({
         productId: 'any',
         customerName: 'string',
         customerEmail: 'string',
-        university: 'string',
+        universityOrBusiness: 'string',
         representative: 'string',
         chatOrTicket: 'string',
         date: 'string',

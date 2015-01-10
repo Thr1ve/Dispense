@@ -1,12 +1,16 @@
 var PageView = require('./base');
 var templates = require('../templates');
 var CodeView = require('../views/code');
+var Code_wpView = require('../views/code_wp');
 
 //this is the page where we view the code we have requested.
 //The user is sent here by requestCode.js.
 
-//Idea -- this should display different blocks of text containing the received
-//code that are copy/pastable for different use-cases
+
+//We need: 
+//  - a way to figure out what standard text to wrap code with based on product
+//  - a way to create and save your own custom standard text
+//  - one click copy to clipboard
 
 module.exports = PageView.extend({
 
@@ -14,18 +18,27 @@ module.exports = PageView.extend({
 
     template: templates.pages.codeReceived,
 
-    //find the <ul> with the data-hook "code" and attach our code view / render it
-    render: function () {
-        this.renderWithTemplate();
-        this.renderCollection(this.collection, CodeView, this.queryByHook('code'));
-        if (!this.collection.length) {
-            this.fetchCollection();
-        }
+    setModel: function() {
+        this.model = app.newCode.models[0];
     },
 
-    fetchCollection: function () {
-        this.collection.fetch();
-        return false;
+    render: function() {
+        //get the model
+        this.setModel();
+
+        this.renderWithTemplate();
+
+        //add our subviews
+        this.renderSubview(new CodeView({
+                model: this.model,
+                collection: app.newCode
+            }), '[data-hook=codeHolder]');
+
+        this.renderSubview(new Code_wpView({
+                model: this.model,
+                collection: app.newCode
+            }), '[data-hook=codeHolder]');
+
     }
 
 });

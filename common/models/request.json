@@ -21,7 +21,7 @@
     "representative": {
       "type": "string"
     },
-    "university": {
+    "universityOrBusiness": {
       "type": "string"
     },
     "code": {

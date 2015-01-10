@@ -10,7 +10,7 @@ module.exports = View.extend({
         'model.chatOrTicket': '[data-hook~=chatOrTicket]',
         'model.customerName': '[data-hook~=customerName]',
         'model.customerEmail': '[data-hook~=customerEmail]',
-        'model.university': '[data-hook~=university]',
+        'model.universityOrBusiness': '[data-hook~=universityOrBusiness]',
     }
 
 });
