@@ -1,24 +1,33 @@
 /*global app, $*/
 
-// var _        = require('underscore');
+var _        = require('underscore');
 var domReady = require('domready');
-// var logger   = require('andlog');
 // var config   = require('clientconfig');
-
 var Router   = require('./router');
-
 var MainView = require('./views/main');
 var User     = require('./models/user-state');
 var Products = require('./models/products');
 var Code     = require('./models/request-collection');
+var key = require('keymaster');
 
 
 
 module.exports = {
+
+    //global keybinds
+    globalKeys : {
+        // 'key' : 'function'
+    },
+
     // this is the the whole app initter
     blastoff: function () {
 
         var self      = window.app = this;
+
+        _.each(this.globalKeys, function (value, k) {
+            // register global keybinds
+            key(k,  _.bind(self[value], self));
+        });
 
         // create our global empty collections for products and a received code
         this.user     = new User();

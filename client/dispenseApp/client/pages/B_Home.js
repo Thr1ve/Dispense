@@ -2,6 +2,8 @@ var PageView      = require('./base');
 var templates     = require('../templates');
 var ProductView   = require('../views/B_PanelFront');
 
+var log = require('bows')("Home View");
+
 //this is the home page.
 //it will display products filtered by the input provided in the search box
 
@@ -13,8 +15,10 @@ module.exports = PageView.extend({
 
     events : {
         //whenever there is a "keyup" event in the input field,
-        //call the updateSearch function
-        'keyup [data-hook=input]' : 'updateSearch'
+        'keyup [data-hook=input]' : 'updateSearch',
+    },
+    initialize : function() {
+        this.registerKeyboardShortcuts('home');
     },
 
     updateSearch : function() {
@@ -34,8 +38,24 @@ module.exports = PageView.extend({
             this.fetchCollection();
         }
     },
+
     fetchCollection: function () {
         this.collection.fetch();
+        return false;
+    },
+
+    keyboardShortcuts : {
+        '`,1,2,3,4,5,6,7,8,9,0,-,=': 'testAlert',
+         'q,w,e,r,t,y,u,i,o,p,[,],\\': 'testAlert',
+         'a,s,d,f,g,h,j,k,l,;,\'': 'testAlert',
+         'z,x,c,v,b,n,m,.,/' : 'testAlert',
+
+         ',': 'testAlert',
+         'backspace': 'testAlert'
+     },
+
+    testAlert : function(e){
+        log('hollow world', e);
         return false;
     }
 });

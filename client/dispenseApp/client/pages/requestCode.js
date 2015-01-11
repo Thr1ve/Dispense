@@ -3,7 +3,7 @@ var PageView = require('./base');
 var templates = require('../templates');
 var StudentForm = require('../forms/studentForm.js');
 
-var log = require('bows')("Request Code Page");
+var log = require('bows')("Req Code Page");
 
 //this is the page that gives the user a form with which to
 //request a code.
@@ -23,7 +23,17 @@ module.exports = PageView.extend({
         'model.title': '[data-hook~=title]'
     },
 
+    keyboardShortcuts : {
+         'q,w,e,r,t,y,u,i,o,p,[,],\\': 'testAlert',
+    },
+
+    testAlert : function(){
+        console.log('hollow world');
+    },
+
     initialize: function() {
+
+        this.registerKeyboardShortcuts('requestCode');
 
         var self = this;
 
