@@ -6,6 +6,7 @@
     "pretest": "jshint ."
   },
   "dependencies": {
+    "ampersand-auto-closing-view": "^1.0.1",
     "ampersand-dom": "^1.2.7",
     "ampersand-form-view": "^2.2.0",
     "ampersand-input-view": "^3.1.0",

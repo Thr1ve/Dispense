@@ -42,7 +42,7 @@
 
     // includes/product.jade compiled template
     templatizer["includes"]["product"] = function tmpl_includes_product() {
-        return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13" class="pull-right"></div></li>';
+        return '<li class="container product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13" class="pull-right"></div></li>';
     };
 
     // pages/B_Home.jade compiled template
@@ -59,12 +59,12 @@
 
     // pages/codeReceived.jade compiled template
     templatizer["pages"]["codeReceived"] = function tmpl_pages_codeReceived() {
-        return '<section class="page receivedCode"><h2>New Code:</h2><div data-hook="codeHolder" class="list-group"></div></section>';
+        return '<section class="page codeReceived"><div class="prompt"></div><h2>New Code:</h2><div data-hook="codeHolder" class="list-group"></div></section>';
     };
 
     // pages/requestCode.jade compiled template
     templatizer["pages"]["requestCode"] = function tmpl_pages_requestCode() {
-        return '<section class="page request-code"><h4>Request Code for<h4 data-hook="title"></h4></h4><form data-hook="product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
+        return '<section class="page request-code"><div class="prompt"></div><h4>Request Code for<h4 data-hook="title"></h4></h4><form data-hook="product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
     return templatizer;

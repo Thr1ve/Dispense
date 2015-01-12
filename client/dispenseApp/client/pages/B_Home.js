@@ -1,5 +1,6 @@
-var PageView      = require('./base');
+
 var templates     = require('../templates');
+var PageView      = require('./base');
 var ProductView   = require('../views/B_PanelFront');
 
 var log = require('bows')("Home View");
@@ -16,12 +17,33 @@ module.exports = PageView.extend({
     events : {
         //whenever there is a "keyup" event in the input field,
         'keyup [data-hook=input]' : 'updateSearch',
+        // 'keydown [data-hook=input]' : 'prevent',
     },
+
+    keyboardShortcuts : {
+        '`,1,2,3,4,5,6,7,8,9,0,-,=': 'focus',
+         'q,w,e,r,t,y,u,i,o,p,[,],\\': 'focus',
+         'a,s,d,f,g,h,j,k,l,;,\'': 'focus',
+         'z,x,c,v,b,n,m,.,/' : 'focus',
+         ',': 'focus',
+         'control + v, command + v':  'focus',
+         'tab': 'nextResult',
+         'shift + tab': 'previousResult',
+         'enter': 'requestCode',
+    },
+
     initialize : function() {
         this.registerKeyboardShortcuts('home');
     },
 
-    updateSearch : function() {
+    //stop the tab key
+    prevent : function(e) {
+        if (e.which == 9){
+            e.preventDefault();
+        }
+    },
+
+    updateSearch : function(e) {
         //this.model, in this case, is refering to app.user
         //basically, whenever the input value changes, we update it on the user model
         this.model.searchValue = this.queryByHook('input').value;
@@ -44,19 +66,68 @@ module.exports = PageView.extend({
         return false;
     },
 
-    keyboardShortcuts : {
-        '`,1,2,3,4,5,6,7,8,9,0,-,=': 'testAlert',
-         'q,w,e,r,t,y,u,i,o,p,[,],\\': 'testAlert',
-         'a,s,d,f,g,h,j,k,l,;,\'': 'testAlert',
-         'z,x,c,v,b,n,m,.,/' : 'testAlert',
+    focus : function(e){
+        if(e.target.className !=='form-input'){
+            this.queryByHook('input').focus();
+        }
+    },
 
-         ',': 'testAlert',
-         'backspace': 'testAlert'
-     },
+    nextResult : function(e) {
+        e.preventDefault();
+        var self = this;
+        var length = this.collection.filtered.models.length;
 
-    testAlert : function(e){
-        log('hollow world', e);
-        return false;
-    }
+        function loop() {
+            log('looping');
+            log(self.collection.filtered);
+            self.collection.filtered.selected = 0;
+            log(self.collection.filtered);
+        }
+
+        function increment() {
+            log('incrementing');
+            self.collection.filtered.selected +=1;
+        }
+
+
+        length - 1 <= this.collection.filtered.selected ? loop() : increment();
+        this.collection.select(this.collection.filtered.models[this.collection.filtered.selected]);
+
+    },
+
+    previousResult : function(e) {
+        e.preventDefault();
+        var self = this;
+        var length = this.collection.filtered.models.length;
+
+        function loop() {
+            log('looping');
+            log(self.collection.filtered);
+            self.collection.filtered.selected = length - 1;
+            log(self.collection.filtered);
+        }
+
+        function decrement() {
+            log('incrementing');
+            self.collection.filtered.selected -=1;
+        }
+
+        log(this.collection.filtered.selected);
+
+        this.collection.filtered.selected <= 0 ? loop() : decrement();
+        this.collection.select(this.collection.filtered.models[this.collection.filtered.selected]);
+    },
+
+    requestCode : function() {
+        log('calling requestCode function');
+        if(!this.collection.isSelected){
+            alert('No Product Selected');
+            return;
+        }
+        this.collection.isSelected.parent.requestCode();
+    },
+
+
+
 });
 

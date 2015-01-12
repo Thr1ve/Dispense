@@ -2,6 +2,7 @@
 var PageView = require('./base');
 var templates = require('../templates');
 var StudentForm = require('../forms/studentForm.js');
+var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Req Code Page");
 
@@ -24,15 +25,12 @@ module.exports = PageView.extend({
     },
 
     keyboardShortcuts : {
-         'q,w,e,r,t,y,u,i,o,p,[,],\\': 'testAlert',
-    },
-
-    testAlert : function(){
-        console.log('hollow world');
+         'escape':'returnNavigate'
     },
 
     initialize: function() {
 
+        this.escapeKeyBuffer = 0;
         this.registerKeyboardShortcuts('requestCode');
 
         var self = this;
@@ -60,7 +58,15 @@ module.exports = PageView.extend({
         }
     },
 
+
     subviews: {
+
+        escapeAlert: {
+            container : '.prompt',
+            prepareView: function(el) {
+                return new EscapeTrigger({duration:1000, el:el}) ;
+            }
+        },
 
         form: {
 
@@ -105,6 +111,26 @@ module.exports = PageView.extend({
                     }
                 });
             }
+        }
+    },
+
+    returnNavigate : function() {
+        log('returnNavigate function has been called');
+
+        var contains =  this.query('.escapePrompt').classList.contains('active');
+
+        if(this.escapeKeyBuffer === 0){
+            this.escapeKeyBuffer++ ;
+            this.escapeAlert.reset();
+        }
+        else if( contains ){
+            console.log(this.query('.escapePrompt').classList);
+            this.escapeKeyBuffer = 0;
+            app.navigate('/dispenseApp');
+        }
+        else{
+            escapeKeyBuffer = 0;
+            this.escapeAlert.reset();
         }
     }
 });

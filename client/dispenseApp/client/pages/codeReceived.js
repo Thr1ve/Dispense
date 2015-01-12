@@ -2,6 +2,9 @@ var PageView = require('./base');
 var templates = require('../templates');
 var CodeView = require('../views/code');
 var Code_wpView = require('../views/code_wp');
+var EscapeTrigger = require('../views/escapeTriggerAC.js');
+
+var log = require('bows')("Code Received Page");
 
 //this is the page where we view the code we have requested.
 //The user is sent here by requestCode.js.
@@ -18,6 +21,16 @@ module.exports = PageView.extend({
 
     template: templates.pages.codeReceived,
 
+    keyboardShortcuts : {
+         'escape':'returnNavigate'
+    },
+
+    initialize : function() {
+        this.escapeTriggerAC = new EscapeTrigger({duration:1000});
+        this.escapeKeyBuffer = 0;
+        this.registerKeyboardShortcuts('codeReceived');
+    },
+
     setModel: function() {
         this.model = app.newCode.models[0];
     },
@@ -27,6 +40,7 @@ module.exports = PageView.extend({
         this.setModel();
 
         this.renderWithTemplate();
+        this.renderSubview(this.escapeTriggerAC, '.prompt');
 
         //add our subviews
         this.renderSubview(new CodeView({
@@ -39,6 +53,26 @@ module.exports = PageView.extend({
                 collection: app.newCode
             }), '[data-hook=codeHolder]');
 
+    },
+
+    returnNavigate : function() {
+        log('returnNavigate function has been called', this.query('.escapePrompt'));
+
+        var contains =  this.query('.escapePrompt').classList.contains('active');
+
+        if(this.escapeKeyBuffer === 0){
+            this.escapeKeyBuffer++ ;
+            this.escapeTriggerAC.reset();
+        }
+        else if( contains ){
+            console.log(this.query('.escapePrompt').classList);
+            this.escapeKeyBuffer = 0;
+            app.navigate('/dispenseApp');
+        }
+        else{
+            escapeKeyBuffer = 0;
+            this.escapeTriggerAC.reset();
+        }
     }
 
 });

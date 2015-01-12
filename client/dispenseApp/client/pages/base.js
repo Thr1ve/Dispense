@@ -6,6 +6,7 @@ var key = require('keymaster');
 
 var log = require('bows')("Base View");
 
+key.filter = function() {return true;};
 
 module.exports = View.extend({
 
@@ -37,8 +38,5 @@ module.exports = View.extend({
         key.deleteScope(scope);
     },
 
-    testAlert : function(){
-        console.log('hollow world');
-    },
 
 });
