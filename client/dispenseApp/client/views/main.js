@@ -88,6 +88,6 @@ module.exports = View.extend({
     },
 
     feedback : function() {
-        window.open('mailto:gbuhler@wiley.com?cc=chcollier@wiley.com&subject=Dispense%20Feedback');
+        window.open('mailto:gbuhler@wiley.com?cc=chrcollier@wiley.com&subject=Dispense%20Feedback');
     }
 });
