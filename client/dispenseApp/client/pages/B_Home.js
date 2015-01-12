@@ -17,7 +17,6 @@ module.exports = PageView.extend({
     events : {
         //whenever there is a "keyup" event in the input field,
         'keyup [data-hook=input]' : 'updateSearch',
-        // 'keydown [data-hook=input]' : 'prevent',
     },
 
     keyboardShortcuts : {
@@ -34,13 +33,6 @@ module.exports = PageView.extend({
 
     initialize : function() {
         this.registerKeyboardShortcuts('home');
-    },
-
-    //stop the tab key
-    prevent : function(e) {
-        if (e.which == 9){
-            e.preventDefault();
-        }
     },
 
     updateSearch : function(e) {

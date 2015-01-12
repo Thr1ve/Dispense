@@ -13,14 +13,19 @@ var setFavicon = require('favicon-setter');
 
 
 module.exports = View.extend({
+
     template: templates.body,
+
     initialize: function () {
         // this marks the correct nav item selected
         this.listenTo(app.router, 'page', this.handleNewPage);
     },
+
     events: {
-        'click a[href]': 'handleLinkClick'
+        'click a[href]': 'handleLinkClick',
+        'click [data-hook~=feedback]':'feedback'
     },
+
     render: function () {
         // some additional stuff we want to add to the document head
         document.head.appendChild(domify(templates.head()));
@@ -80,5 +85,9 @@ module.exports = View.extend({
                 dom.removeClass(aTag.parentNode, 'active');
             }
         });
+    },
+
+    feedback : function() {
+        window.open('mailto:gbuhler@wiley.com?cc=chcollier@wiley.com&subject=Dispense%20Feedback');
     }
 });
