@@ -56,7 +56,7 @@ module.exports = PageView.extend({
     },
 
     returnNavigate : function() {
-        log('returnNavigate function has been called', this.query('.escapePrompt'));
+        log('returnNavigate function has been called');
 
         var contains =  this.query('.escapePrompt').classList.contains('active');
 

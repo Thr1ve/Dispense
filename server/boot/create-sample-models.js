@@ -26,10 +26,15 @@ module.exports = function(app) {
         if(!err) {
 
             productsJSON.products.forEach(function(val){
+                var newCodes = [];
+                for(var i = 0; i < 48;i++){
+                    var code = '' + i + '-CODE-' + val.title + '';
+                    newCodes.push(code);
+                }
                 app.models.availableCodes.create([
                     {
                         productId: val.id,
-                        codes: val.codes
+                        codes: newCodes
                     },
                 ], function(err, availableCodes) {
                   if (err) throw err;
