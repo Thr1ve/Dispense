@@ -26,10 +26,14 @@ module.exports = AmpCollection.extend({
         var fuse = new Fuse(this.models , {
 
             keys : ['isbn13', 'title'],
-            threshold : 0.4,
-            distance : 5
+            threshold : 0.35,
+            distance : 250
 
         });
+
+        log('Threshold : ', fuse.options.threshold);
+        log('Distance : ', fuse.options.distance);
+        log('Location : ', fuse.options.location);
 
         this.filtered.set(fuse.search(string));
        if(string){
@@ -46,11 +50,11 @@ module.exports = AmpCollection.extend({
      * @return {n/a}       
      */
     select : function(model) {
-        log('calling select function');
+        // log('calling select function');
         if(this.isSelected){
             this.deselect();
             this.isSelected = model;
-            log('selection set', this.isSelected.title, this.isSelected);
+            // log('selection set', this.isSelected.title, this.isSelected);
             this.isSelected.toggle('selected');
         } 
         else{
@@ -64,10 +68,10 @@ module.exports = AmpCollection.extend({
      * @return {n/a} 
      */ 
     deselect : function() {
-        log('calling deselect function');
+        // log('calling deselect function');
         this.isSelected.selected = false;
         this.isSelected = false;
-        log('previous selected product is now deselected');
+        // log('previous selected product is now deselected');
     }
 
 });

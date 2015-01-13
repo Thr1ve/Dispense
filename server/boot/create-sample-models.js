@@ -27,7 +27,7 @@ module.exports = function(app) {
 
             productsJSON.products.forEach(function(val){
                 var newCodes = [];
-                for(var i = 0; i < 45;i++){
+                for(var i = 0; i < 25;i++){
                     var code = '' + i + 'XXX-XX-CODE-' + val.title + '';
                     newCodes.push(code);
                 }
