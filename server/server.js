@@ -4,9 +4,8 @@ var boot = require('loopback-boot');
 var path = require('path');
 var app = module.exports = loopback();
 
-var fixPath = function (pathString) {
-    return path.resolve(path.normalize(pathString));
-};
+// TODO: solarized dark for webstorm
+// TODO: configure webstorm to sync with webserver https://www.jetbrains.com/webstorm/help/working-with-web-servers-copying-files.html
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname);

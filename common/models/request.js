@@ -36,11 +36,12 @@ module.exports = function(Request) {
                 var date = new Date().toLocaleDateString();
                 response.date = date;
 
-                //send the callback
-                cb(null, response);
                 //update the server with the new data
                 availableCodes.updateAll({productId: productId},
                     {codes: newData[0].codes}, function(err, count){});
+
+                //send the callback
+                cb(null, response);
             }
             else {
                 cb(null, 'There are no codes left!');
@@ -49,11 +50,15 @@ module.exports = function(Request) {
     };
 
     Request.beforeCreate = function(next, modelInstance) {
-        Request.process(modelInstance, function(err, response){
-            console.log(response);
+
+        Request.process(modelInstance, function(err, res){
+
+            modelInstance = res;
+
+            next();
 
         });
-        next();
+
     };
 
     //register our "process" function as a remote method

@@ -8,7 +8,7 @@ var fixPath = function (pathString) {
 };
 
 module.exports = function(app) {
-
+    console.log('we made it here');
     var dispenseManager = new Moonboots({
         server: app,
         appPath : '/dispenseManager*',

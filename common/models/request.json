@@ -26,6 +26,9 @@
     },
     "code": {
       "type": "string"
+    },
+    "date": {
+        "type":"string"
     }
   },
   "validations": [],
