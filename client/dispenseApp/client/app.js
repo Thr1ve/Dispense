@@ -10,6 +10,8 @@ var Products = require('./models/products');
 var Code     = require('./models/request-collection');
 var key = require('keymaster');
 
+var socket = require('socket.io-client')();
+
 
 
 module.exports = {
@@ -28,6 +30,9 @@ module.exports = {
             // register global keybinds
             key(k,  _.bind(self[value], self));
         });
+
+        //attach socket.io to app
+        this.io = socket;
 
         // create our global empty collections for products and a received code
         this.user     = new User();
