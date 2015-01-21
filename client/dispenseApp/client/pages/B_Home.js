@@ -1,7 +1,6 @@
-
-var templates     = require('../templates');
 var PageView      = require('./base');
 var ProductView   = require('../views/B_PanelFront');
+var templates     = require('../templates');
 
 var log = require('bows')("Home View");
 
@@ -16,7 +15,7 @@ module.exports = PageView.extend({
 
     events : {
         //whenever there is a "keyup" event in the input field,
-        'keyup [data-hook=input]' : 'updateSearch',
+        'keyup [data-hook=input]' : 'updateSearch'
     },
 
     keyboardShortcuts : {
@@ -28,14 +27,14 @@ module.exports = PageView.extend({
          'control + v, command + v':  'focus',
          'tab': 'nextResult',
          'shift + tab': 'previousResult',
-         'enter': 'requestCode',
+         'enter': 'requestCode'
     },
 
     initialize : function() {
         this.registerKeyboardShortcuts('home');
     },
 
-    updateSearch : function(e) {
+    updateSearch : function() {
         //this.model, in this case, is refering to app.user
         //basically, whenever the input value changes, we update it on the user model
         this.model.searchValue = this.queryByHook('input').value;

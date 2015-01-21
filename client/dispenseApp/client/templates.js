@@ -45,6 +45,14 @@
         return '<li class="container product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13" class="pull-right"></div></li>';
     };
 
+    // includes/usedCodesPopout.jade compiled template
+    templatizer["includes"]["usedCodesPopout"] = function tmpl_includes_usedCodesPopout(locals) {
+        var buf = [];
+        var jade_mixins = {};
+        var jade_interp;
+        return buf.join("");
+    };
+
     // pages/B_Home.jade compiled template
     templatizer["pages"]["B_Home"] = function tmpl_pages_B_Home(locals) {
         var buf = [];

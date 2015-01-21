@@ -52,6 +52,10 @@ if (require.main === module) {
             console.log('message: ' + msg);
             app.io.emit('chat message', msg);
         });
+        socket.on('new code', function(msg){
+            console.log('message: ' + msg);
+            app.io.emit('new code', msg);
+        });
         socket.on('disconnect', function(){
             console.log('user disconnected');
         });

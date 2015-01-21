@@ -39,7 +39,7 @@ module.exports = PageView.extend({
         //get the model
         this.setModel();
 
-        app.io.emit('chat message', 'Code: ' + this.model.code + ' -- Rep: ' + this.model.representative + ' -- Date: ' + this.model.date);
+        app.io.emit('new code', 'Code: ' + this.model.code + ' -- Rep: ' + this.model.representative + ' -- Date: ' + this.model.date);
 
         this.renderWithTemplate();
         this.renderSubview(this.escapeTriggerAC, '.prompt');

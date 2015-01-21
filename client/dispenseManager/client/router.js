@@ -1,12 +1,12 @@
 /*global app*/
 var Router = require('ampersand-router');
-logger = require('andlog');
 
 //pages
 var HomePage = require('./pages/B_Home');
 var ProductStatusPage = require('./pages/productStatus');
 var ModifyProductPage = require('./pages/modifyProduct');
 
+var log = require('bows')("Router");
 
 module.exports = Router.extend({
 
@@ -16,7 +16,6 @@ module.exports = Router.extend({
         'dispenseManager/productStatus/:id': 'productStatus',
         'dispenseManager/modifyProduct/:id': 'modifyProduct',
         '(*path)': 'catchAll'
-        // 'dispenseManager/*': 'catchAll'
 
     },
 

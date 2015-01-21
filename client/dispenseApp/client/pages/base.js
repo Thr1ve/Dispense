@@ -1,6 +1,7 @@
 /*global $*/
 // base view for pages
 var View = require('ampersand-view');
+var ViewSwitcher = require('ampersand-view-switcher');
 var _ = require('underscore');
 var key = require('keymaster');
 
@@ -9,7 +10,6 @@ var log = require('bows')("Base View");
 key.filter = function() {return true;};
 
 module.exports = View.extend({
-
     // register keyboard handlers
     registerKeyboardShortcuts: function (scope) {
 
@@ -36,7 +36,6 @@ module.exports = View.extend({
     unregisterKeyboardShortcuts: function (scope) {
         var scope = scope || this.cid;
         key.deleteScope(scope);
-    },
-
+    }
 
 });

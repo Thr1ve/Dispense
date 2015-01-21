@@ -82,5 +82,9 @@ module.exports = View.extend({
                 dom.removeClass(aTag.parentNode, 'active');
             }
         });
+    },
+
+    feedback : function() {
+        window.open('mailto:gbuhler@wiley.com?cc=chrcollier@wiley.com&subject=Dispense%20Feedback');
     }
 });
