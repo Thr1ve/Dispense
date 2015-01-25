@@ -36,6 +36,30 @@ module.exports = View.extend({
     unregisterKeyboardShortcuts: function () {
         var scope = scope || this.cid;
         key.deleteScope(scope);
+    },
+
+    returnNavigate : function() {
+        log('returnNavigate function has been called');
+
+        var contains =  this.query('.escapePrompt').classList.contains('active');
+
+        if(this.escapeKeyBuffer === 0){
+            this.escapeKeyBuffer++ ;
+            this.escapeAlert.reset();
+        }
+        else if( contains ){
+            console.log(this.query('.escapePrompt').classList);
+            this.escapeKeyBuffer = 0;
+            app.navigate('/dispenseApp');
+            //this makes it so codeReceived page is not recorded
+            //in history...change this if/when we figure out way to
+            //better manage the codes the user has requested
+            // app.redirectTo('/dispenseApp');
+        }
+        else{
+            escapeKeyBuffer = 0;
+            this.escapeAlert.reset();
+        }
     }
 
 });

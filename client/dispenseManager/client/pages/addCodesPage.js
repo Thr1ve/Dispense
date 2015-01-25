@@ -3,12 +3,13 @@ var PageView = require('./base');
 var templates = require('../templates');
 var AddCodesRequest = require('../models/addCodes.js');
 var AddCodesForm = require('../forms/addCodesForm.js');
+var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Modify Product Page");
 
 module.exports = PageView.extend({
 
-    template: templates.pages.modifyProduct,
+    template: templates.pages.addCodes,
 
     pageTitle: 'Add Codes',
 
@@ -26,7 +27,18 @@ module.exports = PageView.extend({
         'click .addButton': 'addCodes',
     },
 
+    keyboardShortcuts : {
+        'escape':'returnNavigate'
+    },
+
     subviews: {
+
+        escapeAlert: {
+            container : '.prompt',
+            prepareView: function(el) {
+                return new EscapeTrigger({duration:1000, el:el}) ;
+            }
+        },
 
         form: {
 
@@ -45,6 +57,8 @@ module.exports = PageView.extend({
     },
 
     initialize: function() {
+        this.escapeKeyBuffer = 0;
+        this.registerKeyboardShortcuts('addCodesPage');
         var self = this;
         if (!this.model) {
             log('Model not found. Fetching model with id: ' + this.productId + '...');
@@ -122,6 +136,6 @@ module.exports = PageView.extend({
 
     navigateView: function() {
         app.navigate('/dispenseManager/productStatus/' + this.model.productId);
-    }
+    },
 
 });

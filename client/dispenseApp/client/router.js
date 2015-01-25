@@ -2,7 +2,7 @@
 var Router = require('ampersand-router');
 
 //pages
-var HomePage = require('./pages/B_Home');
+var HomePage = require('./pages/homeSearch');
 var RequestCodePage = require('./pages/requestCode');
 var CodeReceived = require('./pages/codeReceived');
 

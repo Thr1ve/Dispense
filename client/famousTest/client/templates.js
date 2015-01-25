@@ -40,7 +40,7 @@
         return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13" class="pull-right"></div></li>';
     };
 
-    // pages/B_Home.jade compiled template
+    // pages/homeSearch.jade compiled template
     templatizer["pages"]["B_Home"] = function tmpl_pages_B_Home(locals) {
         var buf = [];
         var jade_mixins = {};

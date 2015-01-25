@@ -16,7 +16,7 @@ module.exports = PageView.extend({
     },
 
     bindings: {
-        'model.title': '[data-hook~=title]',
+        'model.title': '[data-hook~=title]'
     },
     
     events : {
@@ -30,7 +30,7 @@ module.exports = PageView.extend({
 
     initialize: function() {
 
-        this.escapeTriggerAC = new EscapeTrigger({duration:1000});
+        this.escapeAlert = new EscapeTrigger({duration:1000});
         this.escapeKeyBuffer = 0;
         this.registerKeyboardShortcuts('productPage');
 
@@ -61,7 +61,7 @@ module.exports = PageView.extend({
 
     render : function() {
         this.renderWithTemplate();
-        this.renderSubview(this.escapeTriggerAC, '.prompt');
+        this.renderSubview(this.escapeAlert, '.prompt');
     },
 
     toViewCodes : function() {
@@ -70,30 +70,6 @@ module.exports = PageView.extend({
 
     toAddCodes : function() {
         app.navigate('/dispenseManager/modifyProduct/' + this.model.productId);
-    },
-
-    returnNavigate : function() {
-        log('returnNavigate function has been called');
-
-        var contains =  this.query('.escapePrompt').classList.contains('active');
-
-        if(this.escapeKeyBuffer === 0){
-            this.escapeKeyBuffer++ ;
-            this.escapeTriggerAC.reset();
-        }
-        else if( contains ){
-            console.log(this.query('.escapePrompt').classList);
-            this.escapeKeyBuffer = 0;
-            app.navigate('/dispenseApp');
-            //this makes it so codeReceived page is not recorded
-            //in history...change this if/when we figure out way to
-            //better manage the codes the user has requested
-            // app.redirectTo('/dispenseApp');
-        }
-        else{
-            escapeKeyBuffer = 0;
-            this.escapeTriggerAC.reset();
-        }
     }
 
 });

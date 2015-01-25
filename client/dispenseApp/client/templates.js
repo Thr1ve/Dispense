@@ -53,7 +53,7 @@
         return buf.join("");
     };
 
-    // pages/B_Home.jade compiled template
+    // pages/homeSearch.jade compiled template
     templatizer["pages"]["B_Home"] = function tmpl_pages_B_Home(locals) {
         var buf = [];
         var jade_mixins = {};

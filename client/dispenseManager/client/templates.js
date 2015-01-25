@@ -35,8 +35,18 @@
         return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13"></div><span class="btn-group pull-right"></span></li>';
     };
 
-    // pages/B_Home.jade compiled template
-    templatizer["pages"]["B_Home"] = function tmpl_pages_B_Home(locals) {
+    // pages/addCodes.jade compiled template
+    templatizer["pages"]["addCodes"] = function tmpl_pages_addCodes() {
+        return '<section class="page request-code"><div class="prompt"></div><h4>Add Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger navigateView">View Codes</a></h4><form data-hook="addCodesForm"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Add Codes</button></div></form></section>';
+    };
+
+    // pages/addProduct.jade compiled template
+    templatizer["pages"]["addProduct"] = function tmpl_pages_addProduct() {
+        return '<section class="page add-product"><h4>Add a New Product</h4><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
+    };
+
+    // pages/homeSearch.jade compiled template
+    templatizer["pages"]["homeSearch"] = function tmpl_pages_homeSearch(locals) {
         var buf = [];
         var jade_mixins = {};
         var jade_interp;
@@ -47,16 +57,6 @@
         return buf.join("");
     };
 
-    // pages/addProduct.jade compiled template
-    templatizer["pages"]["addProduct"] = function tmpl_pages_addProduct() {
-        return '<section class="page add-product"><h4>Add a New Product</h4><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
-    };
-
-    // pages/modifyProduct.jade compiled template
-    templatizer["pages"]["modifyProduct"] = function tmpl_pages_modifyProduct() {
-        return '<section class="page request-code"><h4>Add Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger navigateView">View Codes</a></h4><form data-hook="addCodesForm"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Add Codes</button></div></form></section>';
-    };
-
     // pages/productPage.jade compiled template
     templatizer["pages"]["productPage"] = function tmpl_pages_productPage() {
         return '<section class="page product-page"><div class="prompt"></div><h4 data-hook="title"></h4><a class="btn btn-default viewCodes">View Codes</a><a class="btn btn-danger addCodes">Add Codes</a><p>FANCY DATA TO COME</p></section>';
@@ -64,7 +64,7 @@
 
     // pages/productStatus.jade compiled template
     templatizer["pages"]["productStatus"] = function tmpl_pages_productStatus() {
-        return '<section class="page request-code"><h4>Currently Available Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger navigateAdd">Add Codes</a></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
+        return '<section class="page request-code"><div class="prompt"></div><h4>Currently Available Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger navigateAdd">Add Codes</a></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
     };
 
     return templatizer;

@@ -1,12 +1,12 @@
 var PageView      = require('./base');
-var ProductView   = require('../views/B_PanelFront');
+var ProductView   = require('../views/productPanel');
 var templates     = require('../templates');
 
 var log = require('bows')("Home View");
 
 module.exports = PageView.extend({
 
-    template: templates.pages.B_Home,
+    template: templates.pages.homeSearch,
 
     pageTitle: 'products',
 

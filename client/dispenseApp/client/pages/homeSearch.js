@@ -9,7 +9,7 @@ var log = require('bows')("Home View");
 
 module.exports = PageView.extend({
 
-    template: templates.pages.B_Home,
+    template: templates.pages.homeSearch,
 
     pageTitle: 'products',
 

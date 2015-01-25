@@ -1,6 +1,7 @@
 /*global app*/
 var PageView = require('./base');
 var templates = require('../templates');
+var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Product Status Page");
 
@@ -16,7 +17,17 @@ module.exports = PageView.extend({
         availableCodes: 'model'
     },
 
+    keyboardShortcuts : {
+        'escape':'returnNavigate'
+    },
+
+
     initialize: function() {
+
+        this.escapeKeyBuffer = 0;
+        this.registerKeyboardShortcuts('viewCodesPage');
+        this.escapeAlert = new EscapeTrigger({duration:1000});
+
         var self = this;
         if (!this.model) {
             log('Model not found. Fetching model with id: ' + this.productId + '...');
@@ -47,6 +58,7 @@ module.exports = PageView.extend({
                     log('\n');
 
                     self.availableCodes = model;
+                    self.renderSubview(self.escapeAlert, '.prompt');
                     for(var i = 0; i < self.availableCodes.codes.length ;i++){
                         self.renderSubview(
                             new PageView({
@@ -72,6 +84,7 @@ module.exports = PageView.extend({
 
                     self.availableCodes= model;
                     self.renderWithTemplate();
+                    self.renderSubview(self.escapeAlert, '.prompt');
                     for(var i = 0; i < self.availableCodes.codes.length ;i++){
                         self.renderSubview(
                             new PageView({
