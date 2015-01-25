@@ -7,6 +7,7 @@ var ProductStatusPage = require('./pages/productStatus');
 var ModifyProductPage = require('./pages/addCodesPage');
 var AddProductPage = require('./pages/addProduct');
 var ProductPage = require('./pages/productPage');
+var EditProductPage = require('./pages/product-edit.js');
 
 var log = require('bows')("Router");
 
@@ -19,6 +20,7 @@ module.exports = Router.extend({
         'dispenseManager/productStatus/:id': 'productStatus',
         'dispenseManager/modifyProduct/:id': 'modifyProduct',
         'dispenseManager/addProduct': 'addProduct',
+        'dispenseManager/editProduct/:id': 'editProduct',
         '(*path)': 'catchAll'
 
     },
@@ -77,6 +79,19 @@ module.exports = Router.extend({
     addProduct : function() {
 
          this.trigger('page', new AddProductPage());
+
+    },
+
+    editProduct : function(id){
+
+        var findModel = app.products.get(id);
+
+        this.trigger('page', new EditProductPage({
+
+            model: findModel,
+            productId: id
+
+        }));
 
     },
 

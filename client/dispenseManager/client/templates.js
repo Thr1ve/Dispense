@@ -50,6 +50,11 @@
         return '<section class="page add-product"><div class="prompt"></div><h4>Add a New Product</h4><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
+    // pages/editProduct.jade compiled template
+    templatizer["pages"]["editProduct"] = function tmpl_pages_editProduct() {
+        return '<section class="page edit-product"><div class="prompt"></div><h4>Edit: </h4><h4 data-hook="title"></h4><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
+    };
+
     // pages/homeSearch.jade compiled template
     templatizer["pages"]["homeSearch"] = function tmpl_pages_homeSearch(locals) {
         var buf = [];
@@ -64,7 +69,7 @@
 
     // pages/productPage.jade compiled template
     templatizer["pages"]["productPage"] = function tmpl_pages_productPage() {
-        return '<section class="page product-page"><div class="prompt"></div><h4 data-hook="title"></h4><a class="btn btn-default viewCodes">View Codes</a><a class="btn btn-danger addCodes">Add Codes</a><p>FANCY DATA TO COME</p></section>';
+        return '<section class="page product-page"><div class="prompt"></div><h4 data-hook="title"></h4><a class="btn btn-default viewCodes">View Codes</a><a class="btn btn-default editProduct">Edit Product</a><a class="btn btn-danger addCodes">Add Codes</a><p>FANCY DATA TO COME</p></section>';
     };
 
     // pages/productStatus.jade compiled template

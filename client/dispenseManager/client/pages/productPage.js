@@ -21,7 +21,8 @@ module.exports = PageView.extend({
     
     events : {
         'click .viewCodes' : 'toViewCodes',
-        'click .addCodes' : 'toAddCodes'
+        'click .addCodes' : 'toAddCodes',
+        'click .editProduct' : 'toEditProduct'
     },
 
     keyboardShortcuts : {
@@ -70,6 +71,10 @@ module.exports = PageView.extend({
 
     toAddCodes : function() {
         app.navigate('/dispenseManager/modifyProduct/' + this.model.productId);
+    },
+
+    toEditProduct : function() {
+        app.navigate('/dispenseManager/editProduct/' + this.model.productId);
     }
 
 });
