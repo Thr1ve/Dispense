@@ -5,6 +5,8 @@ var Router = require('ampersand-router');
 var HomePage = require('./pages/B_Home');
 var ProductStatusPage = require('./pages/productStatus');
 var ModifyProductPage = require('./pages/modifyProduct');
+var AddProductPage = require('./pages/addProduct');
+var ProductPage = require('./pages/productPage');
 
 var log = require('bows')("Router");
 
@@ -13,8 +15,10 @@ module.exports = Router.extend({
     routes: {
 
         'dispenseManager': 'home',
+        'dispenseManager/productPage/:id': 'productPage',
         'dispenseManager/productStatus/:id': 'productStatus',
         'dispenseManager/modifyProduct/:id': 'modifyProduct',
+        'dispenseManager/addProduct': 'addProduct',
         '(*path)': 'catchAll'
 
     },
@@ -30,6 +34,18 @@ module.exports = Router.extend({
 
             model: app.user,
             collection: app.products
+
+        }));
+    },
+
+    productPage : function(id){
+
+        var findModel = app.products.get(id);
+
+        this.trigger('page', new ProductPage({
+
+            model: findModel,
+            productId: id
 
         }));
     },
@@ -56,6 +72,12 @@ module.exports = Router.extend({
             productId: id
 
         }));
+    },
+
+    addProduct : function() {
+
+         this.trigger('page', new AddProductPage());
+
     },
 
     catchAll: function() {

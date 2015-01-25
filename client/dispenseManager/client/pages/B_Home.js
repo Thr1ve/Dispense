@@ -22,8 +22,8 @@ module.exports = PageView.extend({
         ',': 'focus',
         'control + v, command + v':  'focus',
         'tab': 'nextResult',
-        'shift + tab': 'previousResult'
-        //'enter': 'requestCode',
+        'shift + tab': 'previousResult',
+        'enter': 'productPage'
     },
 
     initialize : function() {
@@ -39,7 +39,9 @@ module.exports = PageView.extend({
         this.renderCollection(app.products.filtered, ProductView, this.queryByHook('products-list'));
         if (!this.collection.length) {
             this.fetchCollection();
+            console.log(this.collection);
         }
+        console.log(this.collection);
     },
     fetchCollection: function () {
         this.collection.fetch();
@@ -96,6 +98,16 @@ module.exports = PageView.extend({
 
         this.collection.filtered.selected <= 0 ? loop() : decrement();
         this.collection.select(this.collection.filtered.models[this.collection.filtered.selected]);
+    },
+
+    productPage : function() {
+
+        if(!this.collection.isSelected){
+            alert('No Product Selected');
+            return;
+        }
+        this.collection.isSelected.parent.productPage();
+
     }
 
 });

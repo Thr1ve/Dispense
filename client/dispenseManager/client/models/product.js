@@ -8,7 +8,8 @@ module.exports = AmpersandModel.extend({
         title: 'string',
         author: 'string',
         category: 'string',
-        config: 'string'
+        config: 'string',
+        nCodes: 'number'
     },
     session: {
         selected: ['boolean', true, false]

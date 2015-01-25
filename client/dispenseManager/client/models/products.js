@@ -9,6 +9,11 @@ module.exports = AmpCollection.extend({
 
     url: '/api/products',
 
+    initialize : function() {
+        var self = this;
+        this.filtered = new AmpCollection(self.models);
+    },
+
     filter : function(string) {
 
         var fuse = new Fuse(this.models , {
@@ -23,11 +28,6 @@ module.exports = AmpCollection.extend({
             this.select(this.filtered.models[0]);
             this.filtered.selected = 0;
         }
-    },
-
-    initialize : function() {
-        var self = this;
-        this.filtered = new AmpCollection(self.models);
     },
 
     /**

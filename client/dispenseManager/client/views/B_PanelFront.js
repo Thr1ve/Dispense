@@ -16,16 +16,16 @@ module.exports = View.extend({
     },
 
     events : {
-        'click .viewCodes' : 'toViewCodes',
-        'click .addCodes' : 'toAddCodes'
+        'click': 'productPage'
     },
 
-
-    toViewCodes : function() {
-        app.navigate('/dispenseManager/productStatus/' + this.model.productId);
+    initialize : function() {
+        //store this view as the parent of the model for later
+        this.model.parent = this;
     },
 
-    toAddCodes : function() {
-        app.navigate('/dispenseManager/modifyProduct/' + this.model.productId);
+    productPage : function() {
+        app.navigate('/dispenseManager/productPage/' + this.model.productId);
     }
+
 });

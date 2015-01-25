@@ -17,6 +17,7 @@ module.exports = AmpCollection.extend({
 
     initialize : function() {
         //create filtered collection
+        var self = this;
         this.filtered = new AmpCollection(self.models);
 
     },

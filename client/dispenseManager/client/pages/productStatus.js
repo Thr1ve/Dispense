@@ -87,7 +87,7 @@ module.exports = PageView.extend({
 
     //this may actually need to be in a session variable?
     bindings : {
-        'model.title': '[data-hook~=title]',
+        'model.title': '[data-hook~=title]'
     },
 
     events: {

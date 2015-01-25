@@ -1,7 +1,7 @@
 /*global app*/
 var PageView = require('./base');
 var templates = require('../templates');
-var StudentForm = require('../forms/studentForm.js');
+var StudentForm = require('../forms/requestCodeForm.js');
 var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Req Code Page");
@@ -77,7 +77,6 @@ module.exports = PageView.extend({
             //here, we set up and render the form
             prepareView: function(el) {
 
-                log('prepareView Started...', this);
                 return new StudentForm({
 
                     el: el,

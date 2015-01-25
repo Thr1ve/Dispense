@@ -17,7 +17,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense</a></div><!--ul.nav.navbar-nav--><!--  li--><!--      a(href="/") home--></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
+        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense Manager</a><a href="dispenseManager/addProduct" class="navbar-brand">Add New Product</a></div></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
     };
 
     // head.jade compiled template
@@ -32,7 +32,7 @@
 
     // includes/product.jade compiled template
     templatizer["includes"]["product"] = function tmpl_includes_product() {
-        return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13"></div><span class="btn-group pull-right"><a class="btn btn-default viewCodes">View Codes</a><a class="btn btn-danger addCodes">Add Codes</a></span></li>';
+        return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13"></div><span class="btn-group pull-right"></span></li>';
     };
 
     // pages/B_Home.jade compiled template
@@ -47,9 +47,19 @@
         return buf.join("");
     };
 
+    // pages/addProduct.jade compiled template
+    templatizer["pages"]["addProduct"] = function tmpl_pages_addProduct() {
+        return '<section class="page add-product"><h4>Add a New Product</h4><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
+    };
+
     // pages/modifyProduct.jade compiled template
     templatizer["pages"]["modifyProduct"] = function tmpl_pages_modifyProduct() {
         return '<section class="page request-code"><h4>Add Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger navigateView">View Codes</a></h4><form data-hook="addCodesForm"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Add Codes</button></div></form></section>';
+    };
+
+    // pages/productPage.jade compiled template
+    templatizer["pages"]["productPage"] = function tmpl_pages_productPage() {
+        return '<section class="page product-page"><div class="prompt"></div><h4 data-hook="title"></h4><a class="btn btn-default viewCodes">View Codes</a><a class="btn btn-danger addCodes">Add Codes</a><p>FANCY DATA TO COME</p></section>';
     };
 
     // pages/productStatus.jade compiled template

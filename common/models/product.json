@@ -19,6 +19,9 @@
       "type": "string",
       "id": true,
       "required": true
+    },
+    "nCodes":{
+      "type": "number"
     }
   },
   "validations": [],
