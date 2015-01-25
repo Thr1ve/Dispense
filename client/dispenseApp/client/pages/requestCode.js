@@ -111,25 +111,6 @@ module.exports = PageView.extend({
                 });
             }
         }
-    },
-
-    returnNavigate : function() {
-        log('returnNavigate function has been called');
-
-        var contains =  this.query('.escapePrompt').classList.contains('active');
-
-        if(this.escapeKeyBuffer === 0){
-            this.escapeKeyBuffer++ ;
-            this.escapeAlert.reset();
-        }
-        else if( contains ){
-            console.log(this.query('.escapePrompt').classList);
-            this.escapeKeyBuffer = 0;
-            app.navigate('/dispenseApp');
-        }
-        else{
-            escapeKeyBuffer = 0;
-            this.escapeAlert.reset();
-        }
     }
+
 });
