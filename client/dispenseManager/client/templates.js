@@ -17,7 +17,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense Manager</a><a href="dispenseManager/addProduct" class="navbar-brand">Add New Product</a></div><div class="navbar-right"><button data-hook="feedback" class="btn btn-primary">Feedback</button></div></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
+        return '<body><nav class="navbar navbar-default"><div class="container-fluid"><div class="navbar-header"><a href="/" class="navbar-brand">Dispense Manager</a><a data-hook="addProduct" class="navbar-brand">Add New Product</a></div><div class="navbar-right"><button data-hook="feedback" class="btn btn-primary">Feedback</button></div></div></nav><div class="container"><main data-hook="page-container"></main></div></body>';
     };
 
     // head.jade compiled template
@@ -27,6 +27,11 @@
 
     // includes/formInput.jade compiled template
     templatizer["includes"]["formInput"] = function tmpl_includes_formInput() {
+        return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
+    };
+
+    // includes/formTextArea.jade compiled template
+    templatizer["includes"]["formTextArea"] = function tmpl_includes_formTextArea() {
         return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><textarea class="form-control"></textarea></div>';
     };
 
@@ -42,7 +47,7 @@
 
     // pages/addProduct.jade compiled template
     templatizer["pages"]["addProduct"] = function tmpl_pages_addProduct() {
-        return '<section class="page add-product"><h4>Add a New Product</h4><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
+        return '<section class="page add-product"><div class="prompt"></div><h4>Add a New Product</h4><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
     // pages/homeSearch.jade compiled template

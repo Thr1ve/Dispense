@@ -22,7 +22,8 @@ module.exports = View.extend({
     },
     events: {
         'click a[href]': 'handleLinkClick',
-        'click [data-hook~=feedback]':'feedback'
+        'click [data-hook~=feedback]':'feedback',
+        'click [data-hook~=addProduct]':'addProduct'
     },
     render: function () {
         // some additional stuff we want to add to the document head
@@ -87,5 +88,9 @@ module.exports = View.extend({
 
     feedback : function() {
         window.open('mailto:gbuhler@wiley.com?cc=chrcollier@wiley.com&subject=Dispense%20Feedback');
+    },
+
+    addProduct : function() {
+        app.navigate('/dispenseManager/addProduct');
     }
 });

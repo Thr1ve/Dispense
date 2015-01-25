@@ -1,6 +1,7 @@
 var PageView = require('./base');
 var templates = require('../templates');
 var AddProductForm = require('../forms/addProductForm');
+var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Add Product");
 
@@ -10,7 +11,18 @@ module.exports = PageView.extend({
 
     template: templates.pages.addProduct,
 
+    keyboardShortcuts : {
+        'escape':'returnNavigate'
+    },
+    
     subviews: {
+
+        escapeAlert: {
+            container : '.prompt',
+            prepareView: function(el) {
+                return new EscapeTrigger({duration:1000, el:el}) ;
+            }
+        },
 
         form: {
 
@@ -44,4 +56,9 @@ module.exports = PageView.extend({
             }
         }
     },
+
+    initialize : function() {
+        this.escapeKeyBuffer = 0;
+        this.registerKeyboardShortcuts('addCodesPage');
+    }
 });

@@ -7,7 +7,7 @@ var log = require('bows')("addCodesForm");
 
 var ExtendedInput = InputView.extend({
 
-    template: templates.includes.formInput(),
+    template: templates.includes.formTextArea(),
 
     derived: {
         value: {
