@@ -42,7 +42,7 @@
 
     // pages/addCodes.jade compiled template
     templatizer["pages"]["addCodes"] = function tmpl_pages_addCodes() {
-        return '<section class="page request-code"><div class="prompt"></div><h4>Add Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger navigateView">View Codes</a></h4><form data-hook="addCodesForm"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Add Codes</button></div></form></section>';
+        return '<section class="page request-code"><div class="prompt"></div><h4>Add Codes: <h4 data-hook="title"></h4></h4><div role="group" aria-label="Justified button group" class="btn-group btn-group-lg btn-group-justified"> <div role="group" class="btn-group"><button class="btn btn-default viewCodes">View Codes<span class="label label-primary pull-left">Q</span></button></div><div role="group" class="btn-group"><button class="btn btn-default addCodes">Product Page<span class="label label-primary pull-left">W</span></button></div><div role="group" class="btn-group"> <button class="btn btn-default editProduct">Edit Product<span class="label label-primary pull-left">E</span></button></div></div><form data-hook="addCodesForm"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Add Codes</button></div></form></section>';
     };
 
     // pages/addProduct.jade compiled template
@@ -52,7 +52,7 @@
 
     // pages/editProduct.jade compiled template
     templatizer["pages"]["editProduct"] = function tmpl_pages_editProduct() {
-        return '<section class="page edit-product"><div class="prompt"></div><h4>Edit: </h4><h4 data-hook="title"></h4><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
+        return '<section class="page edit-product"><div class="prompt"></div><h4>Edit Product: <h4 data-hook="title"></h4></h4><div role="group" aria-label="Justified button group" class="btn-group btn-group-lg btn-group-justified"> <div role="group" class="btn-group"><button class="btn btn-default viewCodes">View Codes<span class="label label-primary pull-left">Q</span></button></div><div role="group" class="btn-group"><button class="btn btn-default addCodes">Add Codes<span class="label label-primary pull-left">W</span></button></div><div role="group" class="btn-group"> <button class="btn btn-default editProduct">Product Page<span class="label label-primary pull-left">E</span></button></div></div><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
     // pages/homeSearch.jade compiled template
@@ -69,12 +69,12 @@
 
     // pages/productPage.jade compiled template
     templatizer["pages"]["productPage"] = function tmpl_pages_productPage() {
-        return '<section class="page product-page"><div class="prompt"></div><h4 data-hook="title"></h4><a class="btn btn-default viewCodes">View Codes</a><a class="btn btn-default editProduct">Edit Product</a><a class="btn btn-danger addCodes">Add Codes</a><p>FANCY DATA TO COME</p></section>';
+        return '<section class="page product-page"><div class="prompt"></div><h4 data-hook="title"></h4><div role="group" aria-label="Justified button group" class="btn-group btn-group-lg btn-group-justified"> <div role="group" class="btn-group"><button class="btn btn-default viewCodes">View Codes<span class="label label-primary pull-left">Q</span></button></div><div role="group" class="btn-group"><button class="btn btn-default addCodes">Add Codes<span class="label label-primary pull-left">W</span></button></div><div role="group" class="btn-group"> <button class="btn btn-default editProduct">Edit Product<span class="label label-primary pull-left">E</span></button></div></div><p>FANCY DATA TO COME</p></section>';
     };
 
-    // pages/productStatus.jade compiled template
-    templatizer["pages"]["productStatus"] = function tmpl_pages_productStatus() {
-        return '<section class="page request-code"><div class="prompt"></div><h4>Currently Available Codes for ...<h4 data-hook="title"></h4><a class="btn btn-danger navigateAdd">Add Codes</a></h4><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
+    // pages/viewCodes.jade compiled template
+    templatizer["pages"]["viewCodes"] = function tmpl_pages_viewCodes() {
+        return '<section class="page request-code"><div class="prompt"></div><h4>Available Codes: <h4 data-hook="title"></h4></h4><div role="group" aria-label="Justified button group" class="btn-group btn-group-lg btn-group-justified"> <div role="group" class="btn-group"><button class="btn btn-default viewCodes">Product Page<span class="label label-primary pull-left">Q</span></button></div><div role="group" class="btn-group"><button class="btn btn-default addCodes">Add Codes<span class="label label-primary pull-left">W</span></button></div><div role="group" class="btn-group"> <button class="btn btn-default editProduct">Edit Product<span class="label label-primary pull-left">E</span></button></div></div><ul data-hook="availableCodes-list" class="list-group"></ul></section>';
     };
 
     return templatizer;

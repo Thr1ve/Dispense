@@ -11,7 +11,7 @@ module.exports = PageView.extend({
 
     pageTitle: 'View Codes',
 
-    template: templates.pages.productStatus,
+    template: templates.pages.viewCodes,
 
     props: {
         productId: 'string',
@@ -27,7 +27,10 @@ module.exports = PageView.extend({
     },
 
     keyboardShortcuts : {
-        'escape':'returnNavigate'
+        'escape':'returnNavigate',
+         'q': 'toProductPage',
+         'w': 'toAddCodes',
+         'e': 'toEditProduct'
     },
 
     initialize: function() {
@@ -69,8 +72,15 @@ module.exports = PageView.extend({
         });
     },
 
-    navigateAdd: function() {
+    toAddCodes: function() {
         app.navigate('/dispenseManager/addCodes/' + this.model.productId);
-    }
+    },
 
+    toProductPage: function() {
+        app.navigate('/dispenseManager/productPage/' + this.model.productId);
+    },
+
+    toEditProduct : function() {
+        app.navigate('/dispenseManager/editProduct/' + this.model.productId);
+    }
 });

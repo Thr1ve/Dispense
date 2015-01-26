@@ -25,7 +25,10 @@ module.exports = PageView.extend({
     },
 
     keyboardShortcuts : {
-         'escape':'returnNavigate'
+         'escape':'returnNavigate',
+         'q': 'toViewCodes',
+         'w': 'toAddCodes',
+         'e': 'toEditProduct'
     },
 
     initialize: function() {
@@ -34,18 +37,18 @@ module.exports = PageView.extend({
 
         var self = this;
         
-            //search for the model with the product id...
-            app.products.getOrFetch(this.productId, {
-                all: true
-            }, function(err, model) {
-                if (err) {
-                    log(err);
-                } else {
-                    //... and add it
-                    self.model = model;
-                    log('...found Model!', model);
-                }
-            });
+        //search for the model with the product id...
+        app.products.getOrFetch(this.productId, {
+            all: true
+        }, function(err, model) {
+            if (err) {
+                log(err);
+            } else {
+                //... and add it
+                self.model = model;
+                log('...found Model!', model);
+            }
+        });
     },
 
     toViewCodes : function() {

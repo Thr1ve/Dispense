@@ -32,7 +32,6 @@ module.exports = Router.extend({
         //not sure if I want this here...this
         //resets displayed products on home page
         app.user.clear();
-        app.availableCodes.reset();
 
         this.trigger('page', new HomePage({
 
@@ -54,6 +53,9 @@ module.exports = Router.extend({
 
     viewCodes: function(id) {
         log('Routing to View Codes Page');
+
+        //for some reason I get illegal invocation if this isn't here
+        app.availableCodes.reset();
 
         this.trigger('page', new ViewCodesPage({
 

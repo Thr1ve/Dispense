@@ -28,7 +28,10 @@ module.exports = PageView.extend({
     },
 
     keyboardShortcuts : {
-        'escape':'returnNavigate'
+        'escape':'returnNavigate',
+        'q': 'toViewCodes',
+        'w': 'toProductPage',
+        'e': 'toEditProduct'
     },
 
     subviews: {
@@ -109,8 +112,16 @@ module.exports = PageView.extend({
 
     },
 
-    navigateView: function() {
-        app.navigate('/dispenseManager/viewCodes/' + this.productId);
+    toViewCodes : function() {
+        app.navigate('/dispenseManager/viewCodes/' + this.model.productId);
     },
+
+    toProductPage: function() {
+        app.navigate('/dispenseManager/productPage/' + this.model.productId);
+    },
+
+    toEditProduct : function() {
+        app.navigate('/dispenseManager/editProduct/' + this.model.productId);
+    }
 
 });

@@ -24,7 +24,10 @@ module.exports = PageView.extend({
     },
 
     keyboardShortcuts : {
-        'escape':'returnNavigate'
+        'escape':'returnNavigate',
+        'q': 'toViewCodes',
+        'w': 'toAddCodes',
+        'e': 'toProductPage'
     },
 
     subviews: {
@@ -94,4 +97,16 @@ module.exports = PageView.extend({
                 }
             });
     },
+
+    toViewCodes : function() {
+        app.navigate('/dispenseManager/viewCodes/' + this.model.productId);
+    },
+
+    toAddCodes : function() {
+        app.navigate('/dispenseManager/addCodes/' + this.model.productId);
+    },
+
+    toProductPage: function() {
+        app.navigate('/dispenseManager/productPage/' + this.model.productId);
+    }
 });

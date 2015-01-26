@@ -1,19 +1,17 @@
 section.page.request-code
   div.prompt
-  h4 Add Codes: 
+  h4 Available Codes: 
     h4(data-hook="title")
   div.btn-group.btn-group-lg.btn-group-justified(role="group" aria-label="Justified button group") 
     div.btn-group(role="group")
-        button.btn.btn-default.viewCodes View Codes
+        button.btn.btn-default.viewCodes Product Page
             span.label.label-primary.pull-left Q
     div.btn-group(role="group")
-        button.btn.btn-default.addCodes Product Page
+        button.btn.btn-default.addCodes Add Codes
             span.label.label-primary.pull-left W
     div.btn-group(role="group") 
         button.btn.btn-default.editProduct Edit Product
             span.label.label-primary.pull-left E
 
-  form(data-hook="addCodesForm")
-    fieldset(data-hook="field-container")
-    .buttons
-      button.btn(data-hook="reset", type="submit") Add Codes
+  ul.list-group(data-hook="availableCodes-list")
+
