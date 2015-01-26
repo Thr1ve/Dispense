@@ -5,6 +5,8 @@ node_modules/*
 
 README.html
 
+*/client/templates.js
+
 *-debug.log
 
 .jshintrc
