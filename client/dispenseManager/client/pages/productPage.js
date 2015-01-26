@@ -26,9 +26,9 @@ module.exports = PageView.extend({
 
     keyboardShortcuts : {
          'escape':'returnNavigate',
-         'alt + q': 'toViewCodes',
-         'alt + w': 'toAddCodes',
-         'alt + e': 'toEditProduct'
+         'alt + 1': 'toViewCodes',
+         'alt + 2': 'toAddCodes',
+         'alt + 3': 'toEditProduct'
     },
 
     initialize: function() {
