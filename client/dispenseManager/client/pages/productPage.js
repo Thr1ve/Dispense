@@ -1,6 +1,5 @@
 var PageView = require('./base');
 var templates = require('../templates');
-// var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Product Page");
 
@@ -33,16 +32,9 @@ module.exports = PageView.extend({
 
         PageView.prototype.initialize.apply(this);
 
-        log('Initializing in the product page.');
-
         var self = this;
-
-        //if we don't have a model attached yet...
-        if (!this.model) {
-
-            log('Model not found. Fetching model with id: ' + this.productId + '...');
-
-            //... then search for the model with the product id...
+        
+            //search for the model with the product id...
             app.products.getOrFetch(this.productId, {
                 all: true
             }, function(err, model) {
@@ -54,10 +46,6 @@ module.exports = PageView.extend({
                     log('...found Model!', model);
                 }
             });
-        } else {
-            //otherwise, let us know that we already had a model
-            log('The Model was found!', this.model);
-        }
     },
 
     toViewCodes : function() {

@@ -30,6 +30,7 @@ module.exports = View.extend({
         this.registerKeyboardShortcuts(this.pageTitle);
 
     },
+    
     // register keyboard handlers
     registerKeyboardShortcuts: function () {
 
@@ -70,11 +71,7 @@ module.exports = View.extend({
         else if( contains ){
             console.log(this.query('.escapePrompt').classList);
             this.escapeKeyBuffer = 0;
-            app.navigate('/dispenseApp');
-            //this makes it so codeReceived page is not recorded
-            //in history...change this if/when we figure out way to
-            //better manage the codes the user has requested
-            // app.redirectTo('/dispenseApp');
+            app.navigate('/dispenseManager');
         }
         else{
             escapeKeyBuffer = 0;

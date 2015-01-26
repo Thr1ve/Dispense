@@ -62,46 +62,18 @@ module.exports = PageView.extend({
 
         var self = this;
 
-        if (!this.model) {
-            log('Model not found. Fetching model with id: ' + this.productId + '...');
+        app.products.getOrFetch(this.productId, {
+            all: true
+        }, function(err, model) {
+            if (err) {
+                log(err);
+            } else {
+                log('...found Model!', model);
 
-            app.products.getOrFetch(this.productId, {
-                all: true
-            }, function(err, model) {
-                if (err) {
-                    log(err);
-                } else {
-                    log('...found Model!', model);
-
-                    self.model = model;
-                }
-            });
+                self.model = model;
+            }
+        });
             
-            app.availableCodes.getOrFetch(this.productId, {
-                all: true
-            }, function(err, model) {
-                if (err) {
-                    log(err);
-                } else {
-                    log('...found Codes!', model);
-
-                    self.availableCodes = model;
-                }
-            });
-        } else {
-            log('The Models or Codes were found!');
-            app.availableCodes.getOrFetch(self.productId, {
-                all: true
-            }, function(err, model) {
-                if (err) {
-                    log(err);
-                } else {
-                    log('...found Codes!', model);
-
-                    self.availableCodes = model;
-                }
-            });
-        }
     },
 
     addCodes: function(data) {
@@ -138,7 +110,7 @@ module.exports = PageView.extend({
     },
 
     navigateView: function() {
-        app.navigate('/dispenseManager/productStatus/' + this.model.productId);
+        app.navigate('/dispenseManager/viewCodes/' + this.productId);
     },
 
 });

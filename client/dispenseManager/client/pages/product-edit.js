@@ -81,11 +81,7 @@ module.exports = PageView.extend({
 
         var self = this;
 
-        if (!this.model) {
-
-            log('Model not found. Fetching model with id: ' + this.productId + '...');
-
-            //... then search for the model with the product id...
+            //search for the model with the product id...
             app.products.getOrFetch(this.productId, {
                 all: true
             }, function(err, model) {
@@ -97,9 +93,5 @@ module.exports = PageView.extend({
                     log('...found Model!', model);
                 }
             });
-        } else {
-            //otherwise, let us know that we already had a model
-            log('The Model was found!', this.model);
-        }
     },
 });

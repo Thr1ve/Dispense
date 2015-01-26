@@ -27,10 +27,12 @@ module.exports = Router.extend({
 
     // ------- ROUTE HANDLERS ---------
     home: function() {
+        log('Routing to Home Page');
 
         //not sure if I want this here...this
         //resets displayed products on home page
         app.user.clear();
+        app.availableCodes.reset();
 
         this.trigger('page', new HomePage({
 
@@ -41,54 +43,47 @@ module.exports = Router.extend({
     },
 
     productPage : function(id){
-
-        var findModel = app.products.get(id);
+        log('Routing to Product Page');
 
         this.trigger('page', new ProductPage({
 
-            model: findModel,
             productId: id
 
         }));
     },
 
     viewCodes: function(id) {
-
-        var findModel = app.products.get(id);
+        log('Routing to View Codes Page');
 
         this.trigger('page', new ViewCodesPage({
 
-            model: findModel,
             productId: id
 
         }));
     },
 
     addCodes : function(id) {
-
-        var findModel = app.products.get(id);
+        log('Routing to Add Codes Page');
 
         this.trigger('page', new AddCodesPage({
 
-            model: findModel,
             productId: id
 
         }));
     },
 
     addProduct : function() {
+        log('Routing to Add Product Page');
 
          this.trigger('page', new AddProductPage());
 
     },
 
     editProduct : function(id){
-
-        var findModel = app.products.get(id);
+        log('Routing to Eidt Product Page');
 
         this.trigger('page', new EditProductPage({
 
-            model: findModel,
             productId: id
 
         }));
@@ -96,6 +91,7 @@ module.exports = Router.extend({
     },
 
     catchAll: function() {
+        log('Catch-All called because route unknown. Routing back to Home Page');
 
         this.redirectTo('dispenseManager');
 
