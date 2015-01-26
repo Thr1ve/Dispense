@@ -107,6 +107,7 @@ module.exports = PageView.extend({
     },
 
     toProductPage: function() {
+        e.preventDefault();
         app.navigate('/dispenseManager/productPage/' + this.model.productId);
     }
 });

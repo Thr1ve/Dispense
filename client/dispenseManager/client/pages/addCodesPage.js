@@ -121,7 +121,8 @@ module.exports = PageView.extend({
         app.navigate('/dispenseManager/productPage/' + this.model.productId);
     },
 
-    toEditProduct : function() {
+    toEditProduct : function(e) {
+        e.preventDefault();
         app.navigate('/dispenseManager/editProduct/' + this.model.productId);
     }
 

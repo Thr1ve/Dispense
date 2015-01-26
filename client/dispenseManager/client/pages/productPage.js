@@ -60,6 +60,7 @@ module.exports = PageView.extend({
     },
 
     toEditProduct : function() {
+        e.preventDefault();
         app.navigate('/dispenseManager/editProduct/' + this.model.productId);
     }
 
