@@ -23,14 +23,18 @@ module.exports = PageView.extend({
     },
 
     events: {
-        'click .navigateAdd': 'navigateAdd'
+        'click .productPage': 'toProductPage',
+        'click .editProduct': 'toEditProduct',
+        'click .addCodes': 'toAddCodes',
+        'click .viewCodes': 'toViewCodes'
     },
 
     keyboardShortcuts : {
         'escape':'returnNavigate',
-         'alt + 1': 'toProductPage',
-         'alt + 2': 'toAddCodes',
-         'alt + 3': 'toEditProduct'
+        'alt + 1': 'toProductPage',
+        'alt + 2': 'toEditProduct',
+        'alt + 3': 'toAddCodes',
+        'alt + 4': 'toViewCodes'
     },
 
     initialize: function() {
@@ -72,15 +76,4 @@ module.exports = PageView.extend({
         });
     },
 
-    toAddCodes: function() {
-        app.navigate('/dispenseManager/addCodes/' + this.model.productId);
-    },
-
-    toProductPage: function() {
-        app.navigate('/dispenseManager/productPage/' + this.model.productId);
-    },
-
-    toEditProduct : function() {
-        app.navigate('/dispenseManager/editProduct/' + this.model.productId);
-    }
 });

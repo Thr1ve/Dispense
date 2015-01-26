@@ -23,11 +23,19 @@ module.exports = PageView.extend({
         'model.title': '[data-hook~=title]'
     },
 
+    events: {
+        'click .productPage': 'toProductPage',
+        'click .editProduct': 'toEditProduct',
+        'click .addCodes': 'toAddCodes',
+        'click .viewCodes': 'toViewCodes'
+    },
+
     keyboardShortcuts : {
         'escape':'returnNavigate',
-        'alt + 1': 'toViewCodes',
-        'alt + 2': 'toAddCodes',
-        'alt + 3': 'toProductPage'
+        'alt + 1': 'toProductPage',
+        'alt + 2': 'toEditProduct',
+        'alt + 3': 'toAddCodes',
+        'alt + 4': 'toViewCodes'
     },
 
     subviews: {
@@ -98,15 +106,4 @@ module.exports = PageView.extend({
             });
     },
 
-    toViewCodes : function() {
-        app.navigate('/dispenseManager/viewCodes/' + this.model.productId);
-    },
-
-    toAddCodes : function() {
-        app.navigate('/dispenseManager/addCodes/' + this.model.productId);
-    },
-
-    toProductPage: function() {
-        app.navigate('/dispenseManager/productPage/' + this.model.productId);
-    }
 });

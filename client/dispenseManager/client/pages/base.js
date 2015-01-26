@@ -77,6 +77,22 @@ module.exports = View.extend({
             escapeKeyBuffer = 0;
             this.escapeAlert.reset();
         }
+    },
+    
+    toProductPage: function() {
+        app.navigate('/dispenseManager/productPage/' + this.model.productId);
+    },
+
+    toViewCodes : function() {
+        app.navigate('/dispenseManager/viewCodes/' + this.model.productId);
+    },
+
+    toAddCodes : function() {
+        app.navigate('/dispenseManager/addCodes/' + this.model.productId);
+    },
+
+    toEditProduct : function() {
+        app.navigate('/dispenseManager/editProduct/' + this.model.productId);
     }
 
 });
