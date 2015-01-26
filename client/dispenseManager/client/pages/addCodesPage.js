@@ -29,9 +29,9 @@ module.exports = PageView.extend({
 
     keyboardShortcuts : {
         'escape':'returnNavigate',
-        'q': 'toViewCodes',
-        'w': 'toProductPage',
-        'e': 'toEditProduct'
+        'alt + q': 'toViewCodes',
+        'alt + w': 'toProductPage',
+        'alt + e': 'toEditProduct'
     },
 
     subviews: {
@@ -101,6 +101,7 @@ module.exports = PageView.extend({
             success: function(model, response) {
                 alert('codes added');
                 app.availableCodes.set(response.productId, model);
+                self.toViewCodes();
             },
 
             error: function(model, response) {

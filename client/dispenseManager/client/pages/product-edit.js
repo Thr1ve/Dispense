@@ -25,9 +25,9 @@ module.exports = PageView.extend({
 
     keyboardShortcuts : {
         'escape':'returnNavigate',
-        'q': 'toViewCodes',
-        'w': 'toAddCodes',
-        'e': 'toProductPage'
+        'alt + q': 'toViewCodes',
+        'alt + w': 'toAddCodes',
+        'alt + e': 'toProductPage'
     },
 
     subviews: {
@@ -67,8 +67,8 @@ module.exports = PageView.extend({
                             success: function(model , resp) {
 
                                 log(model);
-
-                                app.navigate('/dispenseManager/modifyProduct/' + model.productId);
+                                alert('Edit Successful');
+                                app.navigate('/dispenseManager/productPage/' + model.productId);
 
                             }
                         });

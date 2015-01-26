@@ -47,7 +47,7 @@ module.exports = PageView.extend({
 
                                 log(model);
 
-                                app.navigate('/dispenseManager/modifyProduct/' + model.productId);
+                                app.navigate('/dispenseManager/addCodes/' + model.productId);
 
                             }
                         });
