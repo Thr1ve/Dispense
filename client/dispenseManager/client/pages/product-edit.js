@@ -77,8 +77,7 @@ module.exports = PageView.extend({
 
     initialize : function() {
 
-        this.escapeKeyBuffer = 0;
-        this.registerKeyboardShortcuts('addCodesPage');
+        PageView.prototype.initialize.apply(this);
 
         var self = this;
 
@@ -102,5 +101,5 @@ module.exports = PageView.extend({
             //otherwise, let us know that we already had a model
             log('The Model was found!', this.model);
         }
-    }
+    },
 });

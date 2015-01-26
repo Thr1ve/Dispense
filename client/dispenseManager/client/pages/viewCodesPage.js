@@ -2,12 +2,14 @@
 var PageView = require('./base');
 var templates = require('../templates');
 var EscapeTrigger = require('../views/escapeTriggerAC.js');
+var View = require('ampersand-view');
 
 var log = require('bows')("Product Status Page");
 
 //later, this should simply hold smaller pieces(views) such as "available codes"
 //"current trending issues" "server status for product (if it is service such as WileypLUS)"
 module.exports = PageView.extend({
+
     pageTitle: 'View Codes',
 
     template: templates.pages.productStatus,
@@ -21,11 +23,11 @@ module.exports = PageView.extend({
         'escape':'returnNavigate'
     },
 
-
+// this needs to be rewritten....too sloppy and delicate
     initialize: function() {
 
         this.escapeKeyBuffer = 0;
-        this.registerKeyboardShortcuts('viewCodesPage');
+        this.registerKeyboardShortcuts(this.pageTitle);
         this.escapeAlert = new EscapeTrigger({duration:1000});
 
         var self = this;
@@ -38,10 +40,7 @@ module.exports = PageView.extend({
                 if (err) {
                     log(err);
                 } else {
-                    log('...found Model!');
-                    log(model);
-                    log('\n');
-                    log('\n');
+                    log('...found Model!', model);
 
                     self.model = model;
                 }
@@ -52,16 +51,13 @@ module.exports = PageView.extend({
                 if (err) {
                     log(err);
                 } else {
-                    log('...found Codes!');
-                    log(model);
-                    log('\n');
-                    log('\n');
+                    log('...found Codes!', model);
 
                     self.availableCodes = model;
                     self.renderSubview(self.escapeAlert, '.prompt');
                     for(var i = 0; i < self.availableCodes.codes.length ;i++){
                         self.renderSubview(
-                            new PageView({
+                            new View({
                                 template: '<li class= "list-group-item container-fluid">item '+ self.availableCodes.codes[i] + '</li>'
                             }),
                             self.queryByHook('availableCodes-list')
@@ -71,23 +67,21 @@ module.exports = PageView.extend({
             });
         } else {
             log('The Models or Codes were found!');
-            app.availableCodes.getOrFetch(this.productId, {
+            log(self.productId);
+            app.availableCodes.getOrFetch(self.productId, {
                 all: true
             }, function(err, model) {
                 if (err) {
                     log(err);
                 } else {
-                    log('...found Codes!');
-                    log(model);
-                    log('\n');
-                    log('\n');
+                    log('...found Codes!', model);
 
-                    self.availableCodes= model;
+                    self.availableCodes = model;
                     self.renderWithTemplate();
                     self.renderSubview(self.escapeAlert, '.prompt');
                     for(var i = 0; i < self.availableCodes.codes.length ;i++){
                         self.renderSubview(
-                            new PageView({
+                            new View({
                                 template: '<li class= "list-group-item container-fluid">'+ self.availableCodes.codes[i] + '</li>'
                             }),
                             self.queryByHook('availableCodes-list')
@@ -106,7 +100,6 @@ module.exports = PageView.extend({
     events: {
         'click .navigateAdd': 'navigateAdd'
     },
-
 
     navigateAdd: function() {
         app.navigate('/dispenseManager/modifyProduct/' + this.model.productId);

@@ -58,10 +58,10 @@ module.exports = PageView.extend({
 
     initialize: function() {
 
-        this.escapeKeyBuffer = 0;
-        this.registerKeyboardShortcuts('addCodesPage');
-        
+        PageView.prototype.initialize.call(this);
+
         var self = this;
+
         if (!this.model) {
             log('Model not found. Fetching model with id: ' + this.productId + '...');
 
@@ -76,6 +76,7 @@ module.exports = PageView.extend({
                     self.model = model;
                 }
             });
+            
             app.availableCodes.getOrFetch(this.productId, {
                 all: true
             }, function(err, model) {

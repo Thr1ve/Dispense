@@ -4,12 +4,32 @@ var View = require('ampersand-view');
 //var ViewSwitcher = require('ampersand-view-switcher');
 var _ = require('underscore');
 var key = require('keymaster');
+var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Base View");
 
 key.filter = function() {return true;};
 
 module.exports = View.extend({
+
+    //this is only helping product page ???
+    subviews: {
+        escapeAlert: {
+            container : '.prompt',
+            prepareView: function(el) {
+                return new EscapeTrigger({duration:1000, el:el}) ;
+            }
+        },
+    },
+
+    initialize: function() {
+
+        log('Initializing in the base class');
+
+        this.escapeKeyBuffer = 0;
+        this.registerKeyboardShortcuts(this.pageTitle);
+
+    },
     // register keyboard handlers
     registerKeyboardShortcuts: function () {
 

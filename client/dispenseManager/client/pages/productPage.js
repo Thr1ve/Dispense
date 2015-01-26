@@ -1,6 +1,6 @@
 var PageView = require('./base');
 var templates = require('../templates');
-var EscapeTrigger = require('../views/escapeTriggerAC.js');
+// var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Product Page");
 
@@ -31,9 +31,9 @@ module.exports = PageView.extend({
 
     initialize: function() {
 
-        this.escapeAlert = new EscapeTrigger({duration:1000});
-        this.escapeKeyBuffer = 0;
-        this.registerKeyboardShortcuts('productPage');
+        PageView.prototype.initialize.apply(this);
+
+        log('Initializing in the product page.');
 
         var self = this;
 
@@ -60,17 +60,12 @@ module.exports = PageView.extend({
         }
     },
 
-    render : function() {
-        this.renderWithTemplate();
-        this.renderSubview(this.escapeAlert, '.prompt');
-    },
-
     toViewCodes : function() {
-        app.navigate('/dispenseManager/productStatus/' + this.model.productId);
+        app.navigate('/dispenseManager/viewCodes/' + this.model.productId);
     },
 
     toAddCodes : function() {
-        app.navigate('/dispenseManager/modifyProduct/' + this.model.productId);
+        app.navigate('/dispenseManager/addCodes/' + this.model.productId);
     },
 
     toEditProduct : function() {

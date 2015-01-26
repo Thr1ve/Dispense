@@ -3,8 +3,8 @@ var Router = require('ampersand-router');
 
 //pages
 var HomePage = require('./pages/homeSearch');
-var ProductStatusPage = require('./pages/productStatus');
-var ModifyProductPage = require('./pages/addCodesPage');
+var ViewCodesPage = require('./pages/viewCodesPage');
+var AddCodesPage = require('./pages/addCodesPage');
 var AddProductPage = require('./pages/addProduct');
 var ProductPage = require('./pages/productPage');
 var EditProductPage = require('./pages/product-edit.js');
@@ -17,8 +17,8 @@ module.exports = Router.extend({
 
         'dispenseManager': 'home',
         'dispenseManager/productPage/:id': 'productPage',
-        'dispenseManager/productStatus/:id': 'productStatus',
-        'dispenseManager/modifyProduct/:id': 'modifyProduct',
+        'dispenseManager/viewCodes/:id': 'viewCodes',
+        'dispenseManager/addCodes/:id': 'addCodes',
         'dispenseManager/addProduct': 'addProduct',
         'dispenseManager/editProduct/:id': 'editProduct',
         '(*path)': 'catchAll'
@@ -52,11 +52,11 @@ module.exports = Router.extend({
         }));
     },
 
-    productStatus: function(id) {
+    viewCodes: function(id) {
 
         var findModel = app.products.get(id);
 
-        this.trigger('page', new ProductStatusPage({
+        this.trigger('page', new ViewCodesPage({
 
             model: findModel,
             productId: id
@@ -64,11 +64,11 @@ module.exports = Router.extend({
         }));
     },
 
-    modifyProduct : function(id) {
+    addCodes : function(id) {
 
         var findModel = app.products.get(id);
 
-        this.trigger('page', new ModifyProductPage({
+        this.trigger('page', new AddCodesPage({
 
             model: findModel,
             productId: id

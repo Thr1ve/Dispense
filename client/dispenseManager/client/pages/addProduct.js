@@ -58,7 +58,6 @@ module.exports = PageView.extend({
     },
 
     initialize : function() {
-        this.escapeKeyBuffer = 0;
-        this.registerKeyboardShortcuts('addCodesPage');
+        PageView.prototype.initialize.call(this);
     }
 });
