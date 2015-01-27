@@ -9,9 +9,8 @@ var User     = require('./models/user-state');
 var Products = require('./models/products');
 var Codes    = require('./models/availableCodes-collection');
 var key = require('keymaster');
-
+  
 module.exports = {
-
     //global keybinds
     globalKeys : {
         // 'key' : 'function'

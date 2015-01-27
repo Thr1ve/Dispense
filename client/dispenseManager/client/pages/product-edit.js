@@ -1,4 +1,4 @@
-var PageView = require('./base');
+var PageView = require('./productPagesBase');
 var templates = require('../templates');
 var AddProductForm = require('../forms/addProductForm');
 var EscapeTrigger = require('../views/escapeTriggerAC.js');
@@ -13,30 +13,6 @@ module.exports = PageView.extend({
     pageTitle: 'Edit Product',
 
     template: templates.pages.editProduct,
-
-    props: {
-        productId: 'string',
-        availableCodes: 'model'
-    },
-
-    bindings: {
-        'model.title': '[data-hook~=title]'
-    },
-
-    events: {
-        'click .productPage': 'toProductPage',
-        'click .editProduct': 'toEditProduct',
-        'click .addCodes': 'toAddCodes',
-        'click .viewCodes': 'toViewCodes'
-    },
-
-    keyboardShortcuts : {
-        'escape':'returnNavigate',
-        'alt + 1': 'toProductPage',
-        'alt + 2': 'toEditProduct',
-        'alt + 3': 'toAddCodes',
-        'alt + 4': 'toViewCodes'
-    },
 
     subviews: {
 
@@ -84,26 +60,6 @@ module.exports = PageView.extend({
                 });
             }
         }
-    },
-
-    initialize : function() {
-
-        PageView.prototype.initialize.apply(this);
-
-        var self = this;
-
-            //search for the model with the product id...
-            app.products.getOrFetch(this.productId, {
-                all: true
-            }, function(err, model) {
-                if (err) {
-                    log(err);
-                } else {
-                    //... and add it
-                    self.model = model;
-                    log('...found Model!', model);
-                }
-            });
-    },
+    }
 
 });

@@ -1,5 +1,5 @@
 /*global app*/
-var PageView = require('./base');
+var PageView = require('./productPagesBase');
 var templates = require('../templates');
 var View = require('ampersand-view');
 
@@ -13,47 +13,11 @@ module.exports = PageView.extend({
 
     template: templates.pages.viewCodes,
 
-    props: {
-        productId: 'string',
-        availableCodes: 'model'
-    },
-
-    bindings : {
-        'model.title': '[data-hook~=title]'
-    },
-
-    events: {
-        'click .productPage': 'toProductPage',
-        'click .editProduct': 'toEditProduct',
-        'click .addCodes': 'toAddCodes',
-        'click .viewCodes': 'toViewCodes'
-    },
-
-    keyboardShortcuts : {
-        'escape':'returnNavigate',
-        'alt + 1': 'toProductPage',
-        'alt + 2': 'toEditProduct',
-        'alt + 3': 'toAddCodes',
-        'alt + 4': 'toViewCodes'
-    },
-
     initialize: function() {
 
         PageView.prototype.initialize.apply(this);
 
         var self = this;
-
-        app.products.getOrFetch(this.productId, {
-            all: true
-        }, function(err, model) {
-            if (err) {
-                log(err);
-            } else {
-                log('...found Model!', model);
-
-                self.model = model;
-            }
-        });
 
         app.availableCodes.getOrFetch(this.productId, {
             all: true
