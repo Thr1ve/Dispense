@@ -1,4 +1,5 @@
 var PageView = require('./base');
+var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Product Pages Base");
 
@@ -28,7 +29,19 @@ module.exports = PageView.extend({
         'alt + 4': 'toViewCodes'
     },
 
+    subviews: {
+
+        escapeAlert: {
+            container : '.prompt',
+            prepareView: function(el) {
+                return new EscapeTrigger({duration:1000, el:el}) ;
+            }
+        }
+    },
+
     initialize: function() {
+
+        log('Initializing in the Product Pages Base class');
 
         PageView.prototype.initialize.call(this);
 
@@ -47,7 +60,7 @@ module.exports = PageView.extend({
         });
             
     },
-    
+
     toProductPage: function() {
         app.navigate('/dispenseManager/productPage/' + this.model.productId);
     },

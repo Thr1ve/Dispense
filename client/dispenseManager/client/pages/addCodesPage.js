@@ -3,7 +3,6 @@ var PageView = require('./productPagesBase');
 var templates = require('../templates');
 var AddCodesRequest = require('../models/addCodes.js');
 var AddCodesForm = require('../forms/addCodesForm.js');
-var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Modify Product Page");
 
@@ -14,13 +13,6 @@ module.exports = PageView.extend({
     pageTitle: 'Add Codes',
 
     subviews: {
-
-        escapeAlert: {
-            container : '.prompt',
-            prepareView: function(el) {
-                return new EscapeTrigger({duration:1000, el:el}) ;
-            }
-        },
 
         form: {
 

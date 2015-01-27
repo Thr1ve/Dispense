@@ -1,12 +1,8 @@
 var PageView = require('./productPagesBase');
 var templates = require('../templates');
 var AddProductForm = require('../forms/addProductForm');
-var EscapeTrigger = require('../views/escapeTriggerAC.js');
 
 var log = require('bows')("Edit Product");
-
-//need to assign model...
-//
 
 module.exports = PageView.extend({
 
@@ -15,13 +11,6 @@ module.exports = PageView.extend({
     template: templates.pages.editProduct,
 
     subviews: {
-
-        escapeAlert: {
-            container : '.prompt',
-            prepareView: function(el) {
-                return new EscapeTrigger({duration:1000, el:el}) ;
-            }
-        },
 
         form: {
 
