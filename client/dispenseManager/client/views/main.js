@@ -9,8 +9,6 @@ var _ = require('underscore');
 var domify = require('domify');
 var dom = require('ampersand-dom');
 var templates = require('../templates');
-var setFavicon = require('favicon-setter');
-
 
 module.exports = View.extend({
 
@@ -47,8 +45,6 @@ module.exports = View.extend({
             }
         });
 
-        // setting a favicon for fun (note, it's dynamic)
-        setFavicon('/images/ampersand.png');
         return this;
     },
 

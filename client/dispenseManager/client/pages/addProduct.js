@@ -14,7 +14,6 @@ module.exports = PageView.extend({
     keyboardShortcuts : {
         'escape':'returnNavigate'
     },
-    
     subviews: {
 
         escapeAlert: {

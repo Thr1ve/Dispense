@@ -5,8 +5,6 @@ var View = require('ampersand-view');
 
 var log = require('bows')("Product Status Page");
 
-//later, this should simply hold smaller pieces(views) such as "available codes"
-//"current trending issues" "server status for product (if it is service such as WileypLUS)"
 module.exports = PageView.extend({
 
     pageTitle: 'View Codes',

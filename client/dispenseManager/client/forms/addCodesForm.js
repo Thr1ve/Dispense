@@ -19,13 +19,16 @@ var ExtendedInput = InputView.extend({
     },
 
     format: function(input) {
+				//console.log(input);
         var formatted = input
             //remove spaces
-            .replace(/\s/g,'')
+            //.replace(/\s/g,'')
             //remove quotes
-            .replace(/['"]/g,'')
+            //.replace(/['"]/g,'')
             //separate by commas
-            .split(',')
+            //.split(',')
+						//separate by newline
+						.split('\n')
             //remove empty/null/undefined values from array
             .filter(function(e){return e;});
         return formatted;
@@ -40,7 +43,7 @@ module.exports = FormView.extend({
             new ExtendedInput({
                 // label : 'Add Codes here',
                 name : 'newCodes',
-                placeholder: 'Add a comma-separated list of codes here (spaces and quotes will be removed)...',
+                placeholder: 'Add a new-line separated list of codes here...',
                 parent : this
             })
 

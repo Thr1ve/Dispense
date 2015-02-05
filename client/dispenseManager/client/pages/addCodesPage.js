@@ -1,8 +1,8 @@
 /*global app*/
-var PageView = require('./productPagesBase');
-var templates = require('../templates');
+var PageView        = require('./productPagesBase');
+var templates       = require('../templates');
 var AddCodesRequest = require('../models/addCodes.js');
-var AddCodesForm = require('../forms/addCodesForm.js');
+var AddCodesForm    = require('../forms/addCodesForm.js');
 
 var log = require('bows')("Modify Product Page");
 

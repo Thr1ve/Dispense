@@ -19,7 +19,7 @@ module.exports = View.extend({
         this.registerKeyboardShortcuts(this.pageTitle);
 
     },
-    
+
     // register keyboard handlers
     registerKeyboardShortcuts: function () {
 
@@ -67,5 +67,5 @@ module.exports = View.extend({
             this.escapeAlert.reset();
         }
     }
-    
+
 });
