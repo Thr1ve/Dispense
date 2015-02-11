@@ -17,9 +17,6 @@
     }
   },
   "files": {
-    "loopback#static": {
-      "params": "$!../client/socketioTest/"
-    }
   },
   "final": {
     "loopback#urlNotFound": {}

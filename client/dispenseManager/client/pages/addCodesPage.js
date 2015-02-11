@@ -19,6 +19,7 @@ module.exports = PageView.extend({
             container: '[data-hook~=addCodesForm]',
 
             prepareView: function(el) {
+                console.log(this);
                 var self = this;
                 return new AddCodesForm({
                     el: el,

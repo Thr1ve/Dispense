@@ -27,15 +27,15 @@
     "public": false
   },
   "product": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "request": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   },
   "availableCodes": {
-    "dataSource": "mysqlDs",
+    "dataSource": "db",
     "public": true
   }
 }

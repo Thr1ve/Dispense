@@ -2,7 +2,7 @@ var productsJSON = require('../products.json');
 var _ = require('underscore');
 
 module.exports = function(app) {
-    app.dataSources.mysqlDs.automigrate('product', function(err) {
+    app.dataSources.db.automigrate('product', function(err) {
         if (err) throw err;
 
         productsJSON.products.forEach(function(val){
@@ -22,7 +22,7 @@ module.exports = function(app) {
 
     });
 
-    app.dataSources.mysqlDs.automigrate('availableCodes', function(err) {
+    app.dataSources.db.automigrate('availableCodes', function(err) {
         if(!err) {
 
             productsJSON.products.forEach(function(val){
@@ -44,7 +44,7 @@ module.exports = function(app) {
         }
     });
 
-    app.dataSources.mysqlDs.automigrate('request', function(err) {
+    app.dataSources.db.automigrate('request', function(err) {
         if(!err) {
             console.log('request table created');
         }
