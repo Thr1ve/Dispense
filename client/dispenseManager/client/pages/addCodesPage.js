@@ -3,6 +3,7 @@ var PageView        = require('./productPagesBase');
 var templates       = require('../templates');
 var AddCodesRequest = require('../models/addCodes.js');
 var AddCodesForm    = require('../forms/addCodesForm.js');
+var extend = require('amp-extend');
 
 var log = require('bows')("Modify Product Page");
 
@@ -12,7 +13,7 @@ module.exports = PageView.extend({
 
     pageTitle: 'Add Codes',
 
-    subviews: {
+    subviews: extend( PageView.prototype.subviews, {
 
         form: {
 
@@ -29,7 +30,7 @@ module.exports = PageView.extend({
                 });
             }
         }
-    },
+    }),
 
     addCodes: function(data) {
 
