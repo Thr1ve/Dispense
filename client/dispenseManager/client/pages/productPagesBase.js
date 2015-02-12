@@ -34,6 +34,7 @@ module.exports = PageView.extend({
         escapeAlert: {
             container : '.prompt',
             prepareView: function(el) {
+                log('Creating .escapePrompt!');
                 return new EscapeTrigger({duration:1000, el:el}) ;
             }
         }
@@ -42,10 +43,10 @@ module.exports = PageView.extend({
     initialize: function() {
 
         log('Initializing in the Product Pages Base class');
+        var self = this;
 
         PageView.prototype.initialize.call(this);
-
-        var self = this;
+        log(this);
 
         app.products.getOrFetch(this.productId, {
             all: true
