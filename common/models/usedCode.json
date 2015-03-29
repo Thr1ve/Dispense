@@ -15,7 +15,7 @@
       "type": "string"
     },
     "productId": {
-      "type": "string",
+      "type": "number",
       "required": true
     },
     "representative": {

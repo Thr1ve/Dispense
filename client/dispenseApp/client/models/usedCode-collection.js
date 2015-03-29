@@ -1,10 +1,10 @@
 var AmpCollection = require('ampersand-rest-collection');
-var request = require('./request');
+var request = require('./usedCode');
 
 //this holds the requests for codes that the user
 //has received
 
 module.exports = AmpCollection.extend({
-    model: request,
+    model: usedCode,
     url: '/api/request-collection'
 });

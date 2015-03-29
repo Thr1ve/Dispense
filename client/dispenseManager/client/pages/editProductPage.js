@@ -12,8 +12,8 @@ module.exports = PageView.extend({
     template: templates.pages.editProduct,
 
     subviews: extend( PageView.prototype.subviews, {
-        form: {
-            container: 'form',
+        editForm: {
+            container: '[data-hook~="add-product-form"]',
             waitFor: 'model',
             //here, we set up and render the form
             prepareView: function(el) {
