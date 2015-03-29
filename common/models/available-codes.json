@@ -5,19 +5,19 @@
   "idInjection": false,
   "dataSource": "mysqlDs",
   "properties": {
-    "codes": {
-      "type": [
-        "string"
-      ]
-    },
-    "productId": {
+    "code": {
       "type": "string",
-      "id": true,
       "required": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "product": {
+        "type": "belongsTo",
+        "model": "product",
+        "foreignKey": "productId"
+    }
+  },
   "acls": [],
   "methods": []
 }

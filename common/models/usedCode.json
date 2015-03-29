@@ -1,6 +1,6 @@
 {
-  "name": "request",
-  "plural": "request-collection",
+  "name": "usedCode",
+  "plural": "usedCode-collection",
   "base": "PersistedModel",
   "idInjection": true,
   "dataSource": "mysqlDs",

@@ -1,12 +1,12 @@
 var _ = require('underscore');
 var app = require('../../server/server');
 
-module.exports = function(Request) {
+module.exports = function(UsedCode) {
 
     // this is the logic for taking in a request, removing an access code,
     // and sending the code to both the client and the used code table 
 
-    Request.process= function(requestObject, cb){
+    UsedCode.process= function(requestObject, cb){
 
         var response = requestObject.instance;
         //grab the object representing the SQL data
@@ -37,9 +37,9 @@ module.exports = function(Request) {
         });
     };
 
-    Request.observe('before save',function(modelInstance, next) {
+    UsedCode.observe('before save',function(modelInstance, next) {
 
-        Request.process(modelInstance, function(err, res){
+        UsedCode.process(modelInstance, function(err, res){
             modelInstance = res;
             next();
         });
@@ -48,7 +48,7 @@ module.exports = function(Request) {
 
     //register our "process" function as a remote method
     //available via our web api
-    Request.remoteMethod(
+    UsedCode.remoteMethod(
         'process',
         {
           accepts: {arg: 'requestObject', type: 'Object'},

@@ -39,9 +39,8 @@ var ExtendedInput = InputView.extend({
 module.exports = FormView.extend({
     fields: function () {
         return [
-
             new ExtendedInput({
-                // label : 'Add Codes here',
+                label : 'Add Codes here',
                 name : 'newCodes',
                 placeholder: 'Add a new-line separated list of codes here...',
                 parent : this

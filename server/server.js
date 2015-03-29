@@ -1,5 +1,4 @@
 var loopback = require('loopback');
-var ghost = require('ghost');
 var boot = require('loopback-boot');
 var path = require('path');
 var app = module.exports = loopback();
@@ -19,18 +18,9 @@ boot(app, __dirname);
 // var landing = require('path').resolve(__dirname, '../client/landing');
 
 // app.use(loopback.static(landing));
-
-var socketTest = require('path').resolve(__dirname, '../client/socketioTest');
-app.use('/chat', loopback.static(socketTest));
-
     // express = require('express'),
     // parentApp = express();
 
-ghost().then(function (ghostServer) {
-    app.use(ghostServer.config.paths.subdir, ghostServer.rootApp);
-
-    ghostServer.start(app);
-});
 
 ////////////////////////////////
 
@@ -44,20 +34,5 @@ app.start = function() {
 
 // start the server if `$ node server.js`
 if (require.main === module) {
-  //app.start();
-    app.io = require('socket.io')(app.start());
-    app.io.on('connection', function(socket){
-        console.log('a user connected');
-        socket.on('chat message', function(msg){
-            console.log('message: ' + msg);
-            app.io.emit('chat message', msg);
-        });
-        socket.on('new code', function(msg){
-            console.log('message: ' + msg);
-            app.io.emit('new code', msg);
-        });
-        socket.on('disconnect', function(){
-            console.log('user disconnected');
-        });
-    });
+  app.start();
 }

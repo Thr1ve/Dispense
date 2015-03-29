@@ -15,11 +15,12 @@ module.exports = PageView.extend({
 
     subviews: extend( PageView.prototype.subviews, {
 
-        form: {
+        addForm: {
 
             container: '[data-hook~=addCodesForm]',
 
             prepareView: function(el) {
+                console.log('PREPARING THE ADDCODES FORM');
                 console.log(this);
                 var self = this;
                 return new AddCodesForm({
@@ -54,7 +55,7 @@ module.exports = PageView.extend({
             success: function(model, response) {
                 alert('codes added');
                 app.availableCodes.set(response.productId, model);
-                self.toViewCodes();
+                self.toProductPage();
             },
 
             error: function(model, response) {

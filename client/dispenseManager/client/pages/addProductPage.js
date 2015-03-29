@@ -1,7 +1,7 @@
 var PageView = require('./base');
 var templates = require('../templates');
 var AddProductForm = require('../forms/addProductForm');
-var EscapeTrigger = require('../views/escapeTriggerAC.js');
+var EscapeTrigger = require('../views/escapeTriggerAlert.js');
 
 var log = require('bows')("Add Product");
 

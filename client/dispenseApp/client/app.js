@@ -7,7 +7,7 @@ var Router   = require('./router');
 var MainView = require('./views/main');
 var User     = require('./models/user-state');
 var Products = require('./models/products');
-var Code     = require('./models/request-collection');
+var Code     = require('./models/usedCode-collection');
 var key = require('keymaster');
 
 var socket = require('socket.io-client')();

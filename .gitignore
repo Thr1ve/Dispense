@@ -13,3 +13,5 @@ README.html
 .foreverignore
 
 .idea*
+
+*.todo

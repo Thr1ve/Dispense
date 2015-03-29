@@ -1,14 +1,15 @@
 /*global app, $*/
 
-var _        = require('underscore');
-var domReady = require('domready');
-// var config   = require('clientconfig');
-var Router   = require('./router');
-var MainView = require('./views/main');
-var User     = require('./models/user-state');
-var Products = require('./models/products');
-var Codes    = require('./models/availableCodes-collection');
-var key = require('keymaster');
+var _                   = require('underscore');
+var domReady            = require('domready');
+// var config           = require('clientconfig');
+var Router              = require('./router');
+var MainView            = require('./views/main');
+var User                = require('./models/user-state');
+var Products            = require('./models/products');
+var Codes               = require('./models/availableCodes-collection');
+var UsedCodeCollection = require('./models/usedCode-collection');
+var key                 = require('keymaster');
   
 module.exports = {
     //global keybinds
@@ -27,9 +28,10 @@ module.exports = {
         });
 
         // create our global empty collections for products and a received code
-        this.user           = new User();
-        this.products       = new Products();
-        this.availableCodes = new Codes();
+        this.user                = new User();
+        this.products            = new Products();
+        this.availableCodes      = new Codes();
+        this.usedCodeCollection = new UsedCodeCollection();
 
 
         // init our URL handlers and the history tracker

@@ -1,5 +1,5 @@
 var PageView = require('./base');
-var EscapeTrigger = require('../views/escapeTriggerAC.js');
+var EscapeTrigger = require('../views/escapeTriggerAlert.js');
 
 var log = require('bows')("Product Pages Base");
 
@@ -17,16 +17,14 @@ module.exports = PageView.extend({
     events: {
         'click .productPage': 'toProductPage',
         'click .editProduct': 'toEditProduct',
-        'click .addCodes': 'toAddCodes',
-        'click .viewCodes': 'toViewCodes'
+        'click .addCodes': 'toAddCodes'
     },
 
     keyboardShortcuts : {
         'escape':'returnNavigate',
         'alt + 1': 'toProductPage',
         'alt + 2': 'toEditProduct',
-        'alt + 3': 'toAddCodes',
-        'alt + 4': 'toViewCodes'
+        'alt + 3': 'toAddCodes'
     },
 
     subviews: {
@@ -64,11 +62,7 @@ module.exports = PageView.extend({
     toProductPage: function() {
         app.navigate('/dispenseManager/productPage/' + this.model.productId);
     },
-
-    toViewCodes : function() {
-        app.navigate('/dispenseManager/viewCodes/' + this.model.productId);
-    },
-
+    
     toAddCodes : function() {
         app.navigate('/dispenseManager/addCodes/' + this.model.productId);
     },

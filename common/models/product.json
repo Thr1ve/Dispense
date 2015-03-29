@@ -16,7 +16,7 @@
       "type": "string"
     },
     "productId": {
-      "type": "string",
+      "type": "number",
       "id": true,
       "required": true
     },
@@ -25,7 +25,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "availableCodes":{
+        "type": "hasMany",
+        "model": "availableCodes",
+        "foreignKey": "productId"
+    }
+    },
   "acls": [],
   "methods": []
 }
