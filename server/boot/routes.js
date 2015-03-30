@@ -70,12 +70,13 @@ module.exports = function(app) {
             libraries: [
             ],
             stylesheets: [
-                fixPath('client/dispenseApp/public/css/bootstrap.css'),
-                fixPath('client/dispenseApp/public/css/app.css')
+                // fixPath('client/dispenseApp/public/css/bootstrap.css'),
+                // fixPath('client/dispenseApp/public/css/app.css')
             ],
             browserify: {
                 debug: true,
                 transforms: [
+                    'reactify'
                 ]
             },
             beforeBuildJS: function () {
@@ -84,8 +85,8 @@ module.exports = function(app) {
                 // refresh in your browser to get new templates.
 
                 // if (config.isDev) {
-                    templatizer(fixPath('client/dispenseApp/templates'),
-                        fixPath('client/dispenseApp/client/templates.js'));
+                    // templatizer(fixPath('client/dispenseApp/templates'),
+                    //     fixPath('client/dispenseApp/client/templates.js'));
                 // }
             },
             beforeBuildCSS: function (done) {
@@ -94,66 +95,21 @@ module.exports = function(app) {
                 // and see new styles on refresh.
 
                 // if (config.isDev) {
-                    stylizer({
-                        infile: fixPath('client/dispenseApp/public/css/app.styl'),
-                        outfile: fixPath('client/dispenseApp/public/css/app.css'),
-                        development: true
-                        // development: false
-                    }, done);
+                    // stylizer({
+                    //     infile: fixPath('client/dispenseApp/public/css/app.styl'),
+                    //     outfile: fixPath('client/dispenseApp/public/css/app.css'),
+                    //     development: true
+                    //     // development: false
+                    // }, done);
                 // } else {
                     // done();
                 // }
-            }
-        }
-    });
-
-    var famousTest = new Moonboots({
-        server: app,
-        appPath : '/famousTest*',
-        moonboots: {
-            jsFileName: 'FamousTest',
-            cssFileName: 'FamousTest',
-            main: require('path')
-                .resolve(__dirname, '../../client/famousTest/client/app.js'),
-            developmentMode: true,
-            libraries: [
-            ],
-            stylesheets: [
-                fixPath('client/famousTest/public/css/bootstrap.css'),
-                fixPath('client/famousTest/public/css/app.css')
-            ],
-            browserify: {
-                debug: true,
-                transforms: [
-                    'famousify'
-                ]
             },
-            beforeBuildJS: function () {
-                // This re-builds our template files from jade each time the app's main
-                // js file is requested. Which means you can seamlessly change jade and
-                // refresh in your browser to get new templates.
-
-                // if (config.isDev) {
-                    templatizer(fixPath('client/famousTest/templates'),
-                        fixPath('client/famousTest/client/templates.js'));
-                // }
-            },
-            beforeBuildCSS: function (done) {
-                // This re-builds css from stylus each time the app's main
-                // css file is requested. Which means you can seamlessly change stylus files
-                // and see new styles on refresh.
-
-                // if (config.isDev) {
-                    stylizer({
-                        infile: fixPath('client/famousTest/public/css/app.styl'),
-                        outfile: fixPath('client/famousTest/public/css/app.css'),
-                        development: true
-                        // development: false
-                    }, done);
-                // } else {
-                    // done();
-                // }
+            render : function(req, res){
+                console.log(req);
+                console.log(res.locals);
             }
+
         }
     });
 };

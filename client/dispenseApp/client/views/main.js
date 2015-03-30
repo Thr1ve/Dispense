@@ -18,7 +18,7 @@ module.exports = View.extend({
 
     initialize: function () {
         // this marks the correct nav item selected
-        this.listenTo(app.router, 'page', this.handleNewPage);
+        // this.listenTo(app.router, 'page', this.handleNewPage);
     },
 
     events: {

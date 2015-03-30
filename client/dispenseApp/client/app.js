@@ -1,16 +1,15 @@
 /*global app, $*/
 
-var _        = require('underscore');
-var domReady = require('domready');
-// var config   = require('clientconfig');
-var Router   = require('./router');
-var MainView = require('./views/main');
-var User     = require('./models/user-state');
-var Products = require('./models/products');
-var Code     = require('./models/usedCode-collection');
-var key = require('keymaster');
-
-var socket = require('socket.io-client')();
+var _         = require('underscore');
+var domReady  = require('domready');
+// var config = require('clientconfig');
+var React     = require('react');
+var Router    = require('react-router');
+var User      = require('./models/user-state');
+var Products  = require('./models/products');
+var Code      = require('./models/usedCode-collection');
+var key       = require('keymaster');
+var socket    = require('socket.io-client')();
 
 
 
@@ -40,21 +39,31 @@ module.exports = {
         this.newCode  = new Code();
 
         // init our URL handlers and the history tracker
-        this.router   = new Router();
+        // this.router   = new Router();
 
         // wait for document ready to render our main view
         // this ensures the document has a body, etc.
         domReady(function () {
+            var content = document.createElement('div');
+            content.id = 'content';
+            document.body.appendChild(content);
+            React.render(
+              <h1>Hello, world!</h1>,
+              document.getElementById('content')
+            );
+            // Router.run(routes, Router.HistoryLocation, function (Handler) {
+            //   React.render(<Handler/>, document.body);
+            // });
             // init our main view
-            var mainView = self.view = new MainView({
-                el: document.body
-            });
+            // var mainView = self.view = new MainView({
+            //     el: document.body
+            // });
 
             // ...and render it
-            mainView.render();
+            // mainView.render();
 
             // we have what we need, we can now start our router and show the appropriate page
-            self.router.history.start({pushState: true, root: '/'});
+            // self.router.history.start({pushState: true, root: '/'});
         });
     },
 
