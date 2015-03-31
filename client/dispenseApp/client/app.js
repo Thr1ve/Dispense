@@ -5,12 +5,20 @@ var domReady  = require('domready');
 // var config = require('clientconfig');
 var React     = require('react');
 var Router    = require('react-router');
+var Mui       = require('material-ui');
+var RaisedButton = Mui.RaisedButton;
+var DatePicker = Mui.DatePicker;
+var Dialog = Mui.Dialog;
+var DropDownMenu = Mui.DropDownMenu;
+var Menu = Mui.Menu;
+var { Route, RouteHandler, Link, DefaultRoute } = Router;
+
+//Models **********
 var User      = require('./models/user-state');
 var Products  = require('./models/products');
 var Code      = require('./models/usedCode-collection');
-var key       = require('keymaster');
-var socket    = require('socket.io-client')();
 
+var key       = require('keymaster');
 
 
 module.exports = {
@@ -23,15 +31,12 @@ module.exports = {
     // this is the the whole app initter
     blastoff: function () {
 
-        var self      = window.app = this;
+        var self = window.app = this;
 
         _.each(this.globalKeys, function (value, k) {
             // register global keybinds
             key(k,  _.bind(self[value], self));
         });
-
-        //attach socket.io to app
-        this.io = socket;
 
         // create our global empty collections for products and a received code
         this.user     = new User();
@@ -40,46 +45,91 @@ module.exports = {
 
         // init our URL handlers and the history tracker
         // this.router   = new Router();
+        var standardActions = [
+  { text: 'Cancel' },
+  { text: 'Submit', onClick: this._onDialogSubmit }
+];
+var menuItems = [
+   { payload: '1', text: 'Never' },
+   { payload: '2', text: 'Every Night' },
+   { payload: '3', text: 'Weeknights' },
+   { payload: '4', text: 'Weekends' },
+   { payload: '5', text: 'Weekly' },
+];
 
-        // wait for document ready to render our main view
-        // this ensures the document has a body, etc.
-        domReady(function () {
-            var content = document.createElement('div');
-            content.id = 'content';
-            document.body.appendChild(content);
-            React.render(
-              <h1>Hello, world!</h1>,
-              document.getElementById('content')
+var filterMenuItems = [
+   { payload: '1', text: 'Text Opt-In', toggle: true},
+   { payload: '2', text: 'Text Opt-Out', toggle: true, defaultToggled: true},
+   { payload: '3', text: 'Voice Opt-Out', toggle: true, disabled: true}
+];
+
+
+        var App = React.createClass({
+          render: function () {
+            return (
+              <div>
+                <header>
+                  <ul>
+                    <RaisedButton label="Test"/>
+                    <DatePicker hintText="Landscape Dialog"/>
+                    <Dialog title="Dialog With Standard Actions" actions={standardActions}>
+                      The actions in this window are created from the json that is passed in. 
+                    </Dialog>
+                    <DropDownMenu menuItems={menuItems} />
+                    <Menu menuItems={filterMenuItems} />
+                    <li><Link to="app">Dashboard</Link></li>
+                    <li><Link to="inbox">Inbox</Link></li>
+                    <li><Link to="calendar">Calendar</Link></li>
+                  </ul>
+                  Logged in as Jane
+                </header>
+
+                {/* this is the important part */}
+                <RouteHandler/>
+              </div>
             );
-            // Router.run(routes, Router.HistoryLocation, function (Handler) {
-            //   React.render(<Handler/>, document.body);
-            // });
-            // init our main view
-            // var mainView = self.view = new MainView({
-            //     el: document.body
-            // });
-
-            // ...and render it
-            // mainView.render();
-
-            // we have what we need, we can now start our router and show the appropriate page
-            // self.router.history.start({pushState: true, root: '/'});
+          }
+        });
+        var Inbox = React.createClass({
+          render: function() {
+            return (
+              <h1>INBOX</h1>
+            );
+          }
+        });
+        var Calendar = React.createClass({
+          render : function() {
+            return (
+              <h1>CALENDAR</h1>
+            );
+          }
+        });
+        var Dashboard = React.createClass({
+          render : function() {
+            return (
+              <h1>DASHBOARD</h1>
+            );
+          }
+        });
+        var routes = (
+          <Route name="app" path="/dispenseApp" handler={App}>
+            <Route name="inbox" handler={Inbox}/>
+            <Route name="calendar" handler={Calendar}/>
+            <DefaultRoute handler={Dashboard}/>
+          </Route>
+        );
+        // wait for document ready to render our main view
+        // this ensures the document hasa body, etc.
+        domReady(function () {
+            // React.render( 
+            //   <h1>Hello, world!</h1>,
+            //   document.body
+            // );
+            Router.run(routes, Router.HistoryLocation, function (Handler) {
+              React.render(<Handler/>, document.body);
+            });
         });
     },
-
-    // This is how you navigate around the app.
-    // this gets called by a global click handler that handles
-    // all the <a> tags in the app.
-    // it expects a url without a leading slash.
-    // for example: "costello/settings".
-    navigate: function (page) {
-        var url = (page.charAt(0) === '/') ? page.slice(1) : page;
-        this.router.history.navigate(url, {trigger: true /*, replace:true*/});
-    },
-    redirectTo: function(page){
-        var url = (page.charAt(0) === '/') ? page.slice(1) : page;
-        this.router.redirectTo(url);
-    }
 };
 
 // run it

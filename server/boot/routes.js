@@ -70,13 +70,14 @@ module.exports = function(app) {
             libraries: [
             ],
             stylesheets: [
-                // fixPath('client/dispenseApp/public/css/bootstrap.css'),
-                // fixPath('client/dispenseApp/public/css/app.css')
+                 fixPath('client/dispenseApp/public/css/app/main.css'),
             ],
             browserify: {
                 debug: true,
                 transforms: [
-                    'reactify'
+                    'reactify',
+                    'babelify',
+                    'node-lessify'
                 ]
             },
             beforeBuildJS: function () {
@@ -102,12 +103,8 @@ module.exports = function(app) {
                     //     // development: false
                     // }, done);
                 // } else {
-                    // done();
+                    done();
                 // }
-            },
-            render : function(req, res){
-                console.log(req);
-                console.log(res.locals);
             }
 
         }
