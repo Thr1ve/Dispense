@@ -17,9 +17,14 @@ var { Route, RouteHandler, Link, DefaultRoute } = Router;
 var User      = require('./models/user-state');
 var Products  = require('./models/products');
 var Code      = require('./models/usedCode-collection');
+<<<<<<< Updated upstream
 
 var key       = require('keymaster');
 
+=======
+var key       = require('keymaster');
+var { Route, RouteHandler, Link } = Router;
+>>>>>>> Stashed changes
 
 module.exports = {
 
@@ -45,6 +50,7 @@ module.exports = {
 
         // init our URL handlers and the history tracker
         // this.router   = new Router();
+<<<<<<< Updated upstream
         var standardActions = [
   { text: 'Cancel' },
   { text: 'Submit', onClick: this._onDialogSubmit }
@@ -118,6 +124,20 @@ var filterMenuItems = [
             <DefaultRoute handler={Dashboard}/>
           </Route>
         );
+=======
+        var Home = React.createClass({
+            render:  function() {
+                return (
+                    <h1>Hello, world!</h1>
+                );
+            }
+        })
+        var routes = (
+          <Route handler={Home} path="/dispenseApp/">
+          </Route>
+        );
+
+>>>>>>> Stashed changes
         // wait for document ready to render our main view
         // this ensures the document hasa body, etc.
         domReady(function () {
