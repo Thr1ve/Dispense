@@ -26,7 +26,6 @@ module.exports = function(app) {
             browserify: {
                 debug: true,
                 transforms: [
-                    'famousify'
                 ]
             },
             beforeBuildJS: function () {
@@ -76,7 +75,6 @@ module.exports = function(app) {
             browserify: {
                 debug: true,
                 transforms: [
-                    'famousify'
                 ]
             },
             beforeBuildJS: function () {
