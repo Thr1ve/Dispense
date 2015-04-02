@@ -76,12 +76,7 @@ module.exports = function(app) {
                 debug: true,
                 transforms: [
                     'reactify',
-<<<<<<< Updated upstream
-                    'babelify',
-                    'node-lessify'
-=======
                     'babelify'
->>>>>>> Stashed changes
                 ]
             },
             beforeBuildJS: function () {
