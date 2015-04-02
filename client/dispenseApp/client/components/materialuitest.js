@@ -13,7 +13,7 @@ var DropDownIcon = Mui.DropDownIcon;
 var TextField    = Mui.TextField;
 var Snackbar     = Mui.Snackbar;
 
-
+// For DropDownMenu *********
 var menuItems = [
   { payload: '1', text: 'Never' },
   { payload: '2', text: 'Every Night' },
@@ -21,12 +21,15 @@ var menuItems = [
   { payload: '4', text: 'Weekends' },
   { payload: '5', text: 'Weekly' }
 ];
+//            ************ //
 
+// For Menu *********
 var filterMenuItems = [
   { payload: '1', text: 'Text Opt-In', toggle: true},
   { payload: '2', text: 'Text Opt-Out', toggle: true, defaultToggled: true},
   { payload: '3', text: 'Voice Opt-Out', toggle: true, disabled: true}
 ];
+//       *********** //
 
 // For Toolbar ******
 var filterOptions = [
@@ -77,12 +80,12 @@ module.exports = React.createClass({
           action="undo"
           onActionTouchTap={this._handleAction}/>
       </div>
-
     );
   },
 
   _handleAction: function() {
     //We can add more code to this function, but for now we'll just include an alert.
     alert("We removed the event from your calendar.");
-  }
+  },
+
 });
