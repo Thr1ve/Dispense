@@ -7,8 +7,10 @@ var domReady     = require('domready');
 var React        = require('react');
 var Router       = require('react-router');
 var { Route, RouteHandler, Link, DefaultRoute } = Router;
+var AppRoutes    = require('./appRoutes.js');
 
-var MaterialTest = require('./components/materialuitest.js')
+var MaterialTest = require('./pages/materialuitest.js')
+var ButtonPage   = require('./pages/components/buttons.js');
 
 //Models **********
 var User      = require('./models/user-state');
@@ -63,17 +65,19 @@ module.exports = {
           }
         });
 
-        var routes = (
-          <Route name="app" path="/dispenseApp" handler={App}>
-            <Route name="materialTest" handler={MaterialTest}/>
-            <DefaultRoute handler={Dashboard}/>
-          </Route>
-        );
+        var DefaultMaterial= React.createClass({
+          render : function() {
+            return (
+              <h1>Default Material Route</h1>
+            );
+          }
+        });
+        
 
         // wait for document ready to render our main view
         // this ensures the document hasa body, etc.
         domReady(function () {
-            Router.run(routes, Router.HistoryLocation, function (Handler) {
+            Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
               React.render(<Handler/>, document.body);
             });
         });
@@ -82,3 +86,4 @@ module.exports = {
 
 // run it
 module.exports.blastoff();
+

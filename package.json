@@ -26,6 +26,7 @@
     "errorhandler": "^1.1.1",
     "favicon-setter": "^0.1.1",
     "fuse.js": "^1.2.2",
+    "highlight.js": "^8.5.0",
     "keymaster": "^1.6.2",
     "loopback": "^2.8.0",
     "loopback-boot": "^2.4.0",
