@@ -1,30 +1,32 @@
 
-var MaterialTest = require('./pages/materialuitest.js')
+var MaterialTest = require('./pages/materialuitest.js');
+var MainSearch   = require('./pages/mainSearch.js');
+var RequestCode  = require('./pages/requestCode.js');
 
 var React        = require('react');
 var Router       = require('react-router');
-var { Route, RouteHandler, Link, DefaultRoute } = Router;
+var { Route, RouteHandler, Link, DefaultRoute, NotFoundRoute } = Router;
 
 
 //// Not Working *******
-var DatePickerPage 	 = require('./pages/components/date-picker.js');  	
-var DialogPage		 = require('./pages/components/dialog.js');    	  	
-var LeftNav			 = require('./pages/components/left-nav.js');		
+var DatePickerPage 	 = require('./pages/components/mui/date-picker.js');
+var DialogPage		 = require('./pages/components/mui/dialog.js');
+var LeftNav			 = require('./pages/components/mui/left-nav.js');
+var SnackbarPage     = require('./pages/components/mui/snackbar.js');
+var TabsPage         = require('./pages/components/mui/tabs.js');
 //// will not load when uncommented 
 // var IconButtonPage	 = require('./pages/components/icon-buttons.js');
 // var IconsPage   	 = require('./pages/components/icons.js');
-//// 
-var ButtonPage  	 = require('./pages/components/buttons.js');
-var DropDownMenuPage = require('./pages/components/drop-down-menu.js');
-var MenusPage 		 = require('./pages/components/menus.js');
-var PaperPage 		 = require('./pages/components/paper.js');
-var SlidersPage 	 = require('./pages/components/sliders.js');
-var SnackbarPage	 = require('./pages/components/snackbar.js');
-var SwitchesPage	 = require('./pages/components/switches.js');
-var TabsPage 		 = require('./pages/components/tabs.js');
-var TextFieldsPage 	 = require('./pages/components/text-fields.js');
-var ToolbarsPage 	 = require('./pages/components/toolbars.js');
-
+//// Working ****
+var ButtonPage  	 = require('./pages/components/mui/buttons.js');
+var DropDownMenuPage = require('./pages/components/mui/drop-down-menu.js');
+var MenusPage 		 = require('./pages/components/mui/menus.js');
+var PaperPage 		 = require('./pages/components/mui/paper.js');
+var SlidersPage 	 = require('./pages/components/mui/sliders.js');
+var SwitchesPage	 = require('./pages/components/mui/switches.js');
+var TextFieldsPage 	 = require('./pages/components/mui/text-fields.js');
+var ToolbarsPage 	 = require('./pages/components/mui/toolbars.js');
+////                            *********
 
 
 var Dashboard = React.createClass({
@@ -43,7 +45,15 @@ var DefaultMaterial= React.createClass({
   }
 });
 
- var App = React.createClass({
+var NotFound = React.createClass({
+  render : function() {
+    return (
+      <h1>No Route Found</h1>
+    );
+  }
+});
+
+var App = React.createClass({
   render: function () {
     return (
       <div>
@@ -51,6 +61,7 @@ var DefaultMaterial= React.createClass({
           <ul>
             <li><Link to="app">DashBoard</Link></li>
             <li><Link to="materialTest">Material UI Test</Link></li>
+            <li><Link to="mainSearch">Main Search</Link></li>
           </ul>
         </header>
 
@@ -71,8 +82,18 @@ module.exports = (
               	<Route name="dropDownMenuPage" path="dropDownMenuPage" handler={DropDownMenuPage}/>
               	<Route name="menusPage" path="menusPage" handler={MenusPage}/>
               	<Route name="paperPage" path="paperPage" handler={PaperPage}/>
+                <Route name="slidersPage" path="slidersPage" handler={SlidersPage}/>
+                <Route name="snackbarPage" path="snackbarPage" handler={SnackbarPage}/>
+                <Route name="switchesPage" path="switchesPage" handler={SwitchesPage}/>
+                <Route name="tabsPage" path="tabsPage" handler={TabsPage}/>
+                <Route name="textFieldsPage" path="textFieldsPage" handler={TextFieldsPage}/>
+                <Route name="toolbarsPage" path="toolbarsPage" handler={ToolbarsPage}/>
               	<DefaultRoute handler={DefaultMaterial}/>
             </Route>
+            <Route name="mainSearch" handler={MainSearch}>
+            </Route>
+            <Route name='requestCode' path="requestCode/:productId" handler={RequestCode}/>
             <DefaultRoute handler={Dashboard}/>
+            <NotFoundRoute handler={NotFound}/>
           </Route>
         );

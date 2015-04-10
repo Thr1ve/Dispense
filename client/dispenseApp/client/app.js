@@ -10,7 +10,7 @@ var { Route, RouteHandler, Link, DefaultRoute } = Router;
 var AppRoutes    = require('./appRoutes.js');
 
 var MaterialTest = require('./pages/materialuitest.js')
-var ButtonPage   = require('./pages/components/buttons.js');
+var ButtonPage   = require('./pages/components/mui/buttons.js');
 
 //Models **********
 var User      = require('./models/user-state');

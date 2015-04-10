@@ -20,6 +20,12 @@ module.exports = React.createClass({
             <li><Link to="dropDownMenuPage">Drop Down Menu Page</Link></li>
             <li><Link to="menusPage">Menus Page</Link></li>
             <li><Link to="paperPage">Paper Page</Link></li>
+            <li><Link to="slidersPage">Sliders Page</Link></li>
+            <li><Link to="snackbarPage">Snackbar Page</Link></li>
+            <li><Link to="switchesPage">Switches Page</Link></li>
+            <li><Link to="tabsPage">Tabs Page</Link></li>
+            <li><Link to="textFieldsPage">Text Fields Page</Link></li>
+            <li><Link to="toolbarsPage">Toolbars Page</Link></li>
           </ul>
         </div>
 
