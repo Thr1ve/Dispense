@@ -1,7 +1,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var Paper = mui.Paper;
-var ComponentDoc = require('../../component-doc.js');
+var ComponentDoc = require('../../../component-doc.js');
 
 var PaperPage = React.createClass({
 

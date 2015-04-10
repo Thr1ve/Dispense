@@ -4,7 +4,7 @@ var FlatButton = mui.FlatButton;
 var FloatingActionButton = mui.FloatingActionButton;
 var RaisedButton = mui.RaisedButton;
 var FontIcon = mui.FontIcon;
-var ComponentDoc = require('../../component-doc.js');
+var ComponentDoc = require('../../../component-doc.js');
 
 var ButtonPage = React.createClass({
 

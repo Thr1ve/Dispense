@@ -4,8 +4,8 @@ var Checkbox = mui.Checkbox;
 var RadioButton = mui.RadioButton;
 var RadioButtonGroup = mui.RadioButtonGroup;
 var Toggle = mui.Toggle;
-var CodeExample = require('../../code-example.js');
-var ComponentDoc = require('../../component-doc.js');
+var CodeExample = require('../../../code-example.js');
+var ComponentDoc = require('../../../component-doc.js');
 var RaisedButton = mui.RaisedButton;
 
 var SwitchesPage = React.createClass({

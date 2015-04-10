@@ -6,7 +6,7 @@ var FontIcon = mui.FontIcon;
 var RaisedButton = mui.RaisedButton;
 var Toolbar = mui.Toolbar;
 var ToolbarGroup = mui.ToolbarGroup;
-var ComponentDoc = require('../../component-doc.js');
+var ComponentDoc = require('../../../component-doc.js');
 
 var ToolbarPage = React.createClass({
 

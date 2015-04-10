@@ -1,8 +1,8 @@
 var React = require('react');
 var mui = require('material-ui');
 var FontIcon = mui.FontIcon;
-var ComponentDoc = require('../../component-doc.js');
-var ActionHome = require('../../svg-icons/action-home.js');
+var ComponentDoc = require('../../../component-doc.js');
+var ActionHome = require('../../../svg-icons/action-home.js');
 
 var FontIconPage = React.createClass({
 

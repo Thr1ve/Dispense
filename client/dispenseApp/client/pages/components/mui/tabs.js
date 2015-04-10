@@ -1,8 +1,8 @@
 var React = require('react');
-var CodeExample = require('../../code-example.js');
+var CodeExample = require('../../../code-example.js');
 var mui = require('material-ui');
 var Router = require('react-router');
-var ComponentDoc = require('../../component-doc.js');
+var ComponentDoc = require('../../../component-doc.js');
 var RouteHandler = Router.RouteHandler;
 var Tabs = mui.Tabs;
 var Tab= mui.Tab;

@@ -1,7 +1,7 @@
 var React = require('react/addons');
 var mui = require('material-ui');
 var TextField = mui.TextField;
-var ComponentDoc = require('../../component-doc.js');
+var ComponentDoc = require('../../../component-doc.js');
 
 var TextFieldsPage = React.createClass({
 

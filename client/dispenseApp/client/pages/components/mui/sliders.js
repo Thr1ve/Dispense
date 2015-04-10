@@ -1,7 +1,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var Slider = mui.Slider;
-var ComponentDoc = require('../../component-doc.js');
+var ComponentDoc = require('../../../component-doc.js');
 
 var SlidersPage = React.createClass({
 

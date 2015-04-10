@@ -1,7 +1,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var DropDownMenu = mui.DropDownMenu;
-var ComponentDoc = require('../../component-doc.js');
+var ComponentDoc = require('../../../component-doc.js');
 
 var DropDownMenuPage = React.createClass({
 

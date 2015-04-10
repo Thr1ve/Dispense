@@ -1,7 +1,7 @@
 var React = require('react');
 var mui = require('material-ui');
 var DatePicker = mui.DatePicker;
-var ComponentDoc = require('../../component-doc.js');
+var ComponentDoc = require('../../../component-doc.js');
 
 var DatePickerPage = React.createClass({
 

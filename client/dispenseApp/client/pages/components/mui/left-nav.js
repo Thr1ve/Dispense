@@ -3,7 +3,7 @@ var mui = require('material-ui');
 var MenuItem = mui.MenuItem;
 var LeftNav = mui.LeftNav;
 var RaisedButton = mui.RaisedButton;
-var ComponentDoc = require('../../component-doc.js');
+var ComponentDoc = require('../../../component-doc.js');
 
 var LeftNavPage = React.createClass({
 

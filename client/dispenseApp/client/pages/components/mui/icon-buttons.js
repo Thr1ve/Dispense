@@ -2,9 +2,9 @@ var React = require('react');
 var mui = require('material-ui');
 var IconButton = mui.IconButton;
 var NavigationMenu = mui.Icons.NavigationMenu;
-var ComponentDoc = require('../../component-doc.js');
-var ActionGrade = require('../../svg-icons/action-grade.js');
-var ActionHome = require('../../svg-icons/action-home.js');
+var ComponentDoc = require('../../../component-doc.js');
+var ActionGrade = require('../../../svg-icons/action-grade.js');
+var ActionHome = require('../../../svg-icons/action-home.js');
 var FontIcon = mui.FontIcon;
 
 var IconButtonsPage = React.createClass({

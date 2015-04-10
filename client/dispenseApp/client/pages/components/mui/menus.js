@@ -1,6 +1,6 @@
 var React = require('react');
 var mui = require('material-ui');
-var CodeExample = require('../../code-example.js');
+var CodeExample = require('../../../code-example.js');
 
 var labelMenuItems = [
   { payload: '1', text: 'ID', data: '1234567890', icon: 'home' },
