@@ -6,7 +6,6 @@ var ProductTable = require('./productTable.js');
 var FilterableProductTable = React.createClass({
 
     getInitialState: function() {
-        console.log('getInitialState called');
         return {
             data: [],
             filterText: ''
@@ -46,7 +45,6 @@ var FilterableProductTable = React.createClass({
     },
     
     render: function() {
-        console.log('render called');
         return (
             <div>
                 <SearchField
