@@ -38,10 +38,10 @@ module.exports = AmpCollection.extend({
 
         this.filtered.set(fuse.search(string));
 
-        if(string){
-            this.select(this.filtered.models[0]);
-            this.filtered.selected = 0;
-        }
+        // if(string){
+        //     this.select(this.filtered.models[0]);
+        //     this.filtered.selected = 0;
+        // }
     },
 
     /**

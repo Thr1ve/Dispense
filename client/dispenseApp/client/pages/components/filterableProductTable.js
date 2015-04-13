@@ -6,6 +6,7 @@ var ProductTable = require('./productTable.js');
 var FilterableProductTable = React.createClass({
 
     getInitialState: function() {
+        console.log('getInitialState called');
         return {
             data: [],
             filterText: ''
@@ -14,22 +15,28 @@ var FilterableProductTable = React.createClass({
 
     componentDidMount: function() {
         var self = this;
-        this.props.products.fetch({
-            success:function(model, res, opt){
-                self.setState({data:res});
-            }
-        }),[];
-        self.setState({data:self.props.products});
+        //if statement added since refetching products broke app after using back button
+        //this should be handled differently...perhaps store in user state?
+        if(window.app.products.models.length > 0){
+            self.setState({data:window.app.products});
+        }
+        else{
+            window.app.products.fetch({
+                success:function(model, res, opt){
+                    self.setState({data:res});
+                }
+            }),[];
+        }
     },
     
     handleUserInput: function(filterText) {
         var filtered;
         if(filterText){
-            this.products.filter(filterText);
-            filtered = this.products.filtered;
+            window.app.products.filter(filterText);
+            filtered = window.app.products.filtered;
         }
         else{
-            filtered = this.products; 
+            filtered = window.app.products; 
         }
 
         this.setState({
@@ -39,6 +46,7 @@ var FilterableProductTable = React.createClass({
     },
     
     render: function() {
+        console.log('render called');
         return (
             <div>
                 <SearchField
