@@ -8,7 +8,6 @@ var requestCode = React.createClass({
     },
 
     getInitialState: function() {
-        console.log('getInititialState called', this);
         return {
             data: {}
         };
@@ -41,7 +40,7 @@ var requestCode = React.createClass({
             <div>
                 <div>{title}</div>
                 <div>{isbn13}</div>
-                <RequestCodeForm/>
+                <RequestCodeForm productId={this.context.router.getCurrentParams().productId}/>
             </div>
         );
     }
