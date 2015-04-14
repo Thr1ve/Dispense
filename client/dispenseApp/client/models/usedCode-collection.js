@@ -6,5 +6,6 @@ var usedCode = require('./usedCode');
 
 module.exports = AmpCollection.extend({
     model: usedCode,
-    url: '/api/usedCode-collection'
+    //change too '/api/usedCode-collection' for production
+    url: 'http://localhost:3000/api/usedCode-collection'
 });

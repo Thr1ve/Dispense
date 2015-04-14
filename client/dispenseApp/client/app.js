@@ -17,6 +17,8 @@ var User      = require('./models/user-state');
 var Products  = require('./models/products');
 var Code      = require('./models/usedCode-collection');
 
+require('../public/less/main.less');
+
 module.exports = {
 
     //global keybinds

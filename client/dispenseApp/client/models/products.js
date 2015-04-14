@@ -13,7 +13,8 @@ module.exports = AmpCollection.extend({
 
     model: product,
 
-    url: '/api/products',
+    //change too '/api/products' for production
+    url: 'http://localhost:3000/api/products',
 
     initialize : function() {
         //create filtered collection

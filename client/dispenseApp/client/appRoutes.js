@@ -72,8 +72,10 @@ var App = React.createClass({
   }
 });
 
+//change the app route path to '/dispenseApp' to run in loopback / for production
+// note: need to find better way so i can have both webpack and live version simultaneously
 module.exports = (
-          <Route name="app" path="/dispenseApp" handler={App}>
+          <Route name="app" path="/" handler={App}>
             <Route name="materialTest" handler={MaterialTest}>
               	<Route name="buttonPage" path="buttonPage" handler={ButtonPage}/>
               	<Route name="datePickerPage" path="datePickerPage" handler={DatePickerPage}/>
