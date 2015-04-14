@@ -1,5 +1,5 @@
 
-Instalation:
+Installation:
 ```
 $ npm install -g loopback 
 $ npm install -g grunt 
