@@ -1,5 +1,5 @@
 {
-  "db": {
+  "mydb": {
     "name": "db",
     "connector": "memory"
   },
@@ -12,14 +12,5 @@
     "name": "mysqlDs",
     "connector": "mysql",
     "user": "loopback"
-  },
-  "mydb": {
-    "host": "localhost",
-    "port": 5432,
-    "database": "dispense",
-    "username": "loopback",
-    "password": "loopback",
-    "name": "mydb",
-    "connector": "postgresql"
   }
 }
