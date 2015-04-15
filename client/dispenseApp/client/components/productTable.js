@@ -4,9 +4,6 @@ var mui = require('material-ui');
 var Paper = mui.Paper;
 var Menu = mui.Menu;
 
-// var ProductRow = require('./productRow.js');
-
-
 var ProductTable = React.createClass({
 
     contextTypes: {

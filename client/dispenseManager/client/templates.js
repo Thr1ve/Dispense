@@ -25,37 +25,37 @@
         return '<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/><meta name="apple-mobile-web-app-capable" content="yes"/>';
     };
 
-    // includes/formInput.jade compiled template
+    // includes\formInput.jade compiled template
     templatizer["includes"]["formInput"] = function tmpl_includes_formInput() {
         return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
     };
 
-    // includes/formTextArea.jade compiled template
+    // includes\formTextArea.jade compiled template
     templatizer["includes"]["formTextArea"] = function tmpl_includes_formTextArea() {
         return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><textarea class="form-control"></textarea></div>';
     };
 
-    // includes/product.jade compiled template
+    // includes\product.jade compiled template
     templatizer["includes"]["product"] = function tmpl_includes_product() {
         return '<li class="product list-group-item container-fluid"><div data-hook="title"></div><div data-hook="isbn13"></div><span class="btn-group pull-right"></span></li>';
     };
 
-    // pages/addCodes.jade compiled template
+    // pages\addCodes.jade compiled template
     templatizer["pages"]["addCodes"] = function tmpl_pages_addCodes() {
         return '<section class="page request-code"><div class="prompt"></div><h4>Add Codes: <h4 data-hook="title"></h4></h4><div role="group" aria-label="Justified button group" class="btn-group btn-group-lg btn-group-justified"> <div role="group" class="btn-group"><button class="btn btn-default productPage">Product Page <span class="label label-primary pull-left">Alt + 1</span></button></div><div role="group" class="btn-group"> <button class="btn btn-default editProduct">Edit Product<span class="label label-primary pull-left">Alt + 2</span></button></div><div role="group" class="btn-group"><button class="btn btn-default addCodes">Add Codes<span class="label label-primary pull-left">Alt + 3</span></button></div></div><form data-hook="addCodesForm"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Add Codes</button></div></form></section>';
     };
 
-    // pages/addProduct.jade compiled template
+    // pages\addProduct.jade compiled template
     templatizer["pages"]["addProduct"] = function tmpl_pages_addProduct() {
         return '<section class="page add-product"><div class="prompt"></div><h4>Add a New Product</h4><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
-    // pages/editProduct.jade compiled template
+    // pages\editProduct.jade compiled template
     templatizer["pages"]["editProduct"] = function tmpl_pages_editProduct() {
         return '<section class="page edit-product"><div class="prompt"></div><h4>Edit Product: <h4 data-hook="title"></h4></h4><div role="group" aria-label="Justified button group" class="btn-group btn-group-lg btn-group-justified"> <div role="group" class="btn-group"><button class="btn btn-default productPage">Product Page <span class="label label-primary pull-left">Alt + 1</span></button></div><div role="group" class="btn-group"> <button class="btn btn-default editProduct">Edit Product<span class="label label-primary pull-left">Alt + 2</span></button></div><div role="group" class="btn-group"><button class="btn btn-default addCodes">Add Codes<span class="label label-primary pull-left">Alt + 3</span></button></div></div><form data-hook="add-product-form"><fieldset data-hook="field-container"></fieldset><div class="buttons"><button data-hook="reset" type="submit" class="btn">Submit</button></div></form></section>';
     };
 
-    // pages/homeSearch.jade compiled template
+    // pages\homeSearch.jade compiled template
     templatizer["pages"]["homeSearch"] = function tmpl_pages_homeSearch(locals) {
         var buf = [];
         var jade_mixins = {};
@@ -67,7 +67,7 @@
         return buf.join("");
     };
 
-    // pages/productPage.jade compiled template
+    // pages\productPage.jade compiled template
     templatizer["pages"]["productPage"] = function tmpl_pages_productPage() {
         return '<section class="page product-page"><div class="prompt"></div><h4>Product Page:</h4><h4 data-hook="title"></h4><div role="group" aria-label="Justified button group" class="btn-group btn-group-lg btn-group-justified"> <div role="group" class="btn-group"><button class="btn btn-default productPage">Product Page <span class="label label-primary pull-left">Alt + 1</span></button></div><div role="group" class="btn-group"> <button class="btn btn-default editProduct">Edit Product<span class="label label-primary pull-left">Alt + 2</span></button></div><div role="group" class="btn-group"><button class="btn btn-default addCodes">Add Codes<span class="label label-primary pull-left">Alt + 3</span></button></div></div><p>         </p><p>Real-Time data will be displayed here ...</p></section>';
     };

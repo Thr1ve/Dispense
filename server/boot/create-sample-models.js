@@ -22,7 +22,7 @@ module.exports = function(app) {
         if (!err) {
             productsJSON.products.reduce(function(prev, cur, ind, arr) {
                 var codesArray = [];
-                for (var i = 0; i < 1; i++) {
+                for (var i = 0; i < 20; i++) {
                     codesArray.push({
                         productId: cur.id,
                         code: i + 'XXX-XX-CODE-' + cur.title

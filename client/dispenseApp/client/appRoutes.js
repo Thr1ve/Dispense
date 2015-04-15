@@ -1,6 +1,7 @@
 
 var MainSearch   = require('./components/pages/mainSearch.js');
 var RequestCode  = require('./components/pages/requestCode.js');
+var RequestedCodes  = require('./components/pages/requestedCodes.js');
 
 var React        = require('react');
 var Router       = require('react-router');
@@ -31,6 +32,7 @@ module.exports = (
           <Route name="app" path="/" handler={App}>
             <Route name="mainSearch" handler={MainSearch}/>
             <Route name='requestCode' path="requestCode/:productId" handler={RequestCode}/>
+            <Route name='requestedCodes' path="requestedCodes" handler={RequestedCodes}/>
             <DefaultRoute handler={MainSearch}/>
             <NotFoundRoute handler={NotFound}/>
           </Route>

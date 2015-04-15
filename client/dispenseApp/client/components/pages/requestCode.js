@@ -40,7 +40,7 @@ var requestCode = React.createClass({
             <div>
                 <div>{title}</div>
                 <div>{isbn13}</div>
-                <RequestCodeForm productId={this.context.router.getCurrentParams().productId}/>
+                <RequestCodeForm productId={this.context.router.getCurrentParams().productId} />
             </div>
         );
     }
