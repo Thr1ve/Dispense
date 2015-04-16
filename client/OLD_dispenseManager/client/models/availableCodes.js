@@ -20,6 +20,6 @@ module.exports = AmpersandModel.extend({
         }
     },
 
-    url: 'http://localhost:3000/api/availableCodes'
+    url: '/api/availableCodes'
 
 });

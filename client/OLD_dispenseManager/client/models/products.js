@@ -7,7 +7,7 @@ module.exports = AmpCollection.extend({
 
     model: product,
 
-    url: 'http://localhost:3000/api/products',
+    url: '/api/products',
 
     initialize : function() {
         var self = this;
@@ -24,10 +24,10 @@ module.exports = AmpCollection.extend({
 
         this.filtered.set(fuse.search(string));
 
-        // if(string){
-        //     this.select(this.filtered.models[0]);
-        //     this.filtered.selected = 0;
-        // }
+        if(string){
+            this.select(this.filtered.models[0]);
+            this.filtered.selected = 0;
+        }
     },
 
     /**

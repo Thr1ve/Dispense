@@ -23,6 +23,6 @@ module.exports = AmpersandModel.extend({
     derived: {
     },
 
-    url: 'http://localhost:3000/api/usedCode'
+    url: '/api/usedCode'
 
 });

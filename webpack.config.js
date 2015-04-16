@@ -19,7 +19,7 @@ module.exports = {
   devtool: false,
   entry: [
       'webpack/hot/only-dev-server',
-      './client/dispenseApp/client/app.js'
+      './client/dispenseManager/client/app.js'
   ],
 
   stats: {

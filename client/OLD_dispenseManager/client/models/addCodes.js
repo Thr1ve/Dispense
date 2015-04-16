@@ -4,22 +4,18 @@ var AmpersandModel = require('ampersand-model');
 module.exports = AmpersandModel.extend({
 
     props: {
-
         productId: 'any',
-        code:'string'
-
+        codes: 'array'
     },
 
-    session: {
-
-    },
+    session: {},
 
     derived: {
-        id: function() {
+        id : function() {
             return this.productId;
         }
     },
 
-    url: 'http://localhost:3000/api/availableCodes'
+    url: '/api/availableCodes-collection/addCodes'
 
 });

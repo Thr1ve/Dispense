@@ -5,6 +5,6 @@ module.exports = AmpCollection.extend({
 
     model: availableCodes,
 
-    url: 'http://localhost:3000/api/availableCodes-collection'
+    url: '/api/availableCodes-collection'
 
 });
