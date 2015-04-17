@@ -1,6 +1,6 @@
 var React = require('react');
 
-var EditProduct = React.createClass({
+var ProductStats = React.createClass({
 
     contextTypes: {
         router: React.PropTypes.func
@@ -10,7 +10,7 @@ var EditProduct = React.createClass({
     	console.log(this);
         return (
         	<div>
-	        	<p>Edit Product</p>
+	        	<p>Product Stats</p>
 	        	<p> {this.context.router.getCurrentParams().productId} </p>
 	        </div>
         );
@@ -18,4 +18,4 @@ var EditProduct = React.createClass({
 
 });
 
-module.exports = EditProduct;
+module.exports = ProductStats;
