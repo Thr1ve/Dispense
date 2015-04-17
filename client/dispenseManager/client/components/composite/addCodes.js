@@ -4,7 +4,7 @@ var AddCodes = React.createClass({
 
     render: function() {
         return (
-        	<p>Add Codes</p>
+            <div />
         );
     }
 

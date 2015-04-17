@@ -1,6 +1,7 @@
 var React = require('react');
 var Router = require('react-router');
 var mui = require('material-ui');
+var Paper = mui.Paper;
 var Menu = mui.Menu;
 
 var ProductTable = React.createClass({

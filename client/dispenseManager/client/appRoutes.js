@@ -1,9 +1,6 @@
 
 var MainSearch   = require('./components/pages/mainSearch.js');
 var ManageProduct = require('./components/pages/manageProduct.js');
-var EditProduct = require('./components/composite/editProduct.js');
-var AddCodes = require('./components/composite/addCodes.js');
-var ProductStats = require('./components/composite/productStats.js');
 
 var mui = require('material-ui');
 var FlatButton = mui.FlatButton;
@@ -60,9 +57,7 @@ module.exports = (
           <Route name="app" path="/" handler={App}>
             <Route name="mainSearch" handler={MainSearch}/>
             <Route name='product' path="product/:productId" handler={ManageProduct}>
-              <Route name="editProduct" handler={EditProduct}/>
-              <Route name="addCodes" handler={AddCodes}/>
-              <DefaultRoute handler={ProductStats}/>
+
             </Route>
             <DefaultRoute handler={MainSearch}/>
             <NotFoundRoute handler={NotFound}/>

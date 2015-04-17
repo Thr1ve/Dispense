@@ -12,15 +12,10 @@ var ManageProduct = React.createClass({
     },
 
     render: function() {
-    	var productId = this.context.router.getCurrentParams().productId;
-    	return (
-	        <div>
-		        <div style={{position:'fixed', top:'0', left: '0', zIndex: '9' }} >
-		        	<Link name='Edit Product' to='editProduct' params={{productId:productId}}/>
-		        </div>
-	            <RouteHandler  />
-	        </div>
-    	)
+        {/* Add navigation to fixed header here */}
+        <div>
+            <RouteHandler/>
+        </div>
     }
 
 });
