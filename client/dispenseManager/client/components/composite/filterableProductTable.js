@@ -1,7 +1,7 @@
 var React = require('react');
 
-var SearchField = require('./searchField.js');
-var ProductTable = require('./productTable.js');
+var SearchField = require('./../atomic/searchField.js');
+var ProductTable = require('./../atomic/productTable.js');
 
 var FilterableProductTable = React.createClass({
 
@@ -47,11 +47,15 @@ var FilterableProductTable = React.createClass({
     render: function() {
         return (
             <div>
-                <SearchField
-                    filterText={this.state.filterText}
-                    onUserInput={this.handleUserInput}/>
-                <ProductTable
-                    products={this.state.data}/>
+                <div style={{position:'fixed', top:'0', left: '0', zIndex: '9' }} >
+                    <SearchField
+                        filterText={this.state.filterText}
+                        onUserInput={this.handleUserInput}/>
+                </div>
+                <div>
+                    <ProductTable
+                        products={this.state.data}/>
+                </div>
             </div>
         );
     }

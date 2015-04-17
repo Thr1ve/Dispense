@@ -1,11 +1,10 @@
 var React  = require('react');
 var Router = require('react-router');
-var { Route, RouteHandler, Link, DefaultRoute } = Router;
+var { RouteHandler } = Router;
 
 var mui = require('material-ui');
-var FlatButton = mui.FlatButton
 
-var FilterableProductTable = require('../filterableProductTable.js');
+var FilterableProductTable = require('../composite/filterableProductTable.js');
 
 var MainSearch = React.createClass({
 
@@ -13,18 +12,12 @@ var MainSearch = React.createClass({
         router: React.PropTypes.func
     },
 
-	toRequestedCodes: function() {
-        var { router } = this.context;
-        router.transitionTo('requestedCodes');
-	},
-
     render: function() {
         return (
             <div>
-            	<FlatButton label='Requested Codes' onClick={this.toRequestedCodes}/>
                 <FilterableProductTable products={window.app.products}/>
                 <RouteHandler/>
-            </div> 
+            </div>
         );
     }
 
