@@ -3,8 +3,14 @@ var React = require('react');
 var AddCodes = React.createClass({
 
     render: function() {
+        var { isbn13, title } = this.props.params.product;
         return (
-        	<p>Add Codes</p>
+            <div>
+                <p>Add Codes:</p>
+                <br></br>
+                <p> {isbn13} </p>
+                <p> {title} </p>
+            </div>
         );
     }
 

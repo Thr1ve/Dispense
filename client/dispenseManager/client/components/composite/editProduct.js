@@ -1,21 +1,21 @@
 var React = require('react');
+var EditProductForm = require('../atomic/editProductForm.js');
 
 var EditProduct = React.createClass({
 
-    contextTypes: {
-        router: React.PropTypes.func
-    },
-
     render: function() {
-    	console.log(this);
+        var { isbn13, title } = this.props.params.product;
         return (
-        	<div>
-	        	<p>Edit Product</p>
-	        	<p> {this.context.router.getCurrentParams().productId} </p>
-	        </div>
+            <div>
+                <p>Edit Product:</p>
+                <br></br>
+                <p> {isbn13} </p>
+                <p> {title} </p>
+                <EditProductForm product={this.props.params.product} />
+            </div>
         );
     }
-
+    
 });
 
 module.exports = EditProduct;

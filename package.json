@@ -8,7 +8,7 @@
   "scripts": {
     "pretest": "jshint ."
   },
-  "src": "client/dispenseApp/client",
+  "src": "client/dispenseManager/client",
   "test": "test",
   "dist": "dist",
   "mainInput": "main",

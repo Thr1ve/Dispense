@@ -41,8 +41,9 @@ module.exports = {
         // wait for document ready to render our main view
         // this ensures the document has a body, etc.
         domReady(function () {
-            Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
-              React.render(<Handler/>, document.body);
+            Router.run(AppRoutes, Router.HistoryLocation, function (Handler, state) {
+              var params = state.params;
+              React.render(<Handler params={params}/>, document.body);
             });
         });
     }

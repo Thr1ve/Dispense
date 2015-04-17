@@ -16,7 +16,7 @@ var MainSearch = React.createClass({
         return (
             <div>
                 <FilterableProductTable products={window.app.products}/>
-                <RouteHandler/>
+                <RouteHandler {...this.props}/>
             </div>
         );
     }

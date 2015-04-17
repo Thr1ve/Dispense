@@ -41,13 +41,9 @@ var App = React.createClass({
         width: '100%', height:'50px',
         opacity: '0.8', backgroundColor: 'white',
         zIndex: '4' }} >
-        <FlatButton
-          style={{float:'right', height:'50px', zIndex:5}}
-          label='Requested Codes'
-          onClick={this.toRequestedCodes}/>
       </header>
       <div style={{position:'relative', top:'50px'}}>
-        <RouteHandler />
+        <RouteHandler {...this.props}/>
       </div>
     </div>
     );
@@ -62,7 +58,8 @@ module.exports = (
             <Route name='product' path="product/:productId" handler={ManageProduct}>
               <Route name="editProduct" handler={EditProduct}/>
               <Route name="addCodes" handler={AddCodes}/>
-              <DefaultRoute handler={ProductStats}/>
+              <Route name="productStats" handler={ProductStats}/>
+              <DefaultRoute handler={EditProduct}/>
             </Route>
             <DefaultRoute handler={MainSearch}/>
             <NotFoundRoute handler={NotFound}/>

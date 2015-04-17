@@ -2,16 +2,14 @@ var React = require('react');
 
 var ProductStats = React.createClass({
 
-    contextTypes: {
-        router: React.PropTypes.func
-    },
-
     render: function() {
-    	console.log(this);
+        var { isbn13, title } = this.props.params.product;
         return (
         	<div>
-	        	<p>Product Stats</p>
-	        	<p> {this.context.router.getCurrentParams().productId} </p>
+	        	<p>Product Stats:</p>
+                <br></br>
+	        	<p> {isbn13} </p>
+                <p> {title} </p>
 	        </div>
         );
     }
