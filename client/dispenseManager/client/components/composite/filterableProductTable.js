@@ -3,6 +3,8 @@ var React = require('react');
 var SearchField = require('./../atomic/searchField.js');
 var ProductTable = require('./../atomic/productTable.js');
 
+var log = require('bows')("filterableProductTable.js");
+
 var FilterableProductTable = React.createClass({
 
     getInitialState: function() {

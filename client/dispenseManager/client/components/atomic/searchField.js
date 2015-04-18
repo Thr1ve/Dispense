@@ -3,6 +3,8 @@ var React = require('react');
 var Mui = require('material-ui');
 var TextField = Mui.TextField;
 
+var log = require('bows')("searchField.js");
+
 var SearchField = React.createClass({
 
     handleChange: function() {

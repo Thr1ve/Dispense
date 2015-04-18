@@ -13,6 +13,8 @@ var User      = require('./models/user-state');
 var Products  = require('./models/products');
 var Code      = require('./models/usedCode-collection');
 
+var log = require('bows')("app.js");
+
 require('../public/less/main.less');
 
 module.exports = {

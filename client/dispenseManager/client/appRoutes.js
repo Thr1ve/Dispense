@@ -12,6 +12,7 @@ var React        = require('react');
 var Router       = require('react-router');
 var { Route, RouteHandler, DefaultRoute, NotFoundRoute } = Router;
 
+var log = require('bows')("appRoutes.js");
 
 var NotFound = React.createClass({
   render : function() {
@@ -33,6 +34,7 @@ var App = React.createClass({
   },
 
   render: function () {
+    console.log('appRoutes', this.props);
     return (
     <div>
       <header style={{

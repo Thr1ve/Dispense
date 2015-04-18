@@ -3,6 +3,8 @@ var Router = require('react-router');
 var mui = require('material-ui');
 var Menu = mui.Menu;
 
+var log = require('bows')("productTable.js");
+
 var ProductTable = React.createClass({
 
     contextTypes: {

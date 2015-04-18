@@ -1,5 +1,7 @@
 var React = require('react');
 
+var log = require('bows')("addCodes.js");
+
 var AddCodes = React.createClass({
 
     render: function() {

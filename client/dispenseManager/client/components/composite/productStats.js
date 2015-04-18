@@ -1,5 +1,7 @@
 var React = require('react');
 
+var log = require('bows')("productStats.js");
+
 var ProductStats = React.createClass({
 
     render: function() {

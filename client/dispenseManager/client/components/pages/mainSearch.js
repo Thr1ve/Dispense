@@ -6,6 +6,8 @@ var mui = require('material-ui');
 
 var FilterableProductTable = require('../composite/filterableProductTable.js');
 
+var log = require('bows')("mainSearch.js");
+
 var MainSearch = React.createClass({
 
     contextTypes: {
@@ -13,6 +15,7 @@ var MainSearch = React.createClass({
     },
 
     render: function() {
+        console.log('mainSearch', this.props);
         return (
             <div>
                 <FilterableProductTable products={window.app.products}/>
