@@ -28,9 +28,12 @@ var EditProductForm = React.createClass({
     handleSubmit: function(e){
         e.preventDefault();
         var title = this.refs.title.getValue()
+        var isbn13= this.refs.isbn13.getValue()
         var data = {
             title   : title,
-        }
+            isbn13  : isbn13
+        };
+
         this.props.product.save(data,{
             wait: true , 
             success:function(){
@@ -43,6 +46,7 @@ var EditProductForm = React.createClass({
         log('render', this.props);
 
         var title = this.state.title;
+        var isbn13 = this.state.isbn13;
 
         var textFieldStyle= {
             display:'block',
@@ -62,6 +66,15 @@ var EditProductForm = React.createClass({
                         ref='title'          
                         floatingLabelText='Title'            
                         defaultValue={title}
+                        onChange={this.handleChange}/>
+                </div>
+                <div style={textFieldStyle}>
+                    <TextField
+                        type='text'
+                        name='isbn13'
+                        ref='isbn13'
+                        floatingLabelText='ISBN'
+                        defaultValue={isbn13}
                         onChange={this.handleChange}/>
                 </div>
                 <FlatButton style={{float:'right'}} label='Submit'/>
