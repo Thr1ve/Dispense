@@ -27,9 +27,9 @@ var EditProductForm = React.createClass({
 
     handleSubmit: function(e){
         e.preventDefault();
+        var title = this.refs.title.getValue()
         var data = {
-            "productId": this.props.product.productId,
-            "title"   : this.refs.title.props.value,
+            title   : title,
         }
         this.props.product.save(data,{
             wait: true , 
