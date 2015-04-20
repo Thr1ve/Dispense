@@ -1,17 +1,22 @@
 var React = require('react');
 
+var CodeInput = require('../atomic/codeInput.js');
+var CodeOutput = require('../atomic/codeOutput');
+
 var log = require('bows')("addCodes.js");
 
 var AddCodes = React.createClass({
 
     render: function() {
-        var { isbn13, title } = this.props.params.product;
+        console.log(this.props);
         return (
             <div>
                 <p>Add Codes:</p>
                 <br></br>
-                <p> {isbn13} </p>
-                <p> {title} </p>
+                <p> {this.props.title} </p>
+                <p> {this.props.isbn13} </p>
+                <CodeInput/>
+                <CodeOutput/>
             </div>
         );
     }
