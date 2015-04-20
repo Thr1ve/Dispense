@@ -1,11 +1,12 @@
 
-var MainSearch   = require('./components/pages/mainSearch.js');
+var MainSearch    = require('./components/pages/mainSearch.js');
 var ManageProduct = require('./components/pages/manageProduct.js');
-var EditProduct = require('./components/composite/editProduct.js');
-var AddCodes = require('./components/composite/addCodes.js');
-var ProductStats = require('./components/composite/productStats.js');
+var EditProduct   = require('./components/composite/editProduct.js');
+var AddCodes      = require('./components/composite/addCodes.js');
+var ProductStats  = require('./components/composite/productStats.js');
+var AddProduct    = require('./components/composite/addProduct.js');
 
-var mui = require('material-ui');
+var mui        = require('material-ui');
 var FlatButton = mui.FlatButton;
 
 var React        = require('react');
@@ -57,6 +58,7 @@ var App = React.createClass({
 module.exports = (
           <Route name="app" path="/" handler={App}>
             <Route name="mainSearch" handler={MainSearch}/>
+            <Route name="addProduct" handler={AddProduct}/>
             <Route name='product' path="product/:productId" handler={ManageProduct}>
               <Route name="editProduct" handler={EditProduct}/>
               <Route name="addCodes" handler={AddCodes}/>

@@ -8,15 +8,15 @@ module.exports = function(Product) {
 
         var products = app.datasources.mydb.models.product;
 
-        // if(!modelInstance.instance.productId){
-        //     products.count(function(err,n){
-        //         modelInstance.instance.productId = n+1;
-        //         next();
-        //     });
-        // }
-        // else{
+        if(!modelInstance.instance.productId){
+            products.count(function(err,n){
+                modelInstance.instance.productId = n+1;
+                next();
+            });
+        }
+        else{
             next();
-        // }
+        }
     });
 };
 

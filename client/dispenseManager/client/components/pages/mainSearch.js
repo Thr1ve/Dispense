@@ -2,7 +2,8 @@ var React  = require('react');
 var Router = require('react-router');
 var { RouteHandler } = Router;
 
-var mui = require('material-ui');
+var Mui = require('material-ui');
+var FlatButton = Mui.FlatButton;
 
 var FilterableProductTable = require('../composite/filterableProductTable.js');
 
@@ -14,10 +15,20 @@ var MainSearch = React.createClass({
         router: React.PropTypes.func
     },
 
+    handleClick: function(){
+      var { router } = this.context;
+      router.transitionTo('addProduct');
+    },
+
     render: function() {
         console.log('mainSearch', this.props);
         return (
             <div>
+                <div style={{position:'fixed', top:'0', right: '0', zIndex: '9' }} >
+                    <FlatButton 
+                        label='Add New Product'
+                        onClick={this.handleClick}/>
+                </div>
                 <FilterableProductTable products={window.app.products}/>
                 <RouteHandler {...this.props}/>
             </div>
