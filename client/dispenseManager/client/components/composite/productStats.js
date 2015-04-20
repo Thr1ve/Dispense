@@ -5,7 +5,7 @@ var log = require('bows')("productStats.js");
 var ProductStats = React.createClass({
 
     render: function() {
-        var { isbn13, title } = this.props.params.product;
+        var { isbn13, title } = this.props.product;
         return (
         	<div>
 	        	<p>Product Stats:</p>
