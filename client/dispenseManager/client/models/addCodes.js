@@ -16,6 +16,6 @@ module.exports = AmpersandModel.extend({
         }
     },
 
-    url: '/api/availableCodes-collection/addCodes'
+    url: 'http://localhost:3000/api/availableCodes-collection/addCodes'
 
 });
