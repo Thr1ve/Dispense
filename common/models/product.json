@@ -17,8 +17,7 @@
     },
     "productId": {
       "type": "number",
-      "id": true,
-      "required": true
+      "id": true
     },
     "nCodes":{
       "type": "number"
