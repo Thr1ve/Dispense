@@ -13,6 +13,8 @@ var React        = require('react');
 var Router       = require('react-router');
 var { Route, RouteHandler, DefaultRoute, NotFoundRoute } = Router;
 
+var Breadcrumbs = require('react-breadcrumbs');
+
 var log = require('bows')("appRoutes.js");
 
 var NotFound = React.createClass({
@@ -44,6 +46,7 @@ var App = React.createClass({
         width: '100%', height:'50px',
         opacity: '0.8', backgroundColor: 'white',
         zIndex: '4' }} >
+        <Breadcrumbs/>
       </header>
       <div style={{position:'relative', top:'50px'}}>
         <RouteHandler {...this.props}/>

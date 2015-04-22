@@ -26,6 +26,9 @@
     "dataSource": "mydb",
     "public": false
   },
+  "Email": {
+    "dataSource": "emailDs"
+  },
   "product": {
     "dataSource": "mydb",
     "public": true

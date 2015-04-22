@@ -12,5 +12,22 @@
     "name": "mysqlDs",
     "connector": "mysql",
     "user": "loopback"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [{
+      "type": "smtp",
+      "host": "smtp.gmail.com",
+      "secure": true,
+      "port": 465,
+      "tls": {
+        "rejectUnauthorized": false
+      },
+      "auth": {
+        "user": "dispense.wiley@gmail.com",
+        "pass": "wiley123"
+      }
+    }]
   }
 }

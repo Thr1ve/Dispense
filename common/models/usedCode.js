@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var app = require('../../server/server');
+var dsConfig = require('../../server/datasources.json');
 
 module.exports = function(UsedCode) {
 
@@ -8,10 +9,16 @@ module.exports = function(UsedCode) {
 
     UsedCode.process= function(requestObject, cb){
 
+        var yourEmailAddress = dsConfig.emailDs.transports[0].auth.user;
+
         var response = requestObject.instance;
         //grab the object representing the SQL data
+        console.log(app.models()[0].count());
         var availableCodes = app.datasources.mydb.models.availableCodes;
-
+availableCodes.count({where:{productId: "6"}}, function(err, count){
+                    console.log(err);
+                    console.log(count);
+                });
         //search the SQL data for the correct model using the productId
         //maybe move thise to the before save function below?? that way we can avoid 
         //writing to the db if there's no codes
@@ -30,6 +37,19 @@ module.exports = function(UsedCode) {
                     //send the callback
                     cb(null, response);
                 });
+
+                
+                // app.models.Email.send({
+                //     to: 'gbuhler@wiley.com',
+                //     cc: 'chrcollier@wiley.com;gbuhler@wiley.com',
+                //     from: yourEmailAddress,
+                //     subject: 'The email subject',
+                //     text: 'The following code was just generated in Dispense: \n\n' + response.code,
+                //     //html: '<strong>HTML</strong> tags are converted'
+                // }, function(err) {
+                //     if (err) throw err;
+                //     console.log('> email sent successfully');
+                // });
             }
             else {
                 cb(true, null);
@@ -57,3 +77,20 @@ module.exports = function(UsedCode) {
     );
 
 };
+
+/*
+code from current app
+' Email if the number of registration codes is below 5
+        If Count.Text <= 5 Then
+            Dim Msg As MailMessage = New MailMessage()
+            Dim MailObj As New SmtpClient("lme.wileypub.com")
+            Msg.From = New MailAddress("skessel@wiley.com")
+            Msg.To.Add(New MailAddress("lmarsala@wiley.com"))
+            Msg.CC.Add(New MailAddress("bcox@wiley.com"))
+            Msg.CC.Add(New MailAddress("skessel@wiley.com"))
+            Msg.CC.Add(New MailAddress("shuffman@wiley.com"))
+            Msg.IsBodyHtml = "True"
+            Msg.Body = "Need More Codes For:" + " " + DataBase.Text + " " + "We only have" + " " + Count.Text + " " + "Left. Please Email The Following Support Staff With New Codes, Brenda Cox, Sean Huffman, and Shawn Kessel"
+            Msg.Subject = "Need More Codes For:" + " " + DataBase.Text + " " + "We only have" + " " + Count.Text + " " + "Left"
+            MailObj.Send(Msg)
+*/
