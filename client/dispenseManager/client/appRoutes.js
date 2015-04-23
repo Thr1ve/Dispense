@@ -46,7 +46,7 @@ var App = React.createClass({
         width: '100%', height:'50px',
         opacity: '0.8', backgroundColor: 'white',
         zIndex: '4' }} >
-        <Breadcrumbs/>
+        <Breadcrumbs />
       </header>
       <div style={{position:'relative', top:'50px'}}>
         <RouteHandler {...this.props}/>

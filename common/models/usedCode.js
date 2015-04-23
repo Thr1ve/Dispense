@@ -77,20 +77,3 @@ availableCodes.count({where:{productId: "6"}}, function(err, count){
     );
 
 };
-
-/*
-code from current app
-' Email if the number of registration codes is below 5
-        If Count.Text <= 5 Then
-            Dim Msg As MailMessage = New MailMessage()
-            Dim MailObj As New SmtpClient("lme.wileypub.com")
-            Msg.From = New MailAddress("skessel@wiley.com")
-            Msg.To.Add(New MailAddress("lmarsala@wiley.com"))
-            Msg.CC.Add(New MailAddress("bcox@wiley.com"))
-            Msg.CC.Add(New MailAddress("skessel@wiley.com"))
-            Msg.CC.Add(New MailAddress("shuffman@wiley.com"))
-            Msg.IsBodyHtml = "True"
-            Msg.Body = "Need More Codes For:" + " " + DataBase.Text + " " + "We only have" + " " + Count.Text + " " + "Left. Please Email The Following Support Staff With New Codes, Brenda Cox, Sean Huffman, and Shawn Kessel"
-            Msg.Subject = "Need More Codes For:" + " " + DataBase.Text + " " + "We only have" + " " + Count.Text + " " + "Left"
-            MailObj.Send(Msg)
-*/
