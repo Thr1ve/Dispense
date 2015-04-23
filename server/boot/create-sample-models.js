@@ -1,4 +1,5 @@
 var productsJSON = require('../products.json');
+var contactsJSON = require('../contacts.json');
 var _ = require('underscore');
 
 module.exports = function(app) {
@@ -16,6 +17,21 @@ module.exports = function(app) {
             });
         });
         console.log('Product Models created!');
+    });
+
+    app.dataSources.mydb.automigrate('contact', function(err) {
+        if (err) throw err;
+
+        contactsJSON.contacts.forEach(function(val) {
+            app.models.contact.create([{
+                productId: val.productId,
+                mainEmail: val.mainEmail,
+                cc       : val.cc
+            }, ], function(err, products) {
+                if (err) throw err;
+            });
+        });
+        console.log('Contact Models created!');
     });
 
     app.dataSources.mydb.automigrate('availableCodes', function(err) {

@@ -28,7 +28,7 @@
       "type": "string"
     },
     "date": {
-        "type":"string"
+      "type": "string"
     }
   },
   "validations": [],

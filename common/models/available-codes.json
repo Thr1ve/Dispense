@@ -13,9 +13,9 @@
   "validations": [],
   "relations": {
     "product": {
-        "type": "belongsTo",
-        "model": "product",
-        "foreignKey": "productId"
+      "type": "belongsTo",
+      "model": "product",
+      "foreignKey": "productId"
     }
   },
   "acls": [],

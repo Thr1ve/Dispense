@@ -1,0 +1,22 @@
+{
+  "name": "contact",
+  "plural": "contacts",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "productId": {
+      "type": "number",
+      "required": true
+    },
+    "mainEmail": {
+      "type": "string"
+    },
+    "cc": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

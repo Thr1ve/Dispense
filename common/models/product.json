@@ -19,18 +19,23 @@
       "type": "number",
       "id": true
     },
-    "nCodes":{
+    "nCodes": {
       "type": "number"
     }
   },
   "validations": [],
   "relations": {
-    "availableCodes":{
-        "type": "hasMany",
-        "model": "availableCodes",
-        "foreignKey": "productId"
-    }
+    "availableCodes": {
+      "type": "hasMany",
+      "model": "availableCodes",
+      "foreignKey": "productId"
     },
+    "contacts": {
+      "type": "hasOne",
+      "model": "contact",
+      "foreignKey": "productId"
+    }
+  },
   "acls": [],
   "methods": []
 }

@@ -40,5 +40,9 @@
   "availableCodes": {
     "dataSource": "mydb",
     "public": true
+  },
+  "contact": {
+    "dataSource": "mydb",
+    "public": true
   }
 }

@@ -13,12 +13,7 @@ module.exports = function(UsedCode) {
 
         var response = requestObject.instance;
         //grab the object representing the SQL data
-        console.log(app.models()[0].count());
         var availableCodes = app.datasources.mydb.models.availableCodes;
-availableCodes.count({where:{productId: "6"}}, function(err, count){
-                    console.log(err);
-                    console.log(count);
-                });
         //search the SQL data for the correct model using the productId
         //maybe move thise to the before save function below?? that way we can avoid 
         //writing to the db if there's no codes
@@ -39,17 +34,24 @@ availableCodes.count({where:{productId: "6"}}, function(err, count){
                 });
 
                 
-                // app.models.Email.send({
-                //     to: 'gbuhler@wiley.com',
-                //     cc: 'chrcollier@wiley.com;gbuhler@wiley.com',
-                //     from: yourEmailAddress,
-                //     subject: 'The email subject',
-                //     text: 'The following code was just generated in Dispense: \n\n' + response.code,
-                //     //html: '<strong>HTML</strong> tags are converted'
-                // }, function(err) {
-                //     if (err) throw err;
-                //     console.log('> email sent successfully');
-                // });
+                availableCodes.count({productId: requestObject.instance.productId}, function(err, count){
+                    if(err){ 
+                        console.log(err);
+                    }
+                    else if(count > 5){
+                        // app.models.Email.send({
+                        //     to: 'gbuhler@wiley.com',
+                        //     cc: 'chrcollier@wiley.com;gbuhler@wiley.com',
+                        //     from: yourEmailAddress,
+                        //     subject: 'The email subject',
+                        //     text: 'The following code was just generated in Dispense: \n\n' + response.code + '\n\n There are ' + count + ' codes left for this product',
+                        //     //html: '<strong>HTML</strong> tags are converted'
+                        // }, function(err) {
+                        //     if (err) throw err;
+                        //     console.log('> email sent successfully');
+                        // });
+                    }
+                });
             }
             else {
                 cb(true, null);
