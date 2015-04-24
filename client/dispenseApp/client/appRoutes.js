@@ -1,7 +1,8 @@
 
-var MainSearch   = require('./components/pages/mainSearch.js');
-var RequestCode  = require('./components/pages/requestCode.js');
+var MainSearch      = require('./components/pages/mainSearch.js');
+var RequestCode     = require('./components/pages/requestCode.js');
 var RequestedCodes  = require('./components/pages/requestedCodes.js');
+var SearchUsedCodes = require('./components/pages/searchUsedCodes.js');
 
 var mui = require('material-ui');
 var FlatButton = mui.FlatButton;
@@ -30,6 +31,11 @@ var App = React.createClass({
       router.transitionTo('requestedCodes');
   },
 
+  toSearchUsedCodes: function() {
+      var { router } = this.context;
+      router.transitionTo('searchUsedCodes');
+  },
+
   render: function () {
     return (
     <div>
@@ -43,6 +49,10 @@ var App = React.createClass({
           style={{float:'right', height:'50px', zIndex:5}}
           label='Requested Codes'
           onClick={this.toRequestedCodes}/>
+        <FlatButton
+          style={{float:'right', height:'50px', zIndex:5}}
+          label='Search Used Codes'
+          onClick={this.toSearchUsedCodes}/>
       </header>
       <div style={{position:'relative', top:'50px'}}>
         <RouteHandler />
@@ -58,6 +68,7 @@ module.exports = (
           <Route name="app" path="/" handler={App}>
             <Route name="mainSearch" handler={MainSearch}/>
             <Route name='requestCode' path="requestCode/:productId" handler={RequestCode}/>
+            <Route name="searchUsedCodes" path="searchUsedCodes" handler={SearchUsedCodes}/>
             <Route name='requestedCodes' path="requestedCodes" handler={RequestedCodes}/>
             <DefaultRoute handler={MainSearch}/>
             <NotFoundRoute handler={NotFound}/>
