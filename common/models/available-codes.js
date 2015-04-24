@@ -6,15 +6,6 @@ module.exports = function(AvailableCodes) {
     //this is the logic for accepting a request to add codes from the client and
     //adding the new codes to the database
 
-    AvailableCodes.observe('after delete', function(ctx, next){
-        var n = ctx.Model.definition;
-        console.log(n);
-        // console.log('Deleted %s matching %j',
-        //     ctx.Model.pluralModelName,
-        //     ctx.where);
-        next();
-    });
-
     AvailableCodes.add = function(productId, codes, cb) {
 
         //grab the object representing the SQL data

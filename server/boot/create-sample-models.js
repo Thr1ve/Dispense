@@ -1,5 +1,7 @@
-var productsJSON = require('../products.json');
-var contactsJSON = require('../contacts.json');
+var productsJSON        = require('../products.json');
+var contactsJSON        = require('../contacts.json');
+var sampleUsedCodesJSON = require('../sampleUsedCodes.json');
+
 var _ = require('underscore');
 
 module.exports = function(app) {
@@ -22,11 +24,14 @@ module.exports = function(app) {
     app.dataSources.mydb.automigrate('contact', function(err) {
         if (err) throw err;
 
+        var date = new Date(0);
+
         contactsJSON.contacts.forEach(function(val) {
             app.models.contact.create([{
                 productId: val.productId,
                 mainEmail: val.mainEmail,
-                cc       : val.cc
+                cc       : val.cc,
+                lastEmailed : date
             }, ], function(err, products) {
                 if (err) throw err;
             });
@@ -55,11 +60,25 @@ module.exports = function(app) {
         }
     });
 
-    // app.dataSources.mydb.automigrate('usedCode', function(err) {
-    //     if (!err) {
-    //         console.log('usedCode table created');
-    //     }
-    // });
+    app.dataSources.mydb.automigrate('usedCode', function(err) {
+        if (!err) {
+            sampleUsedCodesJSON.usedCodes.forEach(function(val) {
+                app.models.usedCode.create([{
+                    productId: val.productId,
+                    chatOrTicket: val.chatOrTicket,
+                    customerEmail: val.customerEmail,
+                    customerName: val.customerName,
+                    representative: val.representative,
+                    universityOrBusiness: val.universityOrBusiness,
+                    code: val.code,
+                    date: val.date
+                }, ], function(err, products) {
+                    if (err) throw err;
+                });
+            });
+            console.log('usedCode table created');
+        }
+    });
 
 
 };

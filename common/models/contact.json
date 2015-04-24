@@ -13,6 +13,9 @@
     },
     "cc": {
       "type": "string"
+    },
+    "lastEmailed": {
+      "type": "date"
     }
   },
   "validations": [],

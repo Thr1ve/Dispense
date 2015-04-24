@@ -1,0 +1,74 @@
+{
+	"usedCodes": [
+		{
+			"chatOrTicket": "chat",
+			"customerEmail"	: "customerAAA@test.com",
+			"customerName" : "Customer A",
+			"productId" : "25",
+			"representative" : "Rep A",
+			"universityOrBusiness" : "School A",
+			"code" : "testCode111",
+			"date" : "na"
+		},
+		{
+			"chatOrTicket": "chat",
+			"customerEmail"	: "customerAAA@test.com",
+			"customerName" : "Customer A",
+			"productId" : "25",
+			"representative" : "Rep B",
+			"universityOrBusiness" : "School A",
+			"code" : "testCode121",
+			"date" : "na"
+		},
+		{
+			"chatOrTicket": "chat",
+			"customerEmail"	: "customerAAA@test.com",
+			"customerName" : "Customer A",
+			"productId" : "25",
+			"representative" : "Rep C",
+			"universityOrBusiness" : "School A",
+			"code" : "testCode122",
+			"date" : "na"
+		},
+		{
+			"chatOrTicket": "chat",
+			"customerEmail"	: "customerBBB@test.com",
+			"customerName" : "Customer B",
+			"productId" : "25",
+			"representative" : "Rep A",
+			"universityOrBusiness" : "School B",
+			"code" : "testCode222",
+			"date" : "na"
+		},
+		{
+			"chatOrTicket": "chat",
+			"customerEmail"	: "customerCCC@test.com",
+			"customerName" : "Customer C",
+			"productId" : "25",
+			"representative" : "Rep A",
+			"universityOrBusiness" : "School B",
+			"code" : "testCode232",
+			"date" : "na"
+		},
+		{
+			"chatOrTicket": "chat",
+			"customerEmail"	: "customerBBB@test.com",
+			"customerName" : "Customer B",
+			"productId" : "16",
+			"representative" : "Rep A",
+			"universityOrBusiness" : "School B",
+			"code" : "testCode233",
+			"date" : "na"
+		},
+		{
+			"chatOrTicket": "chat",
+			"customerEmail"	: "customerBBB@test.com",
+			"customerName" : "Customer B",
+			"productId" : "16",
+			"representative" : "Rep B",
+			"universityOrBusiness" : "School B",
+			"code" : "testCode333",
+			"date" : "na"
+		}
+	]
+}
