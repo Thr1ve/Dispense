@@ -10,7 +10,7 @@ var webpack = require('webpack');
 var app = 'dispenseApp';
 var manager = 'dispenseManager';
 
-var currentProject = './client/' + manager + '/client/app.js';
+var currentProject = './client/' + app + '/client/app.js';
 
 module.exports = {
 
