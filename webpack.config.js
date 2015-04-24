@@ -7,6 +7,11 @@
 'use strict';
 var webpack = require('webpack');
 
+var app = 'dispenseApp';
+var manager = 'dispenseManager';
+
+var currentProject = './client/' + manager + '/client/app.js';
+
 module.exports = {
 
   output: {
@@ -19,7 +24,7 @@ module.exports = {
   devtool: false,
   entry: [
       'webpack/hot/only-dev-server',
-      './client/dispenseManager/client/app.js'
+      currentProject
   ],
 
   stats: {
