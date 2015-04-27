@@ -4,30 +4,41 @@ var Mui = require('material-ui');
 var TextField = Mui.TextField;
 var FlatButton = Mui.FlatButton;
 
+var _ = require('underscore');
+
 var SearchForm = React.createClass({
 
     getInitialState: function() {
         return {
-            code: ''
+            code: '',
+            customerEmail: '',
+            universityOrBusiness: '',
+            representative: ''
         };
+    },
+
+    formatQuery: function(dataObj){
+        var mapped = _.mapObject(dataObj, function(val, key){
+            return val.props.value;
+        }) 
+        return _.omit(mapped, function(value, key, object){
+                return _.isEmpty(value);
+        });
     },
 
     handleSubmit : function(e) {
         e.preventDefault();
         var self = this;
+        var query = this.formatQuery(this.refs);
         var filter = {
             filter: {
-                where: {
-                    code: this.refs.code.props.value
-                }
+                where: query
             }
         };
         window.app.usedCodes.fetch({
             data:filter,
-            success: function(model, response){
-                console.log('success'); 
-                console.log(model);
-                self.props.sendData(model);
+            success: function(collection, response){
+                self.props.sendData(collection.serialize());
             }
         })
     },

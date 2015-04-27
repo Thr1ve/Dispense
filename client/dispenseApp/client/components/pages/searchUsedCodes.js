@@ -17,9 +17,11 @@ var SearchUsedCodes = React.createClass({
 
 
     getInitialState: function(){
-        return {
-            results:[] 
-        }
+        var initial = { 
+        	"results": []
+	    };
+
+      	return initial;
     },
 
     process : function(){
@@ -27,23 +29,19 @@ var SearchUsedCodes = React.createClass({
     },
 
     sendData : function(data){
-        console.log('sendData went off');
-        console.log(data);
-        this.setState({results:data.models});
-        console.log(this.state.results);
+        this.setState({results:data});
     },
 
 	render: function(){
-        // window.app.usedCodes.fetch({data:testFilter})
-        // console.log(window.app.usedCodes);
-
-        var models = this.state.results;
-
 		return (
             <div>
                 <SearchForm
                     sendData={this.sendData} />
-                <Griddle results={models}/>
+                <Griddle 
+                	results={this.state.results}
+                	columns={['customerEmail', 'code', 'chatOrTicket', 'customerName', 'representative', 'date', 'universityOrBusiness']} 
+                	resultsPerPage={15}
+                	showSettings={true}/>
             </div>
 		);
 	}
