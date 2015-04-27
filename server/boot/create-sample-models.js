@@ -82,3 +82,28 @@ module.exports = function(app) {
 
 
 };
+
+
+
+/*
+// template for random JSON generation at
+// http://www.json-generator.com/
+
+[
+  '{{repeat(500)}}',
+  {
+    chatOrTicket: 'chat',    
+    customerName: '{{firstName()}} {{surname()}}',
+    customerEmail: '{{email()}}',
+    productId: '{{integer(1, 272)}}',
+    representative: '{{random("Gordon B", "Chrys C", "JR", "Sarah Z", "Rhetlin F")}}',
+    universityOrBusiness: '{{company().toUpperCase()}}',
+    code: '{{objectId()}}',
+    date: '{{date(new Date(2014, 0, 1), new Date(), "YYYY-MM-ddThh:mm:ss Z")}}'
+  }
+]
+
+
+
+
+*/

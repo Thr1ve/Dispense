@@ -33,9 +33,10 @@ module.exports = {
         });
 
         // create our global empty collections for products and a received code
-        this.user     = new User();
-        this.products = new Products();
-        this.newCode  = new Code();
+        this.user      = new User();
+        this.products  = new Products();
+        this.newCode   = new Code();
+        this.usedCodes = new Code();
 
 
         // wait for document ready to render our main view

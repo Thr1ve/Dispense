@@ -5,7 +5,7 @@ var { Route, RouteHandler, Link, DefaultRoute } = Router;
 var mui = require('material-ui');
 var AppBar = mui.AppBar;
 
-var FilterableProductTable = require('../filterableProductTable.js');
+var FilterableProductTable = require('../composite/filterableProductTable.js');
 
 var MainSearch = React.createClass({
 

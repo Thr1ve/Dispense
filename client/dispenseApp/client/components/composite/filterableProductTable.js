@@ -1,7 +1,7 @@
 var React = require('react');
 
-var SearchField = require('./searchField.js');
-var ProductTable = require('./productTable.js');
+var SearchField = require('./../atomic/searchField.js');
+var ProductTable = require('./../atomic/productTable.js');
 
 var FilterableProductTable = React.createClass({
 

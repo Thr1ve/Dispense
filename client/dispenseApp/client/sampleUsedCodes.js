@@ -1,4 +1,4 @@
-{"usedCodes": [
+module.exports = {"usedCodes": [
     {
         "chatOrTicket": "chat",
         "customerName": "Elisabeth Serrano",

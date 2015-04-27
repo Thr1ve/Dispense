@@ -1,5 +1,5 @@
 var React = require('react');
-var RequestCodeForm = require('../requestCodeForm.js');
+var RequestCodeForm = require('../atomic/requestCodeForm.js');
 
 var requestCode = React.createClass({
 

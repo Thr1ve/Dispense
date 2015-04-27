@@ -89,16 +89,18 @@ module.exports = function(UsedCode) {
         });
     };
 
-    UsedCode.observe('before save',function(modelInstance, next) {
+    // commented for testing usedCode searching -- uncomment when done
+    //
+    // UsedCode.observe('before save',function(modelInstance, next) {
 
-        // console.log('before save', modelInstance);
+    //     // console.log('before save', modelInstance);
 
-        UsedCode.process(modelInstance, function(err, res){
-            modelInstance = res;
-            next();
-        });
+    //     UsedCode.process(modelInstance, function(err, res){
+    //         modelInstance = res;
+    //         next();
+    //     });
 
-    });
+    // });
 
    
 
