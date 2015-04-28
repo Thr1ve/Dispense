@@ -3,15 +3,16 @@ var Griddle = require('griddle-react');
 
 var SearchForm = require('../atomic/searchForm.js');
 
-var fakeData = require('../../sampleUsedCodes.js');
-
-var testFilter = {
-    filter: {
-        where: {
-            code: '553ac70629e5058678deeeaf'
-        }
-    }
-}
+var columnMetadata = [
+    {'columnName': 'customerEmail', 'displayName': 'Email' },
+    {'columnName': 'customerName', 'displayName': 'Name' },
+    {'columnName': 'code', 'displayName': 'Code' },
+    {'columnName': 'representative', 'displayName': 'Rep' },
+    {'columnName': 'date', 'displayName': 'Date' },
+    {'columnName': 'universityOrBusiness', 'displayName': 'Univ' },
+    {'columnName': 'chatOrTicket', 'displayName': 'Ticket' },
+    {'columnName': 'productId', 'displayName': 'Product' }
+]
 
 var SearchUsedCodes = React.createClass({
 
@@ -29,6 +30,9 @@ var SearchUsedCodes = React.createClass({
     },
 
     sendData : function(data){
+        // productsAdded = data.map(function(val, ind, arr){
+
+        // });
         this.setState({results:data});
     },
 
@@ -39,8 +43,9 @@ var SearchUsedCodes = React.createClass({
                     sendData={this.sendData} />
                 <Griddle 
                 	results={this.state.results}
-                	columns={['customerEmail', 'code', 'chatOrTicket', 'customerName', 'representative', 'date', 'universityOrBusiness']} 
-                	resultsPerPage={15}
+                	columns={['customerEmail', 'code', 'customerName', 'date', 'universityOrBusiness' ]} 
+                    columnMetadata={columnMetadata}
+                	resultsPerPage={10}
                 	showSettings={true}/>
             </div>
 		);
