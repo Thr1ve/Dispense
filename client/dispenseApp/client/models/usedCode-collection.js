@@ -1,11 +1,16 @@
-var AmpCollection = require('ampersand-rest-collection');
+var AmpCollection = require('./apiPointer.js');
 var usedCode = require('./usedCode');
 
 //this holds the requests for codes that the user
 //has received
 
 module.exports = AmpCollection.extend({
+
     model: usedCode,
-    //change too '/api/usedCode-collection' for production
-    url: 'http://localhost:3000/api/usedCode-collection'
+
+    location: 'usedCode-collection',
+
+    initialize: function() {
+        AmpCollection.prototype.initialize.call(this);
+    }
 });

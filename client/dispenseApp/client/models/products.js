@@ -1,5 +1,5 @@
 // product Collection - product-collection.js
-var AmpCollection = require('ampersand-rest-collection');
+var AmpCollection = require('./apiPointer.js');
 var product       = require('./product');
 var Fuse          = require('fuse.js');
 
@@ -13,10 +13,10 @@ module.exports = AmpCollection.extend({
 
     model: product,
 
-    //change too '/api/products' for production
-    url: 'http://localhost:3000/api/products',
+    location: 'products',
 
     initialize : function() {
+        AmpCollection.prototype.initialize.call(this);
         //create filtered collection
         var self = this;
         this.filtered = new AmpCollection(self.models);
