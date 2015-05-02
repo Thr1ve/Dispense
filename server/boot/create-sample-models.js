@@ -1,6 +1,7 @@
-var productsJSON        = require('../products.json');
-var contactsJSON        = require('../contacts.json');
-var sampleUsedCodesJSON = require('../sampleUsedCodes.json');
+var productsJSON           = require('../products.json');
+var contactsJSON           = require('../contacts.json');
+var testUsedCodesJSON      = require('../testUsedCodes.json');
+var testAvailableCodesJSON = require('../testAvailableCodes.json');
 
 var _ = require('underscore');
 
@@ -41,19 +42,12 @@ module.exports = function(app) {
 
     app.dataSources.mydb.automigrate('availableCodes', function(err) {
         if (!err) {
-            productsJSON.products.reduce(function(prev, cur, ind, arr) {
-                var codesArray = [];
-                for (var i = 0; i < 6; i++) {
-                    codesArray.push({
-                        productId: cur.id,
-                        code: i + 'XXX-XX-CODE-' + cur.title
-                    });
-                }
-                prev.push(codesArray);
-                return prev;
-            }, []).forEach(function(val){
-                app.models.availableCodes.create([val], function(err, availableCodes) {
-                  if (err) throw err;
+            testAvailableCodesJSON.availableCodes.forEach(function(val) {
+                app.models.availableCodes.create([{
+                    productId: val.productId,
+                    code: val.code
+                }], function(err, products) {
+                    if (err) throw err;
                 });
             });
             console.log('Sample Codes created!');
@@ -62,7 +56,7 @@ module.exports = function(app) {
 
     app.dataSources.mydb.automigrate('usedCode', function(err) {
         if (!err) {
-            sampleUsedCodesJSON.usedCodes.forEach(function(val) {
+            testUsedCodesJSON.usedCodes.forEach(function(val) {
                 app.models.usedCode.create([{
                     productId: val.productId,
                     chatOrTicket: val.chatOrTicket,
@@ -72,7 +66,7 @@ module.exports = function(app) {
                     universityOrBusiness: val.universityOrBusiness,
                     code: val.code,
                     date: val.date
-                }, ], function(err, products) {
+                }], function(err, products) {
                     if (err) throw err;
                 });
             });

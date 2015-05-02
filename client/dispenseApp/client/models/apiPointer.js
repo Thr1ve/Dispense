@@ -3,8 +3,9 @@ var AmpCollection = require('ampersand-rest-collection');
 
 module.exports = AmpCollection.extend({
     
-    pointer: 'http://192.168.1.85/api/',
+    // pointer: 'http://192.168.1.85/api/',
     // pointer: 'http://thrive.geekgalaxy.com/api/',
+    pointer: 'http://localhost:3000/api/',
 
     initialize : function() {
         this.url = this.pointer + this.location;
