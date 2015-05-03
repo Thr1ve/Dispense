@@ -15,9 +15,9 @@ boot(app, __dirname);
 // Example:
 // app.use(loopback.static(path.resolve(__dirname, '../client')));
 
-// var landing = require('path').resolve(__dirname, '../client/landing');
+var dispenseApp = require('path').resolve(__dirname, '../client/dispenseApp/');
 
-// app.use(loopback.static(landing));
+app.use(loopback.static(dispenseApp));
     // express = require('express'),
     // parentApp = express();
 
