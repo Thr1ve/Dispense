@@ -5,7 +5,7 @@ module.exports = AmpCollection.extend({
     
     // pointer: 'http://192.168.1.85/api/',
     // pointer: 'http://thrive.geekgalaxy.com/api/',
-    pointer: 'http://localhost:3000/api/',
+    pointer: 'http://localhost:8080/api/',
 
     initialize : function() {
         this.url = this.pointer + this.location;

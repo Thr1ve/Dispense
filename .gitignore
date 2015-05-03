@@ -3,6 +3,9 @@
 
 node_modules/*
 
+*node_modules
+
+
 README.html
 
 *client/templates.js
