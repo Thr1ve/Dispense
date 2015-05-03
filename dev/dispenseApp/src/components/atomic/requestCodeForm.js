@@ -1,4 +1,5 @@
 var React = require('react');
+import app from 'ampersand-app'
 
 var Mui        = require('material-ui');
 var TextField  = Mui.TextField;
@@ -30,7 +31,7 @@ var requestCodeForm = React.createClass({
     handleSubmit: function(e){
         e.preventDefault();
         var { router } = this.context;
-        window.app.newCode.create({
+        app.newCode.create({
             customerName        : this.refs.customerName.props.value,
             customerEmail       : this.refs.customerEmail.props.value,
             universityOrBusiness: this.refs.universityOrBusiness.props.value,

@@ -1,5 +1,6 @@
 var React = require('react');
 var RequestCodeForm = require('../atomic/requestCodeForm.js');
+import app from 'ampersand-app'
 
 var requestCode = React.createClass({
 
@@ -15,7 +16,7 @@ var requestCode = React.createClass({
 
     componentDidMount: function() {
         var self = this;
-            window.app.products.getOrFetch(this.context.router.getCurrentParams().productId,
+            app.products.getOrFetch(this.context.router.getCurrentParams().productId,
                 {all: true}, 
                 function(err, model){
                     if(err){

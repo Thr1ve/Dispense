@@ -1,4 +1,5 @@
 var React = require('react');
+import app from 'ampersand-app'
 
 var requestedCodes = React.createClass({
 
@@ -9,7 +10,7 @@ var requestedCodes = React.createClass({
 	},
 
 	componentDidMount: function() {
-        this.setState({data:window.app.newCode.models});
+        this.setState({data:app.newCode.models});
     },
 
 	render: function() {

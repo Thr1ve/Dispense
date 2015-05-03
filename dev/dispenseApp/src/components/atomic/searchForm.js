@@ -1,4 +1,5 @@
 var React = require('react');
+import app from 'ampersand-app'
 
 var Mui = require('material-ui');
 var TextField = Mui.TextField;
@@ -34,7 +35,7 @@ var SearchForm = React.createClass({
                 where: query
             }
         };
-        window.app.usedCodes.fetch({
+        app.usedCodes.fetch({
             data:filter,
             success: function(collection, response){
                 // This removes the productId from all models in the collection 

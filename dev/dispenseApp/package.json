@@ -46,9 +46,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack",
-    "prebuild": "rm -rf ./public && mkdir public",
-    "start": "webpack-dev-server"
+    "prebuild": "rm -rf ./public && mkdir public"
   },
   "standard": {
     "ignore": [
