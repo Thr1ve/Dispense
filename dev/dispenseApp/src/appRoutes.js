@@ -4,8 +4,8 @@ var RequestCode     = require('./components/pages/requestCode.js');
 var RequestedCodes  = require('./components/pages/requestedCodes.js');
 var SearchUsedCodes = require('./components/pages/searchUsedCodes.js');
 
-var mui = require('material-ui');
-var FlatButton = mui.FlatButton;
+var Mui = require('material-ui');
+var { DropDownMenu, FlatButton } = Mui;
 
 var React        = require('react');
 var Router       = require('react-router');
@@ -21,40 +21,51 @@ var NotFound = React.createClass({
 });
 
 var App = React.createClass({
+  mixins: [Router.State],
 
   contextTypes: {
       router: React.PropTypes.func
   },
-    
-  toRequestedCodes: function() {
-      var { router } = this.context;
-      router.transitionTo('requestedCodes');
-  },
 
+  toMainSearch: function() {
+      var { router } = this.context;
+      router.transitionTo('mainSearch');
+  },
+    
   toSearchUsedCodes: function() {
       var { router } = this.context;
       router.transitionTo('searchUsedCodes');
   },
 
+  toRequestedCodes: function() {
+      var { router } = this.context;
+      router.transitionTo('requestedCodes');
+  },
+
   render: function () {
+    let self = this;
+    let { router } = self.context;
+    var buttonStyle = {
+        height: '50',
+        opacity:'0.9'
+    }
     return (
     <div>
-      <header style={{
-        position:'fixed',
-        top:'0', left: '0',
-        width: '100%', height:'50px',
-        opacity: '0.8', backgroundColor: 'white',
-        zIndex: '4' }} >
-        <FlatButton
-          style={{float:'right', height:'50px', zIndex:5}}
-          label='Requested Codes'
-          onClick={this.toRequestedCodes}/>
-        <FlatButton
-          style={{float:'right', height:'50px', zIndex:5}}
-          label='Search Used Codes'
-          onClick={this.toSearchUsedCodes}/>
-      </header>
-      <div style={{position:'relative', top:'50px'}}>
+      <div style={{zIndex: 10, position:'fixed', right: '0', top:'0' }}>
+        <FlatButton label='Main Search'
+          style={buttonStyle}
+          onClick={this.toMainSearch}
+          secondary={true} />
+        <FlatButton label='Search Used Codes'
+          style={buttonStyle}
+          onClick={this.toSearchUsedCodes}
+          secondary={true} />
+        <FlatButton label='Requested Codes'
+          style={buttonStyle}
+          onClick={this.toRequestedCodes}
+          secondary={true} />
+      </div>
+      <div style={{position:'relative', top:'55px'}}>
         <RouteHandler />
       </div>
     </div>
@@ -62,8 +73,6 @@ var App = React.createClass({
   }
 });
 
-//change the app route path to '/dispenseApp' to run in loopback / for production
-// note: need to find better way so i can have both webpack and live version simultaneously
 module.exports = (
           <Route name="app" path="/dispenseApp" handler={App}>
             <Route name="mainSearch" handler={MainSearch}/>

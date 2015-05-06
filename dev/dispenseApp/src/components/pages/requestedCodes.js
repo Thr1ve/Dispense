@@ -14,7 +14,7 @@ var requestedCodes = React.createClass({
     },
 
 	render: function() {
-		var codes = this.state.data.map(function(val, ind, arr){
+		var codes = this.state.data.map(function(val){
 			return (
 				<div key={val.id}>
 					<p> Code                  : {val.code} </p>
@@ -25,6 +25,7 @@ var requestedCodes = React.createClass({
 					<p> Chat Or Ticket        : {val.chatOrTicket} </p>
 					<p> Date                  : {val.date} </p>
 					<br></br>
+                    <br></br>
 				</div>
 			);
 

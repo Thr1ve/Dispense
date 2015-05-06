@@ -14,6 +14,7 @@ var SearchField = React.createClass({
     render: function() {
         return (
             <TextField
+                style={{height:'50px', top:'0'}}
                 type="text"
                 placeholder="Search..."
                 value={this.props.filterText}

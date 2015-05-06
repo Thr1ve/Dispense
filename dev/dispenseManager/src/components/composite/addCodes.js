@@ -36,8 +36,6 @@ var AddCodes = React.createClass({
 
             isNew: true,
 
-            url: 'http://localhost:3000/api/availableCodes-collection/addCodes',
-
             success: function(model, response) {
                 alert('codes added');
             },

@@ -1,6 +1,7 @@
 /**
  * Created by Fiction on 4/16/2015.
  */
+import app from 'ampersand-app'
 var React = require('react');
 var Router = require('react-router');
 var { Route, RouteHandler, Link, DefaultRoute } = Router;
@@ -18,7 +19,7 @@ var ManageProduct = React.createClass({
 
     componentDidMount: function() {
         var self = this;
-        window.app.products.getOrFetch(this.props.params.productId,
+        app.products.getOrFetch(this.props.params.productId,
             {all: true}, 
             function(err, model){
                 if(err){

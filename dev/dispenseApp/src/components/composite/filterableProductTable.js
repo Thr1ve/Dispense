@@ -17,7 +17,7 @@ var FilterableProductTable = React.createClass({
         var self = this;
         //if statement added since refetching products broke app after using back button
         //this should be handled differently...perhaps store in user state?
-        if(window.app.products.models.length > 0){
+        if(app.products.models.length > 0){
             self.setState({data:app.products});
         }
         else{
@@ -32,7 +32,7 @@ var FilterableProductTable = React.createClass({
     handleUserInput: function(filterText) {
         var filtered;
         if(filterText){
-            window.app.products.filter(filterText);
+            app.products.filter(filterText);
             filtered = app.products.filtered;
         }
         else{

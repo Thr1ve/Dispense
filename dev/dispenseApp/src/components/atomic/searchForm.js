@@ -32,18 +32,14 @@ var SearchForm = React.createClass({
         var query = this.formatQuery(this.refs);
         var filter = {
             filter: {
-                where: query
+                where: query,
+                limit:50,
+                order: 'date DESC'
             }
         };
         app.usedCodes.fetch({
             data:filter,
             success: function(collection, response){
-                // This removes the productId from all models in the collection 
-                // ...I don't think I want this...
-                // var cleaned = collection.serialize().map(function(val, ind, arr){
-                //     var stripped = _.omit(val, 'productId');  
-                //     return stripped;
-                // });
                 self.props.sendData(collection.serialize());
             }
         })

@@ -10,6 +10,7 @@ module.exports = function(AvailableCodes) {
 
         //grab the object representing the SQL data
         var availableCodes = app.datasources.mysqlDs.models.availableCodes;
+        var product= app.datasources.mysqlDs.models.product;
 
         codes.forEach(function(val){
                 availableCodes.create({

@@ -16,10 +16,20 @@ var MainSearch = React.createClass({
 
     render: function() {
         return (
+          <div>
+            <header style={{
+              position:'fixed',
+              top:'0', left: '0',
+              width: '100%', height:'50px',
+              opacity: '0.8', backgroundColor: 'white',
+              zIndex: '4' }} >
+            </header>
             <div>
                 <FilterableProductTable products={app.products}/>
                 <RouteHandler/>
             </div>
+          </div>
+
         );
     }
 

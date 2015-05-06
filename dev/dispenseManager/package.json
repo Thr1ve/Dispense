@@ -29,6 +29,7 @@
     "milliseconds": "^1.0.3",
     "qs": "^2.4.1",
     "react": "^0.13.2",
+    "react-breadcrumbs": "^0.13.5",
     "react-hot-loader": "^1.2.4",
     "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.6",

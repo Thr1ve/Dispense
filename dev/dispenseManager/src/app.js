@@ -1,56 +1,31 @@
-/*global app, $*/
+import React from 'react'
+import Router from 'react-router'
+import app from 'ampersand-app'
+import AppRoutes from './appRoutes.js'
 
-var _            = require('underscore');
-var domReady     = require('domready');
-// var config    = require('clientconfig');
+// Models **********
+import User from './models/user-state'
+import Products from './models/products'
+import Code from './models/usedCode-collection'
 
-var React        = require('react');
-var Router       = require('react-router');
-var AppRoutes    = require('./appRoutes.js');
-
-//Models **********
-var User      = require('./models/user-state');
-var Products  = require('./models/products');
-var Code      = require('./models/usedCode-collection');
-
-var log = require('bows')("app.js");
-
+// Styles **********
 require('./styles/main.less');
 
-module.exports = {
+window.app = app.extend({
+  init () {
 
-    //global keybinds
-    globalKeys : {
-        // 'key' : 'function'
-    },
+    this.user      = new User();
+    this.products  = new Products();
+    this.newCode   = new Code();
 
-    // this is the the whole app initter
-    blastoff: function () {
+    // Attach to window for easier debugging
+    window.app = this;
 
-        var self = window.app = this;
+    // React-Router
+    Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
+      React.render(<Handler/>, document.body);
+    });
+  }
+})
 
-        _.each(this.globalKeys, function (value, k) {
-            // register global keybinds
-            key(k,  _.bind(self[value], self));
-        });
-
-        // create our global empty collections for products and a received code
-        this.user     = new User();
-        this.products = new Products();
-        this.newCode  = new Code();
-
-
-        // wait for document ready to render our main view
-        // this ensures the document has a body, etc.
-        domReady(function () {
-            Router.run(AppRoutes, Router.HistoryLocation, function (Handler, state) {
-              var params = state.params;
-              React.render(<Handler params={params}/>, document.body);
-            });
-        });
-    }
-};
-
-// run it
-module.exports.blastoff();
-
+app.init()

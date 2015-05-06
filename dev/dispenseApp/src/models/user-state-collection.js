@@ -4,8 +4,9 @@ var userState = require('./user-state');
 
 
 module.exports = AmpCollection.extend({
+    
     model: userState,
-    //change too '/api/user-state-collection' for production
+
     location: 'user-state',
 
     initialize: function() {

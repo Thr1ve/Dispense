@@ -1,4 +1,5 @@
 var React = require('react');
+import app from 'ampersand-app'
 
 var SearchField = require('./../atomic/searchField.js');
 var ProductTable = require('./../atomic/productTable.js');
@@ -19,7 +20,7 @@ var FilterableProductTable = React.createClass({
         //if statement added since refetching products broke app after using back button
         //this should be handled differently...perhaps store in user state?
         if(window.app.products.models.length > 0){
-            self.setState({data:window.app.products});
+            self.setState({data:app.products});
         }
         else{
             window.app.products.fetch({
@@ -34,10 +35,10 @@ var FilterableProductTable = React.createClass({
         var filtered;
         if(filterText){
             window.app.products.filter(filterText);
-            filtered = window.app.products.filtered;
+            filtered = app.products.filtered;
         }
         else{
-            filtered = window.app.products; 
+            filtered = app.products; 
         }
 
         this.setState({

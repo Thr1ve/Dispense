@@ -4,14 +4,14 @@ var Griddle = require('griddle-react');
 var SearchForm = require('../atomic/searchForm.js');
 
 var columnMetadata = [
-    {'columnName': 'customerEmail', 'displayName': 'Email' },
-    {'columnName': 'customerName', 'displayName': 'Name' },
-    {'columnName': 'code', 'displayName': 'Code' },
-    {'columnName': 'representative', 'displayName': 'Rep' },
-    {'columnName': 'date', 'displayName': 'Date' },
-    {'columnName': 'universityOrBusiness', 'displayName': 'Univ' },
-    {'columnName': 'chatOrTicket', 'displayName': 'Ticket' },
-    {'columnName': 'productId', 'displayName': 'Product' }
+    {'columnName': 'customerEmail',         'displayName': 'Email' },
+    {'columnName': 'customerName',          'displayName': 'Name' },
+    {'columnName': 'code',                  'displayName': 'Code' },
+    {'columnName': 'representative',        'displayName': 'Rep' },
+    {'columnName': 'date',                  'displayName': 'Date' },
+    {'columnName': 'universityOrBusiness',  'displayName': 'Univ' },
+    {'columnName': 'chatOrTicket',          'displayName': 'Ticket' },
+    {'columnName': 'productId',             'displayName': 'Product' }
 ]
 
 var SearchUsedCodes = React.createClass({
@@ -23,10 +23,6 @@ var SearchUsedCodes = React.createClass({
 	    };
 
       	return initial;
-    },
-
-    process : function(){
-
     },
 
     sendData : function(data){

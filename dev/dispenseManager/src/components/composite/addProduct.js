@@ -1,4 +1,5 @@
 var React = require('react');
+import app from 'ampersand-app'
 
 var Mui        = require('material-ui');
 var TextField  = Mui.TextField;
@@ -15,7 +16,7 @@ var addProduct = React.createClass({
             isbn13  : isbn13
         };
 
-        window.app.products.create(data,{
+        app.products.create(data,{
             wait: true , 
             success:function(model, resp){
                 console.log('Edit Successfull')

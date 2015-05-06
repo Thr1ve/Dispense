@@ -1,6 +1,7 @@
 var React  = require('react');
 var Router = require('react-router');
 var { RouteHandler } = Router;
+import app from 'ampersand-app'
 
 var Mui = require('material-ui');
 var FlatButton = Mui.FlatButton;
@@ -29,7 +30,7 @@ var MainSearch = React.createClass({
                         label='Add New Product'
                         onClick={this.handleClick}/>
                 </div>
-                <FilterableProductTable products={window.app.products}/>
+                <FilterableProductTable products={app.products}/>
                 <RouteHandler {...this.props}/>
             </div>
         );

@@ -1,9 +1,8 @@
 var React = require('react');
 import app from 'ampersand-app'
 
-var Mui        = require('material-ui');
-var TextField  = Mui.TextField;
-var FlatButton = Mui.FlatButton;
+import Mui from 'material-ui'
+var { TextField, FlatButton, Paper }  = Mui;
 
 var requestCodeForm = React.createClass({
 
@@ -52,11 +51,11 @@ var requestCodeForm = React.createClass({
 
         var textFieldStyle= {
             display:'block',
+            margin:'10'
         }
 
         var formStyle = {
-            width  : '40%',
-            float  : 'left'
+            width  : '40%'
         }
 
         var customerName         = this.state.customerName;
@@ -66,54 +65,56 @@ var requestCodeForm = React.createClass({
         var chatOrTicket         = this.state.chatOrTicket;
         
         return (
-            <form style={formStyle} onSubmit={this.handleSubmit}>
-                <div style={textFieldStyle}>
-                    <TextField 
-                        type='text' 
-                        name='customerName'          
-                        ref='customerName'          
-                        floatingLabelText='Customer Name'            
-                        value={customerName}         
-                        onChange={this.handleChange}/>
-                </div>
-                <div style={textFieldStyle}>
-                    <TextField style={textFieldStyle}
-                        type='text' 
-                        name='customerEmail'         
-                        ref='customerEmail'         
-                        floatingLabelText='Customer Email Address'   
-                        value={customerEmail}        
-                        onChange={this.handleChange}/>
-                </div>
-                <div style={textFieldStyle}>
-                    <TextField style={textFieldStyle}
-                        type='text' 
-                        name='universityOrBusiness'  
-                        ref='universityOrBusiness'  
-                        floatingLabelText='University or Business'   
-                        value={universityOrBusiness} 
-                        onChange={this.handleChange}/>
-                </div>
-                <div style={textFieldStyle}>
-                    <TextField style={textFieldStyle}
-                        type='text' 
-                        name='representative'        
-                        ref='representative'        
-                        floatingLabelText='Representative'           
-                        value={representative}       
-                        onChange={this.handleChange}/>
-                </div>
-                <div style={textFieldStyle}>
-                    <TextField style={textFieldStyle}
-                        type='text' 
-                        name='chatOrTicket'          
-                        ref='chatOrTicket'          
-                        floatingLabelText='Chat or Ticket Number'    
-                        value={chatOrTicket}         
-                        onChange={this.handleChange}/>
-                </div>
-                <FlatButton style={{float:'right'}} label='Submit'/>
-            </form>
+            <Paper zDepth={2} style={{width:'95%',marginTop: '30',marginRight:'auto', marginLeft:'auto'}}>
+                <form style={formStyle} onSubmit={this.handleSubmit}>
+                    <div style={textFieldStyle}>
+                        <TextField 
+                            type='text' 
+                            name='customerName'          
+                            ref='customerName'          
+                            floatingLabelText='Customer Name'            
+                            value={customerName}         
+                            onChange={this.handleChange}/>
+                    </div>
+                    <div style={textFieldStyle}>
+                        <TextField style={textFieldStyle}
+                            type='text' 
+                            name='customerEmail'         
+                            ref='customerEmail'         
+                            floatingLabelText='Customer Email Address'   
+                            value={customerEmail}        
+                            onChange={this.handleChange}/>
+                    </div>
+                    <div style={textFieldStyle}>
+                        <TextField style={textFieldStyle}
+                            type='text' 
+                            name='universityOrBusiness'  
+                            ref='universityOrBusiness'  
+                            floatingLabelText='University or Business'   
+                            value={universityOrBusiness} 
+                            onChange={this.handleChange}/>
+                    </div>
+                    <div style={textFieldStyle}>
+                        <TextField style={textFieldStyle}
+                            type='text' 
+                            name='representative'        
+                            ref='representative'        
+                            floatingLabelText='Representative'           
+                            value={representative}       
+                            onChange={this.handleChange}/>
+                    </div>
+                    <div style={textFieldStyle}>
+                        <TextField style={textFieldStyle}
+                            type='text' 
+                            name='chatOrTicket'          
+                            ref='chatOrTicket'          
+                            floatingLabelText='Chat or Ticket Number'    
+                            value={chatOrTicket}         
+                            onChange={this.handleChange}/>
+                    </div>
+                    <FlatButton style={{float:'right'}} label='Submit'/>
+                </form>
+            </Paper>
         );
     }
 

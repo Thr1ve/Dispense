@@ -1,6 +1,8 @@
 var React = require('react');
 var RequestCodeForm = require('../atomic/requestCodeForm.js');
 import app from 'ampersand-app'
+import Mui from 'material-ui'
+var { Paper } = Mui;
 
 var requestCode = React.createClass({
 
@@ -39,8 +41,10 @@ var requestCode = React.createClass({
         }
         return (
             <div>
-                <div>{title}</div>
-                <div>{isbn13}</div>
+                <Paper zDepth={2} style={{width:'95%', marginRight:'auto', marginLeft:'auto'}}>
+                    <h2 className='mui-font-style-headline' style={{textAlign:'center'}}>{title}</h2>
+                    <h4 style={{textAlign:'center'}}>{isbn13}</h4>
+                </Paper>
                 <RequestCodeForm productId={this.context.router.getCurrentParams().productId} />
             </div>
         );

@@ -1,10 +1,14 @@
-var AmpCollection = require('ampersand-rest-collection');
+var AmpCollection = require('./apiPointer.js');
 var availableCodes = require('./availableCodes');
 
 module.exports = AmpCollection.extend({
 
-    model: availableCodes,
+    location: 'availableCodes-collection',
 
-    url: 'http://localhost:3000/api/availableCodes-collection'
+    initialize : function() {
+        AmpCollection.prototype.initialize.call(this);
+    },
+
+    model: availableCodes
 
 });

@@ -1,7 +1,13 @@
 var AmpersandModel = require('ampersand-model');
 
-
 module.exports = AmpersandModel.extend({
+
+    location: 'availableCodes-collection/addCodes',
+
+    initialize : function() {
+        this.url = 'http://localhost:8080/api/'+ this.location;
+        console.log('url', this.url);
+    },
 
     props: {
         productId: 'any',
@@ -14,8 +20,5 @@ module.exports = AmpersandModel.extend({
         id : function() {
             return this.productId;
         }
-    },
-
-    url: 'http://localhost:3000/api/availableCodes-collection/addCodes'
-
+    }
 });

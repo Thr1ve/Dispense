@@ -1,28 +1,15 @@
 var AmpersandModel = require('ampersand-model');
 
-
 module.exports = AmpersandModel.extend({
-
     props: {
-
-        chatOrTicket: 'string',
         productId: 'any',
-        code:'string',
-        customerEmail: 'string',
         customerName: 'string',
-        representative: 'string',
+        customerEmail: 'string',
         universityOrBusiness: 'string',
-        code: 'string',
-        date: 'string'
-    },
-
-    session: {
-
-    },
-
-    derived: {
-    },
-
-    url: 'http://localhost:3000/api/usedCode'
+        representative: 'string',
+        chatOrTicket: 'string',
+        date: 'string',
+        code:'string'
+    }
 
 });
