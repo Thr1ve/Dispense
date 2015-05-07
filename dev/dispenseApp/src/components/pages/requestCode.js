@@ -1,22 +1,23 @@
-var React = require('react');
-var RequestCodeForm = require('../atomic/requestCodeForm.js');
+import React from 'react'
+import RequestCodeForm from '../atomic/requestCodeForm.js'
 import app from 'ampersand-app'
 import Mui from 'material-ui'
-var { Paper } = Mui;
 
-var requestCode = React.createClass({
+let { Paper } = Mui;
+
+let requestCode = React.createClass({
 
     contextTypes: {
         router: React.PropTypes.func
     },
 
-    getInitialState: function() {
+    getInitialState() {
         return {
             data: {}
         };
     },
 
-    componentDidMount: function() {
+    componentDidMount() {
         var self = this;
             app.products.getOrFetch(this.context.router.getCurrentParams().productId,
                 {all: true}, 
@@ -28,7 +29,7 @@ var requestCode = React.createClass({
             });
     },
 
-    render: function() {
+    render() {
         var title, isbn13;
         if(this.state.data){
             title  = this.state.data.title;

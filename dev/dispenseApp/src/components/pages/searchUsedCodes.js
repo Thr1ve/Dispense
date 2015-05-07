@@ -1,9 +1,12 @@
-var React = require('react');
-var Griddle = require('griddle-react');
+import React from 'react'
+import Griddle from 'griddle-react'
 
-var SearchForm = require('../atomic/searchForm.js');
+import Mui from 'material-ui'
+let { Paper } = Mui;
 
-var columnMetadata = [
+let SearchForm = require('../atomic/searchForm.js');
+
+let columnMetadata = [
     {'columnName': 'customerEmail',         'displayName': 'Email' },
     {'columnName': 'customerName',          'displayName': 'Name' },
     {'columnName': 'code',                  'displayName': 'Code' },
@@ -14,10 +17,9 @@ var columnMetadata = [
     {'columnName': 'productId',             'displayName': 'Product' }
 ]
 
-var SearchUsedCodes = React.createClass({
+let SearchUsedCodes = React.createClass({
 
-
-    getInitialState: function(){
+    getInitialState() {
         var initial = { 
         	"results": []
 	    };
@@ -25,24 +27,24 @@ var SearchUsedCodes = React.createClass({
       	return initial;
     },
 
-    sendData : function(data){
-        // productsAdded = data.map(function(val, ind, arr){
-
-        // });
+    sendData(data) {
         this.setState({results:data});
     },
 
-	render: function(){
+	render() {
 		return (
             <div>
                 <SearchForm
                     sendData={this.sendData} />
-                <Griddle 
-                	results={this.state.results}
-                	columns={['customerEmail', 'code', 'customerName', 'date', 'universityOrBusiness' ]} 
-                    columnMetadata={columnMetadata}
-                	resultsPerPage={10}
-                	showSettings={true}/>
+                <Paper zDepth={2} style={{width:'95%', marginLeft:'auto', marginRight:'auto', marginTop:'20'}}>
+                    <Griddle 
+                    	results={this.state.results}
+                    	columns={['customerEmail', 'code', 'customerName', 'date', 'universityOrBusiness' ]} 
+                        columnMetadata={columnMetadata}
+                    	resultsPerPage={10}
+                        useGriddleStyles={false}
+                    	showSettings={true}/>
+                </Paper>
             </div>
 		);
 	}

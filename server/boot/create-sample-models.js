@@ -57,6 +57,7 @@ module.exports = function(app) {
     app.dataSources.mydb.automigrate('usedCode', function(err) {
         if (!err) {
             testUsedCodesJSON.usedCodes.forEach(function(val) {
+                var fixedDate = new Date(val.date).toDateString();
                 app.models.usedCode.create([{
                     productId: val.productId,
                     chatOrTicket: val.chatOrTicket,
@@ -65,7 +66,7 @@ module.exports = function(app) {
                     representative: val.representative,
                     universityOrBusiness: val.universityOrBusiness,
                     code: val.code,
-                    date: val.date
+                    date: fixedDate
                 }], function(err, products) {
                     if (err) throw err;
                 });

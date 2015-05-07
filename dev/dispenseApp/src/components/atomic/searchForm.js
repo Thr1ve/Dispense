@@ -1,11 +1,10 @@
-var React = require('react');
+import React from 'react'
 import app from 'ampersand-app'
 
-var Mui = require('material-ui');
-var TextField = Mui.TextField;
-var FlatButton = Mui.FlatButton;
+import Mui from 'material-ui'
+var { TextField, FlatButton, Paper } = Mui
 
-var _ = require('underscore');
+import _ from 'underscore'
 
 var SearchForm = React.createClass({
 
@@ -33,7 +32,7 @@ var SearchForm = React.createClass({
         var filter = {
             filter: {
                 where: query,
-                limit:50,
+                limit: 50,
                 order: 'date DESC'
             }
         };
@@ -63,9 +62,9 @@ var SearchForm = React.createClass({
         } = this.state;
 
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div >
+            <Paper zDepth={3} style={{width:'85%', marginLeft:'auto', marginRight:'auto'}}>
+                <form onSubmit={this.handleSubmit} style={{padding:'20'}}>
+                    <div style={{width:'75%', marginRight:'auto', marginLeft:'auto'}}>
                         <TextField
                             type='text'
                             ref='code'
@@ -88,7 +87,7 @@ var SearchForm = React.createClass({
                             value={customerName}
                             onChange={this.handleChange} />
                     </div>
-                    <div>
+                    <div style={{width:'75%', marginRight:'auto', marginLeft:'auto'}}>
                         <TextField
                             type='text'
                             ref='universityOrBusiness'
@@ -110,10 +109,12 @@ var SearchForm = React.createClass({
                             floatingLabelText='Ticket'
                             value={chatOrTicket}
                             onChange={this.handleChange} />
-                        <FlatButton label='Search'/>
+                        <div style={{width:'75%', marginRight:'auto', marginLeft:'auto'}}>
+                            <FlatButton label='Search' style={{width:'100%'}}/>
+                        </div>
                     </div>
                 </form>
-            </div>
+            </Paper>
         );
     }
 

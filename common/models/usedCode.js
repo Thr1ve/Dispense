@@ -34,7 +34,7 @@ module.exports = function(UsedCode) {
                 //add our new code to our response
                 response.code = row.code;
                 //add the date
-                var date = new Date().toLocaleDateString();
+                var date = new Date().toDateString();
                 response.date = date;
                 //delete the row
                 availableCodes.destroyById(row.id, function(err){
@@ -90,15 +90,18 @@ module.exports = function(UsedCode) {
     };
 
     // commented for testing usedCode searching -- uncomment when done
-    //
+    
     UsedCode.observe('before save',function(modelInstance, next) {
 
-        // console.log('before save', modelInstance);
-
-        UsedCode.process(modelInstance, function(err, res){
-            modelInstance = res;
+        if(modelInstance.instance.code){
             next();
-        });
+        }
+        else{
+            UsedCode.process(modelInstance, function(err, res){
+                modelInstance = res;
+                next();
+            });
+        }
 
     });
 
@@ -106,12 +109,12 @@ module.exports = function(UsedCode) {
 
     //register our "process" function as a remote method
     //available via our web api
-    UsedCode.remoteMethod(
-        'process',
-        {
-          accepts: {arg: 'requestObject', type: 'Object'},
-          returns: {arg: 'receivedCode', type: 'Object'}
-        }
-    );
+    // UsedCode.remoteMethod(
+    //     'process',
+    //     {
+    //       accepts: {arg: 'requestObject', type: 'Object'},
+    //       returns: {arg: 'receivedCode', type: 'Object'}
+    //     }
+    // );
 
 };

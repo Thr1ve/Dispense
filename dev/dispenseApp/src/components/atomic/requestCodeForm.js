@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react'
 import app from 'ampersand-app'
 
 import Mui from 'material-ui'
@@ -50,12 +50,12 @@ var requestCodeForm = React.createClass({
     render: function() {
 
         var textFieldStyle= {
-            display:'block',
-            margin:'10'
+            display:'block'
         }
 
         var formStyle = {
-            width  : '40%'
+            width  : '40%',
+            padding: '20'
         }
 
         var customerName         = this.state.customerName;
@@ -99,6 +99,7 @@ var requestCodeForm = React.createClass({
                             type='text' 
                             name='representative'        
                             ref='representative'        
+                            /* errorText={'this field is required'} */
                             floatingLabelText='Representative'           
                             value={representative}       
                             onChange={this.handleChange}/>
@@ -112,7 +113,7 @@ var requestCodeForm = React.createClass({
                             value={chatOrTicket}         
                             onChange={this.handleChange}/>
                     </div>
-                    <FlatButton style={{float:'right'}} label='Submit'/>
+                    <FlatButton label='Submit'/>
                 </form>
             </Paper>
         );
