@@ -33,9 +33,9 @@ module.exports = AmpCollection.extend({
 
         });
 
-        log('Threshold : ', fuse.options.threshold);
-        log('Distance : ', fuse.options.distance);
-        log('Location : ', fuse.options.location);
+        // log('Threshold : ', fuse.options.threshold);
+        // log('Distance : ', fuse.options.distance);
+        // log('Location : ', fuse.options.location);
 
         this.filtered.set(fuse.search(string));
 

@@ -1,84 +1,77 @@
-'use strict'
-var React = require('react');
+import React from 'react'
 
-var Mui        = require('material-ui');
-var TextField  = Mui.TextField;
-var FlatButton = Mui.FlatButton;
+import Mui from 'material-ui'
+let { Paper, TextField, FlatButton } = Mui
 
-var log = require('bows')("editProductForm.js");
+// var log = require('bows')("editProductForm.js");
 
-var EditProductForm = React.createClass({
+let EditProductForm = React.createClass({
 
-    getInitialState: function() {
-        log('getInitialState', this.props);
-        var { productId, title, isbn13 } = this.props.product;
+    getInitialState() {
+        let { productId, title, isbn13 } = this.props.product
         return {
             productId: productId ,
             title    : title,
             isbn13   : isbn13    
-        };
+        }
     },
 
-    handleChange: function(event) {
-        var newState = this.state;
-        newState[event.target.name] = event.target.value;
-        this.setState(newState);
+    handleChange(event) {
+        let newState = this.state
+        newState[event.target.name] = event.target.value
+        this.setState(newState)
     },
 
-    handleSubmit: function(e){
-        e.preventDefault();
-        var title = this.refs.title.getValue()
-        var isbn13= this.refs.isbn13.getValue()
-        var data = {
+    handleSubmit(e){
+        e.preventDefault()
+        let title = this.refs.title.getValue()
+        let isbn13= this.refs.isbn13.getValue()
+        let data = {
             title   : title,
             isbn13  : isbn13
-        };
+        }
 
         this.props.product.save(data,{
             wait: true , 
             success:function(){
                 console.log('Edit Successfull')
             }
-        });
+        })
     },
     
-    render: function() {
-        log('render', this.props);
-
-        var title = this.state.title;
-        var isbn13 = this.state.isbn13;
-
-        var textFieldStyle= {
+    render() {
+        let title = this.state.title;
+        let isbn13 = this.state.isbn13;
+        let textFieldStyle= {
             display:'block',
         }
-
-        var formStyle = {
-            width  : '40%',
-            float  : 'left'
+        let formStyle = {
+            padding:'20'
         }
-
         return (
-            <form style={formStyle} onSubmit={this.handleSubmit}>
-                <div style={textFieldStyle}>
-                    <TextField 
-                        type='text' 
-                        name='title'          
-                        ref='title'          
-                        floatingLabelText='Title'            
-                        defaultValue={title}
-                        onChange={this.handleChange}/>
-                </div>
-                <div style={textFieldStyle}>
-                    <TextField
-                        type='text'
-                        name='isbn13'
-                        ref='isbn13'
-                        floatingLabelText='ISBN'
-                        defaultValue={isbn13}
-                        onChange={this.handleChange}/>
-                </div>
-                <FlatButton style={{float:'right'}} label='Submit'/>
-            </form>
+            <Paper zDepth={2} style={{width:'95%',marginTop: '30',marginRight:'auto', marginLeft:'auto'}}>
+                <form style={formStyle} onSubmit={this.handleSubmit}>
+                    <div style={textFieldStyle}>
+                        <TextField 
+                            type='text' 
+                            name='title'          
+                            ref='title'          
+                            floatingLabelText='Title'            
+                            defaultValue={title}
+                            onChange={this.handleChange}/>
+                    </div>
+                    <div style={textFieldStyle}>
+                        <TextField
+                            type='text'
+                            name='isbn13'
+                            ref='isbn13'
+                            floatingLabelText='ISBN'
+                            defaultValue={isbn13}
+                            onChange={this.handleChange}/>
+                    </div>
+                    <FlatButton label='Submit'/>
+                </form>
+            </Paper>
         );
     }
 

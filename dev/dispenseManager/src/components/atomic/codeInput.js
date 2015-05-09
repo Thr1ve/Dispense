@@ -15,13 +15,15 @@ var CodeInput = React.createClass({
 
     render: function() {
         return (
-        	<TextField
-                type="text"
-                placeholder="Add Codes..."
-                multiLine={true}
-                value={this.props.codesString}
-                ref="codesString"
-                onChange={this.handleChange} />
+            <div style={{float:'left'}}>
+            	<TextField
+                    type="text"
+                    placeholder="Add Codes..."
+                    multiLine={true}
+                    value={this.props.codesString}
+                    ref="codesString"
+                    onChange={this.handleChange} />
+            </div>
         );
     }
 

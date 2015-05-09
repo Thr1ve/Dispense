@@ -1,76 +1,82 @@
-var React = require('react');
+import React from 'react'
 import app from 'ampersand-app'
 
-var Mui        = require('material-ui');
-var TextField  = Mui.TextField;
-var FlatButton = Mui.FlatButton;
+import Mui from 'material-ui'
+let { TextField, FlatButton, Paper } = Mui
 
-var addProduct = React.createClass({
+let addProduct = React.createClass({
 
-    handleSubmit: function(e){
-        e.preventDefault();
-        var title = this.refs.title.getValue()
-        var isbn13= this.refs.isbn13.getValue()
-        var data = {
+    handleSubmit(e){
+        e.preventDefault()
+        let title = this.refs.title.getValue()
+        let isbn13= this.refs.isbn13.getValue()
+        let contact= this.refs.contact.getValue()
+        let data = {
             title   : title,
             isbn13  : isbn13
-        };
-
-        app.products.create(data,{
-            wait: true , 
-            success:function(model, resp){
+        }
+        app.products.create( data, {
+            wait: true, 
+            success:function( model, resp ) {
                 console.log('Edit Successfull')
-                console.log(model);
-                console.log(resp);
+                console.log(model)
+                console.log(resp)
             }
-        });
+        })
     },
 
-    getInitialState: function() {
+    getInitialState() {
         return {
             title    : '',
-            isbn13   : '' 
-        };
+            isbn13   : '',
+            contact  : '' 
+        }
     },
 
-    handleChange: function(event) {
-        var newState = this.state;
-        newState[event.target.name] = event.target.value;
-        this.setState(newState);
+    handleChange(event) {
+        let newState = this.state
+        newState[event.target.name] = event.target.value
+        this.setState(newState)
     },
 
-    render: function() {
-
-        var textFieldStyle= {
+    render() {
+        let textFieldStyle = {
             display:'block',
         }
-
-        var formStyle = {
-            width  : '40%',
-            float  : 'left'
+        let formStyle = {
+            padding:20
         }
-
         return (
-            <form style={formStyle} onSubmit={this.handleSubmit}>
-                <div style={textFieldStyle}>
-                    <TextField 
-                        type='text' 
-                        name='title'          
-                        ref='title'          
-                        floatingLabelText='Title'            
-                        onChange={this.handleChange}/>
-                </div>
-                <div style={textFieldStyle}>
-                    <TextField
-                        type='text'
-                        name='isbn13'
-                        ref='isbn13'
-                        floatingLabelText='ISBN'
-                        onChange={this.handleChange}/>
-                </div>
-                <FlatButton style={{float:'right'}} label='Submit'/>
-            </form>
-        );
+            <Paper zDepth={3} style={{width:'85%', marginRight:'auto', marginLeft:'auto'}}>
+                <form style = {formStyle} onSubmit={this.handleSubmit}>
+                    <div style={textFieldStyle}>
+                        <TextField 
+                            type='text' 
+                            name='title'          
+                            ref='title'          
+                            floatingLabelText='Title'            
+                            onChange={this.handleChange}/>
+                    </div>
+                    <div style={textFieldStyle}>
+                        <TextField
+                            type='text'
+                            name='isbn13'
+                            ref='isbn13'
+                            floatingLabelText='ISBN'
+                            onChange={this.handleChange}/>
+                    </div>
+                    <div style={textFieldStyle}>
+                        <TextField
+                            type='text'
+                            name='contact'
+                            ref='contact'
+                            floatingLabelText='Contact'
+                            onChange={this.handleChange}/>
+                    </div>
+                    <FlatButton label='Submit'/>
+                </form>
+            </Paper>
+        )
     }
 
 });

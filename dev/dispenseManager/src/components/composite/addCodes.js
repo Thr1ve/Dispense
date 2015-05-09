@@ -1,64 +1,67 @@
-var React = require('react');
+import React from 'react'
+import CodeInput from '../atomic/codeInput.js'
+import CodeOutput from '../atomic/codeOutput'
+import AddCodesRequest from '../../models/addCodes.js'
 
-var CodeInput = require('../atomic/codeInput.js');
-var CodeOutput = require('../atomic/codeOutput');
+import Mui from 'material-ui'
+let { Paper } = Mui
 
-var AddCodesRequest = require('../../models/addCodes.js');
+// var log = require('bows')("addCodes.js");
 
-var log = require('bows')("addCodes.js");
+let AddCodes = React.createClass({
 
-var AddCodes = React.createClass({
-
-    getInitialState: function() {
+    getInitialState() {
         return {
             codesString: ''
         }
     },
 
-    handleUserInput: function(string){
+    handleUserInput(string){
         this.setState({
             codesString : string
-        });
+        })
     },
 
-    handleUserSubmit: function(data){
+    handleUserSubmit(data){
 
-        var self = this;
-        var addCodesRequest = new AddCodesRequest();
+        let self = this
+        let addCodesRequest = new AddCodesRequest()
 
         addCodesRequest.save({
             "productId": this.props.productId,
             "codes":data
         },
          {
-
             wait: true,
-
             isNew: true,
-
             success: function(model, response) {
-                alert('codes added');
+                alert('codes added')
             },
-
             error: function(model, response) {
-                log('error...', model, response);
+                log('error...', model, response)
             }
-        });
+        })
     },
 
-    render: function() {
+    render() {
+        let { isbn13, title } = this.props.product
+
         return (
             <div>
-                <p>Add Codes:</p>
-                <br></br>
-                <p> {this.props.title} </p>
-                <p> {this.props.isbn13} </p>
-                <CodeInput 
-                    onUserInput={this.handleUserInput}
-                    filterText={this.state.codesString}/>
-                <CodeOutput 
-                    codesString={this.state.codesString}
-                    onUserSubmit={this.handleUserSubmit}/>
+                <Paper zDepth={2} style={{width:'95%', marginRight:'auto', marginLeft:'auto'}}>
+                    <h2 className='mui-font-style-headline' style={{textAlign:'center'}}>Add Codes for: {title}</h2>
+                    <h4 style={{textAlign:'center'}}>{isbn13}</h4>
+                </Paper>
+                <Paper zDepth={2} style={{width:'95%',marginTop: '30',marginRight:'auto', marginLeft:'auto'}}>
+                    <div style={{padding:30}}>
+                        <CodeInput 
+                            onUserInput={this.handleUserInput}
+                            filterText={this.state.codesString}/>
+                        <CodeOutput 
+                            codesString={this.state.codesString}
+                            onUserSubmit={this.handleUserSubmit}/>
+                    </div>
+                    </Paper>
             </div>
         );
     }

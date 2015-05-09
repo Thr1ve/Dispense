@@ -32,10 +32,9 @@ var CodeOutput= React.createClass({
 	        	);
 	        })
 	        return (
-	            <div style={{marginRight:'50px', float:'right'}}>
+	            <div style={{marginRight:'50px'}}>
 	                <FlatButton 
                         onClick={this.handleSubmit} 
-                        style={{float:'left', display:'block'}} 
                         label='Submit'/>
 	                <ul style={{display:'block'}}>
 		                {codes}

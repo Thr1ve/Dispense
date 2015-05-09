@@ -2,23 +2,29 @@
  * Created by Fiction on 4/16/2015.
  */
 import app from 'ampersand-app'
-var React = require('react');
-var Router = require('react-router');
-var { Route, RouteHandler, Link, DefaultRoute } = Router;
+import React from 'react'
+import Router from 'react-router'
+let { Route, RouteHandler, DefaultRoute } = Router;
 
-var log = require('bows')("manageProduct.js");
+import Mui from 'material-ui'
+var { FlatButton } = Mui
 
-var ManageProduct = React.createClass({
+// var log = require('bows')("manageProduct.js");
 
-	getInitialState: function() {
-        log('getInitialState', this.props);
+let ManageProduct = React.createClass({
+
+    contextTypes: {
+        router: React.PropTypes.func
+    },
+
+	getInitialState() {
         return {
             productId: this.props.params.productId,
         };
     },
 
-    componentDidMount: function() {
-        var self = this;
+    componentDidMount() {
+        let self = this;
         app.products.getOrFetch(this.props.params.productId,
             {all: true}, 
             function(err, model){
@@ -29,24 +35,56 @@ var ManageProduct = React.createClass({
         });
     },
 
-    render: function() {
-        log('render', this.state);
-    	var { productId } = this.state;
+
+    toEditProduct() {
+        let { productId } = this.state;
+        let { router } = this.context;
+        router.transitionTo('editProduct', {productId:productId});
+    },
+
+    toAddCodes() {
+        let { productId } = this.state;
+        let { router } = this.context;
+        router.transitionTo('addCodes', {productId:productId});
+    },
+
+    toProductStats() {
+        let { productId } = this.state;
+        let { router } = this.context;
+        router.transitionTo('productStats', {productId:productId});
+    },
+
+    render() {
+
+        let buttonStyle = {
+          height: '50',
+          opacity:'0.9',
+          float:'right'
+        }
+
+    	let { productId } = this.state;
         if(this.state.product){
-            log('Product found');
         	return (
     	        <div>
-    		        <div style={{position:'fixed', top:'0', right: '0', zIndex: '9' }} >
-    			        	<Link to='editProduct' params={{productId:productId}}>Edit Product</Link>
-    			        	<Link to='addCodes' params={{productId:productId}}>Add Codes</Link>
-                            <Link to='productStats' params={{productId:productId}}>Product Stats</Link>
+    		        <div style={{position:'fixed', top:'0', left: '0', zIndex: '9' }} >
+                        <FlatButton label='Stats'
+                          style={buttonStyle}
+                          onClick={this.toProductStats}
+                          secondary={true} />
+                        <FlatButton label='Edit Product'
+                          style={buttonStyle}
+                          onClick={this.toEditProduct}
+                          secondary={true} />
+                        <FlatButton label='Add Codes'
+                          style={buttonStyle}
+                          onClick={this.toAddCodes}
+                          secondary={true} />
     		        </div>
     	            <RouteHandler  {...this.state}/>
     	        </div>
         	)
         }
         else{
-            log('Product not yet found');
             return (
                 <div>
                     LOADING PRODUCT...

@@ -45,7 +45,7 @@ var App = React.createClass({
   render: function () {
     let self = this;
     let { router } = self.context;
-    var buttonStyle = {
+    let buttonStyle = {
         height: '50',
         opacity:'0.9'
     }

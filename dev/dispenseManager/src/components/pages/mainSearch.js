@@ -1,35 +1,24 @@
-var React  = require('react');
-var Router = require('react-router');
-var { RouteHandler } = Router;
+import React  from'react'
+import Router from'react-router'
 import app from 'ampersand-app'
+var { RouteHandler } = Router
 
-var Mui = require('material-ui');
-var FlatButton = Mui.FlatButton;
+import Mui from 'material-ui'
+let { FlatButton } = Mui
 
-var FilterableProductTable = require('../composite/filterableProductTable.js');
+import FilterableProductTable from '../composite/filterableProductTable.js'
 
-var log = require('bows')("mainSearch.js");
+// var log = require('bows')("mainSearch.js");
 
-var MainSearch = React.createClass({
+let MainSearch = React.createClass({
 
     contextTypes: {
         router: React.PropTypes.func
     },
 
-    handleClick: function(){
-      var { router } = this.context;
-      router.transitionTo('addProduct');
-    },
-
-    render: function() {
-        console.log('mainSearch', this.props);
+    render() {
         return (
             <div>
-                <div style={{position:'fixed', top:'0', right: '0', zIndex: '9' }} >
-                    <FlatButton 
-                        label='Add New Product'
-                        onClick={this.handleClick}/>
-                </div>
                 <FilterableProductTable products={app.products}/>
                 <RouteHandler {...this.props}/>
             </div>
@@ -38,4 +27,4 @@ var MainSearch = React.createClass({
 
 });
 
-module.exports = MainSearch;
+module.exports = MainSearch

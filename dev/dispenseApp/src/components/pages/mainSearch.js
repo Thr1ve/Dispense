@@ -1,12 +1,11 @@
-var React  = require('react');
-var Router = require('react-router');
-var { Route, RouteHandler, Link, DefaultRoute } = Router;
+import React from 'react'
+import Router from 'react-router'
 import app from 'ampersand-app'
+import FilterableProductTable from '../composite/filterableProductTable.js'
+import Mui from 'material-ui'
 
-var mui = require('material-ui');
-var AppBar = mui.AppBar;
-
-var FilterableProductTable = require('../composite/filterableProductTable.js');
+let { Route, RouteHandler, Link, DefaultRoute } = Router;
+let { AppBar } = Mui
 
 var MainSearch = React.createClass({
 
@@ -14,7 +13,7 @@ var MainSearch = React.createClass({
         router: React.PropTypes.func
     },
 
-    render: function() {
+    render() {
         return (
           <div>
             <header style={{

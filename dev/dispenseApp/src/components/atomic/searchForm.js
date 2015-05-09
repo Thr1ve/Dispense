@@ -1,14 +1,13 @@
 import React from 'react'
 import app from 'ampersand-app'
-
-import Mui from 'material-ui'
-var { TextField, FlatButton, Paper } = Mui
-
 import _ from 'underscore'
+import Mui from 'material-ui'
 
-var SearchForm = React.createClass({
+let { TextField, FlatButton, Paper } = Mui
 
-    getInitialState: function() {
+let SearchForm = React.createClass({
+
+    getInitialState() {
         return {
             code: '',
             customerEmail: '',
@@ -18,18 +17,18 @@ var SearchForm = React.createClass({
         };
     },
 
-    formatQuery: function(dataObj){
-        var mapped = _.mapObject(dataObj, function(val, key){
+    formatQuery(dataObj){
+        let mapped = _.mapObject(dataObj, function(val, key){
             return val.props.value;
         }) 
         return _.omit(mapped, _.isEmpty);
     },
 
-    handleSubmit : function(e) {
+    handleSubmit(e) {
         e.preventDefault();
-        var self = this;
-        var query = this.formatQuery(this.refs);
-        var filter = {
+        let self = this;
+        let query = this.formatQuery(this.refs);
+        let filter = {
             filter: {
                 where: query,
                 limit: 50,
@@ -44,15 +43,15 @@ var SearchForm = React.createClass({
         })
     },
 
-    handleChange : function() {
-        var newState= this.state;
+    handleChange() {
+        let newState= this.state;
         newState[event.target.name] = event.target.value;
         this.setState(newState);
     },
 
-    render: function() {
+    render() {
 
-        var { 
+        let { 
             code, 
             customerEmail, 
             customerName, 

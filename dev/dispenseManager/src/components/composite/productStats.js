@@ -1,11 +1,10 @@
-var React = require('react');
+import React from 'react'
 
-var log = require('bows')("productStats.js");
+// var log = require('bows')("productStats.js");
 
-var ProductStats = React.createClass({
-
-    render: function() {
-        var { isbn13, title } = this.props.product;
+let ProductStats = React.createClass({
+    render() {
+        let { isbn13, title } = this.props.product
         return (
         	<div>
 	        	<p>Product Stats:</p>
@@ -13,9 +12,8 @@ var ProductStats = React.createClass({
 	        	<p> {isbn13} </p>
                 <p> {title} </p>
 	        </div>
-        );
+        )
     }
+})
 
-});
-
-module.exports = ProductStats;
+module.exports = ProductStats

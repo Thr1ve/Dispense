@@ -1,19 +1,18 @@
-var React = require('react');
-
-var SearchField = require('./../atomic/searchField.js');
-var ProductTable = require('./../atomic/productTable.js');
+import React from 'react'
+import SearchField from './../atomic/searchField.js'
+import ProductTable from './../atomic/productTable.js'
 import app from 'ampersand-app'
 
 var FilterableProductTable = React.createClass({
 
-    getInitialState: function() {
+    getInitialState() {
         return {
             data: [],
             filterText: ''
         };
     },
 
-    componentDidMount: function() {
+    componentDidMount() {
         var self = this;
         //if statement added since refetching products broke app after using back button
         //this should be handled differently...perhaps store in user state?
@@ -29,7 +28,7 @@ var FilterableProductTable = React.createClass({
         }
     },
     
-    handleUserInput: function(filterText) {
+    handleUserInput(filterText) {
         var filtered;
         if(filterText){
             app.products.filter(filterText);
@@ -45,7 +44,7 @@ var FilterableProductTable = React.createClass({
         });
     },
     
-    render: function() {
+    render() {
         return (
             <div>
                 <div style={{position:'fixed', top:'0', left: '0', zIndex: '9' }} >

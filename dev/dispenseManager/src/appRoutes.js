@@ -1,43 +1,52 @@
+import MainSearch from './components/pages/mainSearch.js'
+import ManageProduct from './components/pages/manageProduct.js'
+import EditProduct from './components/composite/editProduct.js'
+import AddCodes from './components/composite/addCodes.js'
+import ProductStats from './components/composite/productStats.js'
+import AddProduct from './components/composite/addProduct.js'
 
-var MainSearch    = require('./components/pages/mainSearch.js');
-var ManageProduct = require('./components/pages/manageProduct.js');
-var EditProduct   = require('./components/composite/editProduct.js');
-var AddCodes      = require('./components/composite/addCodes.js');
-var ProductStats  = require('./components/composite/productStats.js');
-var AddProduct    = require('./components/composite/addProduct.js');
+import Mui from 'material-ui'
+let { FlatButton } = Mui
 
-var mui        = require('material-ui');
-var FlatButton = mui.FlatButton;
+import React from 'react'
+import Router from 'react-router'
+let { Route, RouteHandler,
+    DefaultRoute, NotFoundRoute } = Router
 
-var React        = require('react');
-var Router       = require('react-router');
-var { Route, RouteHandler, DefaultRoute, NotFoundRoute } = Router;
 
-// var Breadcrumbs = require('react-breadcrumbs');
+// var log = require('bows')("appRoutes.js");
 
-var log = require('bows')("appRoutes.js");
-
-var NotFound = React.createClass({
-  render : function() {
-    return (
-      <h1>No Route Found</h1>
+let NotFound = React.createClass({
+    render() {
+        return ( < h1 > No Route Found </h1>
     );
   }
 });
 
-var App = React.createClass({
+let App = React.createClass({
 
   contextTypes: {
       router: React.PropTypes.func
   },
-    
-  toRequestedCodes: function() {
+
+  toMainSearch() {
       var { router } = this.context;
-      router.transitionTo('requestedCodes');
+      router.transitionTo('mainSearch');
   },
 
-  render: function () {
-    console.log('appRoutes', this.props);
+  toAddProduct(){
+    var { router } = this.context;
+    router.transitionTo('addProduct');
+  },
+
+  render() {
+
+    let buttonStyle = {
+      height: '50',
+      opacity:'0.9',
+      float:'right'
+    }
+
     return (
     <div>
       <header style={{
@@ -46,20 +55,25 @@ var App = React.createClass({
         width: '100%', height:'50px',
         opacity: '0.8', backgroundColor: 'white',
         zIndex: '4' }} >
-        {/* <Breadcrumbs /> */}
+        <FlatButton label='Add New Product'
+          style={buttonStyle}
+          onClick={this.toAddProduct}
+          secondary={true} />
+        <FlatButton label='Main Search'
+          style={buttonStyle}
+          onClick={this.toMainSearch}
+          secondary={true} />
       </header>
       <div style={{position:'relative', top:'50px'}}>
-        <RouteHandler {...this.props}/>
+        <RouteHandler {...this.props}/ >
       </div>
-    </div>
-    );
-  }
+    </div >
+        );
+    }
 });
 
-//change the app route path to '/dispenseApp' to run in loopback / for production
-// note: need to find better way so i can have both webpack and live version simultaneously
 module.exports = (
-          <Route name="app" path="/" handler={App}>
+          <Route name="app" path="/dispenseManager" handler={App}>
             <Route name="mainSearch" handler={MainSearch}/>
             <Route name="addProduct" handler={AddProduct}/>
             <Route name='product' path="product/:productId" handler={ManageProduct}>
