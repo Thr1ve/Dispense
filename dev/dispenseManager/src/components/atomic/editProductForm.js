@@ -1,4 +1,5 @@
 import React from 'react'
+import app from 'ampersand-app'
 
 import Mui from 'material-ui'
 let { Paper, TextField, FlatButton } = Mui
@@ -24,6 +25,7 @@ let EditProductForm = React.createClass({
 
     handleSubmit(e){
         e.preventDefault()
+        let self = this;
         let title = this.refs.title.getValue()
         let isbn13= this.refs.isbn13.getValue()
         let data = {
@@ -34,7 +36,7 @@ let EditProductForm = React.createClass({
         this.props.product.save(data,{
             wait: true , 
             success:function(){
-                console.log('Edit Successfull')
+                self.props.success()
             }
         })
     },
