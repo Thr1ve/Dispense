@@ -1,5 +1,4 @@
-var AmpersandModel = require('ampersand-model');
-
+import AmpersandModel from 'ampersand-model'
 
 module.exports = AmpersandModel.extend({
     props: {
@@ -16,8 +15,8 @@ module.exports = AmpersandModel.extend({
     },
 
     derived: {
-        id : function() {
-            return this.productId;
+        id() {
+            return this.productId
         }
     }
 });

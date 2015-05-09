@@ -9,39 +9,39 @@ var FilterableProductTable = React.createClass({
         return {
             data: [],
             filterText: ''
-        };
+        }
     },
 
     componentDidMount() {
-        var self = this;
+        var self = this
         //if statement added since refetching products broke app after using back button
         //this should be handled differently...perhaps store in user state?
         if(app.products.models.length > 0){
-            self.setState({data:app.products});
+            self.setState({data:app.products})
         }
         else{
             window.app.products.fetch({
                 success:function(model, res, opt){
-                    self.setState({data:res});
+                    self.setState({data:res})
                 }
-            }),[];
+            }),[]
         }
     },
     
     handleUserInput(filterText) {
-        var filtered;
+        var filtered
         if(filterText){
-            app.products.filter(filterText);
-            filtered = app.products.filtered;
+            app.products.filter(filterText)
+            filtered = app.products.filtered
         }
         else{
-            filtered = app.products; 
+            filtered = app.products 
         }
 
         this.setState({
             filterText: filterText,
             data : filtered
-        });
+        })
     },
     
     render() {
@@ -57,8 +57,8 @@ var FilterableProductTable = React.createClass({
                         products={this.state.data}/>
                 </div>
             </div>
-        );
+        )
     }
-});
+})
 
-module.exports = FilterableProductTable;
+module.exports = FilterableProductTable

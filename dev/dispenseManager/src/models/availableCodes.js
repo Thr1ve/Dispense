@@ -1,5 +1,4 @@
-var AmpersandModel = require('ampersand-model');
-
+import AmpersandModel 'ampersand-model'
 
 module.exports = AmpersandModel.extend({
 
@@ -15,11 +14,11 @@ module.exports = AmpersandModel.extend({
     },
 
     derived: {
-        id: function() {
-            return this.productId;
+        id() {
+            return this.productId
         }
     },
 
     url: 'http://localhost:3000/api/availableCodes'
 
-});
+})

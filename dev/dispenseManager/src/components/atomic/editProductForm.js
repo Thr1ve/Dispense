@@ -77,4 +77,4 @@ let EditProductForm = React.createClass({
 
 });
 
-module.exports = EditProductForm;
+module.exports = EditProductForm

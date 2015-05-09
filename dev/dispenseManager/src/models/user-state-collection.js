@@ -1,6 +1,6 @@
 // userState Collection - user-state-collection.js
-var AmpCollection = require('./apiPointer.js');
-var userState = require('./user-state');
+import AmpCollection './apiPointer.js'
+import userState './user-state'
 
 
 module.exports = AmpCollection.extend({
@@ -9,7 +9,7 @@ module.exports = AmpCollection.extend({
 
     location: 'user-state',
 
-    initialize: function() {
-        AmpCollection.prototype.initialize.call(this);
+    initialize() {
+        AmpCollection.prototype.initialize.call(this)
     }
-});
+})

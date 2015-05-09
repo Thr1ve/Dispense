@@ -1,9 +1,9 @@
 // product Collection - product-collection.js
-var AmpCollection = require('./apiPointer.js');
-var product       = require('./product');
-var Fuse          = require('fuse.js');
+import AmpCollection from './apiPointer.js'
+import product from './product'
+import Fuse from 'fuse.js'
 
-var log = require('bows')("Products Collection");
+// var log = require('bows')("Products Collection");
 
 //this is our collection of products
 //it also holds the "filter" function which creates a
@@ -15,30 +15,23 @@ module.exports = AmpCollection.extend({
 
     location: 'products',
 
-    initialize : function() {
-        AmpCollection.prototype.initialize.call(this);
+    initialize() {
+        AmpCollection.prototype.initialize.call(this)
         //create filtered collection
-        var self = this;
-        this.filtered = new AmpCollection(self.models);
+        this.filtered = new AmpCollection(this.models)
 
     },
 
-    filter : function(string) {
-
+    filter(string) {
         var fuse = new Fuse(this.models , {
-
             keys : ['isbn13', 'title'],
             threshold : 0.35,
             distance : 250
-
         });
-
-        log('Threshold : ', fuse.options.threshold);
-        log('Distance : ', fuse.options.distance);
-        log('Location : ', fuse.options.location);
-
+        // log('Threshold : ', fuse.options.threshold);
+        // log('Distance : ', fuse.options.distance);
+        // log('Location : ', fuse.options.location);
         this.filtered.set(fuse.search(string));
-
         // if(string){
         //     this.select(this.filtered.models[0]);
         //     this.filtered.selected = 0;
@@ -52,17 +45,15 @@ module.exports = AmpCollection.extend({
      * @param  {model} model A model being passed for selection
      * @return {n/a}       
      */
-    select : function(model) {
-        // log('calling select function');
+    select(model) {
         if(this.isSelected){
-            this.deselect();
-            this.isSelected = model;
-            // log('selection set', this.isSelected.title, this.isSelected);
-            this.isSelected.toggle('selected');
+            this.deselect()
+            this.isSelected = model
+            this.isSelected.toggle('selected')
         } 
         else{
-            this.isSelected = model;
-            this.isSelected.toggle('selected');
+            this.isSelected = model
+            this.isSelected.toggle('selected')
         }
     },
 
@@ -70,11 +61,9 @@ module.exports = AmpCollection.extend({
      * deselect the current isSelected model
      * @return {n/a} 
      */ 
-    deselect : function() {
-        // log('calling deselect function');
-        this.isSelected.selected = false;
-        this.isSelected = false;
-        // log('previous selected product is now deselected');
+    deselect() {
+        this.isSelected.selected = false
+        this.isSelected = false
     }
 
 });

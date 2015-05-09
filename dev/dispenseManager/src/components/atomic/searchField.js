@@ -1,19 +1,17 @@
-var React = require('react');
+import React from 'react'
+import Mui from 'material-ui'
 
-var Mui = require('material-ui');
-var TextField = Mui.TextField;
-
-var log = require('bows')("searchField.js");
+let { TextField } = Mui
 
 var SearchField = React.createClass({
 
-    handleChange: function() {
+    handleChange() {
         this.props.onUserInput(
             this.refs.filterTextInput.getValue()
-        );
+        )
     },
 
-    render: function() {
+    render() {
         return (
             <TextField
                 type="text"
@@ -21,9 +19,9 @@ var SearchField = React.createClass({
                 value={this.props.filterText}
                 ref="filterTextInput"
                 onChange={this.handleChange} />
-        );
+        )
     }
 
 });
 
-module.exports = SearchField;
+module.exports = SearchField

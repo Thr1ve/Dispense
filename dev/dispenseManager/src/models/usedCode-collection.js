@@ -1,5 +1,5 @@
-var AmpCollection = require('./apiPointer.js');
-var usedCode = require('./usedCode');
+import AmpCollection from './apiPointer.js'
+import usedCode from './usedCode'
 
 //this holds the requests for codes that the user
 //has received
@@ -10,7 +10,7 @@ module.exports = AmpCollection.extend({
 
     location: 'usedCode-collection',
 
-    initialize: function() {
-        AmpCollection.prototype.initialize.call(this);
+    initialize() {
+        AmpCollection.prototype.initialize.call(this)
     }
 });

@@ -68,4 +68,4 @@ let AddCodes = React.createClass({
 
 });
 
-module.exports = AddCodes;
+module.exports = AddCodes

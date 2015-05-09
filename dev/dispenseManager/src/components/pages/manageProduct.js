@@ -1,10 +1,7 @@
-/**
- * Created by Fiction on 4/16/2015.
- */
 import app from 'ampersand-app'
 import React from 'react'
 import Router from 'react-router'
-let { Route, RouteHandler, DefaultRoute } = Router;
+let { Route, RouteHandler, DefaultRoute } = Router
 
 import Mui from 'material-ui'
 var { FlatButton } = Mui
@@ -29,29 +26,29 @@ let ManageProduct = React.createClass({
             {all: true}, 
             function(err, model){
                 if(err){
-                    console.error('model not found', err);
+                    console.error('model not found', err)
                 }
-                self.setState({product:model});
+                self.setState({product:model})
         });
     },
 
 
     toEditProduct() {
-        let { productId } = this.state;
-        let { router } = this.context;
-        router.transitionTo('editProduct', {productId:productId});
+        let { productId } = this.state
+        let { router } = this.context
+        router.transitionTo('editProduct', {productId:productId})
     },
 
     toAddCodes() {
-        let { productId } = this.state;
-        let { router } = this.context;
-        router.transitionTo('addCodes', {productId:productId});
+        let { productId } = this.state
+        let { router } = this.context
+        router.transitionTo('addCodes', {productId:productId})
     },
 
     toProductStats() {
-        let { productId } = this.state;
-        let { router } = this.context;
-        router.transitionTo('productStats', {productId:productId});
+        let { productId } = this.state
+        let { router } = this.context
+        router.transitionTo('productStats', {productId:productId})
     },
 
     render() {
@@ -62,7 +59,7 @@ let ManageProduct = React.createClass({
           float:'right'
         }
 
-    	let { productId } = this.state;
+    	let { productId } = this.state
         if(this.state.product){
         	return (
     	        <div>
@@ -95,4 +92,4 @@ let ManageProduct = React.createClass({
 
 });
 
-module.exports = ManageProduct;
+module.exports = ManageProduct

@@ -1,14 +1,14 @@
-var AmpCollection = require('./apiPointer.js');
-var availableCodes = require('./availableCodes');
+import AmpCollection from './apiPointer.js'
+import availableCodes from './availableCodes'
 
 module.exports = AmpCollection.extend({
 
     location: 'availableCodes-collection',
 
-    initialize : function() {
-        AmpCollection.prototype.initialize.call(this);
+    initialize() {
+        AmpCollection.prototype.initialize.call(this)
     },
 
     model: availableCodes
 
-});
+})

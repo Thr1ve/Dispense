@@ -1,35 +1,35 @@
-var React = require('react');
+import React from 'react'
 
-var Mui = require('material-ui');
-var FlatButton = Mui.FlatButton;
+import Mui from 'material-ui'
+let { FlatButton } = Mui
 
-var log = require('bows')("codeOutput.js");
+let CodeOutput= React.createClass({
 
-var CodeOutput= React.createClass({
-
-	format: function(input) {
-        var formatted = input
+	format(input) {
+        let formatted = input
 			//separate by newline
 			.split('\n')
             //remove empty/null/undefined values from array
-            .filter(function(e){return e;});
-        var trimmed = formatted.map(function(val){
-        	return val.trim();
+            .filter(function(e){return e;})
+
+        let trimmed = formatted.map(function(val){
+        	return val.trim()
         })
-        return trimmed;
+
+        return trimmed
     },
 
-    handleSubmit: function(){
-    	var codes = this.format(this.props.codesString);
-        this.props.onUserSubmit(codes); 
+    handleSubmit(){
+    	let codes = this.format(this.props.codesString)
+        this.props.onUserSubmit(codes) 
     },
 
-    render: function() {
+    render() {
         if(this.props.codesString){
-	        var codes = this.format(this.props.codesString).map(function(val, ind, arr){
+	        let codes = this.format(this.props.codesString).map(function(val, ind, arr){
 	        	return (
 	        		<li key={ind}> {val}</li>
-	        	);
+	        	)
 	        })
 	        return (
 	            <div style={{marginRight:'50px'}}>
@@ -40,15 +40,15 @@ var CodeOutput= React.createClass({
 		                {codes}
 	                </ul>
 	            </div>
-	        );
+	        )
         }
         else{
         	return (
         		<p>Waiting for codes...</p>
-        	);
+        	)
         }
     }
 
-});
+})
 
-module.exports = CodeOutput;
+module.exports = CodeOutput

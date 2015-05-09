@@ -1,15 +1,13 @@
-// userState Model - user-state.js
-var AmpModel = require('ampersand-model');
-
+import AmpModel from 'ampersand-model'
 
 module.exports = AmpModel.extend({
 
     //I may want to move these listeners to
     //the products collection instead
-    initialize : function() {
+    initialize() {
         this.on('change:searchValue' , function() {
-            app.products.filter(this.searchValue);
-        });
+            app.products.filter(this.searchValue)
+        })
     },
 
     type: 'user',
@@ -48,9 +46,9 @@ module.exports = AmpModel.extend({
 
     },
 
-    getSearchValue : function(){
-        var self = this;
-        return self.searchValue;
+    getSearchValue(){
+        var self = this
+        return self.searchValue
    }
 
 });

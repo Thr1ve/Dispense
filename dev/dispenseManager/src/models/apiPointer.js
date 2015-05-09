@@ -1,5 +1,5 @@
 // userState Collection - user-state-collection.js
-var AmpCollection = require('ampersand-rest-collection');
+import AmpCollection from 'ampersand-rest-collection'
 
 module.exports = AmpCollection.extend({
     
@@ -7,7 +7,7 @@ module.exports = AmpCollection.extend({
     // pointer: 'http://thrive.geekgalaxy.com/api/',
     pointer: 'http://localhost:8080/api/',
 
-    initialize : function() {
-        this.url = this.pointer + this.location;
+    initialize() {
+        this.url = this.pointer + this.location
     }
-});
+})

@@ -1,4 +1,4 @@
-var AmpersandModel = require('ampersand-model');
+import AmpersandModel from 'ampersand-model'
 
 module.exports = AmpersandModel.extend({
     props: {
@@ -12,4 +12,4 @@ module.exports = AmpersandModel.extend({
         code:'string'
     }
 
-});
+})

@@ -1,23 +1,20 @@
-var React = require('react');
-var Router = require('react-router');
-var mui = require('material-ui');
-var Menu = mui.Menu;
+import React from 'react'
+import Router from 'react-router'
+import mui from 'material-ui'
+let { Menu } = mui
 
-var log = require('bows')("productTable.js");
-
-var ProductTable = React.createClass({
+let ProductTable = React.createClass({
 
     contextTypes: {
         router: React.PropTypes.func
       },
 
-    render: function() {
-        var rows = [];
+    render() {
+        let rows = []
 
         this.props.products.forEach(function(product) {
-            // rows.push(<ProductRow product={product} key={product.id} />);
             rows.push({payload: product.productId, text: product.title, data: product.isbn13})
-        }.bind(this));
+        }.bind(this))
 
         return (
             <div>
@@ -26,11 +23,11 @@ var ProductTable = React.createClass({
         );
     },
 
-    _onItemClick: function(e, key, menuItem) {
-        var { router } = this.context;
-        router.transitionTo('product', { productId: menuItem.payload});
+    _onItemClick(e, key, menuItem) {
+        let { router } = this.context
+        router.transitionTo('product', { productId: menuItem.payload})
     }
-});
+})
 
 
-module.exports = ProductTable;
+module.exports = ProductTable

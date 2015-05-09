@@ -1,19 +1,16 @@
-var React = require('react');
+import React from 'react'
+import Mui from 'material-ui'
+let { TextField } = Mui
 
-var Mui = require('material-ui');
-var TextField = Mui.TextField;
+let CodeInput = React.createClass({
 
-var log = require('bows')("codeInput.js");
-
-var CodeInput = React.createClass({
-
-    handleChange: function() {
+    handleChange() {
         this.props.onUserInput(
             this.refs.codesString.getValue()
-        );
+        )
     },
 
-    render: function() {
+    render() {
         return (
             <div style={{float:'left'}}>
             	<TextField
@@ -24,9 +21,9 @@ var CodeInput = React.createClass({
                     ref="codesString"
                     onChange={this.handleChange} />
             </div>
-        );
+        )
     }
 
-});
+})
 
-module.exports = CodeInput;
+module.exports = CodeInput

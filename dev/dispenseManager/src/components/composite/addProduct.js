@@ -81,4 +81,4 @@ let addProduct = React.createClass({
 
 });
 
-module.exports = addProduct;
+module.exports = addProduct
