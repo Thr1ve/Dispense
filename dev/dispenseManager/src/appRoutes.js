@@ -3,7 +3,7 @@ import ManageProduct from './components/pages/manageProduct.js'
 import EditProduct from './components/composite/editProduct.js'
 import AddCodes from './components/composite/addCodes.js'
 import ProductStats from './components/composite/productStats.js'
-import AddProduct from './components/composite/addProduct.js'
+import AddProduct from './components/pages/addProduct.js'
 
 import Mui from 'material-ui'
 let { FlatButton } = Mui
