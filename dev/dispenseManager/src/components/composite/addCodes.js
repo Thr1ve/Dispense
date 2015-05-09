@@ -4,7 +4,7 @@ import CodeOutput from '../atomic/codeOutput'
 import AddCodesRequest from '../../models/addCodes.js'
 
 import Mui from 'material-ui'
-let { Paper } = Mui
+let { Paper, Snackbar } = Mui
 
 // var log = require('bows')("addCodes.js");
 
@@ -22,6 +22,10 @@ let AddCodes = React.createClass({
         })
     },
 
+    success() {
+        this.refs.snackbar.show()
+    },
+
     handleUserSubmit(data){
 
         let self = this
@@ -35,10 +39,10 @@ let AddCodes = React.createClass({
             wait: true,
             isNew: true,
             success: function(model, response) {
-                alert('codes added')
+                self.success();
             },
             error: function(model, response) {
-                log('error...', model, response)
+                console.log('error...', model, response)
             }
         })
     },
@@ -61,7 +65,10 @@ let AddCodes = React.createClass({
                             codesString={this.state.codesString}
                             onUserSubmit={this.handleUserSubmit}/>
                     </div>
-                    </Paper>
+                </Paper>
+                <Snackbar
+                  ref="snackbar"
+                  message="Codes Added!"/>
             </div>
         );
     }
