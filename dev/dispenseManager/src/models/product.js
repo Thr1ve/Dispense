@@ -17,6 +17,9 @@ module.exports = AmpersandModel.extend({
     derived: {
         id() {
             return this.productId
+        },
+        contact(){
+            return app.contacts.get(this.productId)
         }
     }
 });

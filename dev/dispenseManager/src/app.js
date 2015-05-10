@@ -6,6 +6,7 @@ import AppRoutes from './appRoutes.js'
 // Models **********
 import User from './models/user-state'
 import Products from './models/products'
+import Contacts from './models/contacts'
 import Code from './models/usedCode-collection'
 
 // Styles **********
@@ -16,6 +17,7 @@ window.app = app.extend({
 
     this.user      = new User();
     this.products  = new Products();
+    this.contacts  = new Contacts()
     this.newCode   = new Code();
 
     // Attach to window for easier debugging

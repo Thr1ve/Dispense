@@ -6,7 +6,7 @@
   "properties": {
     "productId": {
       "type": "number",
-      "required": true
+      "id": true
     },
     "mainEmail": {
       "type": "string"

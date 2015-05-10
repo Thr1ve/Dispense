@@ -10,10 +10,12 @@ let EditProductForm = React.createClass({
 
     getInitialState() {
         let { productId, title, isbn13 } = this.props.product
+        let { contact } = this.props
         return {
             productId: productId ,
             title    : title,
-            isbn13   : isbn13    
+            isbn13   : isbn13,
+            contact  : contact
         }
     },
 
@@ -28,22 +30,33 @@ let EditProductForm = React.createClass({
         let self = this;
         let title = this.refs.title.getValue()
         let isbn13= this.refs.isbn13.getValue()
-        let data = {
+        let contact = this.refs.contact.getValue()
+        let productData = {
             title   : title,
-            isbn13  : isbn13
+            isbn13  : isbn13,
         }
 
-        this.props.product.save(data,{
+        let contactData = {
+           mainEmail : contact
+        }
+
+        self.props.product.save(productData,{
             wait: true , 
             success:function(){
-                self.props.success()
+                self.props.contact.save(contactData,{
+                    wait: true , 
+                    success:function(){
+                        self.props.success()
+                    }
+                })
             }
         })
     },
     
     render() {
-        let title = this.state.title;
-        let isbn13 = this.state.isbn13;
+        let { title, isbn13 } = this.state
+        let contact = this.state.contact.mainEmail
+
         let textFieldStyle= {
             display:'block',
         }
@@ -69,6 +82,15 @@ let EditProductForm = React.createClass({
                             ref='isbn13'
                             floatingLabelText='ISBN'
                             defaultValue={isbn13}
+                            onChange={this.handleChange}/>
+                    </div>
+                    <div style={textFieldStyle}>
+                        <TextField
+                            type='text'
+                            name='contact'
+                            ref='contact'
+                            floatingLabelText='Contact'
+                            defaultValue={contact}
                             onChange={this.handleChange}/>
                     </div>
                     <FlatButton label='Submit'/>

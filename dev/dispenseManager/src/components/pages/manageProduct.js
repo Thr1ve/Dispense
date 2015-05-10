@@ -6,7 +6,7 @@ let { Route, RouteHandler, DefaultRoute } = Router
 import Mui from 'material-ui'
 var { FlatButton } = Mui
 
-// var log = require('bows')("manageProduct.js");
+// var log = require('bows')("manageProduct.js")
 
 let ManageProduct = React.createClass({
 
@@ -17,19 +17,29 @@ let ManageProduct = React.createClass({
 	getInitialState() {
         return {
             productId: this.props.params.productId,
-        };
+            contact  : null,
+            product: null
+        }
     },
 
     componentDidMount() {
-        let self = this;
-        app.products.getOrFetch(this.props.params.productId,
+        let self = this
+        app.contacts.getOrFetch(self.props.params.productId,
+            {all:true},
+            function(err, contact){
+                if(err){
+                    console.error('contact not found', err)
+                }
+                self.setState({contact:contact})
+        })
+        app.products.getOrFetch(self.props.params.productId,
             {all: true}, 
             function(err, model){
                 if(err){
                     console.error('model not found', err)
                 }
                 self.setState({product:model})
-        });
+        })
     },
 
 
@@ -60,7 +70,7 @@ let ManageProduct = React.createClass({
         }
 
     	let { productId } = this.state
-        if(this.state.product){
+        if(this.state.product && this.state.contact){
         	return (
     	        <div>
     		        <div style={{position:'fixed', top:'0', left: '0', zIndex: '9' }} >
@@ -90,6 +100,6 @@ let ManageProduct = React.createClass({
         }
     }
 
-});
+})
 
 module.exports = ManageProduct

@@ -12,15 +12,23 @@ let addProduct = React.createClass({
         let title = this.refs.title.getValue()
         let isbn13= this.refs.isbn13.getValue()
         let contact= this.refs.contact.getValue()
-        let data = {
+        let productData = {
             title   : title,
             isbn13  : isbn13
         }
+        let contactData = {
+            mainEmail : contact
+        }
 
-        app.products.create( data, {
+        app.products.create( productData, {
             wait: true, 
-            success:function( model, resp ) {
-                self.success();
+            success:function( savedProduct, resp ) {
+                app.contacts.create( contactData , {
+                    wait: true, 
+                    success:function( savedContact, resp ) {
+                        self.success();
+                    }
+                })
             }
         })
     },
