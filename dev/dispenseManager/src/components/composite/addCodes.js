@@ -4,7 +4,7 @@ import CodeOutput from '../atomic/codeOutput'
 import AddCodesRequest from '../../models/addCodes.js'
 
 import Mui from 'material-ui'
-let { Paper, Snackbar } = Mui
+let { Paper, Snackbar, Dialog, FlatButton } = Mui
 
 // var log = require('bows')("addCodes.js");
 
@@ -31,24 +31,40 @@ let AddCodes = React.createClass({
         let self = this
         let addCodesRequest = new AddCodesRequest()
 
-        addCodesRequest.save({
-            "productId": this.props.productId,
-            "codes":data
-        },
-         {
-            wait: true,
-            isNew: true,
-            success: function(model, response) {
-                self.success();
-            },
-            error: function(model, response) {
-                console.log('error...', model, response)
-            }
-        })
+        this.handleCustomDialogTouchTap() 
+
+        // addCodesRequest.save({
+        //     "productId": this.props.productId,
+        //     "codes":data
+        // },
+        //  {
+        //     wait: true,
+        //     isNew: true,
+        //     success: function(model, response) {
+        //         self.success();
+        //     },
+        //     error: function(model, response) {
+        //         console.log('error...', model, response)
+        //     }
+        // })
     },
 
     render() {
         let { isbn13, title } = this.props.product
+
+        let customActions = [
+          <FlatButton
+            key={1}
+            label="Cancel"
+            secondary={true}
+            onClick={this._handleCustomDialogCancel} />,
+          <FlatButton
+            key={2}
+            label="Submit"
+            primary={true}
+            onClick={this._handleCustomDialogSubmit} />
+        ]
+
 
         return (
             <div>
@@ -69,8 +85,27 @@ let AddCodes = React.createClass({
                 <Snackbar
                   ref="snackbar"
                   message="Codes Added!"/>
+                  <Dialog
+                  title="Dialog With Custom Actions"
+                  ref="customDialog"
+                  actions={customActions}
+                  modal={true}
+                  dismissOnClickAway={this.state.dismissOnClickAway}>
+                  The actions in this window were passed in as an array of react objects.
+                </Dialog>
             </div>
         );
+    },
+
+    _handleCustomDialogCancel() {
+        this.refs.customDialog.dismiss();
+    },
+
+    _handleCustomDialogSubmit() {
+         this.refs.customDialog.dismiss();
+    },
+    handleCustomDialogTouchTap() {
+        this.refs.customDialog.show();
     }
 
 });

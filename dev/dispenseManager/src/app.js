@@ -16,7 +16,7 @@ window.app = app.extend({
   init () {
     //LOL SECURITY !1!!!1!!!!>
     // let allowed = window.prompt("");
-    // if(allowed==='node'){
+    // if(allowed==='admin'){
 
         this.user      = new User();
         this.products  = new Products();
@@ -33,7 +33,7 @@ window.app = app.extend({
 
       // }
       // else{
-      //     window.location = 'http://localhost:8080/explorer'
+      //     window.location = 'http://www.wiley.com'
       // }
     }
 
