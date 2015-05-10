@@ -14,20 +14,29 @@ require('./styles/main.less');
 
 window.app = app.extend({
   init () {
+    //LOL SECURITY !1!!!1!!!!>
+    // let allowed = window.prompt("");
+    // if(allowed==='node'){
 
-    this.user      = new User();
-    this.products  = new Products();
-    this.contacts  = new Contacts()
-    this.newCode   = new Code();
+        this.user      = new User();
+        this.products  = new Products();
+        this.contacts  = new Contacts()
+        this.newCode   = new Code();
 
-    // Attach to window for easier debugging
-    window.app = this;
+        // Attach to window for easier debugging
+        window.app = this;
 
-    // React-Router
-    Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
-      React.render(<Handler/>, document.body);
-    });
-  }
+        // React-Router
+        Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
+          React.render(<Handler/>, document.body);
+        });
+
+      // }
+      // else{
+      //     window.location = 'http://localhost:8080/explorer'
+      // }
+    }
+
 })
 
 app.init()
