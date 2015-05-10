@@ -1,54 +1,60 @@
 import React from 'react'
 
 import Mui from 'material-ui'
-let { FlatButton } = Mui
+let { Paper, FlatButton, RaisedButton } = Mui
 
 let CodeOutput= React.createClass({
 
-	format(input) {
-        let formatted = input
-			//separate by newline
-			.split('\n')
-            //remove empty/null/undefined values from array
-            .filter(function(e){return e;})
-
-        let trimmed = formatted.map(function(val){
-        	return val.trim()
-        })
-
-        return trimmed
-    },
-
-    handleSubmit(){
-    	let codes = this.format(this.props.codesString)
-        this.props.onUserSubmit(codes) 
-    },
-
-    render() {
-        if(this.props.codesString){
-	        let codes = this.format(this.props.codesString).map(function(val, ind, arr){
-	        	return (
-	        		<li key={ind}> {val}</li>
-	        	)
-	        })
-	        return (
-	            <div style={{marginRight:'50px'}}>
-	                <FlatButton 
-                        onClick={this.handleSubmit} 
-                        label='Submit'/>
-	                <ul style={{display:'block'}}>
-		                {codes}
-	                </ul>
-	            </div>
-	        )
-        }
-        else{
-        	return (
-        		<p>Waiting for codes...</p>
-        	)
-        }
+  getContent() {
+    let styles = {
+      display:'inline-block',
+      height: 'auto',
+      width: 'intrinsic',
+      margin: 2
     }
+    let mapped = this.props.codes.map(function(val, ind, arr){
+      return (
+        <Paper
+          zDepth={1}
+          key={ind}
+          style={styles}> 
+            <p style={{padding:3}}> {val} </p>
+        </Paper>
+      )
+    })
+    if(this.props.codes.length > 0){
+      return (
+        <div>
+          <div
+              style={{display:'block',top:0, left:0}}>
+            <RaisedButton
+              onClick={this.props.submit} 
+              primary={true}
+              label='Submit Codes'/>
+          </div>
+            {mapped}
+        </div>
+      )    
+    }
+    else{
+      return (
+        <p> Enter codes in the textbox to the left </p>
+      )
+    }
+  },
 
+  render() {
+    let content = this.getContent();
+      return (
+        <Paper zDepth={2} style={{width:'72%',marginTop: '10', marginRight:'10', float:'right'}}>
+          <div style={{padding:30, minHeight:450}}>
+            <div>
+              {content}
+            </div>
+          </div>
+        </Paper>
+      )
+  }
 })
 
 module.exports = CodeOutput
