@@ -3,9 +3,6 @@ var boot = require('loopback-boot');
 var path = require('path');
 var app = module.exports = loopback();
 
-// TODO: configure webstorm to sync with webserver https://www.jetbrains.com/webstorm/help/working-with-web-servers-copying-files.html
-// Bootstrap the application, configure models, datasources and middleware.
-// Sub-apps like REST API are mounted via boot scripts.
 boot(app, __dirname);
 
 /////////////////////////////////
@@ -18,7 +15,6 @@ boot(app, __dirname);
 var dispenseApp     = path.resolve(__dirname, '../client/dispenseApp');
 var dispenseManager = path.resolve(__dirname, '../client/dispenseManager');
 
-//use browserify to directly bundle and serve the already bundled files?
 app.use(loopback.static(dispenseApp));
 app.use(loopback.static(dispenseManager));
 
@@ -29,10 +25,6 @@ app.get('/dispenseApp*', function(req, res){
 app.get('/dispenseManager*', function(req, res){
    res.sendFile(dispenseManager + '/index.html') 
 })
-// app.use('/dispenseManager', loopback.static(dispenseManager));
-    // express = require('express'),
-    // parentApp = express();
-
 
 ////////////////////////////////
 
