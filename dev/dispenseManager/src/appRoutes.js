@@ -11,7 +11,7 @@ let { FlatButton } = Mui
 import React from 'react'
 import Router from 'react-router'
 let { Route, RouteHandler,
-    DefaultRoute, NotFoundRoute } = Router
+    DefaultRoute, NotFoundRoute, Redirect } = Router
 
 
 // var log = require('bows')("appRoutes.js");
@@ -73,7 +73,8 @@ let App = React.createClass({
 });
 
 module.exports = (
-          <Route name="app" path="/dispenseManager" handler={App}>
+          <Route name="app" path="/dispenseManager/" handler={App}>
+            <Redirect from="/dispenseManager" to="/dispenseManager/"/>
             <Route name="mainSearch" handler={MainSearch}/>
             <Route name="addProduct" handler={AddProduct}/>
             <Route name='product' path="product/:productId" handler={ManageProduct}>

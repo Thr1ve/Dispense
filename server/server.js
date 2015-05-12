@@ -15,9 +15,21 @@ boot(app, __dirname);
 // Example:
 // app.use(loopback.static(path.resolve(__dirname, '../client')));
 
-var dispenseApp = require('path').resolve(__dirname, '../client/dispenseApp/');
+var dispenseApp     = path.resolve(__dirname, '../client/dispenseApp');
+var dispenseManager = path.resolve(__dirname, '../client/dispenseManager');
 
+//use browserify to directly bundle and serve the already bundled files?
 app.use(loopback.static(dispenseApp));
+app.use(loopback.static(dispenseManager));
+
+app.get('/dispenseApp*', function(req, res){
+   res.sendFile(dispenseApp + '/index.html') 
+})
+
+app.get('/dispenseManager*', function(req, res){
+   res.sendFile(dispenseManager + '/index.html') 
+})
+// app.use('/dispenseManager', loopback.static(dispenseManager));
     // express = require('express'),
     // parentApp = express();
 

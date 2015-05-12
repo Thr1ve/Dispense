@@ -9,7 +9,8 @@ var { DropDownMenu, FlatButton } = Mui;
 
 var React        = require('react');
 var Router       = require('react-router');
-var { Route, RouteHandler, DefaultRoute, NotFoundRoute } = Router;
+var { Route, RouteHandler,
+      DefaultRoute, NotFoundRoute, Redirect } = Router;
 
 
 var NotFound = React.createClass({
@@ -74,7 +75,8 @@ var App = React.createClass({
 });
 
 module.exports = (
-          <Route name="app" path="/dispenseApp" handler={App}>
+          <Route name="app" path="/dispenseApp/" handler={App}>
+            <Redirect from="/dispenseApp" to="/dispenseApp/"/>
             <Route name="mainSearch" handler={MainSearch}/>
             <Route name='requestCode' path="requestCode/:productId" handler={RequestCode}/>
             <Route name="searchUsedCodes" path="searchUsedCodes" handler={SearchUsedCodes}/>
