@@ -6,6 +6,7 @@
   "private": true,
   "main": "server/server.js",
   "scripts": {
+    "start" : "node server/server.js"
     "pretest": "jshint ."
   },
   "mainInput": "main",
