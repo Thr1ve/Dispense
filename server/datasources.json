@@ -1,5 +1,5 @@
 {
-  "mydb": {
+  "mydbZ": {
     "name": "mydb",
     "connector": "memory"
   },
@@ -13,7 +13,7 @@
     "connector": "mysql",
     "user": "loopback"
   },
-  "mydbZ": {
+  "mydb": {
     "host": "localhost",
     "port": 5432,
     "database": "dispense",
