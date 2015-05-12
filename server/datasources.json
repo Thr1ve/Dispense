@@ -1,6 +1,6 @@
 {
   "mydbZ": {
-    "name": "mydb",
+    "name": "mydbz",
     "connector": "memory"
   },
   "mysqlDs": {
@@ -16,10 +16,10 @@
   "mydb": {
     "host": "localhost",
     "port": 5432,
-    "database": "dispense",
-    "username": "loopback",
-    "password": "loopback",
-    "name": "mydbZ",
+    "database": "docker",
+    "username": "docker",
+    "password": "docker",
+    "name": "mydb",
     "connector": "postgresql"
   },
   "emailDs": {
