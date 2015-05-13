@@ -1,18 +1,4 @@
 {
-  "mydbZ": {
-    "name": "mydbz",
-    "connector": "memory"
-  },
-  "mysqlDs": {
-    "host": "localhost",
-    "port": 3306,
-    "database": "dispense",
-    "username": "loopback",
-    "password": "loopback",
-    "name": "mysqlDs",
-    "connector": "mysql",
-    "user": "loopback"
-  },
   "mydb": {
     "host": "localhost",
     "port": 5432,
