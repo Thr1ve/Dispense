@@ -1,13 +1,9 @@
 {
+
   "mydb": {
-    "host": "localhost",
-    "port": 1433,
-    "database": "testing",
-    "password": "test",
     "name": "mydb",
-    "connector": "mssql",
-    "user": "test"
-  },
+    "connector": "memory"
+    },
   "emailDs": {
     "name": "emailDs",
     "connector": "mail",

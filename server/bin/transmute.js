@@ -1,7 +1,13 @@
-var path = require('path');
-var app = require(path.resolve(__dirname, '../server'));
+var loopback = require('loopback');
 
-var dataSource = app.dataSources.mydb;
+//replace this with regcodes server details
+var dataSource = loopback.createDataSource('mssql', {
+	"host": "localhost",
+    "port": 1433,
+    "database": "testing",
+    "password": "test",
+    "user": "test"
+});
 
 dataSource.discoverModelDefinitions(function(err, models){
 	console.log(models);
