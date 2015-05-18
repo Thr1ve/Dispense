@@ -12,23 +12,24 @@ var dataSource = loopback.createDataSource('mssql', {
 
 dataSource.discoverModelDefinitions(function(err, models){
 	// console.log(models);
-	models.forEach(function (def) {
+	// models.forEach(function (def) {
     // def.name ~ the model name
     // console.log(def.name);
     dataSource.discoverAndBuildModels('ContemporaryBusiness2012Update14e_9781118010303_UsedCodes' , {owner:'dbo'}, function(err, nModels){
         if(err) {
             console.log(err)
         }
-        console.log(nModels);
-        // nModels.find(function(err, model){
-        //     console.log(model);
-        // })
+        // console.log(nModels);
+        nModels.Contemporarybusiness2012update14e9781118010303Usedcodes.find(function(err, model){
+            console.log(model);
+        })
+        // console.log(nModels.Contemporarybusiness2012update14e9781118010303Usedcodes.find.toString());
     })
     // dataSource.discoverSchema(def.name, null, function (err, schema) {
     //   console.log(schema);
     // });
-  });
-    dataSource.disconnect();
+    // });
+    // dataSource.disconnect();
 });
 
 
