@@ -1,46 +1,90 @@
 var loopback = require('loopback');
 
-//replace this with regcodes server details
-var dataSource = loopback.createDataSource('mssql', {
-	"host": "10.8.2.114",
-    // "host": "localhost",
-    "port": 1433,
-    "database": "RegCodes",
-    "password": "loopback",
-    "user": "loopback"
-});
-
-dataSource.discoverModelDefinitions(function(err, models){
-	// console.log(models);
-	// models.forEach(function (def) {
-    // def.name ~ the model name
-    // console.log(def.name);
-    dataSource.discoverAndBuildModels('ContemporaryBusiness2012Update14e_9781118010303_UsedCodes' , {owner:'dbo'}, function(err, nModels){
-        if(err) {
-            console.log(err)
-        }
-        // console.log(nModels);
-        nModels.Contemporarybusiness2012update14e9781118010303Usedcodes.find(function(err, model){
-            console.log(model);
-        })
-        // console.log(nModels.Contemporarybusiness2012update14e9781118010303Usedcodes.find.toString());
-    })
-    // dataSource.discoverSchema(def.name, null, function (err, schema) {
-    //   console.log(schema);
-    // });
-    // });
-    // dataSource.disconnect();
-});
-
-
-// dataSource.discoverAndBuildModels('product2_UsedCodes', {owner: 'dbo'}, function (err, models) {
-// 		console.log(models)
-// 		models.Product2Usedcodes.findOne({}, function (err, inv) {
-// 		    if(err) {
-// 		      console.error(err);
-// 		      return;
-// 		    }
-// 		   console.log(inv)
-// 		});
-//        dataSource.disconnect();
+// //replace this with regcodes server details
+// var dataSource = loopback.createDataSource('mssql', {
+// 	"host": "10.8.2.114",
+//    // "host": "localhost",
+//     "port": 1433,
+//     "database": "RegCodes",
+//     "password": "loopback",
+//     "user": "loopback"
 // });
+
+var dataSource = loopback.createDataSource('mssql', {
+    "host": "localhost",
+    "port": 1433,
+    "database": "testing",
+    "password": "test",
+    "user": "test"
+});
+
+
+var check = {
+
+    ifRegCodes : function(string){
+        if(string.match(/.*(_RegCodes)/gi)){
+            return true
+        }
+        else{
+            return false
+        }
+    },
+
+    ifUsedCodes : function (string){
+        if(string.match(/.*(_UsedCodes)/gi)){
+            return true
+        }
+        else{
+            return false
+        }
+    },
+
+    andBuild : function(string, query){
+
+        if(this.ifUsedCodes(string)){
+            build.usedCodes(query)
+        }
+
+        else if(this.ifRegCodes(string)){
+            build.regCodes(query)
+        }
+
+        else{
+            return
+        }
+    }
+}
+
+var build = {
+    regCodes : function(query){
+        dataSource.connector.query( query , function(err, data){
+            if(err) console.log(err)
+
+            console.log('RegCodes', data)
+        })
+    },
+
+    usedCodes : function(query){
+        dataSource.connector.query( query , function(err, data){
+            if(err) console.log(err)
+
+            console.log('UsedCodes', data)
+        })
+    }
+}
+ 
+  
+dataSource.discoverModelDefinitions(function(err, models){
+
+	models.forEach(function (def) {
+
+        var query = 'select * from ' + def.name;
+
+        check.andBuild(def.name, query)
+
+    });
+
+    dataSource.disconnect();
+
+});
+
