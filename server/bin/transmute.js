@@ -2,8 +2,8 @@ var loopback = require('loopback');
 
 //replace this with regcodes server details
 var dataSource = loopback.createDataSource('mssql', {
-	// "host": "10.8.2.114",
-    "host": "localhost",
+	"host": "10.8.2.114",
+    // "host": "localhost",
     "port": 1433,
     "database": "RegCodes",
     "password": "loopback",
@@ -14,12 +14,12 @@ dataSource.discoverModelDefinitions(function(err, models){
 	// console.log(models);
 	models.forEach(function (def) {
     // def.name ~ the model name
-    console.log(def.name);
-    dataSource.discoverAndBuildModels(def.name , {owner:'dbo'}, function(err, nModels){
+    // console.log(def.name);
+    dataSource.discoverAndBuildModels('ContemporaryBusiness2012Update14e_9781118010303_UsedCodes' , {owner:'dbo'}, function(err, nModels){
         if(err) {
             console.log(err)
         }
-        // console.log(nModels);
+        console.log(nModels);
         // nModels.find(function(err, model){
         //     console.log(model);
         // })
@@ -27,8 +27,8 @@ dataSource.discoverModelDefinitions(function(err, models){
     // dataSource.discoverSchema(def.name, null, function (err, schema) {
     //   console.log(schema);
     // });
-    dataSource.disconnect();
   });
+    dataSource.disconnect();
 });
 
 
