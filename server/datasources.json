@@ -1,12 +1,12 @@
 {
   "mydb": {
     "host": "localhost",
-    "port": 1433,
-    "database": "testing",
-    "password": "test",
+    "port": 5432,
+    "database": "docker",
+    "username": "docker",
+    "password": "docker",
     "name": "mydb",
-    "connector": "mssql",
-    "user": "test"
+    "connector": "postgresql"
   },
   "emailDs": {
     "name": "emailDs",
