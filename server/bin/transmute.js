@@ -3,7 +3,7 @@ var fs = require('fs');
 
 // //replace this with regcodes server details
 // var dataSource = loopback.createDataSource('mssql', {
-// 	"host": "10.8.2.114",
+//  "host": "10.8.2.114",
 //    // "host": "localhost",
 //     "port": 1433,
 //     "database": "RegCodes",
@@ -104,18 +104,36 @@ var build = {
   
 dataSource.discoverModelDefinitions(function(err, models){
 
-	models.forEach(function (model, productId) {
+    var products = models.reduce(function(prev, val, ind, arr){
+        if(check.ifRegCodes(val.name)){
 
-        var query = 'select * from ' + model.name;
+            var productId = prev.length
 
-        var model = {
-            talbleName: model.name,
-            productId: productId,
-            query: query
+            //we should trim the _Regcodes off the string here
+
+            prev.push({
+                productId: productId,
+                title: val.name
+            })
+
+            return prev;
         }
+    }, [])
 
-        check.andBuild(model)
-    });
+    console.log(products);
+
+    // models.forEach(function (model, productId) {
+
+ //        var query = 'select * from ' + model.name;
+
+ //        var model = {
+ //            tableName: model.name,
+ //            productId: productId,
+ //            query: query
+ //        }
+
+ //        check.andBuild(model)
+ //    });
 
     dataSource.disconnect();
 
