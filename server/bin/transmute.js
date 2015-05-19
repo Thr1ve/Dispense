@@ -11,6 +11,27 @@ var fs = require('fs');
 //     "user": "loopback"
 // });
 
+
+// // Output from home server test
+// UsedCodes [ { regcodes: 'product2-code1' },
+//   { regcodes: 'product2-code2' },
+//   { regcodes: 'product2-code3' } ]
+// UsedCodes [ { regcodes: 'product3-code1' },
+//   { regcodes: 'product3-code2' },
+//   { regcodes: 'product3-code3' } ]
+// UsedCodes [ { regcodes: 'product1-code1' },
+//   { regcodes: 'product1-code2' },
+//   { regcodes: 'product1-code3' } ]
+// RegCodes [ { regcodes: 'product2-code1' },
+//   { regcodes: 'product2-code2' },
+//   { regcodes: 'product2-code3' } ]
+// RegCodes [ { regcodes: 'product3-code1' },
+//   { regcodes: 'product3-code2' },
+//   { regcodes: 'product3-code3' } ]
+// RegCodes [ { regcodes: 'product1-code1' },
+//   { regcodes: 'product1-code2' },
+//   { regcodes: 'product1-code3' } ]
+
 var dataSource = loopback.createDataSource('mssql', {
     "host": "localhost",
     "port": 1433,
@@ -81,7 +102,7 @@ dataSource.discoverModelDefinitions(function(err, models){
         var query = 'select * from ' + def.name;
         check.andBuild(def.name, query)
     });
-    
+
     dataSource.disconnect();
 
 });
