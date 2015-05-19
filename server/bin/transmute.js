@@ -11,6 +11,10 @@ var fs = require('fs');
 //     "user": "loopback"
 // });
 
+// TODO:
+//      - figure out how to map to productId
+//      - function that writes to bigass json file
+//      - option to tie into boot script
 
 // // Output from home server test
 // UsedCodes [ { regcodes: 'product2-code1' },
@@ -61,13 +65,13 @@ var check = {
         }
     },
 
-    andBuild : function(string, query){
+    andBuild : function(model){
 
-        if(this.ifUsedCodes(string)){
-            build.usedCodes(query)
+        if(this.ifUsedCodes(model.tableName)){
+            build.usedCodes(model)
         }
-        else if(this.ifRegCodes(string)){
-            build.regCodes(query)
+        else if(this.ifRegCodes(model.tableName)){
+            build.regCodes(model)
         }
         else{
             return
@@ -78,16 +82,18 @@ var check = {
 
 var build = {
 
-    regCodes : function(query){
-        dataSource.connector.query( query , function(err, data){
+    regCodes : function(model){
+        dataSource.connector.query( model.query, function(err, data){
             if(err) console.log(err)
 
+            console.log(model.productId);
             console.log('RegCodes', data)
+
         })
     },
 
-    usedCodes : function(query){
-        dataSource.connector.query( query , function(err, data){
+    usedCodes : function(model){
+        dataSource.connector.query( model.query, function(err, data){
             if(err) console.log(err)
 
             console.log('UsedCodes', data)
@@ -98,9 +104,17 @@ var build = {
   
 dataSource.discoverModelDefinitions(function(err, models){
 
-	models.forEach(function (def) {
-        var query = 'select * from ' + def.name;
-        check.andBuild(def.name, query)
+	models.forEach(function (model, productId) {
+
+        var query = 'select * from ' + model.name;
+
+        var model = {
+            talbleName: model.name,
+            productId: productId,
+            query: query
+        }
+
+        check.andBuild(model)
     });
 
     dataSource.disconnect();
