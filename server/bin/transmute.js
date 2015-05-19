@@ -1,4 +1,5 @@
 var loopback = require('loopback');
+var fs = require('fs');
 
 // //replace this with regcodes server details
 // var dataSource = loopback.createDataSource('mssql', {
@@ -44,18 +45,18 @@ var check = {
         if(this.ifUsedCodes(string)){
             build.usedCodes(query)
         }
-
         else if(this.ifRegCodes(string)){
             build.regCodes(query)
         }
-
         else{
             return
         }
     }
 }
 
+
 var build = {
+
     regCodes : function(query){
         dataSource.connector.query( query , function(err, data){
             if(err) console.log(err)
@@ -77,13 +78,10 @@ var build = {
 dataSource.discoverModelDefinitions(function(err, models){
 
 	models.forEach(function (def) {
-
         var query = 'select * from ' + def.name;
-
         check.andBuild(def.name, query)
-
     });
-
+    
     dataSource.disconnect();
 
 });
