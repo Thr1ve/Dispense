@@ -1,9 +1,11 @@
 {
   "name": "product",
+
+  "options":{},
+
   "plural": "products",
   "base": "PersistedModel",
   "idInjection": true,
-  "dataSource": "mysqlDs",
   "properties": {
     "title": {
       "type": "string",
