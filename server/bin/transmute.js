@@ -129,7 +129,7 @@ dataSource.discoverModelDefinitions(function(err, models){
 
     var products = build.products(models)
 
-    testMigrated.dataSources.mydb.automigrate('product', function(err) {
+    testMigrated.automigrate('product', function(err) {
         if (err) throw err;
 
         products.forEach(function(val) {

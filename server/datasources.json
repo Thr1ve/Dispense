@@ -5,7 +5,7 @@
     "connector": "memory"
     },
   "mydb": {
-    "name":"mydb"
+    "name":"mydb",
     "host": "localhost",
     "port": 1433,
     "database": "testMigrated",
