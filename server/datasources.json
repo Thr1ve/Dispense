@@ -1,17 +1,19 @@
 {
-
   "mydbZ": {
     "name": "mydbZ",
     "connector": "memory"
-    },
+  },
   "mydb": {
-    "name":"mydb",
     "host": "localhost",
     "port": 1433,
     "database": "testMigrated",
     "password": "loopback",
+    "name": "mydb",
     "user": "loopback",
-    "connector": "mssql"
+    "connector": "mssql",
+    "options": {
+       "encrypt": true
+    }
   },
   "emailDs": {
     "name": "emailDs",

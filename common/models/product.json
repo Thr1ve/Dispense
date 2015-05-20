@@ -1,11 +1,9 @@
 {
   "name": "product",
-
-  "options":{},
-
   "plural": "products",
   "base": "PersistedModel",
   "idInjection": true,
+  "options": {},
   "properties": {
     "title": {
       "type": "string",
