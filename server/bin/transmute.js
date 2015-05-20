@@ -1,5 +1,6 @@
-var loopback = require('loopback');
-var fs = require('fs');
+var loopback     = require('loopback');
+var server       = require('../server');
+var testMigrated = server.dataSources.mydb;
 
 //replace this with regcodes server details
 var dataSource = loopback.createDataSource('mssql', {
@@ -10,20 +11,6 @@ var dataSource = loopback.createDataSource('mssql', {
     "password": "loopback",
     "user": "loopback"
 });
-//move this to datasources as mydb ?
-var testMigrated = loopback.createDataSource('mssql', {
- //"host": "10.8.2.114",
-    "host": "localhost",
-    "port": 1433,
-    "database": "testMigrated",
-    "password": "loopback",
-    "user": "loopback"
-});
-testMigrated.ping(function(err, n){
-    if(err) console.log('error',err)
-
-    if(n) console.log(n)
-})
 
 // TODO:
 //      - function that writes to bigass json file
@@ -99,7 +86,7 @@ var build = {
             if(err) console.log(err)
 
             var code = data.regcodes
-            var productId = product.productId
+            var id = product.id
             stats.checkAmount(data.length, 'AvailableCodes')
             //console.log('Product: ' + product.title + '\n     has ' + data.length + ' Available Codes')
 
@@ -120,12 +107,12 @@ var build = {
     products : function(models){
         return productsCollection = models.reduce(function(prev, val, ind, arr){
             if(check.ifRegCodes(val.name)){
-                var productId = prev.length;
+                var id = prev.length;
                 //maybe grab isbn from the title as well?
                 var title = val.name.replace(/(_RegCodes)/gi, '');
                 //but don't remove...we can use the names here to format queries
                 prev.push({
-                    productId: productId,
+                    id: id,
                     title: title
                 })
                 return prev;
@@ -142,10 +129,25 @@ dataSource.discoverModelDefinitions(function(err, models){
 
     var products = build.products(models)
 
-    products.forEach( function (product){
-        build.usedCodes(product)
-        build.regCodes(product)
-    })
+    testMigrated.dataSources.mydb.automigrate('product', function(err) {
+        if (err) throw err;
+
+        products.forEach(function(val) {
+            testMigrated.models.product.create([{
+                productId: val.id,
+                title: val.title
+            }, ], function(err, products) {
+                if (err) throw err;
+            });
+        });
+        console.log('Product Models created!');
+    });
+
+    // products.forEach( function (product){
+
+    //     build.usedCodes(product)
+    //     build.regCodes(product)
+    // })
 
     dataSource.disconnect();
 

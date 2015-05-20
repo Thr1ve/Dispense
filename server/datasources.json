@@ -1,9 +1,18 @@
 {
 
-  "mydb": {
-    "name": "mydb",
+  "mydbZ": {
+    "name": "mydbZ",
     "connector": "memory"
     },
+  "mydb": {
+    "name":"mydb"
+    "host": "localhost",
+    "port": 1433,
+    "database": "testMigrated",
+    "password": "loopback",
+    "user": "loopback",
+    "connector": "mssql"
+  },
   "emailDs": {
     "name": "emailDs",
     "connector": "mail",
