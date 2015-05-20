@@ -13,29 +13,8 @@ var dataSource = loopback.createDataSource('mssql', {
 });
 
 // TODO:
-//      - function that writes to bigass json file
-//      - option to tie into boot script
+//      - option to tie into boot script; only run with passed in flag ? we need some way to have it only run once
 //      - can we just have a standalone script that runs once and throws everything in the new database?
-
-// // Output from home server test
-// UsedCodes [ { regcodes: 'product2-code1' },
-//   { regcodes: 'product2-code2' },
-//   { regcodes: 'product2-code3' } ]
-// UsedCodes [ { regcodes: 'product3-code1' },
-//   { regcodes: 'product3-code2' },
-//   { regcodes: 'product3-code3' } ]
-// UsedCodes [ { regcodes: 'product1-code1' },
-//   { regcodes: 'product1-code2' },
-//   { regcodes: 'product1-code3' } ]
-// RegCodes [ { regcodes: 'product2-code1' },
-//   { regcodes: 'product2-code2' },
-//   { regcodes: 'product2-code3' } ]
-// RegCodes [ { regcodes: 'product3-code1' },
-//   { regcodes: 'product3-code2' },
-//   { regcodes: 'product3-code3' } ]
-// RegCodes [ { regcodes: 'product1-code1' },
-//   { regcodes: 'product1-code2' },
-//   { regcodes: 'product1-code3' } ]
 
 /*
 var dataSource = loopback.createDataSource('mssql', {
@@ -68,28 +47,12 @@ var check = {
     }
 }
 
-var stats = {
-
-    checkAmount : function(n, str){
-        if(n > 2500){
-            console.log(n, str);
-        }
-    }
-}
-
 var build = {
 
     regCodes : function(product){
         var query = 'select * from ' + product.title + '_RegCodes'
-
-                // console.log('we got here')
         dataSource.connector.query( query, function(err, data){
             if(err) console.log(err)
-                // console.log(data);
-
-
-            // stats.checkAmount(data.length, 'AvailableCodes')
-            //console.log('Product: ' + product.title + '\n     has ' + data.length + ' Available Codes')
                 data.forEach(function(val) {
                     if(val.regcodes){
                         testMigrated.models.availableCodes.create([{
@@ -105,12 +68,27 @@ var build = {
 
     usedCodes : function(product){
         var query = 'select * from ' + product.title + '_UsedCodes'
-
         dataSource.connector.query( query, function(err, data){
             if(err) console.log(err)
+                console.log(data)
 
-            stats.checkAmount(data.length, 'UsedCodes')
+            // stats.checkAmount(data.length, 'UsedCodes')
             //console.log('Product: ' + product.title + '\n     has ' + data.length + ' Used Codes')
+            // data.forEach(function(val) {
+            //     var fixedDate = new Date(val.date).toDateString();
+            //     app.models.usedCode.create([{
+            //         productId: product.id,
+            //         // chatOrTicket: val.chatOrTicket,
+            //         // customerEmail: val.customerEmail,
+            //         // customerName: val.customerName,
+            //         // representative: val.representative,
+            //         // universityOrBusiness: val.universityOrBusiness,
+            //         // code: val.code,
+            //         // date: fixedDate
+            //     }], function(err, products) {
+            //         if (err) throw err;
+            //     });
+            // });
         })
     },
 
@@ -152,6 +130,7 @@ dataSource.discoverModelDefinitions(function(err, models){
         });
         console.log('Product Models created!');
     });
+
     testMigrated.automigrate('availableCodes', function(err) {
         if (!err) {
             products.forEach( function (product){
@@ -160,6 +139,17 @@ dataSource.discoverModelDefinitions(function(err, models){
                 build.regCodes(product)
             })
             console.log('Available Codes cloned');
+        }
+    });
+
+    testMigrated.automigrate('usedCode', function(err) {
+        if (!err) {
+            products.forEach( function (product){
+
+                // build.usedCodes(product)
+                build.regCodes(product)
+            })
+            console.log('Used Codes cloned');
         }
     });
 
