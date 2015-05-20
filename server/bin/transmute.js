@@ -82,14 +82,24 @@ var build = {
     regCodes : function(product){
         var query = 'select * from ' + product.title + '_RegCodes'
 
+                // console.log('we got here')
         dataSource.connector.query( query, function(err, data){
             if(err) console.log(err)
+                // console.log(data);
 
-            var code = data.regcodes
-            var id = product.id
-            stats.checkAmount(data.length, 'AvailableCodes')
+
+            // stats.checkAmount(data.length, 'AvailableCodes')
             //console.log('Product: ' + product.title + '\n     has ' + data.length + ' Available Codes')
-
+                data.forEach(function(val) {
+                    if(val.regcodes){
+                        testMigrated.models.availableCodes.create([{
+                            productId: product.id,
+                            code: val.regcodes
+                        }], function(err, products) {
+                            if (err) console.log(err);
+                        });
+                    }
+                });
         })
     },
 
@@ -142,14 +152,18 @@ dataSource.discoverModelDefinitions(function(err, models){
         });
         console.log('Product Models created!');
     });
+    testMigrated.automigrate('availableCodes', function(err) {
+        if (!err) {
+            products.forEach( function (product){
 
-    // products.forEach( function (product){
+                // build.usedCodes(product)
+                build.regCodes(product)
+            })
+            console.log('Available Codes cloned');
+        }
+    });
 
-    //     build.usedCodes(product)
-    //     build.regCodes(product)
-    // })
-
-    dataSource.disconnect();
+    // dataSource.disconnect();
 
 });
 
