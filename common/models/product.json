@@ -3,7 +3,7 @@
   "plural": "products",
   "base": "PersistedModel",
   "idInjection": true,
-  "dataSource": "mysqlDs",
+  "options": {},
   "properties": {
     "title": {
       "type": "string",

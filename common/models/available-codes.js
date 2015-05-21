@@ -3,7 +3,7 @@ var app = require('../../server/server');
 
 module.exports = function(AvailableCodes) {
 
-    //this is the logic for accepting a request to add codes from the client and
+    //this is the logic for accepting a request to add codes from the client then
     //adding the new codes to the database
 
     AvailableCodes.add = function(productId, codes, cb) {

@@ -3,7 +3,6 @@
   "plural": "availableCodes-collection",
   "base": "PersistedModel",
   "idInjection": false,
-  "dataSource": "mysqlDs",
   "properties": {
     "code": {
       "type": "string",
