@@ -53,16 +53,16 @@ var build = {
         var query = 'select * from ' + product.title + '_RegCodes'
         dataSource.connector.query( query, function(err, data){
             if(err) console.log(err)
-                data.forEach(function(val) {
-                    if(val.regcodes){
-                        testMigrated.models.availableCodes.create([{
-                            productId: product.id,
-                            code: val.regcodes
-                        }], function(err, products) {
-                            if (err) console.log(err);
-                        });
-                    }
-                });
+            data.forEach(function(val) {
+                if(val.regcodes){
+                    testMigrated.models.availableCodes.create([{
+                        productId: product.id,
+                        code: val.regcodes
+                    }], function(err, products) {
+                        if (err) console.log(err);
+                    });
+                }
+            });
         })
     },
 
@@ -70,25 +70,21 @@ var build = {
         var query = 'select * from ' + product.title + '_UsedCodes'
         dataSource.connector.query( query, function(err, data){
             if(err) console.log(err)
-                console.log(data)
-
-            // stats.checkAmount(data.length, 'UsedCodes')
-            //console.log('Product: ' + product.title + '\n     has ' + data.length + ' Used Codes')
-            // data.forEach(function(val) {
-            //     var fixedDate = new Date(val.date).toDateString();
-            //     app.models.usedCode.create([{
-            //         productId: product.id,
-            //         // chatOrTicket: val.chatOrTicket,
-            //         // customerEmail: val.customerEmail,
-            //         // customerName: val.customerName,
-            //         // representative: val.representative,
-            //         // universityOrBusiness: val.universityOrBusiness,
-            //         // code: val.code,
-            //         // date: fixedDate
-            //     }], function(err, products) {
-            //         if (err) throw err;
-            //     });
-            // });
+            data.forEach(function(val) {
+                var fixedDate = new Date(val.TimeStamp).toDateString();
+                testMigrated.models.usedCode.create([{
+                    productId: product.id,
+                    chatOrTicket: val.TicketNumber,
+                    customerEmail: val.StudentEmail,
+                    customerName: val.StudentName,
+                    representative: val.TechName,
+                    universityOrBusiness: val.UnivName,
+                    code: val.RegCode,
+                    date: fixedDate
+                }], function(err, products) {
+                    if (err) throw err;
+                });
+            });
         })
     },
 
@@ -134,8 +130,6 @@ dataSource.discoverModelDefinitions(function(err, models){
     testMigrated.automigrate('availableCodes', function(err) {
         if (!err) {
             products.forEach( function (product){
-
-                // build.usedCodes(product)
                 build.regCodes(product)
             })
             console.log('Available Codes cloned');
@@ -145,9 +139,7 @@ dataSource.discoverModelDefinitions(function(err, models){
     testMigrated.automigrate('usedCode', function(err) {
         if (!err) {
             products.forEach( function (product){
-
-                // build.usedCodes(product)
-                build.regCodes(product)
+                build.usedCodes(product)
             })
             console.log('Used Codes cloned');
         }
