@@ -14,17 +14,7 @@ var dataSource = loopback.createDataSource('mssql', {
 
 // TODO:
 //      - option to tie into boot script; only run with passed in flag ? we need some way to have it only run once
-//      - can we just have a standalone script that runs once and throws everything in the new database?
 
-/*
-var dataSource = loopback.createDataSource('mssql', {
-    "host": "localhost",
-    "port": 1433,
-    "database": "testing",
-    "password": "test",
-    "user": "test"
-});
-*/
 
 var check = {
 
@@ -57,7 +47,7 @@ var build = {
                 if(val.regcodes){
                     testMigrated.models.availableCodes.create([{
                         productId: product.id,
-                        code: val.regcodes
+                        code     : val.regcodes
                     }], function(err, products) {
                         if (err) console.log(err);
                     });
@@ -73,14 +63,14 @@ var build = {
             data.forEach(function(val) {
                 var fixedDate = new Date(val.TimeStamp).toDateString();
                 testMigrated.models.usedCode.create([{
-                    productId: product.id,
-                    chatOrTicket: val.TicketNumber,
-                    customerEmail: val.StudentEmail,
-                    customerName: val.StudentName,
-                    representative: val.TechName,
+                    productId           : product.id,
+                    chatOrTicket        : val.TicketNumber,
+                    customerEmail       : val.StudentEmail,
+                    customerName        : val.StudentName,
+                    representative      : val.TechName,
                     universityOrBusiness: val.UnivName,
-                    code: val.RegCode,
-                    date: fixedDate
+                    code                : val.RegCode,
+                    date                : fixedDate
                 }], function(err, products) {
                     if (err) throw err;
                 });
@@ -92,9 +82,7 @@ var build = {
         return productsCollection = models.reduce(function(prev, val, ind, arr){
             if(check.ifRegCodes(val.name)){
                 var id = prev.length;
-                //maybe grab isbn from the title as well?
                 var title = val.name.replace(/(_RegCodes)/gi, '');
-                //but don't remove...we can use the names here to format queries
                 prev.push({
                     id: id,
                     title: title
@@ -110,12 +98,9 @@ var build = {
  
   
 dataSource.discoverModelDefinitions(function(err, models){
-
     var products = build.products(models)
-
     testMigrated.automigrate('product', function(err) {
         if (err) throw err;
-
         products.forEach(function(val) {
             testMigrated.models.product.create([{
                 productId: val.id,
