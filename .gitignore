@@ -5,11 +5,15 @@ node_modules/*
 
 *node_modules
 
+########
+# Dev Specific
+############
+dev/*
+server/testData/*
 
 README.html
 
 *client/templates.js
-
 *-debug.log
 
 .jshintrc
