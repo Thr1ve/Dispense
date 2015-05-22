@@ -48,7 +48,7 @@
   "license": "MIT",
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "prebuild": "rm -rf ./public && mkdir public",
+    "prebuild": "rm -rf ../../client/dispenseManager && mkdir ../../client/dispenseManager",
     "start": "webpack-dev-server"
   },
   "standard": {
