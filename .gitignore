@@ -8,6 +8,7 @@ node_modules/*
 ########
 # Dev Specific
 ############
+dev/*
 server/testData/*
 
 README.html
