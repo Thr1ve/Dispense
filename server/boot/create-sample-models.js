@@ -1,7 +1,7 @@
 var productsJSON           = require('../products.json');
 var contactsJSON           = require('../contacts.json');
-var testUsedCodesJSON      = require('../testUsedCodes.json');
-var testAvailableCodesJSON = require('../testAvailableCodes.json');
+var testUsedCodesJSON      = require('../testData/testUsedCodes.json');
+var testAvailableCodesJSON = require('../testData/testAvailableCodes.json');
 
 var _ = require('underscore');
 
