@@ -9,9 +9,6 @@ import Products from './models/products'
 import Contacts from './models/contacts'
 import Code from './models/usedCode-collection'
 
-// Styles **********
-require('./styles/main.less');
-
 window.app = app.extend({
   init () {
     //LOL SECURITY !1!!!1!!!!>

@@ -8,9 +8,6 @@ import User from './models/user-state'
 import Products from './models/products'
 import Code from './models/usedCode-collection'
 
-// Styles **********
-require('./styles/main.less');
-
 window.app = app.extend({
   init () {
 

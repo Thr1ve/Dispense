@@ -6,6 +6,7 @@ var SearchUsedCodes = require('./components/pages/searchUsedCodes.js');
 
 var Mui = require('material-ui');
 var { DropDownMenu, FlatButton } = Mui;
+var ThemeManager = new Mui.Styles.ThemeManager();
 
 var React        = require('react');
 var Router       = require('react-router');
@@ -27,6 +28,19 @@ var App = React.createClass({
   contextTypes: {
       router: React.PropTypes.func
   },
+
+//** 
+// Needed for Material-ui
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext: function() { 
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  },
+//**
 
   toMainSearch: function() {
       var { router } = this.context;

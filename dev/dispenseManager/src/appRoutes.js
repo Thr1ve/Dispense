@@ -7,6 +7,7 @@ import AddProduct from './components/pages/addProduct.js'
 
 import Mui from 'material-ui'
 let { FlatButton } = Mui
+let ThemeManager = new Mui.Styles.ThemeManager();
 
 import React from 'react'
 import Router from 'react-router'
@@ -28,6 +29,19 @@ let App = React.createClass({
   contextTypes: {
       router: React.PropTypes.func
   },
+
+//** 
+// Needed for Material-ui
+  childContextTypes: {
+    muiTheme: React.PropTypes.object
+  },
+
+  getChildContext: function() { 
+    return {
+      muiTheme: ThemeManager.getCurrentTheme()
+    };
+  },
+//**
 
   toMainSearch() {
       var { router } = this.context;
