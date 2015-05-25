@@ -43,7 +43,7 @@ let SearchForm = React.createClass({
         })
     },
 
-    handleChange() {
+    handleChange(event) {
         let newState= this.state;
         newState[event.target.name] = event.target.value;
         this.setState(newState);
