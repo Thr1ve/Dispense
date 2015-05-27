@@ -18,16 +18,21 @@ let SearchForm = React.createClass({
     },
 
     formatQuery(dataObj){
+        //remove empty values
         let mapped = _.mapObject(dataObj, function(val, key){
-            return val.props.value;
+            return {like: ''+val.props.value+''};
         }) 
         return _.omit(mapped, _.isEmpty);
+        // add "like" operator
+        console.log(mapped);
+
     },
 
     handleSubmit(e) {
         e.preventDefault();
         let self = this;
         let query = this.formatQuery(this.refs);
+        console.log(query)
         let filter = {
             filter: {
                 where: query,
