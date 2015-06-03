@@ -9,6 +9,8 @@
 /dev/*
 /server/testData/*
 
+*.strong-pm
+
 *client/templates.js
 *-debug.log
 
