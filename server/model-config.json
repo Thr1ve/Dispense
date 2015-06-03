@@ -30,17 +30,6 @@
     "dataSource": "emailDs"
   },
   "product": {
-<<<<<<< HEAD
-    "dataSource": "db",
-    "public": true
-  },
-  "request": {
-    "dataSource": "db",
-    "public": true
-  },
-  "availableCodes": {
-    "dataSource": "db",
-=======
     "dataSource": "mydb",
     "public": true
   },
@@ -54,7 +43,6 @@
   },
   "contact": {
     "dataSource": "mydb",
->>>>>>> origin/testProd
     "public": true
   }
 }
