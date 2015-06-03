@@ -8,25 +8,29 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mydb"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mydb",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mydb",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mydb",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mydb",
     "public": false
   },
+  "Email": {
+    "dataSource": "emailDs"
+  },
   "product": {
+<<<<<<< HEAD
     "dataSource": "db",
     "public": true
   },
@@ -36,6 +40,21 @@
   },
   "availableCodes": {
     "dataSource": "db",
+=======
+    "dataSource": "mydb",
+    "public": true
+  },
+  "usedCode": {
+    "dataSource": "mydb",
+    "public": true
+  },
+  "availableCodes": {
+    "dataSource": "mydb",
+    "public": true
+  },
+  "contact": {
+    "dataSource": "mydb",
+>>>>>>> origin/testProd
     "public": true
   }
 }

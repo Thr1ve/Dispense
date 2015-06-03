@@ -1,15 +1,22 @@
 # NODE #
 ########
 
-node_modules/*
+/node_modules/*
 
-README.html
+########
+# Dev Specific
+############
+/dev/*
+/server/testData/*
+
+*.strong-pm
 
 *client/templates.js
-
 *-debug.log
 
 .jshintrc
 .foreverignore
 
 .idea*
+
+*.todo

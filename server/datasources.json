@@ -1,16 +1,34 @@
 {
-  "db": {
-    "name": "db",
+  "mydbZ": {
+    "name": "mydbZ",
     "connector": "memory"
   },
-  "mysqlDs": {
+  "mydb": {
     "host": "localhost",
-    "port": 3306,
+    "port": 5432,
     "database": "dispense",
-    "username": "loopback",
     "password": "loopback",
-    "name": "mysqlDs",
-    "connector": "mysql",
-    "user": "loopback"
+    "name": "mydb",
+    "user": "loopback",
+    "connector": "postgresql"
+  },
+  "emailDs": {
+    "name": "emailDs",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "smtp",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "tls": {
+          "rejectUnauthorized": false
+        },
+        "auth": {
+          "user": "dispense.wiley@gmail.com",
+          "pass": "wiley123"
+        }
+      }
+    ]
   }
 }

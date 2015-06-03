@@ -2,8 +2,8 @@
   "name": "product",
   "plural": "products",
   "base": "PersistedModel",
-  "idInjection": false,
-  "dataSource": "mysqlDs",
+  "idInjection": true,
+  "options": {},
   "properties": {
     "title": {
       "type": "string",
@@ -16,16 +16,26 @@
       "type": "string"
     },
     "productId": {
-      "type": "string",
-      "id": true,
-      "required": true
+      "type": "number",
+      "id": true
     },
-    "nCodes":{
+    "nCodes": {
       "type": "number"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "availableCodes": {
+      "type": "hasMany",
+      "model": "availableCodes",
+      "foreignKey": "productId"
+    },
+    "contacts": {
+      "type": "hasOne",
+      "model": "contact",
+      "foreignKey": "productId"
+    }
+  },
   "acls": [],
   "methods": []
 }
