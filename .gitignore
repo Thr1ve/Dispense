@@ -1,17 +1,13 @@
 # NODE #
 ########
 
-node_modules/*
-
-*node_modules
+/node_modules/*
 
 ########
 # Dev Specific
 ############
-dev/*
-server/testData/*
-
-README.html
+/dev/*
+/server/testData/*
 
 *client/templates.js
 *-debug.log
