@@ -7,7 +7,6 @@
 # Dev Specific
 ############
 /dev/*
-/server/testData/*
 
 *.strong-pm
 
