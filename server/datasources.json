@@ -3,25 +3,6 @@
     "name": "mydb",
     "connector": "memory"
   },
-  "mysqlDs": {
-    "host": "localhost",
-    "port": 3306,
-    "database": "dispense",
-    "username": "loopback",
-    "password": "loopback",
-    "name": "mysqlDs",
-    "connector": "mysql",
-    "user": "loopback"
-  },
-  "mydbZ": {
-    "host": "localhost",
-    "port": 5432,
-    "database": "dispense",
-    "username": "loopback",
-    "password": "loopback",
-    "name": "mydbZ",
-    "connector": "postgresql"
-  },
   "emailDs": {
     "name": "emailDs",
     "connector": "mail",

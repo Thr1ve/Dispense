@@ -47,7 +47,7 @@ module.exports = function(UsedCode) {
                     if(err){ 
                         console.log(err);
                     }
-                    else if(count < 5){
+                    else if(count < 9){
                         console.log('productId ' + prodId + ' has ' + count + ' codes left');
                         contacts.findOne({where:{productId: prodId}}, function(err, contact){
 
@@ -60,17 +60,17 @@ module.exports = function(UsedCode) {
                                 var updated = contact;
                                 updated.lastEmailed = now;
 
-                                // app.models.Email.send({
-                                //     to: 'gbuhler@wiley.com',
-                                //     cc: 'chrcollier@wiley.com;gbuhler@wiley.com',
-                                //     from: yourEmailAddress,
-                                //     subject: 'The email subject',
-                                //     text: 'The following code was just generated in Dispense: \n\n' + response.code + '\n\n There are ' + count + ' codes left for this product',
-                                //     //html: '<strong>HTML</strong> tags are converted'
-                                // }, function(err) {
-                                //     if (err) throw err;
-                                //     console.log('> email sent successfully');
-                                // });
+                                app.models.Email.send({
+                                    to: contact.mainEmail,
+                                    // cc: 'chrcollier@wiley.com;gbuhler@wiley.com',
+                                    from: yourEmailAddress,
+                                    subject: 'The email subject',
+                                    text: 'The following code was just generated in Dispense: \n\n' + response.code + '\n\n There are ' + count + ' codes left for this product',
+                                    //html: '<strong>HTML</strong> tags are converted'
+                                }, function(err) {
+                                    if (err) throw err;
+                                    console.log('> email sent successfully');
+                                });
 
                                 contacts.upsert(updated, function(err, instance){
                                     console.log('updated', instance);

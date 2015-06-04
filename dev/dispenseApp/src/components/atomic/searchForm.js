@@ -20,7 +20,7 @@ let SearchForm = React.createClass({
     formatQuery(dataObj){
         //remove empty values
         let mapped = _.mapObject(dataObj, function(val, key){
-            return {like: ''+val.props.value+''};
+            return val.props.value;        
         }) 
         return _.omit(mapped, _.isEmpty);
         // add "like" operator
