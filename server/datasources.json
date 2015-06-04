@@ -1,16 +1,7 @@
 {
-  "mydbZ": {
+  "mydb": {
     "name": "mydbZ",
     "connector": "memory"
-  },
-  "mydb": {
-    "host": "localhost",
-    "port": 5432,
-    "database": "dispense",
-    "password": "loopback",
-    "name": "mydb",
-    "user": "loopback",
-    "connector": "postgresql"
   },
   "emailDs": {
     "name": "emailDs",
