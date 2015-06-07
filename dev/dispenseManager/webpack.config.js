@@ -2,12 +2,15 @@
 require('babel/register')
 var webpackConfig = require('hjs-webpack')
 var env = process.env.NODE_ENV || 'development'
+var location = process.env.LOCATION || 'home'
 var React = require('react')
+var environmentVariables = require('../env.js')
 
 module.exports = webpackConfig({
   in: 'src/app.js',
   out: '../../client/dispenseManager/',
   isDev: env !== 'production',
+  env: environmentVariables[location],
   replace: {
     config: 'src/config.js'
   }

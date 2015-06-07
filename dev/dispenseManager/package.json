@@ -47,9 +47,15 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "start": "webpack-dev-server --progress --colors",
+    "start-home": "LOCATION=home webpack-dev-server --progress --colors",
+    "start-work": "LOCATION=work webpack-dev-server --progress --colors",
+    "start-local": "LOCATION=local webpack-dev-server --progress --colors",
     "build": "NODE_ENV=production webpack",
-    "prebuild": "rm -rf ../../client/dispenseManager && mkdir ../../client/dispenseManager",
-    "start": "webpack-dev-server"
+    "build-home": "LOCATION=home NODE_ENV=production webpack",
+    "build-work": "LOCATION=work NODE_ENV=production webpack",
+    "build-local": "LOCATION=local NODE_ENV=production webpack",
+    "prebuild": "rm -rf ../../client/dispenseApp && mkdir ../../client/dispenseApp"
   },
   "standard": {
     "ignore": [
