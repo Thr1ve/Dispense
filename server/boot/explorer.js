@@ -1,3 +1,4 @@
+var loopback = require('loopback');
 module.exports = function mountLoopBackExplorer(server) {
   var explorer;
   try {
