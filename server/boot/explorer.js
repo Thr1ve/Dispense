@@ -1,4 +1,3 @@
-var loopback = require('loopback');
 module.exports = function mountLoopBackExplorer(server) {
   var explorer;
   try {
@@ -15,7 +14,8 @@ module.exports = function mountLoopBackExplorer(server) {
   }
 
   var restApiRoot = server.get('restApiRoot');
-  server.use('/explorer', loopback.basicAuth('user', 'password'));
+
+  var loopback = require('loopback'); server.use('/explorer', loopback.basicAuth('user', 'password'));
   var explorerApp = explorer(server, { basePath: restApiRoot });
   server.use('/explorer', explorerApp);
   server.once('started', function() {
