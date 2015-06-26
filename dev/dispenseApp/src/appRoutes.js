@@ -29,13 +29,13 @@ var App = React.createClass({
       router: React.PropTypes.func
   },
 
-//** 
+//**
 // Needed for Material-ui
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
 
-  getChildContext: function() { 
+  getChildContext: function() {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     };
@@ -46,7 +46,7 @@ var App = React.createClass({
       var { router } = this.context;
       router.transitionTo('mainSearch');
   },
-    
+
   toSearchUsedCodes: function() {
       var { router } = this.context;
       router.transitionTo('searchUsedCodes');
@@ -71,7 +71,7 @@ var App = React.createClass({
           style={buttonStyle}
           onClick={this.toMainSearch}
           secondary={true} />
-        <FlatButton label='Search Used Codes'
+        <FlatButton label='Search Used Codesasdfasdfasdfa'
           style={buttonStyle}
           onClick={this.toSearchUsedCodes}
           secondary={true} />

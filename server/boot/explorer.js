@@ -15,7 +15,7 @@ module.exports = function mountLoopBackExplorer(server) {
   }
 
   var restApiRoot = server.get('restApiRoot');
-  server.use('/explorer', server.basicAuth('user', 'password'));
+  // server.use('/explorer', server.basicAuth('user', 'password'));
   var explorerApp = explorer(server, { basePath: restApiRoot });
   server.use('/explorer', explorerApp);
   server.once('started', function() {
