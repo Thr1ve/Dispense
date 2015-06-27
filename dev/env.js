@@ -1,6 +1,6 @@
 module.exports = ({
   home: {
-    apiUrl: 'http://thrive.geekgalaxy.com:8080/api/'
+    apiUrl: 'http://thrive.geekgalaxy.com/api/'
   },
   work: {
     apiUrl: 'http://10.8.2.114:8080/api/'
