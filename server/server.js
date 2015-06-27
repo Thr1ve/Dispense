@@ -18,12 +18,12 @@ var dispenseManager = path.resolve(__dirname, '../client/dispenseManager');
 app.use(loopback.static(dispenseApp));
 app.use(loopback.static(dispenseManager));
 
-app.get('/dispenseApp*', function(req, res){
-   res.sendFile(dispenseApp + '/index.html') 
+app.get('strongpm/dispenseApp*', function(req, res){
+   res.sendFile(dispenseApp + '/index.html')
 })
 
-app.get('/dispenseManager*', function(req, res){
-   res.sendFile(dispenseManager + '/index.html') 
+app.get('strongpm/dispenseManager*', function(req, res){
+   res.sendFile(dispenseManager + '/index.html')
 })
 
 ////////////////////////////////
