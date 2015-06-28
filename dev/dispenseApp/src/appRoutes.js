@@ -67,7 +67,7 @@ var App = React.createClass({
     return (
     <div>
       <div style={{zIndex: 10, position:'fixed', right: '0', top:'0' }}>
-        <FlatButton label='Main Search TEST 1 '
+        <FlatButton label='Main Search'
           style={buttonStyle}
           onClick={this.toMainSearch}
           secondary={true} />
