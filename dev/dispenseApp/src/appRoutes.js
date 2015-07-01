@@ -1,20 +1,26 @@
+//CONVERT TO USING https://github.com/gaearon/react-side-effect FOR KEYBINDS WITH https://github.com/mapbox/react-keybinding
 
-var MainSearch      = require('./components/pages/mainSearch.js');
-var RequestCode     = require('./components/pages/requestCode.js');
-var RequestedCodes  = require('./components/pages/requestedCodes.js');
-var SearchUsedCodes = require('./components/pages/searchUsedCodes.js');
 
-var Mui = require('material-ui');
-var { DropDownMenu, FlatButton } = Mui;
-var ThemeManager = new Mui.Styles.ThemeManager();
+import MainSearch from './components/pages/mainSearch.js'
+import RequestCode from './components/pages/requestCode.js'
+import RequestedCodes from './components/pages/requestedCodes.js'
+import SearchUsedCodes from './components/pages/searchUsedCodes.js'
 
-var React        = require('react');
-var Router       = require('react-router');
-var { Route, RouteHandler,
+import React from 'react'
+import Router from 'react-router'
+
+import Mui from 'material-ui'
+
+import Keybindings from './components/atomic/keyBindings.js'
+
+let { DropDownMenu, FlatButton } = Mui;
+let ThemeManager = new Mui.Styles.ThemeManager();
+
+let { Route, RouteHandler,
       DefaultRoute, NotFoundRoute, Redirect } = Router;
 
 
-var NotFound = React.createClass({
+let NotFound = React.createClass({
   render : function() {
     return (
       <h1>No Route Found</h1>
@@ -22,7 +28,8 @@ var NotFound = React.createClass({
   }
 });
 
-var App = React.createClass({
+let App = React.createClass({
+
   mixins: [Router.State],
 
   contextTypes: {
@@ -42,18 +49,24 @@ var App = React.createClass({
   },
 //**
 
+  getInitialState() {
+    return {
+      location:''
+    }
+  },
+
   toMainSearch: function() {
-      var { router } = this.context;
+      let { router } = this.context;
       router.transitionTo('mainSearch');
   },
 
   toSearchUsedCodes: function() {
-      var { router } = this.context;
+      let { router } = this.context;
       router.transitionTo('searchUsedCodes');
   },
 
   toRequestedCodes: function() {
-      var { router } = this.context;
+      let { router } = this.context;
       router.transitionTo('requestedCodes');
   },
 
@@ -64,26 +77,29 @@ var App = React.createClass({
         height: '50',
         opacity:'0.9'
     }
+
     return (
-    <div>
-      <div style={{zIndex: 10, position:'fixed', right: '0', top:'0' }}>
-        <FlatButton label='Main Search'
-          style={buttonStyle}
-          onClick={this.toMainSearch}
-          secondary={true} />
-        <FlatButton label='Search Used Codes'
-          style={buttonStyle}
-          onClick={this.toSearchUsedCodes}
-          secondary={true} />
-        <FlatButton label='Requested Codes'
-          style={buttonStyle}
-          onClick={this.toRequestedCodes}
-          secondary={true} />
-      </div>
-      <div style={{position:'relative', top:'55px'}}>
-        <RouteHandler />
-      </div>
-    </div>
+      <Keybindings keyMap={{location : 'Router'}}>
+        <div>
+          <div style={{zIndex: 10, position:'fixed', right: '0', top:'0' }}>
+            <FlatButton label='Main Search'
+              style={buttonStyle}
+              onClick={this.toMainSearch}
+              secondary={true} />
+            <FlatButton label='Search Used Codes'
+              style={buttonStyle}
+              onClick={this.toSearchUsedCodes}
+              secondary={true} />
+            <FlatButton label='Requested Codes'
+              style={buttonStyle}
+              onClick={this.toRequestedCodes}
+              secondary={true} />
+          </div>
+          <div style={{position:'relative', top:'55px'}}>
+            <RouteHandler />
+          </div>
+        </div>
+      </Keybindings>
     );
   }
 });

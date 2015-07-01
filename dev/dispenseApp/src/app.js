@@ -1,3 +1,4 @@
+require('babel/polyfill')
 import React from 'react'
 import Router from 'react-router'
 import app from 'ampersand-app'
@@ -8,6 +9,7 @@ import User from './models/user-state'
 import Products from './models/products'
 import Code from './models/usedCode-collection'
 
+
 window.app = app.extend({
   init () {
 
@@ -17,7 +19,8 @@ window.app = app.extend({
     this.usedCodes = new Code();
 
     // Attach to window for easier debugging
-    window.app = this;
+    this.keyMap = {}
+    window.app = this
 
     // React-Router
     Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
@@ -27,4 +30,3 @@ window.app = app.extend({
 })
 
 app.init()
-

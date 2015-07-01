@@ -4,6 +4,8 @@ import app from 'ampersand-app'
 import FilterableProductTable from '../composite/filterableProductTable.js'
 import Mui from 'material-ui'
 
+import KeyBindings from '../atomic/keyBindings.js'
+
 let { Route, RouteHandler, Link, DefaultRoute } = Router;
 let { AppBar } = Mui
 
@@ -14,7 +16,8 @@ var MainSearch = React.createClass({
     },
 
     render() {
-        return (
+      return (
+        <KeyBindings keyMap={{location : 'Main Search'}}>
           <div>
             <header style={{
               position:'fixed',
@@ -28,8 +31,8 @@ var MainSearch = React.createClass({
                 <RouteHandler/>
             </div>
           </div>
-
-        );
+        </KeyBindings>
+      );
     }
 
 });
