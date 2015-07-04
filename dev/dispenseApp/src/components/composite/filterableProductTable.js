@@ -34,9 +34,13 @@ var FilterableProductTable = React.createClass({
         }
     },
 
+    componentWillUnmount() {
+        app.off('clearText')
+    },
+
     handleUserInput(filterText) {
         var filtered
-        if(filterText){
+        if(filterText.length > 0){
             app.products.filter(filterText)
             filtered = app.products.filtered
         }
@@ -52,9 +56,6 @@ var FilterableProductTable = React.createClass({
 
     render() {
 
-        let products = (this.state.filterText.length > 0) ? 
-          ( <ProductTable products={this.state.data}/> ) : ( <MostUsedProductsTable/> )
-
         return (
             <div>
                 <div style={{position:'fixed', top:'0', left: '0', zIndex: '9' }} >
@@ -63,7 +64,9 @@ var FilterableProductTable = React.createClass({
                         onUserInput={this.handleUserInput}/>
                 </div>
                 <div>
-                  {products}
+                  {(this.state.filterText.length > 0) ?
+                    ( <ProductTable products={this.state.data}/> ) : ( <MostUsedProductsTable/> ) }
+                  {/**<ProductTable products={data}/> **/ }
                 </div>
             </div>
         )

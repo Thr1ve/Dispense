@@ -19,14 +19,15 @@ let requestCode = React.createClass({
 
     componentDidMount() {
         var self = this;
-            app.products.getOrFetch(this.context.router.getCurrentParams().productId,
-                {all: true}, 
-                function(err, model){
-                    if(err){
-                        console.error('model not found', err);
-                    }
-                    self.setState({data:model});
-            });
+        console.log(this.context.router.getCurrentParams().productId);
+        app.products.getOrFetch(this.context.router.getCurrentParams().productId,
+            {all: true},
+            function(err, model){
+                if(err){
+                    console.error('model not found', err);
+                }
+                self.setState({data:model});
+        });
     },
 
     render() {

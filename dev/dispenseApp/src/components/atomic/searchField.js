@@ -15,7 +15,7 @@ let SearchField = React.createClass({
     componentDidMount() {
         //add mousetrap as class to the input so we can use keybinds in the input field
         let input = document.getElementsByTagName('input');
-        input[0].className = 'mousetrap searchInput'
+        input[0].className = 'mousetrap searchField'
     },
 
     render() {

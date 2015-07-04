@@ -11,14 +11,6 @@ let { AppBar } = Mui
 
 var MainSearch = React.createClass({
 
-    keyMap : {
-      // 'esc' : (e) => {
-        // e.preventDefault()
-        // this.refs.dialog.show()
-        // console.log('esc on Main Search');
-      // }
-    },
-
     contextTypes: {
         router: React.PropTypes.func
     },
@@ -27,12 +19,13 @@ var MainSearch = React.createClass({
       return (
         <Keybindings keyMap={{
             'esc': (e) => {
-              let input = document.getElementsByClassName('searchInput');
+              e.preventDefault()
+              let input = document.getElementsByClassName('searchField')
               if(input[0].value.length > 0){
                 app.trigger('clearText')
               }
               else{
-                this.props.toggleNav();
+                this.props.toggleNav()
               }
             }
           }}>
@@ -46,7 +39,6 @@ var MainSearch = React.createClass({
             </header>
             <div>
                 <FilterableProductTable products={app.products}/>
-                { /** below routehandler component should not be necessary...delete after testing to be sure**/}
                 <RouteHandler/>
             </div>
           </div>
