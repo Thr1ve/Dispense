@@ -1,4 +1,39 @@
-require('babel/polyfill')
+// require('babel/polyfill')
+require('mousetrap')
+Mousetrap.bind('4', function() { alert('testing123'); });
+if (!Object.assign) {
+  Object.defineProperty(Object, 'assign', {
+    enumerable: false,
+    configurable: true,
+    writable: true,
+    value: function(target) {
+      'use strict';
+      if (target === undefined || target === null) {
+        throw new TypeError('Cannot convert first argument to object');
+      }
+
+      var to = Object(target);
+      for (var i = 1; i < arguments.length; i++) {
+        var nextSource = arguments[i];
+        if (nextSource === undefined || nextSource === null) {
+          continue;
+        }
+        nextSource = Object(nextSource);
+
+        var keysArray = Object.keys(Object(nextSource));
+        for (var nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex++) {
+          var nextKey = keysArray[nextIndex];
+          var desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+          if (desc !== undefined && desc.enumerable) {
+            to[nextKey] = nextSource[nextKey];
+          }
+        }
+      }
+      return to;
+    }
+  });
+}
+
 import React from 'react'
 import Router from 'react-router'
 import app from 'ampersand-app'
@@ -9,6 +44,7 @@ import User from './models/user-state'
 import Products from './models/products'
 import Code from './models/usedCode-collection'
 
+// import Mousetrap from 'mousetrap'
 
 window.app = app.extend({
   init () {
@@ -19,7 +55,6 @@ window.app = app.extend({
     this.usedCodes = new Code();
 
     // Attach to window for easier debugging
-    this.keyMap = {}
     window.app = this
 
     // React-Router

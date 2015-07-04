@@ -11,7 +11,7 @@ import Router from 'react-router'
 
 import Mui from 'material-ui'
 
-import Keybindings from './components/atomic/keyBindings.js'
+import Keybindings from 'react-side-effect-mousetrap'
 
 let { DropDownMenu, FlatButton } = Mui;
 let ThemeManager = new Mui.Styles.ThemeManager();
@@ -27,6 +27,13 @@ let NotFound = React.createClass({
     );
   }
 });
+
+let keyMap = {
+  'esc' : (e) => {
+    e.preventDefault()
+    console.log('esc on Router');
+  }
+}
 
 let App = React.createClass({
 
@@ -70,6 +77,16 @@ let App = React.createClass({
       router.transitionTo('requestedCodes');
   },
 
+  // componentDidMount() {
+  //   Mousetrap.bind('4', (e) => {
+  //     alert('Router')
+  //   })
+  // },
+  //
+  // componentWillUnmount() {
+  //   Mousetrap.unbind('4')
+  // }
+
   render: function () {
     let self = this;
     let { router } = self.context;
@@ -79,7 +96,7 @@ let App = React.createClass({
     }
 
     return (
-      <Keybindings keyMap={{location : 'Router'}}>
+      <Keybindings keyMap={keyMap}>
         <div>
           <div style={{zIndex: 10, position:'fixed', right: '0', top:'0' }}>
             <FlatButton label='Main Search'

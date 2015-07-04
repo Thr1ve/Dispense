@@ -4,12 +4,19 @@ import app from 'ampersand-app'
 import FilterableProductTable from '../composite/filterableProductTable.js'
 import Mui from 'material-ui'
 
-import KeyBindings from '../atomic/keyBindings.js'
+import Keybindings from 'react-side-effect-mousetrap'
 
 let { Route, RouteHandler, Link, DefaultRoute } = Router;
 let { AppBar } = Mui
 
 var MainSearch = React.createClass({
+
+    keyMap : {
+      'esc' : (e) => {
+        e.preventDefault()
+        console.log('esc on Main Search');
+      }
+    },
 
     contextTypes: {
         router: React.PropTypes.func
@@ -17,7 +24,7 @@ var MainSearch = React.createClass({
 
     render() {
       return (
-        <KeyBindings keyMap={{location : 'Main Search'}}>
+        <Keybindings keyMap={this.keyMap}>
           <div>
             <header style={{
               position:'fixed',
@@ -31,7 +38,7 @@ var MainSearch = React.createClass({
                 <RouteHandler/>
             </div>
           </div>
-        </KeyBindings>
+        </Keybindings>
       );
     }
 

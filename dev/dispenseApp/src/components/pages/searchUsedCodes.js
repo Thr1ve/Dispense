@@ -2,6 +2,9 @@ import React from 'react'
 import Griddle from 'griddle-react'
 
 import Mui from 'material-ui'
+
+import Keybindings from 'react-side-effect-mousetrap'
+
 let { Paper } = Mui;
 
 let SearchForm = require('../atomic/searchForm.js');
@@ -17,10 +20,17 @@ let columnMetadata = [
     {'columnName': 'productId',             'displayName': 'Product' }
 ]
 
+let keyMap = {
+  'esc' : (e) => {
+    e.preventDefault()
+    console.log('esc on Search Used Codes');
+  }
+}
+
 let SearchUsedCodes = React.createClass({
 
     getInitialState() {
-        var initial = { 
+        var initial = {
         	"results": []
 	    };
 
@@ -33,19 +43,23 @@ let SearchUsedCodes = React.createClass({
 
 	render() {
 		return (
-            <div>
-                <SearchForm
-                    sendData={this.sendData} />
-                <Paper zDepth={2} style={{width:'95%', marginLeft:'auto', marginRight:'auto', marginTop:'20'}}>
-                    <Griddle 
-                    	results={this.state.results}
-                    	columns={['customerEmail', 'code', 'customerName', 'date', 'universityOrBusiness' ]} 
-                        columnMetadata={columnMetadata}
-                    	resultsPerPage={10}
-                        useGriddleStyles={false}
-                    	showSettings={true}/>
-                </Paper>
-            </div>
+      <Keybindings keyMap={{
+        's' : (e)=>{console.log('"s" is only on Search Used Codes')},
+      }}>
+        <div>
+            <SearchForm
+                sendData={this.sendData} />
+            <Paper zDepth={2} style={{width:'95%', marginLeft:'auto', marginRight:'auto', marginTop:'20'}}>
+                <Griddle
+                	results={this.state.results}
+                	columns={['customerEmail', 'code', 'customerName', 'date', 'universityOrBusiness' ]}
+                    columnMetadata={columnMetadata}
+                	resultsPerPage={10}
+                    useGriddleStyles={false}
+                	showSettings={true}/>
+            </Paper>
+        </div>
+      </Keybindings>
 		);
 	}
 
