@@ -1,5 +1,5 @@
-var productsJSON           = require('../products.json');
-var contactsJSON           = require('../contacts.json');
+var productsJSON           = require('../testData/products.json');
+var contactsJSON           = require('../testData/contacts.json');
 var testUsedCodesJSON      = require('../testData/testUsedCodes.json');
 var testAvailableCodesJSON = require('../testData/testAvailableCodes.json');
 
@@ -87,7 +87,7 @@ module.exports = function(app) {
 [
   '{{repeat(500)}}',
   {
-    chatOrTicket: 'chat',    
+    chatOrTicket: 'chat',
     customerName: '{{firstName()}} {{surname()}}',
     customerEmail: '{{email()}}',
     productId: '{{integer(1, 272)}}',
