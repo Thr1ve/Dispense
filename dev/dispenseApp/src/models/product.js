@@ -12,7 +12,8 @@ module.exports = AmpersandModel.extend({
         title: 'string',
         author: 'string',
         category: 'string',
-        config: 'string'
+        config: 'string',
+        popularity:'string'
     },
 
     session: {
