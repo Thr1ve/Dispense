@@ -14,7 +14,8 @@ module.exports = function(app) {
                 productId: val.id,
                 title: val.title,
                 isbn13: val.isbn13,
-                config: val.config
+                config: val.config,
+                popularity: val.popularity
             }, ], function(err, products) {
                 if (err) throw err;
             });

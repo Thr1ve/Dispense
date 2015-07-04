@@ -21,6 +21,9 @@
     },
     "nCodes": {
       "type": "number"
+    },
+    "popularity": {
+      "type": "number"
     }
   },
   "validations": [],
