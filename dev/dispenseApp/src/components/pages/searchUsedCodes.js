@@ -20,13 +20,6 @@ let columnMetadata = [
     {'columnName': 'productId',             'displayName': 'Product' }
 ]
 
-let keyMap = {
-  'esc' : (e) => {
-    e.preventDefault()
-    console.log('esc on Search Used Codes');
-  }
-}
-
 let SearchUsedCodes = React.createClass({
 
     getInitialState() {
@@ -41,27 +34,32 @@ let SearchUsedCodes = React.createClass({
         this.setState({results:data});
     },
 
-	render() {
-		return (
-      <Keybindings keyMap={{
-        's' : (e)=>{console.log('"s" is only on Search Used Codes')},
-      }}>
-        <div>
-            <SearchForm
-                sendData={this.sendData} />
-            <Paper zDepth={2} style={{width:'95%', marginLeft:'auto', marginRight:'auto', marginTop:'20'}}>
-                <Griddle
-                	results={this.state.results}
-                	columns={['customerEmail', 'code', 'customerName', 'date', 'universityOrBusiness' ]}
-                    columnMetadata={columnMetadata}
-                	resultsPerPage={10}
-                    useGriddleStyles={false}
-                	showSettings={true}/>
-            </Paper>
-        </div>
-      </Keybindings>
-		);
-	}
+    keyMap : {
+      'esc' : (e) => {
+        e.preventDefault()
+        console.log('esc on Search Used Codes');
+      }
+    },
+
+  	render() {
+  		return (
+        <Keybindings keyMap={this.keyMap}>
+          <div>
+              <SearchForm
+                  sendData={this.sendData} />
+              <Paper zDepth={2} style={{width:'95%', marginLeft:'auto', marginRight:'auto', marginTop:'20'}}>
+                  <Griddle
+                  	results={this.state.results}
+                  	columns={['customerEmail', 'code', 'customerName', 'date', 'universityOrBusiness' ]}
+                      columnMetadata={columnMetadata}
+                  	resultsPerPage={10}
+                      useGriddleStyles={false}
+                  	showSettings={true}/>
+              </Paper>
+          </div>
+        </Keybindings>
+  		);
+  	}
 
 });
 

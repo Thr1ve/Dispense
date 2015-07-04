@@ -1,19 +1,27 @@
-var React = require('react');
+import React from 'react'
+import Mui from 'material-ui'
+import app from 'ampersand-app'
 
-var Mui = require('material-ui');
-var TextField = Mui.TextField;
+let { TextField } = Mui;
 
-var SearchField = React.createClass({
+let SearchField = React.createClass({
 
-    handleChange: function() {
+    handleChange() {
         this.props.onUserInput(
             this.refs.filterTextInput.getValue()
         );
     },
 
-    render: function() {
+    componentDidMount() {
+        //add mousetrap as class to the input so we can use keybinds in the input field
+        let input = document.getElementsByTagName('input');
+        input[0].className = 'mousetrap searchInput'
+    },
+
+    render() {
         return (
             <TextField
+                className='mousetrap'
                 style={{height:'50px', top:'0'}}
                 type="text"
                 placeholder="Search..."

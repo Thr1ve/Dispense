@@ -12,10 +12,11 @@ let { AppBar } = Mui
 var MainSearch = React.createClass({
 
     keyMap : {
-      'esc' : (e) => {
-        e.preventDefault()
-        console.log('esc on Main Search');
-      }
+      // 'esc' : (e) => {
+        // e.preventDefault()
+        // this.refs.dialog.show()
+        // console.log('esc on Main Search');
+      // }
     },
 
     contextTypes: {
@@ -24,7 +25,17 @@ var MainSearch = React.createClass({
 
     render() {
       return (
-        <Keybindings keyMap={this.keyMap}>
+        <Keybindings keyMap={{
+            'esc': (e) => {
+              let input = document.getElementsByClassName('searchInput');
+              if(input[0].value.length > 0){
+                app.trigger('clearText')
+              }
+              else{
+                this.props.toggleNav();
+              }
+            }
+          }}>
           <div>
             <header style={{
               position:'fixed',
@@ -35,13 +46,13 @@ var MainSearch = React.createClass({
             </header>
             <div>
                 <FilterableProductTable products={app.products}/>
+                { /** below routehandler component should not be necessary...delete after testing to be sure**/}
                 <RouteHandler/>
             </div>
           </div>
         </Keybindings>
       );
     }
-
 });
 
 module.exports = MainSearch;

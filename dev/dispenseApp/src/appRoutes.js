@@ -13,11 +13,13 @@ import Mui from 'material-ui'
 
 import Keybindings from 'react-side-effect-mousetrap'
 
-let { DropDownMenu, FlatButton } = Mui;
+let { LeftNav, DropDownMenu, FlatButton } = Mui;
 let ThemeManager = new Mui.Styles.ThemeManager();
 
 let { Route, RouteHandler,
       DefaultRoute, NotFoundRoute, Redirect } = Router;
+
+let menuItems = []
 
 
 let NotFound = React.createClass({
@@ -28,12 +30,6 @@ let NotFound = React.createClass({
   }
 });
 
-let keyMap = {
-  'esc' : (e) => {
-    e.preventDefault()
-    console.log('esc on Router');
-  }
-}
 
 let App = React.createClass({
 
@@ -58,7 +54,8 @@ let App = React.createClass({
 
   getInitialState() {
     return {
-      location:''
+      location:'',
+      isDocked: false
     }
   },
 
@@ -77,15 +74,18 @@ let App = React.createClass({
       router.transitionTo('requestedCodes');
   },
 
-  // componentDidMount() {
-  //   Mousetrap.bind('4', (e) => {
-  //     alert('Router')
-  //   })
-  // },
-  //
-  // componentWillUnmount() {
-  //   Mousetrap.unbind('4')
-  // }
+  keyMap() {
+    return{
+      'esc' : (e) => {this.toggleNav()}
+    }
+  },
+
+  toggleNav() {
+    this.refs.leftNav.toggle();
+    this.setState({
+      isDocked: !this.state.isDocked
+    });
+  },
 
   render: function () {
     let self = this;
@@ -96,7 +96,7 @@ let App = React.createClass({
     }
 
     return (
-      <Keybindings keyMap={keyMap}>
+      <Keybindings keyMap={this.keyMap.apply(this)}>
         <div>
           <div style={{zIndex: 10, position:'fixed', right: '0', top:'0' }}>
             <FlatButton label='Main Search'
@@ -113,8 +113,9 @@ let App = React.createClass({
               secondary={true} />
           </div>
           <div style={{position:'relative', top:'55px'}}>
-            <RouteHandler />
+            <RouteHandler toggleNav={this.toggleNav}/>
           </div>
+          <LeftNav ref='leftNav' docked={this.state.isDocked} menuItems={menuItems}/>
         </div>
       </Keybindings>
     );
