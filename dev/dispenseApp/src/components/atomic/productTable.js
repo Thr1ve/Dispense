@@ -22,12 +22,13 @@ var ProductTable = React.createClass({
 
         this.props.products.forEach(function(product) {
             rows.push({payload: product.productId, text: product.title, data: product.isbn13})
-        }.bind(this))
+        })
 
         return (
           <KeyBindings keyMap={{
               "esc": (e) => {
                 e.preventDefault()
+                console.log("esc pressed in productTable")
                 app.trigger("clearText")
               }
             }}>

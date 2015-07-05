@@ -37,7 +37,7 @@ let MostUsedProductsTable = React.createClass({
 
     sorted.forEach(function(product) {
       rows.push({payload: product.productId, text: product.title, data: product.isbn13})
-    }.bind(this))
+    })
 
     return (
       <div>
