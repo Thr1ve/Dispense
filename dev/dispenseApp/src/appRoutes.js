@@ -101,7 +101,7 @@ let App = React.createClass({
 
     return (
       <Keybindings keyMap={{
-          "esc": () => {this.toggleNav()},
+          /* "esc": () => {this.toggleNav()},*/
           "tab": (e) => {e.preventDefault()},
           "shift+tab": (e) => {e.preventDefault()}
         }}>
