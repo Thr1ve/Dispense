@@ -12,10 +12,16 @@ let SearchField = React.createClass({
         );
     },
 
+    handleBlur() {
+      this.refs.filterTextInput.focus()
+    },
+
     componentDidMount() {
         //add mousetrap as class to the input so we can use keybinds in the input field
         let input = document.getElementsByTagName('input');
         input[0].className = 'mousetrap searchField'
+
+        this.refs.filterTextInput.focus()
     },
 
     render() {
@@ -27,7 +33,8 @@ let SearchField = React.createClass({
                 placeholder="Search..."
                 value={this.props.filterText}
                 ref="filterTextInput"
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+                onBlur={this.handleBlur}/>
         );
     }
 

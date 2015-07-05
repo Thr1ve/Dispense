@@ -3,6 +3,10 @@ import Router from 'react-router'
 import mui from 'material-ui'
 import app from 'ampersand-app'
 
+import sortBy from 'amp-sort-by'
+
+import Keybindings from 'react-side-effect-mousetrap'
+
 let { Menu } = mui;
 
 let MostUsedProductsTable = React.createClass({
@@ -30,9 +34,11 @@ let MostUsedProductsTable = React.createClass({
 
   render: function() {
     let rows = [];
-    console.log(this.state.data)
-    // TODO: this forEach needs to be done over an array of products sorted by "most used"
-    this.state.data.forEach(function(product) {
+    let sorted = sortBy(this.state.data.models, 'popularity').filter((val)=>{
+      return val.popularity > 0
+    }).reverse();
+
+    sorted.forEach(function(product) {
       rows.push({payload: product.productId, text: product.title, data: product.isbn13})
     }.bind(this));
 

@@ -13,7 +13,7 @@ module.exports = AmpersandModel.extend({
         author: 'string',
         category: 'string',
         config: 'string',
-        popularity:'string'
+        popularity:'number'
     },
 
     session: {

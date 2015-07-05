@@ -4,6 +4,8 @@ var mui = require('material-ui');
 var Paper = mui.Paper;
 var Menu = mui.Menu;
 
+import KeyBindings from 'react-side-effect-mousetrap'
+
 var ProductTable = React.createClass({
 
     contextTypes: {
@@ -23,12 +25,17 @@ var ProductTable = React.createClass({
             rows.push({payload: product.productId, text: product.title, data: product.isbn13})
         }.bind(this));
 
-        console.log(rows)
-
         return (
+          <KeyBindings keyMap={{
+              'esc' : (e) => {
+                e.preventDefault();
+                app.trigger('clearText')
+              }
+            }}>
             <div>
                 <Menu menuItems={rows} onItemClick={this._onItemClick}/>
             </div>
+          </KeyBindings>
         );
     }
 });

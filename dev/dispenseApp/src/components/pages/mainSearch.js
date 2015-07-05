@@ -17,18 +17,6 @@ var MainSearch = React.createClass({
 
     render() {
       return (
-        <Keybindings keyMap={{
-            'esc': (e) => {
-              e.preventDefault()
-              let input = document.getElementsByClassName('searchField')
-              if(input[0].value.length > 0){
-                app.trigger('clearText')
-              }
-              else{
-                this.props.toggleNav()
-              }
-            }
-          }}>
           <div>
             <header style={{
               position:'fixed',
@@ -38,11 +26,10 @@ var MainSearch = React.createClass({
               zIndex: '4' }} >
             </header>
             <div>
-                <FilterableProductTable products={app.products}/>
+                <FilterableProductTable toggleNav={this.props.toggleNav} products={app.products}/>
                 <RouteHandler/>
             </div>
           </div>
-        </Keybindings>
       );
     }
 });

@@ -13,11 +13,11 @@ import Mui from 'material-ui'
 
 import Keybindings from 'react-side-effect-mousetrap'
 
-let { LeftNav, DropDownMenu, FlatButton } = Mui;
-let ThemeManager = new Mui.Styles.ThemeManager();
+let { LeftNav, DropDownMenu, FlatButton } = Mui
+let ThemeManager = new Mui.Styles.ThemeManager()
 
 let { Route, RouteHandler,
-      DefaultRoute, NotFoundRoute, Redirect } = Router;
+      DefaultRoute, NotFoundRoute, Redirect } = Router
 
 let menuItems = []
 
@@ -85,6 +85,10 @@ let App = React.createClass({
     this.setState({
       isDocked: !this.state.isDocked
     });
+
+    //fix material-ui
+    //https://github.com/callemall/material-ui/issues/897
+    document.body.style.overflow = 'auto'
   },
 
   render: function () {
@@ -96,7 +100,10 @@ let App = React.createClass({
     }
 
     return (
-      <Keybindings keyMap={this.keyMap.apply(this)}>
+      <Keybindings keyMap={{
+          'esc' : (e) => {this.toggleNav()},
+          'tab' : (e) => {e.preventDefault()}
+        }}>
         <div>
           <div style={{zIndex: 10, position:'fixed', right: '0', top:'0' }}>
             <FlatButton label='Main Search'
