@@ -12,7 +12,8 @@ let SearchField = React.createClass({
         );
     },
 
-    handleBlur() {
+    handleBlur(e) {
+      // not working in firefox
       this.refs.filterTextInput.focus()
     },
 

@@ -1,6 +1,6 @@
 // require('babel/polyfill')
 require('mousetrap')
-Mousetrap.bind('4', function() { alert('testing123'); });
+
 if (!Object.assign) {
   Object.defineProperty(Object, 'assign', {
     enumerable: false,
