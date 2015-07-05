@@ -13,7 +13,6 @@ var ProductTable = React.createClass({
 
     _onItemClick: function(e, key, menuItem) {
         var { router } = this.context
-        console.log(menuItem)
         router.transitionTo("requestCode", { productId: menuItem.payload})
     },
 
@@ -28,10 +27,9 @@ var ProductTable = React.createClass({
           <KeyBindings keyMap={{
               "esc": (e) => {
                 e.preventDefault()
-                console.log("esc pressed in productTable")
                 app.trigger("clearText")
               }
-            }}>
+          }}>
             <div>
                 <Menu menuItems={rows} onItemClick={this._onItemClick}/>
             </div>

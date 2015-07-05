@@ -17,7 +17,6 @@ var FilterableProductTable = React.createClass({
     var self = this
 
     app.on("clearText", () => {
-      console.log("Clearing filterText")
       this.setState({filterText: ""})
     })
 

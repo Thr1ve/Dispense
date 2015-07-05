@@ -1,6 +1,3 @@
-//CONVERT TO USING https://github.com/gaearon/react-side-effect FOR KEYBINDS WITH https://github.com/mapbox/react-keybinding
-
-
 import MainSearch from "./components/pages/mainSearch.js"
 import RequestCode from "./components/pages/requestCode.js"
 import RequestedCodes from "./components/pages/requestedCodes.js"
@@ -107,7 +104,7 @@ let App = React.createClass({
           },
           "tab": (e) => {e.preventDefault()},
           "shift+tab": (e) => {e.preventDefault()}
-        }}>
+      }}>
         <div>
           <div style={{zIndex: 10, position: "fixed", right: "0", top: "0" }}>
             <FlatButton label="Main Search"
