@@ -43,7 +43,6 @@ let SearchUsedCodes = React.createClass({
 
   	render() {
   		return (
-        <Keybindings keyMap={this.keyMap}>
           <div>
               <SearchForm
                   sendData={this.sendData} />
@@ -57,7 +56,6 @@ let SearchUsedCodes = React.createClass({
                   	showSettings={true}/>
               </Paper>
           </div>
-        </Keybindings>
   		);
   	}
 
