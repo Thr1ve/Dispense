@@ -1,4 +1,3 @@
-/*global document module */
 import React from "react"
 import Mui from "material-ui"
 

@@ -1,4 +1,3 @@
-/*global module console */
 import React from "react"
 import mui from "material-ui"
 import app from "ampersand-app"

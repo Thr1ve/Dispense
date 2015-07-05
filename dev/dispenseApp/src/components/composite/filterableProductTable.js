@@ -1,4 +1,3 @@
-/* global window console module */
 import React from "react"
 import SearchField from "./../atomic/searchField.js"
 import ProductTable from "./../atomic/productTable.js"

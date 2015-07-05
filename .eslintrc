@@ -1,15 +1,11 @@
 {
-  "parser": "babel-ESlint",
   "rules": {
       "semi": [2, "never"],
       "strict": [2, "never"],
       "no-console": 0,
       "no-underscore-dangle": 0
   },
-  "ecmaFeatures": {
-        "jsx": true
-  },
-  "plugins": [
-    "react"
-  ]
+  "env": {
+      "node": true
+  }
 }

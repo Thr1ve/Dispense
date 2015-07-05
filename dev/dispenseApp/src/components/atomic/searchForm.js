@@ -1,4 +1,3 @@
-/* global module console */
 import React from "react"
 import app from "ampersand-app"
 import _ from "underscore"

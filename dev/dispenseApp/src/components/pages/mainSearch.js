@@ -1,4 +1,3 @@
-/* global module */
 import React from "react"
 import Router from "react-router"
 import app from "ampersand-app"

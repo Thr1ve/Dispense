@@ -1,4 +1,3 @@
-/* global require window document */
 // require("babel/polyfill")
 require("mousetrap")
 
