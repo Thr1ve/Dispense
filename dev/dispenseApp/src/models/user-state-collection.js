@@ -1,15 +1,15 @@
 // userState Collection - user-state-collection.js
-var AmpCollection = require('./apiPointer.js');
-var userState = require('./user-state');
+let AmpCollection = require("./apiPointer.js")
+let userState = require("./user-state")
 
 
 module.exports = AmpCollection.extend({
-    
+
     model: userState,
 
-    location: 'user-state',
+    location: "user-state",
 
     initialize: function() {
-        AmpCollection.prototype.initialize.call(this);
+        AmpCollection.prototype.initialize.call(this)
     }
-});
+})
