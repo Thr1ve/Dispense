@@ -1,12 +1,11 @@
-import React from 'react'
-import Router from 'react-router'
-import app from 'ampersand-app'
-import FilterableProductTable from '../composite/filterableProductTable.js'
-import Mui from 'material-ui'
+/* global module */
+import React from "react"
+import Router from "react-router"
+import app from "ampersand-app"
+import FilterableProductTable from "../composite/filterableProductTable.js"
+import Mui from "material-ui"
 
-import Keybindings from 'react-side-effect-mousetrap'
-
-let { Route, RouteHandler, Link, DefaultRoute } = Router;
+let { Route, RouteHandler, Link, DefaultRoute } = Router
 let { AppBar } = Mui
 
 var MainSearch = React.createClass({
@@ -19,19 +18,19 @@ var MainSearch = React.createClass({
       return (
           <div>
             <header style={{
-              position:'fixed',
-              top:'0', left: '0',
-              width: '100%', height:'50px',
-              opacity: '0.8', backgroundColor: 'white',
-              zIndex: '4' }} >
+              position: "fixed",
+              top: "0", left: "0",
+              width: "100%", height: "50px",
+              opacity: "0.8", backgroundColor: "white",
+              zIndex: "4" }} >
             </header>
             <div>
                 <FilterableProductTable toggleNav={this.props.toggleNav} products={app.products}/>
                 <RouteHandler/>
             </div>
           </div>
-      );
+      )
     }
-});
+})
 
-module.exports = MainSearch;
+module.exports = MainSearch
