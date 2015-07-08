@@ -5,15 +5,14 @@ let AmpersandModel = require("ampersand-model")
 //sent to the server, and returned with a code
 
 module.exports = AmpersandModel.extend({
-    props: {
-        productId: "any",
-        customerName: "string",
-        customerEmail: "string",
-        universityOrBusiness: "string",
-        representative: "string",
-        chatOrTicket: "string",
-        date: "string",
-        code: "string"
-    }
-
+  props: {
+    productId: "any",
+    customerName: "string",
+    customerEmail: "string",
+    universityOrBusiness: "string",
+    representative: "string",
+    chatOrTicket: "string",
+    date: "string",
+    code: "string"
+  }
 })
