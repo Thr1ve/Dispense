@@ -17,29 +17,28 @@ let SearchForm = React.createClass({
     }
   },
 
-  formatQuery(dataObj){
-    //remove empty values
+  getQuery(dataObj){
+    // get values
     let mapped = _.mapObject(dataObj, function(val){
       return val.props.value
     })
-    console.log(mapped)
-    return _.omit(mapped, _.isEmpty)
-    // add "like" operator
+    //remove empty values
+    let omitted = _.omit(mapped, _.isEmpty)
+    return omitted
+    // add "like" operator ?
 
   },
 
   handleSubmit(e) {
     e.preventDefault()
     let self = this
-    let query = this.formatQuery(this.refs)
-    console.log(query)
-    let filter = {
-      filter: {
+    let query = this.getQuery(this.refs)
+
+    let filter = app.usedCodes.format({
         where: query,
         limit: 50,
         order: "date DESC"
-      }
-    }
+    })
     app.usedCodes.fetch({
       data: filter,
       success: function(collection, response){
