@@ -30,12 +30,28 @@ module.exports = AmpCollection.extend({
 
   location: "usedCode-collection",
 
+  byProduct(prodId) {
+
+    let query = {
+      filter: {
+        "where": {
+          "productId": prodId
+        },
+        limit: 50,
+        order: "date DESC"
+      }
+    }
+    return query
+  },
+
   format (data) {
 
     let query = {
-      where: data.where,
-      limit: data.limit,
-      order: data.order
+      filter: {
+        where: data.where,
+        limit: data.limit,
+        order: data.order
+      }
     }
 
     console.log(query)

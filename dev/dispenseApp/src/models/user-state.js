@@ -9,34 +9,14 @@ let app = require("ampersand-app")
 
 module.exports = AmpModel.extend({
 
-    //I may want to move these listeners to
-    //the products collection instead
-    initialize: function() {
-        this.on("change:searchValue", function() {
-            app.products.filter(this.searchValue)
-        })
-    },
+  type: "user",
 
-    type: "user",
+  props: {
 
-    props: {
+  },
 
-    },
+  derived: {
 
-    derived: {
-
-    },
-
-    session: {
-
-        //this holds the current content of the search box of the home page
-        searchValue: ["string", false, ""]
-
-    },
-
-    getSearchValue: function(){
-        let self = this
-        return self.searchValue
-   }
+  }
 
 })

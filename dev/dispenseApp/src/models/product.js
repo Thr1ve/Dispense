@@ -22,7 +22,7 @@ module.exports = AmpersandModel.extend({
 
   derived: {
     id: function() {
-        return this.productId
+      return this.productId
     }
     // isbn13Dashless:
     // isbn10:

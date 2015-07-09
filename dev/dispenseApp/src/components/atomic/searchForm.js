@@ -34,11 +34,14 @@ let SearchForm = React.createClass({
     let self = this
     let query = this.getQuery(this.refs)
 
-    let filter = app.usedCodes.format({
-        where: query,
-        limit: 50,
-        order: "date DESC"
-    })
+    // let filter = app.usedCodes.format({
+    //   where: query,
+    //   limit: 50,
+    //   order: "date DESC"
+    // })
+
+    let filter = app.usedCodes.byProduct("5")
+    console.log(filter)
     app.usedCodes.fetch({
       data: filter,
       success: function(collection, response){

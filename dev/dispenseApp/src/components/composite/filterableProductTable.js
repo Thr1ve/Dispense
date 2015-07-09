@@ -39,7 +39,6 @@ var FilterableProductTable = React.createClass({
   },
 
   handleUserInput(filterText) {
-    console.log(filterText)
     var filtered
     if(filterText.length > 0){
       app.products.filter(filterText)

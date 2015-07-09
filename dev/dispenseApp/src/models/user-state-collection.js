@@ -5,11 +5,11 @@ let userState = require("./user-state")
 
 module.exports = AmpCollection.extend({
 
-    model: userState,
+  model: userState,
 
-    location: "user-state",
+  location: "user-state",
 
-    initialize: function() {
-        AmpCollection.prototype.initialize.call(this)
-    }
+  initialize: function() {
+    AmpCollection.prototype.initialize.call(this)
+  }
 })
