@@ -10,7 +10,7 @@ import Mui from "material-ui"
 
 import Keybindings from "react-side-effect-mousetrap"
 
-let { LeftNav, DropDownMenu, FlatButton } = Mui
+let { LeftNav, FlatButton } = Mui
 let ThemeManager = new Mui.Styles.ThemeManager()
 
 let { Route, RouteHandler,
@@ -89,8 +89,7 @@ let App = React.createClass({
   },
 
   render: function () {
-    let self = this
-    let { router } = self.context
+
     let buttonStyle = {
         height: "50",
         opacity: "0.9"
