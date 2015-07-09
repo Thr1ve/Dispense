@@ -46,7 +46,13 @@ module.exports = function(UsedCode) {
         })
 
         products.findOne({where: {productId: prodId}}, function(err, product){
-          product.popularity += 1
+          var nProduct = product
+          nProduct.popularity = nProduct.popularity += 1
+          product.upsert(nProduct, function(err, obj){
+            if(err) {throw err}
+
+            console.log(obj)
+          })
         })
 
         availableCodes.count({productId: prodId}, function(err, count){
