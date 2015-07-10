@@ -12,12 +12,6 @@ var dataSource = loopback.createDataSource("mssql", {
   "user": "loopback"
 })
 
-// TODO:
-//      - option to tie into boot script only run with passed in flag ? we need some way to have it only run once
-//      - or maybe use vagrant ?
-// or this can be run from elsewhere if the db is available
-
-
 var check = {
 
   ifRegCodes: function(string){
