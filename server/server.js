@@ -4,46 +4,10 @@ var path = require("path")
 var shelljs = require("shelljs")
 var app = module.exports = loopback()
 
-var Vantage = require("vantage")
-var vantage = new Vantage()
-
-vantage
-  .command("ls")
-  .description("test ls command")
-  .action(function(args, cb ) {
-    console.log(shelljs.ls("./"))
-    cb()
-  })
-
-vantage
-  .command("printenv")
-  .description("print environment variables")
-  .action(function(args, cb ) {
-    console.log(shelljs.exec("printenv"))
-    cb()
-  })
-
-vantage
-  .command("listen5432")
-  .description("see what's on port 5432")
-  .action(function(args, cb ) {
-    console.log(shelljs.exec("netstat -tulpn | grep :5432", function(code, output){
-      console.log("Exit code:", code)
-      console.log("Program output:", output)
-    }))
-    cb()
-  })
-
-vantage
-  .command("hosts")
-  .description("show /etc/hosts")
-  .action(function(args, cb ) {
     console.log(shelljs.exec("cat /etc/hosts", function(code, output){
       console.log("Exit code:", code)
       console.log("Program output:", output)
     }))
-    cb()
-  })
 
 boot(app, __dirname)
 
@@ -71,11 +35,6 @@ app.get("/dispenseManager*", function(req, res){
 ////////////////////////////////
 
 app.start = function() {
-  // start the web server
-  // vantage
-  //   .delimiter("dispense~$")
-  //   .listen(app, 8080)
-  //   .show()
   return app.listen(function() {
     app.emit("started")
     console.log("Web server listening at: %s", app.get("url"))
