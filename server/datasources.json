@@ -4,7 +4,7 @@
     "connector": "memory"
   },
   "mydb": {
-    "host": "postgresql",
+    "host": "localhost",
     "port": 5432,
     "database": "dispense_db",
     "password": "password",
