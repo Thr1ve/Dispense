@@ -74,7 +74,7 @@ app.start = function() {
   // start the web server
   vantage
     .delimiter("dispense~$")
-    .listen(app, 80)
+    .listen(app, 8080)
     .show()
   // return app.listen(function() {
     // app.emit("started")
