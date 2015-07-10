@@ -72,14 +72,14 @@ app.get("/dispenseManager*", function(req, res){
 
 app.start = function() {
   // start the web server
-  vantage
-    .delimiter("dispense~$")
-    .listen(app, 8080)
-    .show()
-  // return app.listen(function() {
-    // app.emit("started")
-    // console.log("Web server listening at: %s", app.get("url"))
-  // })
+  // vantage
+  //   .delimiter("dispense~$")
+  //   .listen(app, 8080)
+  //   .show()
+  return app.listen(function() {
+    app.emit("started")
+    console.log("Web server listening at: %s", app.get("url"))
+  })
 }
 
 // start the server if `$ node server.js`
