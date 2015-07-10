@@ -1,13 +1,7 @@
 var loopback = require("loopback")
 var boot = require("loopback-boot")
 var path = require("path")
-var shelljs = require("shelljs")
 var app = module.exports = loopback()
-
-    console.log(shelljs.exec("cat /etc/hosts", function(code, output){
-      console.log("Exit code:", code)
-      console.log("Program output:", output)
-    }))
 
 boot(app, __dirname)
 
