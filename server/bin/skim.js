@@ -2,6 +2,7 @@ var loopback = require("loopback")
 var server = require("../server")
 var testMigrated = server.dataSources.mydb
 
+// add switch to overwite current data ?
 // console.log(process.argv[2])
 // var overwrite = process.argv[2] === '--overwrite' ? true : false
 // console.log('overwrite:', overwrite)
@@ -17,7 +18,6 @@ var dataSource = loopback.createDataSource("mssql", {
 })
 
 var check = {
-
   ifRegCodes: function(string){
     if(string.match(/.*(_RegCodes)/gi)){
       return true

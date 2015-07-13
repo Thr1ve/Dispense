@@ -24,6 +24,9 @@
     },
     "popularity": {
       "type": "number"
+    },
+    "oldTable": {
+      "type": "string"
     }
   },
   "validations": [],
