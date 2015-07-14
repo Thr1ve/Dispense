@@ -12,26 +12,6 @@ var server = require("../server")
 var DispenseDB = server.dataSources.mydb
 var program = require("commander")
 
-program
-  .command("setProducts")
-  .description("Get products from OldDB tables - WARNING: this will drop and reset tables. Products will be ordered differently.")
-  .action(function(env, options){
-    setProducts()
-  })
-
-program
-  .command("pullAvailable")
-  .description("Pull available codes from old site. Defaults to pull 10% of codes from each product")
-  .action(function(env, options){
-    pullAvailable()
-  })
-
-program
-  .command("pullUsed")
-  .description("Pull all used codes from old site")
-  .action(function(env, options){
-    pullUsed()
-  })
 
 // add switch to overwite current data ?
 // console.log(process.argv[2])
@@ -39,7 +19,7 @@ program
 // console.log("overwrite:", overwrite)
 
 // replace this with regcodes server details for production
-var dataSource = loopback.createDataSource("mssql", {
+var OldDb = loopback.createDataSource("mssql", {
  // "host": "10.8.2.114",
   "host": "localhost",
   "port": 1433,
@@ -48,9 +28,17 @@ var dataSource = loopback.createDataSource("mssql", {
   "user": "loopback"
 })
 
-var check = {
-  ifRegCodes: function(string){
-    if(string.match(/.*(_RegCodes)/gi)){
+/**
+* utilities for other functions
+*/
+var utilities = {
+  /**
+  * Check if table is a product table with available codes
+  *
+  * @param {string} tableName The table name we are checking (will end in _RegCodes if has available codes)
+  */
+  ifRegCodes: function(tableName){
+    if(tableName.match(/.*(_RegCodes)/gi)){
       return true
     }
     else{
@@ -58,6 +46,11 @@ var check = {
     }
   },
 
+  /**
+  * Check if table is a product table with used codes
+  *
+  * @param {string} tableName The table name we are checking (will end in _UsedCodes if it has available codes)
+  */
   ifUsedCodes: function (string){
     if(string.match(/.*(_UsedCodes)/gi)){
       return true
@@ -65,16 +58,20 @@ var check = {
     else{
       return false
     }
-  }
-}
+  },
 
-var build = {
+  /**
+   * Needs to be slightly refactored...it will find available codes for a given product and, by default, move 10% of them to the new database
+   @param {Object} product a product object as produced by products function
+   @param {String} oldTable the specific name of the table for the product in the old database
+   @param {number} nCodes the number of codes you would like to move
+   */
+  moveCodes: function(product, oldTable, nCodes){
   // this may be overkill...
-  regCodes: function(product, oldTable, nCodes){
     var table = oldTable && !Number.isInteger(oldTable) ? oldTable : product.oldTable
     var selectQuery = "select * from " + table
     var countQuery = "select COUNT(*) from " + table
-    dataSource.connector.query( countQuery, function(err, data){
+    OldDb.connector.query( countQuery, function(err, data){
       if(err) {console.log(err)}
       // data[0][""] is the number codes we have total
       var remainingCodes = data[0][""]
@@ -89,7 +86,7 @@ var build = {
           (nCodes > remainingCodes ? remainingCodes : nCodes ) :
           (remainingCodes > 1000 ? 100 : Math.round(remainingCodes * .1))
       }
-      dataSource.connector.query(selectQuery, function(err2, data2){
+      OldDb.connector.query(selectQuery, function(err2, data2){
         if(err2) {console.log(err2)}
         // make sure there are actually codes
         if(data2.length > 0){
@@ -101,7 +98,7 @@ var build = {
               // var deleteQuery = "DELETE FROM " + table + " WHERE regcodes="" + code.regcodes + """
               // uncomment below when ready to actually delete codes
               // delete the codes we took
-              // dataSource.connector.query(deleteQuery, function(err3, data3){
+              // OldDb.connector.query(deleteQuery, function(err3, data3){
               //   if(err3) {console.log("error", err3)}
               // })
               DispenseDB.models.availableCodes.create([
@@ -121,9 +118,13 @@ var build = {
     })
   },
 
-  usedCodes: function(product){
+/**
+ * This will, given a product, find all used codes for that product in the old db, then copy them to the new database
+ * @param {Object} product
+ */
+  copyUsedCodes: function(product){
     var query = "select * from " + product.title + "_UsedCodes"
-    dataSource.connector.query( query, function(error, data){
+    OldDb.connector.query( query, function(error, data){
       if(error) {console.log(error)}
       data.forEach(function(val) {
         var fixedDate = new Date(val.TimeStamp).toDateString()
@@ -143,8 +144,32 @@ var build = {
     })
   },
 
-  products: function(models){
-    // NOTE: This sort is NOT reliable. You will get slightly different results each time; this is ONLY used to give some semblance of alphabetical order
+  /**
+   * This pulls product id, title, oldTableName, and isbn13 from an array of products from the old database
+   *
+   * @return {Array} an array of product objects
+   *
+   * ```
+   * [
+   *  {
+   *    productId: [number],
+   *    title: [string],
+   *    oldTable: [string],
+   *    isbn13: [string]
+   *  },
+   *  {
+   *    productId: [number],
+   *    title: [string],
+   *    oldTable: [string],
+   *    isbn13: [string]
+   *  },
+   *   ...
+   * ]
+   * ```
+   */
+  getProducts: function(models){
+    // NOTE: This sort is NOT reliable. You will get slightly different results each time; this sort is ONLY used to give some semblance of alphabetical order
+    // TODO: make this give back isbn13 as well
     var productsCollection = models.sort(function (a, b) {
       if (a.name > b.name) {
         return 1
@@ -155,7 +180,7 @@ var build = {
       return 0
     })
     .reduce(function(prev, val){
-      if(check.ifRegCodes(val.name)){
+      if(this.ifRegCodes(val.name)){
         var id = prev.length + 1
         var title = val.name.replace(/(_RegCodes)/gi, "")
         prev.push({
@@ -174,11 +199,16 @@ var build = {
   }
 }
 
-function setProducts(){
-  // WARNING: this will reset products. They will not be in the same order. ONLY use this to initialize
-  dataSource.discoverModelDefinitions(function(error, models){
+/**
+ * This will pull all products from the old database, then create them in the new database
+ *
+ * #### ***WARNING***: As there does not seem to be a way to sort reliably ( nor would it be worthwhile to do so as we will not be re-arranging product ids when they are in the new database ), the order or the products in the array WILL change when this function is called. If there are already products and available codes in the database, this will tie many codes to incorrect products.
+ */
+function initProducts(){
+  //WARNING: this will reset products. They will not be in the same order. ONLY use this to initialize
+  OldDb.discoverModelDefinitions(function(error, models){
     if(error){console.log(error)}
-    var products = build.products(models)
+    var products = utilities.getProducts(models)
     DispenseDB.automigrate("product", function(err) {
       if (err) {throw err}
       products.forEach(function(val) {
@@ -195,13 +225,16 @@ function setProducts(){
   })
 }
 
-function pullAvailable(){
+/**
+ * This will delete existing codes and pull new ones
+ */
+function pullAvailableCodes(){
   DispenseDB.models.product.find(function(err, products){
     if(err) {console.log(err)}
-    DispenseDB.automigrate("availableCodes", function(err) {
-      if (!err) {
+    DispenseDB.automigrate("availableCodes", function(err2) {
+      if (!err2) {
         products.forEach( function (product){
-          build.regCodes(product)
+          utilities.regCodes(product)
         })
         console.log("Cloning Available Codes...")
       }
@@ -209,13 +242,16 @@ function pullAvailable(){
   })
 }
 
-function pullUsed(){
+/**
+* This will remove the existing used codes and get them all again
+*/
+function pullUsedCodes(){
   DispenseDB.models.product.find(function(err, products){
     if(err) {console.log(err)}
-    DispenseDB.automigrate("usedCode", function(err) {
-      if (!err) {
+    DispenseDB.automigrate("usedCode", function(err2) {
+      if (!err2) {
         products.forEach( function (product){
-          build.usedCodes(product)
+          utilities.usedCodes(product)
         })
         console.log("Cloning Used Codes...")
       }
@@ -223,5 +259,26 @@ function pullUsed(){
   })
 }
 
-    // dataSource.disconnect()
+program
+  .command("initProducts")
+  .description("Get products from OldDb tables - WARNING: this will drop and reset tables. Products will be ordered differently. This means codes will be tied to incorrect products if they already exist. Good luck sorting things out if you use this incorrectly...")
+  .action(function(){
+    initProducts()
+  })
+
+program
+  .command("pullAvailableCodes")
+  .description("Pull available codes from old database. Defaults to pull 10% of codes from each product")
+  .action(function(){
+    pullAvailableCodes()
+  })
+
+program
+  .command("pullUsedCodes")
+  .description("Pull all used codes from old site")
+  .action(function(){
+    pullUsedCodes()
+  })
+
+    // OldDb.disconnect()
 program.parse(process.argv)
