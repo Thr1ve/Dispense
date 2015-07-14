@@ -1,17 +1,17 @@
-import AmpersandModel from 'ampersand-model'
+import AmpersandModel from "ampersand-model"
 
 module.exports = AmpersandModel.extend({
     props: {
-        productId: 'any',
-        isbn13: 'string',
-        title: 'string',
-        author: 'string',
-        category: 'string',
-        config: 'string',
-        nCodes: 'number'
+        productId: "any",
+        isbn13: "string",
+        title: "string",
+        author: "string",
+        category: "string",
+        config: "string",
+        nCodes: "number"
     },
     session: {
-        selected: ['boolean', true, false]
+        selected: ["boolean", true, false]
     },
 
     derived: {
@@ -22,4 +22,4 @@ module.exports = AmpersandModel.extend({
             return app.contacts.get(this.productId)
         }
     }
-});
+})

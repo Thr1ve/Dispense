@@ -1,28 +1,28 @@
-import MainSearch from './components/pages/mainSearch.js'
-import ManageProduct from './components/pages/manageProduct.js'
-import EditProduct from './components/composite/editProduct.js'
-import AddCodes from './components/composite/addCodes.js'
-import ProductStats from './components/composite/productStats.js'
-import AddProduct from './components/pages/addProduct.js'
+import MainSearch from "./components/pages/mainSearch.js"
+import ManageProduct from "./components/pages/manageProduct.js"
+import EditProduct from "./components/composite/editProduct.js"
+import AddCodes from "./components/composite/addCodes.js"
+import ProductStats from "./components/composite/productStats.js"
+import AddProduct from "./components/pages/addProduct.js"
 
-import Mui from 'material-ui'
+import Mui from "material-ui"
 let { FlatButton } = Mui
-let ThemeManager = new Mui.Styles.ThemeManager();
+let ThemeManager = new Mui.Styles.ThemeManager()
 
-import React from 'react'
-import Router from 'react-router'
+import React from "react"
+import Router from "react-router"
 let { Route, RouteHandler,
     DefaultRoute, NotFoundRoute, Redirect } = Router
 
 
-// var log = require('bows')("appRoutes.js");
+// var log = require("bows")("appRoutes.js")
 
 let NotFound = React.createClass({
     render() {
         return ( < h1 > No Route Found </h1>
-    );
+    )
   }
-});
+})
 
 let App = React.createClass({
 
@@ -30,68 +30,68 @@ let App = React.createClass({
       router: React.PropTypes.func
   },
 
-//** 
+//**
 // Needed for Material-ui
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
 
-  getChildContext: function() { 
+  getChildContext: function() {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
-    };
+    }
   },
 //**
 
   toMainSearch() {
-      var { router } = this.context;
-      router.transitionTo('mainSearch');
+      var { router } = this.context
+      router.transitionTo("mainSearch")
   },
 
   toAddProduct(){
-    var { router } = this.context;
-    router.transitionTo('addProduct');
+    var { router } = this.context
+    router.transitionTo("addProduct")
   },
 
   render() {
 
     let buttonStyle = {
-      height: '50',
-      opacity:'0.9',
-      float:'right'
+      height: "50",
+      opacity: "0.9",
+      float: "right"
     }
 
     return (
     <div>
       <header style={{
-        position:'fixed',
-        top:'0', left: '0',
-        width: '100%', height:'50px',
-        opacity: '0.8', backgroundColor: 'white',
-        zIndex: '4' }} >
-        <FlatButton label='Add New Product'
+        position: "fixed",
+        top: "0", left: "0",
+        width: "100%", height: "50px",
+        opacity: "0.8", backgroundColor: "white",
+        zIndex: "4" }} >
+        <FlatButton label="Add New Product"
           style={buttonStyle}
           onClick={this.toAddProduct}
           secondary={true} />
-        <FlatButton label='Main Search'
+        <FlatButton label="Main Search"
           style={buttonStyle}
           onClick={this.toMainSearch}
           secondary={true} />
       </header>
-      <div style={{position:'relative', top:'50px'}}>
+      <div style={{position: "relative", top: "50px"}}>
         <RouteHandler {...this.props}/ >
       </div>
     </div >
-        );
+        )
     }
-});
+})
 
 module.exports = (
           <Route name="app" path="/dispenseManager/" handler={App}>
             <Redirect from="/dispenseManager" to="/dispenseManager/"/>
             <Route name="mainSearch" handler={MainSearch}/>
             <Route name="addProduct" handler={AddProduct}/>
-            <Route name='product' path="product/:productId" handler={ManageProduct}>
+            <Route name="product" path="product/:productId" handler={ManageProduct}>
               <Route name="editProduct" handler={EditProduct}/>
               <Route name="addCodes" handler={AddCodes}/>
               <Route name="productStats" handler={ProductStats}/>
@@ -100,4 +100,4 @@ module.exports = (
             <DefaultRoute handler={MainSearch}/>
             <NotFoundRoute handler={NotFound}/>
           </Route>
-        );
+        )

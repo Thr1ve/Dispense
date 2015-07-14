@@ -61,5 +61,10 @@
     "ignore": [
       "public/*"
     ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^3.1.23",
+    "eslint": "^0.24.1",
+    "eslint-plugin-react": "^2.7.0"
   }
 }

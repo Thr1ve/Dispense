@@ -1,32 +1,32 @@
-import React from 'react'
-import app from 'ampersand-app'
+import React from "react"
+import app from "ampersand-app"
 
-import Mui from 'material-ui'
+import Mui from "material-ui"
 let { TextField, FlatButton, Paper, Snackbar } = Mui
 
 let addProduct = React.createClass({
 
     handleSubmit(e){
         e.preventDefault()
-        let self = this;
+        let self = this
         let title = this.refs.title.getValue()
-        let isbn13= this.refs.isbn13.getValue()
-        let contact= this.refs.contact.getValue()
+        let isbn13 = this.refs.isbn13.getValue()
+        let contact = this.refs.contact.getValue()
         let productData = {
-            title   : title,
-            isbn13  : isbn13
+            title: title,
+            isbn13: isbn13
         }
         let contactData = {
-            mainEmail : contact
+            mainEmail: contact
         }
 
         app.products.create( productData, {
-            wait: true, 
-            success:function( savedProduct, resp ) {
-                app.contacts.create( contactData , {
-                    wait: true, 
-                    success:function( savedContact, resp ) {
-                        self.success();
+            wait: true,
+            success: function() {
+                app.contacts.create( contactData, {
+                    wait: true,
+                    success: function() {
+                        self.success()
                     }
                 })
             }
@@ -39,9 +39,9 @@ let addProduct = React.createClass({
 
     getInitialState() {
         return {
-            title    : '',
-            isbn13   : '',
-            contact  : '' 
+            title: "",
+            isbn13: "",
+            contact: ""
         }
     },
 
@@ -53,40 +53,40 @@ let addProduct = React.createClass({
 
     render() {
         let textFieldStyle = {
-            display:'block',
+            display: "block"
         }
         let formStyle = {
-            padding:20
+            padding: 20
         }
         return (
             <div>
-                <Paper zDepth={3} style={{width:'85%', marginRight:'auto', marginLeft:'auto'}}>
+                <Paper zDepth={3} style={{width: "85%", marginRight: "auto", marginLeft: "auto"}}>
                     <form style = {formStyle} onSubmit={this.handleSubmit}>
                         <div style={textFieldStyle}>
-                            <TextField 
-                                type='text' 
-                                name='title'          
-                                ref='title'          
-                                floatingLabelText='Title'            
+                            <TextField
+                                type="text"
+                                name="title"
+                                ref="title"
+                                floatingLabelText="Title"
                                 onChange={this.handleChange}/>
                         </div>
                         <div style={textFieldStyle}>
                             <TextField
-                                type='text'
-                                name='isbn13'
-                                ref='isbn13'
-                                floatingLabelText='ISBN'
+                                type="text"
+                                name="isbn13"
+                                ref="isbn13"
+                                floatingLabelText="ISBN"
                                 onChange={this.handleChange}/>
                         </div>
                         <div style={textFieldStyle}>
                             <TextField
-                                type='text'
-                                name='contact'
-                                ref='contact'
-                                floatingLabelText='Contact'
+                                type="text"
+                                name="contact"
+                                ref="contact"
+                                floatingLabelText="Contact"
                                 onChange={this.handleChange}/>
                         </div>
-                        <FlatButton label='Submit'/>
+                        <FlatButton label="Submit"/>
                     </form>
                 </Paper>
                 <Snackbar
@@ -96,6 +96,6 @@ let addProduct = React.createClass({
         )
     }
 
-});
+})
 
 module.exports = addProduct

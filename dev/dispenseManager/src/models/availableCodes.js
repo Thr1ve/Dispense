@@ -1,11 +1,11 @@
-import AmpersandModel 'ampersand-model'
+import AmpersandModel from "ampersand-model"
 
 module.exports = AmpersandModel.extend({
 
     props: {
 
-        productId: 'any',
-        code:'string'
+        productId: "any",
+        code: "string"
 
     },
 
@@ -19,6 +19,6 @@ module.exports = AmpersandModel.extend({
         }
     },
 
-    url: 'http://localhost:3000/api/availableCodes'
+    url: "http://localhost:3000/api/availableCodes"
 
 })

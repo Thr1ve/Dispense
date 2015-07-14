@@ -1,5 +1,5 @@
-import React from 'react'
-import Mui from 'material-ui'
+import React from "react"
+import Mui from "material-ui"
 
 let { TextField } = Mui
 
@@ -22,6 +22,6 @@ var SearchField = React.createClass({
         )
     }
 
-});
+})
 
 module.exports = SearchField

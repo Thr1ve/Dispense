@@ -1,6 +1,6 @@
-import React from 'react'
-import Router from 'react-router'
-import mui from 'material-ui'
+import React from "react"
+// import Router from "react-router"
+import mui from "material-ui"
 let { Menu } = mui
 
 let ProductTable = React.createClass({
@@ -20,12 +20,12 @@ let ProductTable = React.createClass({
             <div>
                 <Menu menuItems={rows} onItemClick={this._onItemClick}/>
             </div>
-        );
+        )
     },
 
     _onItemClick(e, key, menuItem) {
         let { router } = this.context
-        router.transitionTo('product', { productId: menuItem.payload})
+        router.transitionTo("product", { productId: menuItem.payload})
     }
 })
 

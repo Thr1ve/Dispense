@@ -1,5 +1,5 @@
-import React from 'react'
-import Mui from 'material-ui'
+import React from "react"
+import Mui from "material-ui"
 let { TextField, Paper, FlatButton, RaisedButton } = Mui
 
 
@@ -23,15 +23,15 @@ let CodeInput = React.createClass({
 
   render() {
     return (
-      <Paper zDepth={2} style={{width:'25%',marginTop: '10', marginLeft:'10', float:'left'}}>
-        <div style={{padding:30, minHeight:450}}>
-          	<TextField
-              type="text"
-              floatingLabelText="Add Codes..."
-              multiLine={true}
-              value={this.props.codesString}
-              ref="codesString"
-              onChange={this.handleChange} />
+      <Paper zDepth={2} style={{width: "25%", marginTop: "10", marginLeft: "10", float: "left"}}>
+        <div style={{padding: 30, minHeight: 450}}>
+          <TextField
+            type="text"
+            floatingLabelText="Add Codes..."
+            multiLine={true}
+            value={this.props.codesString}
+            ref="codesString"
+            onChange={this.handleChange} />
         </div>
       </Paper>
     )
