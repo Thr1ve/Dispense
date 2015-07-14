@@ -1,20 +1,20 @@
-import React from 'react'
-import CodeInput from '../atomic/codeInput.js'
-import CodeOutput from '../atomic/codeOutput'
-import AddCodesRequest from '../../models/addCodes.js'
+import React from "react"
+import CodeInput from "../atomic/codeInput.js"
+import CodeOutput from "../atomic/codeOutput"
+// import AddCodesRequest from "../../models/addCodes.js"
 
-import Mui from 'material-ui'
+import Mui from "material-ui"
 let { Paper, Snackbar, Dialog, FlatButton } = Mui
 
-// var log = require('bows')("addCodes.js")
+// var log = require("bows")("addCodes.js")
 
 /*
 
   This is an addCodes page using the Mui Dialog component to verify and submit codes.
-  It's been put on hold as the Mui Dialog component currently is unable to scroll if
-  the content's height is greater than that of the window. 
+  It"s been put on hold as the Mui Dialog component currently is unable to scroll if
+  the content"s height is greater than that of the window.
 
-  Awaiting  https://github.com/callemall/material-ui/pull/531 
+  Awaiting  https://github.com/callemall/material-ui/pull/531
 
  */
 
@@ -22,7 +22,7 @@ let AddCodes = React.createClass({
 
   getInitialState() {
     return {
-      codesString: '',
+      codesString: "",
       formattedCodes: []
     }
   },
@@ -30,9 +30,9 @@ let AddCodes = React.createClass({
   format(input) {
     let formatted = input
       //separate by newline
-      .split('\n')
+      .split("\n")
       //remove empty/null/undefined values from array
-      .filter(function(e){return e;})
+      .filter(function(e){return e})
     let trimmed = formatted.map(function(val){
       return val.trim()
     })
@@ -41,7 +41,7 @@ let AddCodes = React.createClass({
 
   handleDialogCancel() {
     this.refs.dialog.dismiss()
-    this.notifyCancel();
+    this.notifyCancel()
   },
 
   handleDialogSubmit() {
@@ -60,19 +60,19 @@ let AddCodes = React.createClass({
     //         self.notifySuccess()
     //     },
     //     error: function(model, response) {
-    //         console.log('error...', model, response)
+    //         console.log("error...", model, response)
     //     }
     // })
   },
 
   handleUserInput(string){
     this.setState({
-      codesString : string
+      codesString: string
     })
   },
 
   notifyCancel(){
-    this.refs.cancelSnackbar.show();  
+    this.refs.cancelSnackbar.show()
   },
 
   notifySuccess() {
@@ -82,11 +82,11 @@ let AddCodes = React.createClass({
   verify(){
     if(this.state.codesString.trim().length > 0){
       let formatted = this.format(this.state.codesString)
-      this.setState({formattedCodes:formatted})
+      this.setState({formattedCodes: formatted})
       this.refs.dialog.show()
     }
     else{
-      this.refs.noCodesSnackbar.show() 
+      this.refs.noCodesSnackbar.show()
     }
   },
 
@@ -107,17 +107,17 @@ let AddCodes = React.createClass({
     return (
       <div>
 
-        <Paper zDepth={2} style={{width:'95%', marginRight:'auto', marginLeft:'auto'}}>
-          <h2 className='mui-font-style-headline' style={{textAlign:'center'}}>Add Codes for: {title}</h2>
-          <h4 style={{textAlign:'center'}}>{isbn13}</h4>
+        <Paper zDepth={2} style={{width: "95%", marginRight: "auto", marginLeft: "auto"}}>
+          <h2 className="mui-font-style-headline" style={{textAlign: "center"}}>Add Codes for: {title}</h2>
+          <h4 style={{textAlign: "center"}}>{isbn13}</h4>
         </Paper>
 
-        <Paper zDepth={2} style={{width:'95%',marginTop: '30',marginRight:'auto', marginLeft:'auto'}}>
-          <div style={{padding:30}}>
-            <FlatButton 
-              onClick={this.verify} 
-              label='Verify Codes'/>
-            <CodeInput 
+        <Paper zDepth={2} style={{width: "95%", marginTop: "30", marginRight: "auto", marginLeft: "auto"}}>
+          <div style={{padding: 30}}>
+            <FlatButton
+              onClick={this.verify}
+              label="Verify Codes"/>
+            <CodeInput
               onUserInput={this.handleUserInput}/>
           </div>
         </Paper>
@@ -127,9 +127,9 @@ let AddCodes = React.createClass({
           ref="dialog"
           actions={customActions}
           modal={true}
-          style={{overflow:'scroll'}}
+          style={{overflow: "scroll"}}
           dismissOnClickAway={false}>
-            <CodeOutput 
+            <CodeOutput
               codes={this.state.formattedCodes} />
         </Dialog>
 
@@ -155,9 +155,9 @@ module.exports = AddCodes
 /*
 
   codeInput at time of save
-    
-import React from 'react'
-import Mui from 'material-ui'
+
+import React from "react"
+import Mui from "material-ui"
 let { TextField } = Mui
 
 let CodeInput = React.createClass({
@@ -170,7 +170,7 @@ let CodeInput = React.createClass({
 
     render() {
         return (
-            <div style={{float:'left'}}>
+            <div style={{float:"left"}}>
               <TextField
                     type="text"
                     placeholder="Add Codes..."
@@ -191,25 +191,25 @@ module.exports = CodeInput
 
   codeOutput at time of save
 
-  import React from 'react'
+  import React from "react"
 
-import Mui from 'material-ui'
+import Mui from "material-ui"
 let { Paper } = Mui
 
 let CodeOutput= React.createClass({
   render() {
     let styles = {
-      display:'inline-block',
-      height: 'auto',
-      width: 'intrinsic',
+      display:"inline-block",
+      height: "auto",
+      width: "intrinsic",
       margin: 2
     }
     let codes = this.props.codes.map(function(val, ind, arr){
       return (
-        <Paper 
-          zDepth={1} 
+        <Paper
+          zDepth={1}
           key={ind}
-          style={styles}> 
+          style={styles}>
             <p style={{padding:2}}> {val} </p>
         </Paper>
       )

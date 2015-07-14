@@ -1,24 +1,24 @@
-import React from 'react'
+import React from "react"
 
-import Mui from 'material-ui'
+import Mui from "material-ui"
 let { Paper, FlatButton, RaisedButton } = Mui
 
-let CodeOutput= React.createClass({
+let CodeOutput = React.createClass({
 
   getContent() {
     let styles = {
-      display:'inline-block',
-      height: 'auto',
-      width: 'intrinsic',
+      display: "inline-block",
+      height: "auto",
+      width: "intrinsic",
       margin: 2
     }
-    let mapped = this.props.codes.map(function(val, ind, arr){
+    let mapped = this.props.codes.map(function(val, ind){
       return (
         <Paper
           zDepth={1}
           key={ind}
-          style={styles}> 
-            <p style={{padding:3}}> {val} </p>
+          style={styles}>
+            <p style={{padding: 3}}> {val} </p>
         </Paper>
       )
     })
@@ -26,15 +26,15 @@ let CodeOutput= React.createClass({
       return (
         <div>
           <div
-              style={{display:'block',top:0, left:0}}>
+              style={{display: "block", top: 0, left: 0}}>
             <RaisedButton
-              onClick={this.props.submit} 
+              onClick={this.props.submit}
               primary={true}
-              label='Submit Codes'/>
+              label="Submit Codes"/>
           </div>
             {mapped}
         </div>
-      )    
+      )
     }
     else{
       return (
@@ -44,10 +44,10 @@ let CodeOutput= React.createClass({
   },
 
   render() {
-    let content = this.getContent();
+    let content = this.getContent()
       return (
-        <Paper zDepth={2} style={{width:'72%',marginTop: '10', marginRight:'10', float:'right'}}>
-          <div style={{padding:30, minHeight:450}}>
+        <Paper zDepth={2} style={{width: "72%", marginTop: "10", marginRight: "10", float: "right"}}>
+          <div style={{padding: 30, minHeight: 450}}>
             <div>
               {content}
             </div>

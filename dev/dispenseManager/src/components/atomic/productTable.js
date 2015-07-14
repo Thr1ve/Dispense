@@ -1,32 +1,41 @@
-import React from 'react'
-import Router from 'react-router'
-import mui from 'material-ui'
+import React from "react"
+import mui from "material-ui"
+import app from "ampersand-app"
+import KeyBindings from "react-side-effect-mousetrap"
+
 let { Menu } = mui
 
-let ProductTable = React.createClass({
+var ProductTable = React.createClass({
 
-    contextTypes: {
-        router: React.PropTypes.func
-      },
+  contextTypes: {
+    router: React.PropTypes.func
+  },
 
-    render() {
-        let rows = []
+  _onItemClick: function(e, key, menuItem) {
+    var { router } = this.context
+    router.transitionTo("requestCode", { productId: menuItem.payload})
+  },
 
-        this.props.products.forEach(function(product) {
-            rows.push({payload: product.productId, text: product.title, data: product.isbn13})
-        }.bind(this))
+  render: function() {
+    var rows = []
 
-        return (
-            <div>
-                <Menu menuItems={rows} onItemClick={this._onItemClick}/>
-            </div>
-        );
-    },
+    this.props.products.forEach(function(product) {
+      rows.push({payload: product.productId, text: product.title, data: product.isbn13})
+    })
 
-    _onItemClick(e, key, menuItem) {
-        let { router } = this.context
-        router.transitionTo('product', { productId: menuItem.payload})
-    }
+    return (
+      <KeyBindings keyMap={{
+        "esc": (e) => {
+          e.preventDefault()
+          app.trigger("clearText")
+        }
+      }}>
+        <div>
+          <Menu menuItems={rows} onItemClick={this._onItemClick}/>
+        </div>
+      </KeyBindings>
+    )
+  }
 })
 
 

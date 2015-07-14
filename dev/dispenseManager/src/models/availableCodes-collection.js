@@ -1,14 +1,14 @@
-import AmpCollection from './apiPointer.js'
-import availableCodes from './availableCodes'
+import AmpCollection from "./apiPointer.js"
+import availableCodes from "./availableCodes"
 
 module.exports = AmpCollection.extend({
 
-    location: 'availableCodes-collection',
+  location: "availableCodes-collection",
 
-    initialize() {
-        AmpCollection.prototype.initialize.call(this)
-    },
+  initialize() {
+    AmpCollection.prototype.initialize.call(this)
+  },
 
-    model: availableCodes
+  model: availableCodes
 
 })
