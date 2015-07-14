@@ -12,18 +12,18 @@ import FilterableProductTable from "../composite/filterableProductTable.js"
 
 let MainSearch = React.createClass({
 
-    contextTypes: {
-        router: React.PropTypes.func
-    },
+  contextTypes: {
+    router: React.PropTypes.func
+  },
 
-    render() {
-        return (
-            <div>
-                <FilterableProductTable products={app.products}/>
-                <RouteHandler {...this.props}/>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <FilterableProductTable products={app.products}/>
+        <RouteHandler {...this.props}/>
+      </div>
+    )
+  }
 
 })
 

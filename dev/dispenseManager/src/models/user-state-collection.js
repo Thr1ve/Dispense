@@ -5,11 +5,11 @@ import userState from "./user-state"
 
 module.exports = AmpCollection.extend({
 
-    model: userState,
+  model: userState,
 
-    location: "user-state",
+  location: "user-state",
 
-    initialize() {
-        AmpCollection.prototype.initialize.call(this)
-    }
+  initialize() {
+    AmpCollection.prototype.initialize.call(this)
+  }
 })

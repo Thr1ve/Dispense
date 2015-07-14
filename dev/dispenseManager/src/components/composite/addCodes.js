@@ -39,19 +39,18 @@ let AddCodes = React.createClass({
     let self = this
     let addCodesRequest = new AddCodesRequest()
     addCodesRequest.save({
-        "productId": this.props.productId,
-        "codes": self.state.formattedCodes
-    },
-     {
-        wait: true,
-        isNew: true,
-        success: function() {
-            self.notifySuccess()
-        },
-        error: function(model, response) {
-            self.notifyError()
-            console.log("error...", model, response)
-        }
+      "productId": this.props.productId,
+      "codes": self.state.formattedCodes
+    }, {
+      wait: true,
+      isNew: true,
+      success: function() {
+        self.notifySuccess()
+      },
+      error: function(model, response) {
+        self.notifyError()
+        console.log("error...", model, response)
+      }
     })
   },
 
@@ -67,7 +66,6 @@ let AddCodes = React.createClass({
     let { isbn13, title } = this.props.product
     return (
       <div>
-
         <Paper zDepth={2} style={{width: "95%", marginRight: "auto", marginLeft: "auto"}}>
           <h2 className="mui-font-style-headline" style={{textAlign: "center", padding: 5}}>Add Codes for: {title}</h2>
           <h4 style={{textAlign: "center"}}>{isbn13}</h4>

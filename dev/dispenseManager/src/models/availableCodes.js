@@ -2,23 +2,21 @@ import AmpersandModel from "ampersand-model"
 
 module.exports = AmpersandModel.extend({
 
-    props: {
+  props: {
+    productId: "any",
+    code: "string"
+  },
 
-        productId: "any",
-        code: "string"
+  session: {
 
-    },
+  },
 
-    session: {
+  derived: {
+    id() {
+      return this.productId
+    }
+  },
 
-    },
-
-    derived: {
-        id() {
-            return this.productId
-        }
-    },
-
-    url: "http://localhost:3000/api/availableCodes"
+  url: "http://localhost:3000/api/availableCodes"
 
 })

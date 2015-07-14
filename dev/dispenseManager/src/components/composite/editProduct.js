@@ -8,26 +8,25 @@ let { Paper, Snackbar } = Mui
 
 let EditProduct = React.createClass({
 
-    success() {
-        this.refs.snackbar.show()
-    },
+  success() {
+    this.refs.snackbar.show()
+  },
 
-    render() {
-        let { isbn13, title } = this.props.product
-        return (
-            <div>
-                <Paper zDepth={2} style={{width: "95%", marginRight: "auto", marginLeft: "auto"}}>
-                    <h2 className="mui-font-style-headline" style={{textAlign: "center"}}>Edit: {title}</h2>
-                    <h4 style={{textAlign: "center"}}>{isbn13}</h4>
-                </Paper>
-                <EditProductForm {...this.props} success={this.success} />
-                <Snackbar
-                  ref="snackbar"
-                  message="Edit Successful"/>
-            </div>
-        )
-    }
-
+  render() {
+    let { isbn13, title } = this.props.product
+    return (
+      <div>
+        <Paper zDepth={2} style={{width: "95%", marginRight: "auto", marginLeft: "auto"}}>
+          <h2 className="mui-font-style-headline" style={{textAlign: "center"}}>Edit: {title}</h2>
+          <h4 style={{textAlign: "center"}}>{isbn13}</h4>
+        </Paper>
+        <EditProductForm {...this.props} success={this.success} />
+        <Snackbar
+          ref="snackbar"
+          message="Edit Successful"/>
+      </div>
+    )
+  }
 })
 
 module.exports = EditProduct

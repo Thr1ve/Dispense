@@ -5,11 +5,11 @@ import contact from "./contact.js"
 
 module.exports = AmpCollection.extend({
 
-    model: contact,
+  model: contact,
 
-    location: "contacts",
+  location: "contacts",
 
-    initialize() {
-        AmpCollection.prototype.initialize.call(this)
-    }
+  initialize() {
+    AmpCollection.prototype.initialize.call(this)
+  }
 })

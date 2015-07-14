@@ -6,11 +6,11 @@ import usedCode from "./usedCode"
 
 module.exports = AmpCollection.extend({
 
-    model: usedCode,
+  model: usedCode,
 
-    location: "usedCode-collection",
+  location: "usedCode-collection",
 
-    initialize() {
-        AmpCollection.prototype.initialize.call(this)
-    }
+  initialize() {
+    AmpCollection.prototype.initialize.call(this)
+  }
 })
