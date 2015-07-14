@@ -102,7 +102,9 @@ var build = {
 
 dataSource.discoverModelDefinitions(function(error, models){
   if(error){console.log(error)}
+
   var products = build.products(models)
+
   testMigrated.automigrate("product", function(err) {
     if (err) {throw err}
     products.forEach(function(val) {

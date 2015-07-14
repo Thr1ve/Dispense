@@ -1,9 +1,17 @@
+// isInteger polyfill
+Number.isInteger = Number.isInteger || function(value) {
+    return typeof value === "number" &&
+           isFinite(value) &&
+           Math.floor(value) === value
+}
+
 var loopback = require("loopback")
 var server = require("../server")
-var testMigrated = server.dataSources.mydb
+var DispenseDB = server.dataSources.mydb
 
-// console.log(process.argv[2]);
-var overwrite = process.argv[2] === '--overwrite' ? true : false
+// add switch to overwite current data ?
+// console.log(process.argv[2])
+// var overwrite = process.argv[2] === '--overwrite' ? true : false
 // console.log('overwrite:', overwrite)
 
 // replace this with regcodes server details for production
@@ -17,7 +25,6 @@ var dataSource = loopback.createDataSource("mssql", {
 })
 
 var check = {
-
   ifRegCodes: function(string){
     if(string.match(/.*(_RegCodes)/gi)){
       return true
@@ -38,19 +45,27 @@ var check = {
 }
 
 var build = {
-  regCodes: function(product){
-    var table = product.title + "_RegCodes"
-    var query = "select * from " + table
-    var count = "select COUNT(*) from " + table
-
-    dataSource.connector.query( count, function(err, data){
+  // this may be overkill...
+  regCodes: function(product, oldTable, nCodes){
+    var table = oldTable && !Number.isInteger(oldTable) ? oldTable : product.oldTable
+    var selectQuery = "select * from " + table
+    var countQuery = "select COUNT(*) from " + table
+    dataSource.connector.query( countQuery, function(err, data){
       if(err) {console.log(err)}
-      // data[0][''] is the number codes we have total
-      var count = data[0]['']
-      // take 10%, but don't take more than 100
-      var toTake = count > 1000 ? 100 : Math.round(count * .1)
-
-      dataSource.connector.query(query, function(err2, data2){
+      // data[0][""] is the number codes we have total
+      var remainingCodes = data[0][""]
+      var toTake
+      if(!nCodes){
+        toTake = Number.isInteger(oldTable) ?
+          (oldTable > remainingCodes ? remainingCodes : oldTable) :
+          (remainingCodes > 1000 ? 100 : Math.round(remainingCodes * .1))
+      }
+      else{
+        toTake = Number.isInteger(nCodes) ?
+          (nCodes > remainingCodes ? remainingCodes : nCodes ) :
+          (remainingCodes > 1000 ? 100 : Math.round(remainingCodes * .1))
+      }
+      dataSource.connector.query(selectQuery, function(err2, data2){
         if(err2) {console.log(err2)}
         // make sure there are actually codes
         if(data2.length > 0){
@@ -59,19 +74,19 @@ var build = {
           sliced.forEach(function(code){
             // make sure regcodes isn't blank...
             if(code.regcodes.length > 0){
-              var deleteQuery = "DELETE FROM " + table + " WHERE regcodes='" + code.regcodes + "'"
+              // var deleteQuery = "DELETE FROM " + table + " WHERE regcodes='" + code.regcodes + "'"
               // uncomment below when ready to actually delete codes
               // delete the codes we took
               // dataSource.connector.query(deleteQuery, function(err3, data3){
-              //   if(err3) {console.log("error", err3);}
+              //   if(err3) {console.log("error", err3)}
               // })
-              testMigrated.models.availableCodes.create([
+              DispenseDB.models.availableCodes.create([
                 {
                   productId: product.id,
                   code: code.regcodes
                 }
-                ], function(err2) {
-                  if (err2) {console.log(product, err2)}
+                ], function(err3) {
+                  if (err2) {console.log(product, err3)}
                 }
               )
             }
@@ -88,7 +103,7 @@ var build = {
       if(error) {console.log(error)}
       data.forEach(function(val) {
         var fixedDate = new Date(val.TimeStamp).toDateString()
-        testMigrated.models.usedCode.create([{
+        DispenseDB.models.usedCode.create([{
           productId: product.id,
           chatOrTicket: val.TicketNumber,
           customerEmail: val.StudentEmail,
@@ -105,24 +120,24 @@ var build = {
   },
 
   products: function(models){
-    // NOTE: This sort is NOT reliable. You will get slightly different results each time
+    // NOTE: This sort is NOT reliable. You will get slightly different results each time; this is ONLY used to give some semblance of alphabetical order
     var productsCollection = models.sort(function (a, b) {
       if (a.name > b.name) {
-        return 1;
+        return 1
       }
       if (a.name < b.name) {
-        return -1;
+        return -1
       }
-      // a must be equal to b
       return 0
     })
     .reduce(function(prev, val){
       if(check.ifRegCodes(val.name)){
-        var id = prev.length
+        var id = prev.length + 1
         var title = val.name.replace(/(_RegCodes)/gi, "")
         prev.push({
           id: id,
-          title: title
+          title: title,
+          oldTable: val.name
         })
         return prev
       }
@@ -138,34 +153,35 @@ var build = {
 dataSource.discoverModelDefinitions(function(error, models){
   if(error){console.log(error)}
   var products = build.products(models)
-  testMigrated.automigrate("product", function(err) {
+  DispenseDB.automigrate("product", function(err) {
     if (err) {throw err}
     products.forEach(function(val) {
-      testMigrated.models.product.create([{
+      DispenseDB.models.product.create([{
         productId: val.id,
-        title: val.title
+        title: val.title,
+        oldTable: val.oldTable
       }], function(err2) {
         if (err2) {throw err2}
       })
     })
-    console.log("Product Models created!")
+    console.log("Creating Product Models...")
   })
 
-  testMigrated.automigrate("availableCodes", function(err) {
+  DispenseDB.automigrate("availableCodes", function(err) {
     if (!err) {
       products.forEach( function (product){
         build.regCodes(product)
       })
-      console.log("Available Codes cloned")
+      console.log("Cloning Available Codes...")
     }
   })
 
-  testMigrated.automigrate("usedCode", function(err) {
+  DispenseDB.automigrate("usedCode", function(err) {
     if (!err) {
       products.forEach( function (product){
         build.usedCodes(product)
       })
-      console.log("Used Codes cloned")
+      console.log("Cloning Used Codes...")
     }
   })
 
