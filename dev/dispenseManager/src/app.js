@@ -38,7 +38,6 @@ import app from "ampersand-app"
 import AppRoutes from "./appRoutes.js"
 
 // Models **********
-import User from "./models/user-state"
 import Products from "./models/products"
 import Contacts from "./models/contacts"
 import Code from "./models/usedCode-collection"
@@ -49,7 +48,6 @@ window.app = app.extend({
     // let allowed = window.prompt("")
     // if(allowed==="admin"){
 
-        this.user = new User()
         this.products = new Products()
         this.contacts = new Contacts()
         this.newCode = new Code()
