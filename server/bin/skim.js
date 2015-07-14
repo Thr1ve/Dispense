@@ -17,8 +17,8 @@ var program = require("commander")
 
 // replace this with regcodes server details for production
 var dataSource = loopback.createDataSource("mssql", {
- "host": "10.8.2.114",
-  // "host": "localhost",
+ // "host": "10.8.2.114",
+  "host": "localhost",
   "port": 1433,
   "database": "RegCodes",
   "password": "loopback",
