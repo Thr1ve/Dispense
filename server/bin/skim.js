@@ -1,3 +1,5 @@
+#!/Usr/bin/env node
+
 // isInteger polyfill
 Number.isInteger = Number.isInteger || function(value) {
     return typeof value === "number" &&
@@ -9,6 +11,27 @@ var loopback = require("loopback")
 var server = require("../server")
 var DispenseDB = server.dataSources.mydb
 var program = require("commander")
+
+program
+  .command("setProducts")
+  .description("Get products from OldDB tables - WARNING: this will drop and reset tables. Products will be ordered differently.")
+  .action(function(env, options){
+    setProducts()
+  })
+
+program
+  .command("pullAvailable")
+  .description("Pull available codes from old site. Defaults to pull 10% of codes from each product")
+  .action(function(env, options){
+    pullAvailable()
+  })
+
+program
+  .command("pullUsed")
+  .description("Pull all used codes from old site")
+  .action(function(env, options){
+    pullUsed()
+  })
 
 // add switch to overwite current data ?
 // console.log(process.argv[2])
@@ -151,62 +174,54 @@ var build = {
   }
 }
 
-program
-  .command("log")
-  .description("log 'hello world' to console")
-  .action(function(env, options){
-    console.log("hello world")
-  })
-
-  .command("setProducts")
-  .description("Get products from OldDB tables - WARNING: this will drop and reset tables. Products will be ordered differently.")
-  .action(function(env, options){
-    console.log("SHOULD NOT HAVE DONE THAT")
-  })
-
-  .command("run")
-  .description("do all the things")
-  .action(function(env, options){
-    dataSource.discoverModelDefinitions(function(error, models){
-      if(error){console.log(error)}
-      var products = build.products(models)
-      DispenseDB.automigrate("product", function(err) {
-        if (err) {throw err}
-        products.forEach(function(val) {
-          DispenseDB.models.product.create([{
-            productId: val.id,
-            title: val.title,
-            oldTable: val.oldTable
-          }], function(err2) {
-            if (err2) {throw err2}
-          })
+function setProducts(){
+  // WARNING: this will reset products. They will not be in the same order. ONLY use this to initialize
+  dataSource.discoverModelDefinitions(function(error, models){
+    if(error){console.log(error)}
+    var products = build.products(models)
+    DispenseDB.automigrate("product", function(err) {
+      if (err) {throw err}
+      products.forEach(function(val) {
+        DispenseDB.models.product.create([{
+          productId: val.id,
+          title: val.title,
+          oldTable: val.oldTable
+        }], function(err2) {
+          if (err2) {throw err2}
         })
-        console.log("Creating Product Models...")
       })
-
-      DispenseDB.automigrate("availableCodes", function(err) {
-        if (!err) {
-          products.forEach( function (product){
-            build.regCodes(product)
-          })
-          console.log("Cloning Available Codes...")
-        }
-      })
-
-      // DispenseDB.automigrate("usedCode", function(err) {
-      //   if (!err) {
-      //     products.forEach( function (product){
-      //       build.usedCodes(product)
-      //     })
-      //     console.log("Cloning Used Codes...")
-      //   }
-      // })
-
-      // dataSource.disconnect()
-
+      console.log("Creating Product Models...")
     })
   })
+}
 
+function pullAvailable(){
+  DispenseDB.models.product.find(function(err, products){
+    if(err) {console.log(err)}
+    DispenseDB.automigrate("availableCodes", function(err) {
+      if (!err) {
+        products.forEach( function (product){
+          build.regCodes(product)
+        })
+        console.log("Cloning Available Codes...")
+      }
+    })
+  })
+}
 
+function pullUsed(){
+  DispenseDB.models.product.find(function(err, products){
+    if(err) {console.log(err)}
+    DispenseDB.automigrate("usedCode", function(err) {
+      if (!err) {
+        products.forEach( function (product){
+          build.usedCodes(product)
+        })
+        console.log("Cloning Used Codes...")
+      }
+    })
+  })
+}
 
+    // dataSource.disconnect()
 program.parse(process.argv)

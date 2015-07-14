@@ -6,7 +6,7 @@
   "mydb": {
     "name": "mydb",
     "connector": "postgresql",
-    "host": "postgresql",
+    "host": "10.200.32.122",
     "port": 5432,
     "database": "dispense_db",
     "user": "gitlab",
