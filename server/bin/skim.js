@@ -8,16 +8,17 @@ Number.isInteger = Number.isInteger || function(value) {
 var loopback = require("loopback")
 var server = require("../server")
 var DispenseDB = server.dataSources.mydb
+var program = require("commander")
 
 // add switch to overwite current data ?
 // console.log(process.argv[2])
-// var overwrite = process.argv[2] === '--overwrite' ? true : false
-// console.log('overwrite:', overwrite)
+// var overwrite = process.argv[2] === "--overwrite" ? true : false
+// console.log("overwrite:", overwrite)
 
 // replace this with regcodes server details for production
 var dataSource = loopback.createDataSource("mssql", {
- // "host": "10.8.2.114",
-  "host": "localhost",
+ "host": "10.8.2.114",
+  // "host": "localhost",
   "port": 1433,
   "database": "RegCodes",
   "password": "loopback",
@@ -72,9 +73,9 @@ var build = {
           // take a chunk of codes
           var sliced = data2.slice(0, toTake)
           sliced.forEach(function(code){
-            // make sure regcodes isn't blank...
+            // make sure regcodes isn"t blank...
             if(code.regcodes.length > 0){
-              // var deleteQuery = "DELETE FROM " + table + " WHERE regcodes='" + code.regcodes + "'"
+              // var deleteQuery = "DELETE FROM " + table + " WHERE regcodes="" + code.regcodes + """
               // uncomment below when ready to actually delete codes
               // delete the codes we took
               // dataSource.connector.query(deleteQuery, function(err3, data3){
@@ -150,41 +151,62 @@ var build = {
   }
 }
 
-dataSource.discoverModelDefinitions(function(error, models){
-  if(error){console.log(error)}
-  var products = build.products(models)
-  DispenseDB.automigrate("product", function(err) {
-    if (err) {throw err}
-    products.forEach(function(val) {
-      DispenseDB.models.product.create([{
-        productId: val.id,
-        title: val.title,
-        oldTable: val.oldTable
-      }], function(err2) {
-        if (err2) {throw err2}
+program
+  .command("log")
+  .description("log 'hello world' to console")
+  .action(function(env, options){
+    console.log("hello world")
+  })
+
+  .command("setProducts")
+  .description("Get products from OldDB tables - WARNING: this will drop and reset tables. Products will be ordered differently.")
+  .action(function(env, options){
+    console.log("SHOULD NOT HAVE DONE THAT")
+  })
+
+  .command("run")
+  .description("do all the things")
+  .action(function(env, options){
+    dataSource.discoverModelDefinitions(function(error, models){
+      if(error){console.log(error)}
+      var products = build.products(models)
+      DispenseDB.automigrate("product", function(err) {
+        if (err) {throw err}
+        products.forEach(function(val) {
+          DispenseDB.models.product.create([{
+            productId: val.id,
+            title: val.title,
+            oldTable: val.oldTable
+          }], function(err2) {
+            if (err2) {throw err2}
+          })
+        })
+        console.log("Creating Product Models...")
       })
+
+      DispenseDB.automigrate("availableCodes", function(err) {
+        if (!err) {
+          products.forEach( function (product){
+            build.regCodes(product)
+          })
+          console.log("Cloning Available Codes...")
+        }
+      })
+
+      // DispenseDB.automigrate("usedCode", function(err) {
+      //   if (!err) {
+      //     products.forEach( function (product){
+      //       build.usedCodes(product)
+      //     })
+      //     console.log("Cloning Used Codes...")
+      //   }
+      // })
+
+      // dataSource.disconnect()
+
     })
-    console.log("Creating Product Models...")
   })
 
-  DispenseDB.automigrate("availableCodes", function(err) {
-    if (!err) {
-      products.forEach( function (product){
-        build.regCodes(product)
-      })
-      console.log("Cloning Available Codes...")
-    }
-  })
 
-  DispenseDB.automigrate("usedCode", function(err) {
-    if (!err) {
-      products.forEach( function (product){
-        build.usedCodes(product)
-      })
-      console.log("Cloning Used Codes...")
-    }
-  })
 
-  // dataSource.disconnect()
-
-})
+program.parse(process.argv)
