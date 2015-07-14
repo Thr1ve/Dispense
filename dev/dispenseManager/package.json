@@ -32,6 +32,8 @@
     "react-breadcrumbs": "^0.13.5",
     "react-hot-loader": "^1.2.4",
     "react-router": "^0.13.3",
+    "react-side-effect": "^0.3.0",
+    "react-side-effect-mousetrap": "thr1ve/react-side-effect-mousetrap",
     "react-tap-event-plugin": "^0.1.6",
     "slugger": "^1.0.0",
     "standard": "^3.3.0",
