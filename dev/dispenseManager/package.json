@@ -27,6 +27,7 @@
     "lodash.result": "^3.0.0",
     "material-ui": "^0.8.0",
     "milliseconds": "^1.0.3",
+    "mousetrap": "^1.5.3",
     "qs": "^2.4.1",
     "react": "^0.13.2",
     "react-breadcrumbs": "^0.13.5",
