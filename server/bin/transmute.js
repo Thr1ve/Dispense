@@ -127,6 +127,7 @@ var utilities = {
       if(error) {console.log(error)}
       data.forEach(function(val) {
         var fixedDate = new Date(val.TimeStamp).toDateString()
+        var checkedCode = val.RegCode || "none"
         DispenseDB.models.usedCode.create([{
           productId: product.id,
           chatOrTicket: val.TicketNumber,
@@ -134,7 +135,7 @@ var utilities = {
           customerName: val.StudentName,
           representative: val.TechName,
           universityOrBusiness: val.UnivName,
-          code: val.RegCode,
+          code: checkedCode,
           date: fixedDate
         }], function(err2) {
           if (err2) {throw err2}
