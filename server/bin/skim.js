@@ -13,7 +13,7 @@ var DispenseDB = server.dataSources.mydb
 var program = require("commander")
 
 
-// add switch to overwite current data ?
+// add switch to overwrite current data ?
 // console.log(process.argv[2])
 // var overwrite = process.argv[2] === "--overwrite" ? true : false
 // console.log("overwrite:", overwrite)
@@ -62,29 +62,34 @@ var utilities = {
 
   /**
    * Needs to be slightly refactored...it will find available codes for a given product and, by default, move 10% of them to the new database
-   @param {Object} product a product object as produced by products function
-   @param {String} oldTable the specific name of the table for the product in the old database
-   @param {number} nCodes the number of codes you would like to move
+   @param {object} product a product object as produced by products function
+   @param {number} nCodes the specific name of the table for the product in the old database
+   @param {boolean} all whether or not to pull all the codes
    */
-  moveCodes: function(product, oldTable, nCodes){
-  // this may be overkill...
-    var table = oldTable && !Number.isInteger(oldTable) ? oldTable : product.oldTable
-    var selectQuery = "select * from " + table
-    var countQuery = "select COUNT(*) from " + table
+  moveCodes: function(product, nCodes, all){
+    var oldTable = product.oldTable
+    var selectQuery = "select * from " + oldTable
+    var countQuery = "select COUNT(*) from " + oldTable
+
+    var nAll = all ? true : false
+    var n = nAll ? nAll : nCodes
+
     OldDb.connector.query( countQuery, function(err, data){
       if(err) {console.log(err)}
       // data[0][""] is the number codes we have total
       var remainingCodes = data[0][""]
       var toTake
-      if(!nCodes){
-        toTake = Number.isInteger(oldTable) ?
-          (oldTable > remainingCodes ? remainingCodes : oldTable) :
-          (remainingCodes > 1000 ? 100 : Math.round(remainingCodes * .1))
+      if (nAll){
+        // if all is true, take all the codes
+        toTake = remainingCodes
       }
-      else{
-        toTake = Number.isInteger(nCodes) ?
-          (nCodes > remainingCodes ? remainingCodes : nCodes ) :
-          (remainingCodes > 1000 ? 100 : Math.round(remainingCodes * .1))
+      else if(Number.isInteger(n)){
+        // if we asked for more codes than are available, just give us the remaining codes
+        toTake = n > remainingCodes ? remainingCodes : n
+      }
+      else {
+        // if we didn't specify anything, then give us 10% or just 100 if there's more than 1000 codes available
+        toTake = remainingCodes > 1000 ? 100 : Math.round(remainingCodes * .1)
       }
       OldDb.connector.query(selectQuery, function(err2, data2){
         if(err2) {console.log(err2)}
@@ -95,7 +100,7 @@ var utilities = {
           sliced.forEach(function(code){
             // make sure regcodes isn"t blank...
             if(code.regcodes.length > 0){
-              // var deleteQuery = "DELETE FROM " + table + " WHERE regcodes="" + code.regcodes + """
+              // var deleteQuery = "DELETE FROM " + oldTable + " WHERE regcodes="" + code.regcodes + """
               // uncomment below when ready to actually delete codes
               // delete the codes we took
               // OldDb.connector.query(deleteQuery, function(err3, data3){
@@ -226,20 +231,35 @@ function initProducts(){
 }
 
 /**
- * This will delete existing codes and pull new ones
+ * Pull available codes from old database. Can optionally overwrite existing codes in new database with those pulled from old database
+ * @param {bool} overWrite whether or not to overwrite existing codes
  */
-function pullAvailableCodes(){
-  DispenseDB.models.product.find(function(err, products){
-    if(err) {console.log(err)}
-    DispenseDB.automigrate("availableCodes", function(err2) {
-      if (!err2) {
-        products.forEach( function (product){
-          utilities.regCodes(product)
-        })
-        console.log("Cloning Available Codes...")
-      }
+function pullAvailableCodes(overWrite, nCodes, all){
+  overWrite = overWrite || false
+  nCodes = false
+  all = false
+  if(!overWrite) {
+    DispenseDB.models.product.find(function(err, products){
+      if(err) {console.log(err)}
+      products.forEach( function (product){
+        utilities.moveCodes(product, nCodes, all)
+      })
+      console.log("Finding more codes to join the party...")
     })
-  })
+  }
+  else {
+    DispenseDB.models.product.find(function(err, products){
+      if(err) {console.log(err)}
+      DispenseDB.automigrate("availableCodes", function(err2) {
+        if (!err2) {
+          products.forEach( function (product){
+            utilities.moveCodes(product, nCodes, all)
+          })
+          console.log("Pillaging Old Available Codes...")
+        }
+      })
+    })
+  }
 }
 
 /**
@@ -268,9 +288,18 @@ program
 
 program
   .command("pullAvailableCodes")
+  .option("-o, --overwrite", "overwrites existing codes")
   .description("Pull available codes from old database. Defaults to pull 10% of codes from each product")
-  .action(function(){
-    pullAvailableCodes()
+  .action(function(options){
+    // TODO: add options for nCodes and all
+    if(options.overwrite){
+      console.log("I sure hope there weren't any codes in there...I wouldn't want their families to start hunting you down...")
+      pullAvailableCodes(true)
+    }
+    else{
+      console.log("Thank you for not deleting my codes.")
+      pullAvailableCodes(false)
+    }
   })
 
 program
