@@ -273,6 +273,20 @@ function pullUsedCodes(){
   })
 }
 
+function dropAll(){
+  DispenseDB.automigrate(["usedCode", "availableCode", "product"], function(err){
+    if(err) { console.log(err)}
+    console.log("usedCodes, availableCodes, and products wiped...I hope that was worth it...")
+  })
+}
+
+program
+  .command("dropAll")
+  .description("Wipe usedCodes, availableCodes, and products")
+  .action(function(){
+    dropAll()
+  })
+
 program
   .command("initProducts")
   .description("Get products from OldDb tables - WARNING: this will drop and reset tables. Products will be ordered differently. This means codes will be tied to incorrect products if they already exist. Good luck sorting things out if you use this incorrectly...")
