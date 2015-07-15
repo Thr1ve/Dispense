@@ -12,12 +12,6 @@ var server = require("../server")
 var DispenseDB = server.dataSources.mydb
 var program = require("commander")
 
-
-// add switch to overwrite current data ?
-// console.log(process.argv[2])
-// var overwrite = process.argv[2] === "--overwrite" ? true : false
-// console.log("overwrite:", overwrite)
-
 // replace this with regcodes server details for production
 var OldDb = loopback.createDataSource("mssql", {
  // "host": "10.8.2.114",
