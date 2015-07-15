@@ -13,14 +13,14 @@ var DispenseDB = server.dataSources.mydb
 var program = require("commander")
 
 // replace this with regcodes server details for production
-var OldDb = loopback.createDataSource("mssql", {
- // "host": "10.8.2.114",
-  "host": "localhost",
-  "port": 1433,
-  "database": "RegCodes",
-  "password": "loopback",
-  "user": "loopback"
-})
+// var OldDb = loopback.createDataSource("mssql", {
+//  // "host": "10.8.2.114",
+//   "host": "localhost",
+//   "port": 1433,
+//   "database": "RegCodes",
+//   "password": "loopback",
+//   "user": "loopback"
+// })
 
 /**
 * utilities for other functions
@@ -52,6 +52,23 @@ var utilities = {
     else{
       return false
     }
+  },
+
+  /**
+  * Show the remaining codes for a product in the old database
+  *
+  * @param {object} product a product object
+  */
+  countCodes: function(product){
+    var oldTable = product.oldTable
+    var countQuery = "select COUNT(*) from " + oldTable
+
+    OldDb.connector.query( countQuery, function(err, data){
+      if(err) {console.log(err)}
+      // data[0][""] is the number codes we have total
+      var remainingCodes = data[0][""]
+      console.log(oldTable + " has " + remainingCodes + " codes left")
+    })
   },
 
   /**
@@ -94,12 +111,11 @@ var utilities = {
           sliced.forEach(function(code){
             // make sure regcodes isn"t blank...
             if(code.regcodes.length > 0){
-              // var deleteQuery = "DELETE FROM " + oldTable + " WHERE regcodes="" + code.regcodes + """
-              // uncomment below when ready to actually delete codes
+              var deleteQuery = "DELETE FROM " + oldTable + " WHERE regcodes='" + code.regcodes + "'"
               // delete the codes we took
-              // OldDb.connector.query(deleteQuery, function(err3, data3){
-              //   if(err3) {console.log("error", err3)}
-              // })
+              OldDb.connector.query(deleteQuery, function(err3, data3){
+                if(err3) {console.log("error", err3)}
+              })
               DispenseDB.models.availableCodes.create([
                 {
                   productId: product.id,
@@ -170,6 +186,7 @@ var utilities = {
   getProducts: function(models){
     // NOTE: This sort is NOT reliable. You will get slightly different results each time; this sort is ONLY used to give some semblance of alphabetical order
     // TODO: make this give back isbn13 as well
+    var self = this
     var productsCollection = models.sort(function (a, b) {
       if (a.name > b.name) {
         return 1
@@ -180,7 +197,7 @@ var utilities = {
       return 0
     })
     .reduce(function(prev, val){
-      if(this.ifRegCodes(val.name)){
+      if(self.ifRegCodes(val.name)){
         var id = prev.length + 1
         var title = val.name.replace(/(_RegCodes)/gi, "")
         prev.push({
@@ -275,11 +292,64 @@ function pullUsedCodes(){
 }
 
 function dropAll(){
-  DispenseDB.automigrate(["usedCode", "availableCode", "product"], function(err){
+  DispenseDB.automigrate("availableCodes", function(err){
     if(err) { console.log(err)}
-    console.log("usedCodes, availableCodes, and products wiped...I hope that was worth it...")
+    console.log("availableCodes wiped...")
+  })
+  DispenseDB.automigrate("product", function(err){
+    if(err) { console.log(err)}
+    console.log("products wiped...")
+  })
+  DispenseDB.automigrate("contact", function(err){
+    if(err) { console.log(err)}
+    console.log("contacts wiped...")
+  })
+  DispenseDB.automigrate("usedCode", function(err){
+    if(err) { console.log(err)}
+    console.log("usedCodes wiped...")
   })
 }
+
+function resetContacts() {
+  DispenseDB.automigrate("contact", function(err) {
+      if (err) {throw err}
+      var date = new Date(0)
+    DispenseDB.models.product.find(function(err, products){
+      if(err) {console.log(err)}
+      products.forEach(function(product) {
+        DispenseDB.models.contact.create([{
+          productId: product.productId,
+          mainEmail: "test@test.com",
+          cc: "",
+          lastEmailed: date
+        }], function(err2) {
+          if (err2) {throw err2}
+        })
+      })
+    })
+      console.log("Contact Models created!")
+  })
+}
+
+program
+  .command("count")
+  .description("Show the remaining codes for each product")
+  .action(function(){
+    DispenseDB.models.product.find(function(err, products){
+      if(err) {console.log(err)}
+      products.forEach( function (product){
+        utilities.countCodes(product)
+      })
+    })
+  })
+
+
+program
+  .command("resetContacts")
+  .description("Reset/create the contacts for all products")
+  .action(function(){
+    resetContacts()
+  })
 
 program
   .command("dropAll")
