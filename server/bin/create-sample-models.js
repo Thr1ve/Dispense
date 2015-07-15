@@ -3,9 +3,10 @@ var contactsJSON = require("../testData/contacts.json")
 var testUsedCodesJSON = require("../testData/testUsedCodes.json")
 var testAvailableCodesJSON = require("../testData/testAvailableCodes.json")
 
+var app = require("../server")
 // var _ = require("underscore")
 
-module.exports = function(app) {
+// module.exports = function(app) {
   app.dataSources.mydb.automigrate("product", function(err) {
     if (err) {throw err}
     productsJSON.products.forEach(function(val) {
@@ -73,7 +74,7 @@ module.exports = function(app) {
       console.log("usedCode table created")
     }
   })
-}
+// }
 
 /*
 template for random JSON generation at
