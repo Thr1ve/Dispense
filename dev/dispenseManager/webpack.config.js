@@ -2,7 +2,7 @@
 require("babel/register")
 var webpackConfig = require("hjs-webpack")
 var env = process.env.NODE_ENV || "development"
-var location = process.env.LOCATION || "qa"
+var location = process.env.LOCATION || "web"
 
 var environmentVariables = require("../env.js")
 
