@@ -10,12 +10,13 @@ let EditProductForm = React.createClass({
 
   getInitialState() {
     let { productId, title, isbn13 } = this.props.product
-    let { contact } = this.props
+    let { mainEmail, cc } = this.props.contact
     return {
       productId: productId,
       title: title,
       isbn13: isbn13,
-      contact: contact
+      mainEmail: mainEmail,
+      cc: cc
     }
   },
 
@@ -30,14 +31,16 @@ let EditProductForm = React.createClass({
     let self = this
     let title = this.refs.title.getValue()
     let isbn13 = this.refs.isbn13.getValue()
-    let contact = this.refs.contact.getValue()
+    let mainEmail = this.refs.mainEmail.getValue()
+    let cc = this.refs.cc.getValue()
     let productData = {
       title: title,
       isbn13: isbn13
     }
 
     let contactData = {
-      mainEmail: contact
+      mainEmail: mainEmail,
+      cc: cc
     }
 
     self.props.product.save(productData, {
@@ -55,7 +58,7 @@ let EditProductForm = React.createClass({
 
   render() {
     let { title, isbn13 } = this.state
-    let contact = this.state.contact.mainEmail
+    let { mainEmail, cc } = this.state
 
     let textFieldStyle = {
         display: "block"
@@ -87,10 +90,19 @@ let EditProductForm = React.createClass({
           <div style={textFieldStyle}>
             <TextField
               type="text"
-              name="contact"
-              ref="contact"
-              floatingLabelText="Contact"
-              defaultValue={contact}
+              name="mainEmail"
+              ref="mainEmail"
+              floatingLabelText="Main Contact Email"
+              defaultValue={mainEmail}
+              onChange={this.handleChange}/>
+          </div>
+          <div style={textFieldStyle}>
+            <TextField
+              type="text"
+              name="cc"
+              ref="cc"
+              floatingLabelText="CC Emails"
+              defaultValue={cc}
               onChange={this.handleChange}/>
           </div>
           <FlatButton label="Submit"/>
