@@ -13,14 +13,14 @@ var DispenseDB = server.dataSources.mydb
 var program = require("commander")
 
 // replace this with regcodes server details for production
-// var OldDb = loopback.createDataSource("mssql", {
-//  // "host": "10.8.2.114",
-//   "host": "localhost",
-//   "port": 1433,
-//   "database": "RegCodes",
-//   "password": "loopback",
-//   "user": "loopback"
-// })
+var OldDb = loopback.createDataSource("mssql", {
+ // "host": "10.8.2.114",
+  "host": "localhost",
+  "port": 1433,
+  "database": "RegCodes",
+  "password": "loopback",
+  "user": "loopback"
+})
 
 /**
 * utilities for other functions

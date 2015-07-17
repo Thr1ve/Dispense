@@ -1,26 +1,26 @@
-let AmpCollection = require("./apiPointer.js")
-let usedCode = require("./usedCode")
+let AmpCollection = require('./apiPointer.js')
+let usedCode = require('./usedCode')
 
-//this holds the requests for codes that the user
-//has received
+// this holds the requests for codes that the user
+// has received
 
 /*
 
   {
-    "chatOrTicket": "",
-    "customerEmail": "",
-    "customerName": "",
-    "productId": 0,
-    "representative": "",
-    "universityOrBusiness": "",
-    "code": "",
-    "date": "",
+    'chatOrTicket': '",
+    'customerEmail': '",
+    'customerName': '",
+    'productId': 0,
+    'representative': '",
+    'universityOrBusiness': '",
+    'code': '",
+    'date': '",
   }
 
       filter: {
         where: query,
         limit: 50,
-        order: "date DESC"
+        order: 'date DESC'
       }
 */
 
@@ -28,17 +28,17 @@ module.exports = AmpCollection.extend({
 
   model: usedCode,
 
-  location: "usedCode-collection",
+  location: 'usedCode-collection',
 
-  byProduct(prodId) {
+  byProduct (prodId) {
 
     let query = {
       filter: {
-        "where": {
-          "productId": prodId
+        'where': {
+          'productId': prodId
         },
         limit: 50,
-        order: "date DESC"
+        order: 'date DESC'
       }
     }
     return query
@@ -59,7 +59,7 @@ module.exports = AmpCollection.extend({
     return query
   },
 
-  initialize() {
+  initialize () {
     AmpCollection.prototype.initialize.call(this)
   }
 })

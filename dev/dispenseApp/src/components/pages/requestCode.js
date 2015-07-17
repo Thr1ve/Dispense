@@ -1,7 +1,7 @@
-import React from "react"
-import RequestCodeForm from "../atomic/requestCodeForm.js"
-import app from "ampersand-app"
-import Mui from "material-ui"
+import React from 'react'
+import RequestCodeForm from '../atomic/requestCodeForm.js'
+import app from 'ampersand-app'
+import Mui from 'material-ui'
 
 let { Paper } = Mui
 
@@ -11,41 +11,41 @@ let requestCode = React.createClass({
     router: React.PropTypes.func
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
       data: {}
     }
   },
 
-  componentDidMount() {
+  componentDidMount () {
     var self = this
     console.log(this.context.router.getCurrentParams().productId)
     app.products.getOrFetch(this.context.router.getCurrentParams().productId,
       {all: true},
-      function(err, model){
-        if(err){
-          console.error("model not found", err)
+      function (err, model) {
+        if (err) {
+          console.error('model not found', err)
         }
         self.setState({data: model})
-    })
+      }
+    )
   },
 
-  render() {
+  render () {
     var title, isbn13
-    if(this.state.data){
+    if (this.state.data) {
       title = this.state.data.title
       isbn13 = this.state.data.isbn13
-    }
-    else{
-      console.log("this.state.data NOT FOUND")
-      title = " "
-      isbn13 = " "
+    } else {
+      console.log('this.state.data NOT FOUND')
+      title = ' '
+      isbn13 = ' '
     }
     return (
       <div>
-        <Paper zDepth={2} style={{width: "95%", marginRight: "auto", marginLeft: "auto"}}>
-          <h2 className="mui-font-style-headline" style={{textAlign: "center"}}>{title}</h2>
-          <h4 style={{textAlign: "center"}}>{isbn13}</h4>
+        <Paper zDepth={2} style={{width: '95%', marginRight: 'auto', marginLeft: 'auto'}}>
+          <h2 className='mui-font-style-headline' style={{textAlign: 'center'}}>{title}</h2>
+          <h4 style={{textAlign: 'center'}}>{isbn13}</h4>
         </Paper>
         <RequestCodeForm productId={this.context.router.getCurrentParams().productId} />
       </div>

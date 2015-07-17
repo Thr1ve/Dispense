@@ -1,7 +1,7 @@
-import React from "react"
-import Router from "react-router"
-import app from "ampersand-app"
-import FilterableProductTable from "../composite/filterableProductTable.js"
+import React from 'react'
+import Router from 'react-router'
+import app from 'ampersand-app'
+import FilterableProductTable from '../composite/filterableProductTable.js'
 
 let { RouteHandler } = Router
 
@@ -11,15 +11,15 @@ var MainSearch = React.createClass({
     router: React.PropTypes.func
   },
 
-  render() {
+  render () {
     return (
       <div>
         <header style={{
-          position: "fixed",
-          top: "0", left: "0",
-          width: "100%", height: "50px",
-          opacity: "0.8", backgroundColor: "white",
-          zIndex: "4" }} >
+          position: 'fixed',
+          top: '0', left: '0',
+          width: '100%', height: '50px',
+          opacity: '0.8', backgroundColor: 'white',
+          zIndex: '4' }} >
         </header>
         <div>
           <FilterableProductTable toggleNav={this.props.toggleNav} products={app.products}/>

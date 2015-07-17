@@ -1,7 +1,7 @@
-import React from "react"
-import app from "ampersand-app"
+import React from 'react'
+import app from 'ampersand-app'
 
-import Mui from "material-ui"
+import Mui from 'material-ui'
 var { TextField, FlatButton, Paper } = Mui
 
 var requestCodeForm = React.createClass({
@@ -10,24 +10,24 @@ var requestCodeForm = React.createClass({
     router: React.PropTypes.func
   },
 
-  getInitialState: function() {
+  getInitialState () {
     return {
       productId: this.props.productId,
-      customerName: "",
-      customerEmail: "",
-      universityOrBusiness: "",
-      representative: "",
-      chatOrTicket: ""
+      customerName: '',
+      customerEmail: '',
+      universityOrBusiness: '',
+      representative: '',
+      chatOrTicket: ''
     }
   },
 
-  handleChange: function(event) {
+  handleChange (event) {
     var newState = this.state
     newState[event.target.name] = event.target.value
     this.setState(newState)
   },
 
-  handleSubmit: function(e){
+  handleSubmit (e) {
     e.preventDefault()
     var { router } = this.context
     app.newCode.create({
@@ -39,21 +39,21 @@ var requestCodeForm = React.createClass({
       productId: this.props.productId
     }, {
       wait: true,
-      success: function(){
-        router.transitionTo("requestedCodes")
+      success () {
+        router.transitionTo('requestedCodes')
       }
     })
   },
 
-  render: function() {
+  render () {
 
     let textFieldStyle = {
-      display: "block"
+      display: 'block'
     }
 
     var formStyle = {
-      width: "40%",
-      padding: "20"
+      width: '40%',
+      padding: '20'
     }
 
     var customerName = this.state.customerName
@@ -63,55 +63,55 @@ var requestCodeForm = React.createClass({
     var chatOrTicket = this.state.chatOrTicket
 
     return (
-      <Paper zDepth={2} style={{width: "95%", marginTop: "30", marginRight: "auto", marginLeft: "auto"}}>
+      <Paper zDepth={2} style={{width: '95%', marginTop: '30', marginRight: 'auto', marginLeft: 'auto'}}>
         <form style={formStyle} onSubmit={this.handleSubmit}>
           <div style={textFieldStyle}>
             <TextField
-              type="text"
-              name="customerName"
-              ref="customerName"
-              floatingLabelText="Customer Name"
+              type='text'
+              name='customerName'
+              ref='customerName'
+              floatingLabelText='Customer Name'
               value={customerName}
               onChange={this.handleChange}/>
           </div>
           <div style={textFieldStyle}>
             <TextField style={textFieldStyle}
-              type="text"
-              name="customerEmail"
-              ref="customerEmail"
-              floatingLabelText="Customer Email Address"
+              type='text'
+              name='customerEmail'
+              ref='customerEmail'
+              floatingLabelText='Customer Email Address'
               value={customerEmail}
               onChange={this.handleChange}/>
           </div>
           <div style={textFieldStyle}>
             <TextField style={textFieldStyle}
-              type="text"
-              name="universityOrBusiness"
-              ref="universityOrBusiness"
-              floatingLabelText="University or Business"
+              type='text'
+              name='universityOrBusiness'
+              ref='universityOrBusiness'
+              floatingLabelText='University or Business'
               value={universityOrBusiness}
               onChange={this.handleChange}/>
           </div>
           <div style={textFieldStyle}>
             <TextField style={textFieldStyle}
-              type="text"
-              name="representative"
-              ref="representative"
-              /* errorText={"this field is required"} */
-              floatingLabelText="Representative"
+              type='text'
+              name='representative'
+              ref='representative'
+              /* errorText={'this field is required'} */
+              floatingLabelText='Representative'
               value={representative}
               onChange={this.handleChange}/>
           </div>
           <div style={textFieldStyle}>
             <TextField style={textFieldStyle}
-              type="text"
-              name="chatOrTicket"
-              ref="chatOrTicket"
-              floatingLabelText="Chat or Ticket Number"
+              type='text'
+              name='chatOrTicket'
+              ref='chatOrTicket'
+              floatingLabelText='Chat or Ticket Number'
               value={chatOrTicket}
               onChange={this.handleChange}/>
           </div>
-          <FlatButton label="Submit"/>
+          <FlatButton label='Submit'/>
         </form>
       </Paper>
     )

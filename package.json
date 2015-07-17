@@ -32,7 +32,8 @@
     "loopback-connector-postgresql": "^1.6.1"
   },
   "devDependencies": {
-    "eslint": "^0.24.0",
+    "eslint": "^0.24.1",
+    "eslint-config-standard": "^3.4.1",
     "jshint": "^2.7.0"
   },
   "bundleDependencies": [

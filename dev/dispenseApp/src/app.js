@@ -1,14 +1,14 @@
-// require("babel/polyfill")
-require("mousetrap")
+// require('babel/polyfill')
+require('mousetrap')
 
 if (!Object.assign) {
-  Object.defineProperty(Object, "assign", {
+  Object.defineProperty(Object, 'assign', {
     enumerable: false,
     configurable: true,
     writable: true,
-    value: function(target) {
+    value: function (target) {
       if (target === undefined || target === null) {
-        throw new TypeError("Cannot convert first argument to object")
+        throw new TypeError('Cannot convert first argument to object')
       }
 
       var to = Object(target)
@@ -33,16 +33,16 @@ if (!Object.assign) {
   })
 }
 
-import React from "react"
-import Router from "react-router"
-import app from "ampersand-app"
-import AppRoutes from "./appRoutes.js"
+import React from 'react'
+import Router from 'react-router'
+import app from 'ampersand-app'
+import AppRoutes from './appRoutes.js'
 
 // Models **********
-import Products from "./models/products"
-import Code from "./models/usedCode-collection"
+import Products from './models/products'
+import Code from './models/usedCode-collection'
 
-// import Mousetrap from "mousetrap"
+// import Mousetrap from 'mousetrap'
 
 window.app = app.extend({
   init () {
