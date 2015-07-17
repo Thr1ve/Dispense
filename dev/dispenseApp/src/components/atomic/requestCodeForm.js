@@ -2,7 +2,7 @@ import React from 'react'
 import app from 'ampersand-app'
 
 import Mui from 'material-ui'
-var { TextField, FlatButton, Paper } = Mui
+var { TextField, FlatButton, Paper, Snackbar } = Mui
 
 var requestCodeForm = React.createClass({
 
@@ -30,6 +30,7 @@ var requestCodeForm = React.createClass({
   handleSubmit (e) {
     e.preventDefault()
     var { router } = this.context
+    let self = this
     app.newCode.create({
       customerName: this.refs.customerName.props.value,
       customerEmail: this.refs.customerEmail.props.value,
@@ -39,8 +40,12 @@ var requestCodeForm = React.createClass({
       productId: this.props.productId
     }, {
       wait: true,
-      success () {
-        router.transitionTo('requestedCodes')
+      success (model) {
+        if (!model.code) {
+          self.refs.snackbar.show()
+        } else {
+          router.transitionTo('requestedCodes')
+        }
       }
     })
   },
@@ -113,6 +118,9 @@ var requestCodeForm = React.createClass({
           </div>
           <FlatButton label='Submit'/>
         </form>
+        <Snackbar
+          ref="snackbar"
+          message="No codes remaining for this product."/>
       </Paper>
     )
   }
