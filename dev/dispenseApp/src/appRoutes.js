@@ -19,7 +19,7 @@ let { Route, RouteHandler,
 let menuItems = []
 
 let NotFound = React.createClass({
-  render: function () {
+  render () {
     return (
       <h1>No Route Found</h1>
     )
@@ -40,7 +40,7 @@ let App = React.createClass({
     muiTheme: React.PropTypes.object
   },
 
-  getChildContext: function () {
+  getChildContext () {
     return {
       muiTheme: ThemeManager.getCurrentTheme()
     }
@@ -54,19 +54,23 @@ let App = React.createClass({
     }
   },
 
-  toMainSearch: function () {
+  toMainSearch () {
     let { router } = this.context
     router.transitionTo('mainSearch')
   },
 
-  toSearchUsedCodes: function () {
+  toSearchUsedCodes () {
     let { router } = this.context
     router.transitionTo('searchUsedCodes')
   },
 
-  toRequestedCodes: function () {
+  toRequestedCodes () {
     let { router } = this.context
     router.transitionTo('requestedCodes')
+  },
+
+  feedback () {
+    window.open('https://trello.com/b/9DTy6SXm/dispense', '_blank')
   },
 
   keyMap () {
@@ -104,6 +108,10 @@ let App = React.createClass({
       }}>
         <div>
           <div style={{zIndex: 10, position: 'fixed', right: '0', top: '0' }}>
+            <FlatButton label='Feedback'
+              style={buttonStyle}
+              onClick={this.feedback}
+              secondary={true} />
             <FlatButton label='Main Search'
               style={buttonStyle}
               onClick={this.toMainSearch}
