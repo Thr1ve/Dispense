@@ -6,11 +6,10 @@ node_modules/*
 *node_modules
 
 docs/*
-
+dev/*
+client/*
 
 README.html
-
-*client/templates.js
 
 *-debug.log
 
