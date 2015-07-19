@@ -1,12 +1,12 @@
-import React from "react"
-import app from "ampersand-app"
+import React from 'react'
+import app from 'ampersand-app'
 
-import Mui from "material-ui"
+import Mui from 'material-ui'
 let { TextField, FlatButton, Paper, Snackbar } = Mui
 
 let addProduct = React.createClass({
 
-  handleSubmit(e){
+  handleSubmit (e) {
     e.preventDefault()
     let self = this
     let title = this.refs.title.getValue()
@@ -20,12 +20,12 @@ let addProduct = React.createClass({
       mainEmail: contact
     }
 
-    app.products.create( productData, {
+    app.products.create(productData, {
       wait: true,
-      success: function() {
-        app.contacts.create( contactData, {
+      success: function () {
+        app.contacts.create(contactData, {
           wait: true,
-          success: function() {
+          success: function () {
             self.success()
           }
         })
@@ -33,65 +33,65 @@ let addProduct = React.createClass({
     })
   },
 
-  success() {
+  success () {
     this.refs.snackbar.show()
   },
 
-  getInitialState() {
+  getInitialState () {
     return {
-      title: "",
-      isbn13: "",
-      contact: ""
+      title: '',
+      isbn13: '',
+      contact: ''
     }
   },
 
-  handleChange(event) {
+  handleChange (event) {
     let newState = this.state
     newState[event.target.name] = event.target.value
     this.setState(newState)
   },
 
-  render() {
+  render () {
     let textFieldStyle = {
-      display: "block"
+      display: 'block'
     }
     let formStyle = {
       padding: 20
     }
     return (
       <div>
-        <Paper zDepth={3} style={{width: "85%", marginRight: "auto", marginLeft: "auto"}}>
+        <Paper zDepth={3} style={{width: '85%', marginRight: 'auto', marginLeft: 'auto'}}>
           <form style = {formStyle} onSubmit={this.handleSubmit}>
             <div style={textFieldStyle}>
               <TextField
-                type="text"
-                name="title"
-                ref="title"
-                floatingLabelText="Title"
+                type='text'
+                name='title'
+                ref='title'
+                floatingLabelText='Title'
                 onChange={this.handleChange}/>
             </div>
             <div style={textFieldStyle}>
               <TextField
-                type="text"
-                name="isbn13"
-                ref="isbn13"
-                floatingLabelText="ISBN"
+                type='text'
+                name='isbn13'
+                ref='isbn13'
+                floatingLabelText='ISBN'
                 onChange={this.handleChange}/>
             </div>
             <div style={textFieldStyle}>
               <TextField
-                type="text"
-                name="contact"
-                ref="contact"
-                floatingLabelText="Contact"
+                type='text'
+                name='contact'
+                ref='contact'
+                floatingLabelText='Contact'
                 onChange={this.handleChange}/>
             </div>
-            <FlatButton label="Submit"/>
+            <FlatButton label='Submit'/>
           </form>
         </Paper>
         <Snackbar
-          ref="snackbar"
-          message="Product Added!"/>
+          ref='snackbar'
+          message='Product Added!'/>
       </div>
     )
   }

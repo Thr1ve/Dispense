@@ -1,7 +1,7 @@
-import React from "react"
-import mui from "material-ui"
-import app from "ampersand-app"
-import KeyBindings from "react-side-effect-mousetrap"
+import React from 'react'
+import mui from 'material-ui'
+import app from 'ampersand-app'
+import KeyBindings from 'react-side-effect-mousetrap'
 
 let { Menu } = mui
 
@@ -11,23 +11,23 @@ var ProductTable = React.createClass({
     router: React.PropTypes.func
   },
 
-  _onItemClick: function(e, key, menuItem) {
+  _onItemClick: function (e, key, menuItem) {
     var { router } = this.context
-    router.transitionTo("product", { productId: menuItem.payload})
+    router.transitionTo('product', { productId: menuItem.payload})
   },
 
-  render: function() {
+  render: function () {
     var rows = []
 
-    this.props.products.forEach(function(product) {
+    this.props.products.forEach(function (product) {
       rows.push({payload: product.productId, text: product.title, data: product.isbn13})
     })
 
     return (
       <KeyBindings keyMap={{
-        "esc": (e) => {
+        'esc': (e) => {
           e.preventDefault()
-          app.trigger("clearText")
+          app.trigger('clearText')
         }
       }}>
         <div>
@@ -37,6 +37,5 @@ var ProductTable = React.createClass({
     )
   }
 })
-
 
 module.exports = ProductTable

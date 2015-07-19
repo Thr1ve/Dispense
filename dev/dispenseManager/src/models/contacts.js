@@ -1,15 +1,14 @@
 // userState Collection - user-state-collection.js
-import AmpCollection from "./apiPointer.js"
-import contact from "./contact.js"
-
+import AmpCollection from './apiPointer.js'
+import contact from './contact.js'
 
 module.exports = AmpCollection.extend({
 
   model: contact,
 
-  location: "contacts",
+  location: 'contacts',
 
-  initialize() {
+  initialize () {
     AmpCollection.prototype.initialize.call(this)
   }
 })

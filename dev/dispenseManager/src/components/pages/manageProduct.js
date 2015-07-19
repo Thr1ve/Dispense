@@ -1,12 +1,12 @@
-import app from "ampersand-app"
-import React from "react"
-import Router from "react-router"
-let { Route, RouteHandler, DefaultRoute } = Router
+import app from 'ampersand-app'
+import React from 'react'
+import Router from 'react-router'
+let { RouteHandler } = Router
 
-import Mui from "material-ui"
+import Mui from 'material-ui'
 var { FlatButton } = Mui
 
-// var log = require("bows")("manageProduct.js")
+// var log = require('bows')('manageProduct.js')
 
 let ManageProduct = React.createClass({
 
@@ -14,7 +14,7 @@ let ManageProduct = React.createClass({
     router: React.PropTypes.func
   },
 
-	getInitialState() {
+	getInitialState () {
     return {
       productId: this.props.params.productId,
       contact: null,
@@ -22,69 +22,67 @@ let ManageProduct = React.createClass({
     }
   },
 
-  componentDidMount() {
+  componentDidMount () {
     let self = this
     app.contacts.getOrFetch(self.props.params.productId,
       {all: true},
-      function(err, contact){
-        if(err){
-          console.error("contact not found", err)
+      function (err, contact) {
+        if (err) {
+          console.error('contact not found', err)
         }
         self.setState({contact: contact})
       }
     )
     app.products.getOrFetch(self.props.params.productId,
       {all: true},
-      function(err, model){
-        if(err){
-          console.error("model not found", err)
+      function (err, model) {
+        if (err) {
+          console.error('model not found', err)
         }
         self.setState({product: model})
       }
     )
   },
 
-
-  toEditProduct() {
+  toEditProduct () {
     let { productId } = this.state
     let { router } = this.context
-    router.transitionTo("editProduct", {productId: productId})
+    router.transitionTo('editProduct', {productId: productId})
   },
 
-  toAddCodes() {
+  toAddCodes () {
     let { productId } = this.state
     let { router } = this.context
-    router.transitionTo("addCodes", {productId: productId})
+    router.transitionTo('addCodes', {productId: productId})
   },
 
-  toProductStats() {
+  toProductStats () {
     let { productId } = this.state
     let { router } = this.context
-    router.transitionTo("productStats", {productId: productId})
+    router.transitionTo('productStats', {productId: productId})
   },
 
-  render() {
+  render () {
 
     let buttonStyle = {
-      height: "50",
-      opacity: "0.9",
-      float: "right"
+      height: '50',
+      opacity: '0.9',
+      float: 'right'
     }
 
-    let { productId } = this.state
-    if(this.state.product && this.state.contact){
+    if (this.state.product && this.state.contact) {
       return (
         <div>
-          <div style={{position: "fixed", top: "0", left: "0", zIndex: "9" }} >
-            <FlatButton label="Stats"
+          <div style={{position: 'fixed', top: '0', left: '0', zIndex: '9' }} >
+            <FlatButton label='Stats'
               style={buttonStyle}
               onClick={this.toProductStats}
               secondary={true} />
-            <FlatButton label="Edit Product"
+            <FlatButton label='Edit Product'
               style={buttonStyle}
               onClick={this.toEditProduct}
               secondary={true} />
-            <FlatButton label="Add Codes"
+            <FlatButton label='Add Codes'
               style={buttonStyle}
               onClick={this.toAddCodes}
               secondary={true} />
@@ -92,8 +90,7 @@ let ManageProduct = React.createClass({
           <RouteHandler {...this.state}/>
         </div>
       )
-    }
-    else{
+    } else {
       return (
         <div>
           LOADING PRODUCT...

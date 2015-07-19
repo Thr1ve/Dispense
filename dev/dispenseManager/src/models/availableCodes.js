@@ -1,10 +1,10 @@
-import AmpersandModel from "ampersand-model"
+import AmpersandModel from 'ampersand-model'
 
 module.exports = AmpersandModel.extend({
 
   props: {
-    productId: "any",
-    code: "string"
+    productId: 'any',
+    code: 'string'
   },
 
   session: {
@@ -12,11 +12,11 @@ module.exports = AmpersandModel.extend({
   },
 
   derived: {
-    id() {
+    id () {
       return this.productId
     }
   },
 
-  url: "http://localhost:3000/api/availableCodes"
+  url: 'http://localhost:3000/api/availableCodes'
 
 })

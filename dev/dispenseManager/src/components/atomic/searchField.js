@@ -1,23 +1,23 @@
-import React from "react"
-import Mui from "material-ui"
+import React from 'react'
+import Mui from 'material-ui'
 
 let { TextField } = Mui
 
 var SearchField = React.createClass({
 
-  handleChange() {
+  handleChange () {
     this.props.onUserInput(
       this.refs.filterTextInput.getValue()
     )
   },
 
-  render() {
+  render () {
     return (
       <TextField
-        type="text"
-        placeholder="Search..."
+        type='text'
+        placeholder='Search...'
         value={this.props.filterText}
-        ref="filterTextInput"
+        ref='filterTextInput'
         onChange={this.handleChange} />
     )
   }

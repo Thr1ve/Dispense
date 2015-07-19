@@ -1,13 +1,13 @@
-require("mousetrap")
+require('mousetrap')
 
 if (!Object.assign) {
-  Object.defineProperty(Object, "assign", {
+  Object.defineProperty(Object, 'assign', {
     enumerable: false,
     configurable: true,
     writable: true,
-    value: function(target) {
+    value: function (target) {
       if (target === undefined || target === null) {
-        throw new TypeError("Cannot convert first argument to object")
+        throw new TypeError('Cannot convert first argument to object')
       }
 
       var to = Object(target)
@@ -32,39 +32,39 @@ if (!Object.assign) {
   })
 }
 
-import React from "react"
-import Router from "react-router"
-import app from "ampersand-app"
-import AppRoutes from "./appRoutes.js"
+import React from 'react'
+import Router from 'react-router'
+import app from 'ampersand-app'
+import AppRoutes from './appRoutes.js'
 
 // Models **********
-import Products from "./models/products"
-import Contacts from "./models/contacts"
-import Code from "./models/usedCode-collection"
+import Products from './models/products'
+import Contacts from './models/contacts'
+import Code from './models/usedCode-collection'
 
 window.app = app.extend({
   init () {
-    //LOL SECURITY !1!!!1!!!!>
-    // let allowed = window.prompt("")
-    // if(allowed==="admin"){
+    // LOL SECURITY !1!!!1!!!!>
+    // let allowed = window.prompt('')
+    // if(allowed==='admin'){
 
-        this.products = new Products()
-        this.contacts = new Contacts()
-        this.newCode = new Code()
+    this.products = new Products()
+    this.contacts = new Contacts()
+    this.newCode = new Code()
 
-        // Attach to window for easier debugging
-        window.app = this
+    // Attach to window for easier debugging
+    window.app = this
 
-        // React-Router
-        Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
-          React.render(<Handler/>, document.body)
-        })
+    // React-Router
+    Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
+      React.render(<Handler/>, document.body)
+    })
 
       // }
       // else{
-      //     window.location = "http://www.wiley.com"
+      //     window.location = 'http://www.wiley.com'
       // }
-    }
+  }
 
 })
 

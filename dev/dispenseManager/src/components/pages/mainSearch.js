@@ -1,14 +1,11 @@
-import React from"react"
-import Router from"react-router"
-import app from "ampersand-app"
+import React from'react'
+import Router from'react-router'
+import app from 'ampersand-app'
 var { RouteHandler } = Router
 
-import Mui from "material-ui"
-let { FlatButton } = Mui
+import FilterableProductTable from '../composite/filterableProductTable.js'
 
-import FilterableProductTable from "../composite/filterableProductTable.js"
-
-// var log = require("bows")("mainSearch.js")
+// var log = require('bows')('mainSearch.js')
 
 let MainSearch = React.createClass({
 
@@ -16,7 +13,7 @@ let MainSearch = React.createClass({
     router: React.PropTypes.func
   },
 
-  render() {
+  render () {
     return (
       <div>
         <FilterableProductTable products={app.products}/>

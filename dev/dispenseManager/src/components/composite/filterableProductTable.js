@@ -1,39 +1,37 @@
-import React from "react"
-import SearchField from "./../atomic/searchField.js"
-import ProductTable from "./../atomic/productTable.js"
-import app from "ampersand-app"
+import React from 'react'
+import SearchField from './../atomic/searchField.js'
+import ProductTable from './../atomic/productTable.js'
+import app from 'ampersand-app'
 
 var FilterableProductTable = React.createClass({
 
-  getInitialState() {
+  getInitialState () {
     return {
       data: [],
-      filterText: ""
+      filterText: ''
     }
   },
 
-  componentDidMount() {
+  componentDidMount () {
     var self = this
-    //if statement added since refetching products broke app after using back button //this should be handled differently...perhaps store in user state?
-    if(app.products.models.length > 0){
+    // if statement added since refetching products broke app after using back button //this should be handled differently...perhaps store in user state?
+    if (app.products.models.length > 0) {
       self.setState({data: app.products})
-    }
-    else{
+    } else {
       window.app.products.fetch({
-        success: function(model, res){
+        success: function (model, res) {
           self.setState({data: res})
         }
       }), []
     }
   },
 
-  handleUserInput(filterText) {
+  handleUserInput (filterText) {
     var filtered
-    if(filterText){
+    if (filterText) {
       app.products.filter(filterText)
       filtered = app.products.filtered
-    }
-    else{
+    } else {
       filtered = app.products
     }
 
@@ -43,10 +41,10 @@ var FilterableProductTable = React.createClass({
     })
   },
 
-  render() {
+  render () {
     return (
       <div>
-        <div style={{position: "fixed", top: "0", left: "0", zIndex: "9" }} >
+        <div style={{position: 'fixed', top: '0', left: '0', zIndex: '9' }} >
           <SearchField
             filterText={this.state.filterText}
             onUserInput={this.handleUserInput}/>
