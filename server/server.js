@@ -1,6 +1,6 @@
 var loopback = require("loopback")
 var boot = require("loopback-boot")
-var path = require("path")
+// var path = require("path")
 var app = module.exports = loopback()
 
 boot(app, __dirname)
@@ -12,19 +12,19 @@ boot(app, __dirname)
 // Example:
 // app.use(loopback.static(path.resolve(__dirname, "../client")))
 
-var dispenseApp = path.resolve(__dirname, "../client/dispenseApp")
-var dispenseManager = path.resolve(__dirname, "../client/dispenseManager")
-
-app.use(loopback.static(dispenseApp))
-app.use(loopback.static(dispenseManager))
-
-app.get("/dispenseApp*", function(req, res){
-   res.sendFile(dispenseApp + "/index.html")
-})
-
-app.get("/dispenseManager*", function(req, res){
-   res.sendFile(dispenseManager + "/index.html")
-})
+// var dispenseApp = path.resolve(__dirname, "../client/dispenseApp")
+// var dispenseManager = path.resolve(__dirname, "../client/dispenseManager")
+//
+// app.use(loopback.static(dispenseApp))
+// app.use(loopback.static(dispenseManager))
+//
+// app.get("/dispenseApp*", function(req, res){
+//    res.sendFile(dispenseApp + "/index.html")
+// })
+//
+// app.get("/dispenseManager*", function(req, res){
+//    res.sendFile(dispenseManager + "/index.html")
+// })
 
 ////////////////////////////////
 

@@ -1,0 +1,5 @@
+server/config.json merge=ours
+server/datasources.json merge=ours
+server/server.js merge=ours
+server/bin/create-sample-models.js merge=ours
+server/boot/create-sample-models.js merge=ours
