@@ -1,7 +1,12 @@
 {
   "mydb": {
     "name": "mydb",
-    "connector": "memory"
+    "connector": "postgresql",
+    "host": "postgresql",
+    "port": 5432,
+    "database": "dispense_db",
+    "user": "gitlab",
+    "password": "password"
   },
   "emailDs": {
     "name": "emailDs",
