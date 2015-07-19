@@ -5,11 +5,6 @@
   "repository": "",
   "private": true,
   "main": "server/server.js",
-  "scripts": {
-    "build-app": "cd ./dev/dispenseApp/ && NODE_ENV=production webpack",
-    "build-manager": "cd ./dev/dispenseManager/ && NODE_ENV=production webpack",
-    "build": "npm run build-app && npm run build-manager"
-  },
   "mainInput": "main",
   "mainOutput": "main",
   "dependencies": {
@@ -22,9 +17,7 @@
     "loopback-connector-mssql": "^2.1.0",
     "loopback-datasource-juggler": "^2.7.0",
     "serve-favicon": "^2.0.1",
-    "shelljs": "^0.5.1",
-    "underscore": "^1.7.0",
-    "vantage": "^0.3.2"
+    "underscore": "^1.7.0"
   },
   "optionalDependencies": {
     "loopback-explorer": "^1.1.0",
