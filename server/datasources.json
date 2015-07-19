@@ -1,8 +1,4 @@
 {
-  "mydbz": {
-    "name": "mydb",
-    "connector": "memory"
-  },
   "mydb": {
     "name": "mydb",
     "connector": "postgresql",
