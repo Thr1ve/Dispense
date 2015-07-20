@@ -2,11 +2,13 @@ import MainSearch from './components/pages/mainSearch.js'
 import RequestCode from './components/pages/requestCode.js'
 import RequestedCodes from './components/pages/requestedCodes.js'
 import SearchUsedCodes from './components/pages/searchUsedCodes.js'
+import Changelog from './components/pages/changelog.js'
 
 import React from 'react'
 import Router from 'react-router'
 
 import Mui from 'material-ui'
+let { MenuItem } = Mui
 
 import Keybindings from 'react-side-effect-mousetrap'
 
@@ -16,7 +18,13 @@ let ThemeManager = new Mui.Styles.ThemeManager()
 let { Route, RouteHandler,
       DefaultRoute, NotFoundRoute, Redirect } = Router
 
-let menuItems = []
+let menuItems = [
+  {
+     type: MenuItem.Types.LINK,
+     payload: 'changelog',
+     text: 'Changelog'
+  }
+]
 
 let NotFound = React.createClass({
   render () {
@@ -142,6 +150,7 @@ module.exports = (
             <Route name='requestCode' path='requestCode/:productId' handler={RequestCode}/>
             <Route name='searchUsedCodes' path='searchUsedCodes' handler={SearchUsedCodes}/>
             <Route name='requestedCodes' path='requestedCodes' handler={RequestedCodes}/>
+            <Route name='changelog' path='changelog' handler={Changelog}/>
             <DefaultRoute handler={MainSearch}/>
             <NotFoundRoute handler={NotFound}/>
           </Route>
