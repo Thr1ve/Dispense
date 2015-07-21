@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchField from './../atomic/searchField.js'
 import ProductTable from './../atomic/productTable.js'
+import MostUsedProductsTable from './../atomic/mostUsedProductsTable.js'
 import app from 'ampersand-app'
 
 var FilterableProductTable = React.createClass({
@@ -19,7 +20,8 @@ var FilterableProductTable = React.createClass({
       this.setState({filterText: ''})
     })
 
-    // if statement added since refetching products broke app after using back button //this should be handled differently...perhaps store in user state?
+    // if statement added since refetching products broke app after using back button
+    // this should be handled differently...perhaps store in user state?
     if (app.products.models.length > 0) {
       self.setState({data: app.products})
     } else {
@@ -59,8 +61,8 @@ var FilterableProductTable = React.createClass({
             onUserInput={this.handleUserInput}/>
         </div>
         <div>
-          <ProductTable
-            products={this.state.data}/>
+          {(this.state.filterText.length > 0) ?
+            (<ProductTable products={this.state.data}/>) : (<MostUsedProductsTable/>) }
         </div>
       </div>
     )

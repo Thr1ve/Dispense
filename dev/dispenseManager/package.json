@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "Thr1ve",
   "dependencies": {
+    "amp-sort-by": "^1.0.0",
     "ampersand-app": "^1.0.1",
     "ampersand-model": "^5.0.1",
     "ampersand-react-mixin": "^0.1.1",
