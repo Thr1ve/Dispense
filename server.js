@@ -14,7 +14,9 @@ var proxy = httpProxy.createProxyServer({
 var isProduction = process.env.NODE_ENV === "production"
 var port = isProduction ? process.env.PORT : 3000
 var publicPath = path.resolve(__dirname, "public")
-console.log(publicPath)
+var apps = path.resolve(__dirname, "apps")
+var dispenseApp = path.resolve(__dirname, "apps/dispenseApp/index.html")
+
 var LOCATIONS = {
   home_server_web: {
     apiUrl: "http://thrive.geekgalaxy.com/api/"
@@ -33,9 +35,13 @@ var LOCATIONS = {
   }
 }
 
-var API_DEV = LOCATIONS.local
+// var API_DEV = LOCATIONS.local
 
-app.use(express.static(publicPath))
+app.use(express.static(apps))
+
+app.get("/dispenseApp*", function (req, res) {
+  res.sendFile(dispenseApp)
+})
 
 // app.all("/db/*", function (req, res) {
 //   proxy.web(req, res, {

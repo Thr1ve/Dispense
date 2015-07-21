@@ -1,7 +1,7 @@
 var Webpack = require("webpack")
 var path = require("path")
 
-var appPath = path.resolve(__dirname, "app")
+var devPath = path.resolve(__dirname, "dev")
 var nodeModulesPath = path.resolve(__dirname, "node_modules")
 var buildPath = path.resolve(__dirname, "public", "build")
 
@@ -11,7 +11,7 @@ var config = {
   entry: [
     "webpack-dev-server/client?http://localhost:3000",
     "webpack/hot/dev-server",
-    path.resolve(appPath, "main.js")],
+    path.resolve(devPath, "dispenseApp/main.js")],
   output: {
     path: buildPath,
     filename: "bundle.js",
