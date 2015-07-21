@@ -36,7 +36,6 @@ let SearchField = React.createClass({
         onBlur={this.handleBlur}/>
     )
   }
-
 })
 
 module.exports = SearchField

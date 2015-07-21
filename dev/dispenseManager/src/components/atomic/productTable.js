@@ -5,19 +5,19 @@ import KeyBindings from 'react-side-effect-mousetrap'
 
 let { Menu } = mui
 
-var ProductTable = React.createClass({
+let ProductTable = React.createClass({
 
   contextTypes: {
     router: React.PropTypes.func
   },
 
-  _onItemClick: function (e, key, menuItem) {
-    var { router } = this.context
+  _onItemClick (e, key, menuItem) {
+    let { router } = this.context
     router.transitionTo('product', { productId: menuItem.payload})
   },
 
-  render: function () {
-    var rows = []
+  render () {
+    let rows = []
 
     this.props.products.forEach(function (product) {
       rows.push({payload: product.productId, text: product.title, data: product.isbn13})

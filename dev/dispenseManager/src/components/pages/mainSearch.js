@@ -16,8 +16,17 @@ let MainSearch = React.createClass({
   render () {
     return (
       <div>
-        <FilterableProductTable products={app.products}/>
-        <RouteHandler {...this.props}/>
+        <header style={{
+          position: 'fixed',
+          top: '0', left: '0',
+          width: '100%', height: '50px',
+          opacity: '0.8', backgroundColor: 'white',
+          zIndex: '4' }} >
+        </header>
+        <div>
+          <FilterableProductTable toggleNav={this.props.toggleNav} products={app.products}/>
+          <RouteHandler {...this.props}/>
+        </div>
       </div>
     )
   }

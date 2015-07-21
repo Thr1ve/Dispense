@@ -14,6 +14,11 @@ var FilterableProductTable = React.createClass({
 
   componentDidMount () {
     var self = this
+
+    app.on('clearText', () => {
+      this.setState({filterText: ''})
+    })
+
     // if statement added since refetching products broke app after using back button //this should be handled differently...perhaps store in user state?
     if (app.products.models.length > 0) {
       self.setState({data: app.products})
@@ -22,13 +27,17 @@ var FilterableProductTable = React.createClass({
         success: function (model, res) {
           self.setState({data: res})
         }
-      }), []
+      })
     }
+  },
+
+  componentWillUnmount () {
+    app.off('clearText')
   },
 
   handleUserInput (filterText) {
     var filtered
-    if (filterText) {
+    if (filterText.length > 0) {
       app.products.filter(filterText)
       filtered = app.products.filtered
     } else {

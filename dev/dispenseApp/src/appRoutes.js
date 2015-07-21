@@ -8,11 +8,10 @@ import React from 'react'
 import Router from 'react-router'
 
 import Mui from 'material-ui'
-let { MenuItem } = Mui
 
 import Keybindings from 'react-side-effect-mousetrap'
 
-let { LeftNav, FlatButton } = Mui
+let { MenuItem, LeftNav, FlatButton } = Mui
 let ThemeManager = new Mui.Styles.ThemeManager()
 
 let { Route, RouteHandler,
@@ -145,7 +144,8 @@ let App = React.createClass({
 
 module.exports = (
           <Route name='app' path='/dispenseApp/' handler={App}>
-            <Redirect from='/dispenseApp' to='/dispenseApp/'/>
+            <Redirect from='/dispenseApp' to='/dispenseApp/mainSearch'/>
+            <Redirect from='/dispenseApp/' to='/dispenseApp/mainSearch'/>
             <Route name='mainSearch' handler={MainSearch}/>
             <Route name='requestCode' path='requestCode/:productId' handler={RequestCode}/>
             <Route name='searchUsedCodes' path='searchUsedCodes' handler={SearchUsedCodes}/>
