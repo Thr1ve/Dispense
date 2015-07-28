@@ -22,6 +22,12 @@ let menuItems = [
      type: MenuItem.Types.LINK,
      payload: 'changelog',
      text: 'Changelog'
+  },
+  {
+     type: MenuItem.Types.LINK,
+     payload: 'https://trello.com/b/9DTy6SXm/dispense',
+     text: 'Trello',
+     target: '_blank'
   }
 ]
 
@@ -77,7 +83,7 @@ let App = React.createClass({
   },
 
   feedback () {
-    window.open('https://trello.com/b/9DTy6SXm/dispense', '_blank')
+    window.open('mailto:gbuler@wiley.com?subject=Dispense%20Feedback', '_blank')
   },
 
   keyMap () {
