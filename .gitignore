@@ -20,3 +20,9 @@ README.html
 .idea*
 
 *.todo
+
+
+# ATOM #
+########
+
+_mdwriter.cson
