@@ -1,9 +1,7 @@
 import MainSearch from './components/pages/mainSearch.js'
-import ManageProduct from './components/pages/manageProduct.js'
-import EditProduct from './components/composite/editProduct.js'
-import AddCodes from './components/composite/addCodes.js'
-import ProductStats from './components/composite/productStats.js'
-import AddProduct from './components/pages/addProduct.js'
+import RequestCode from './components/pages/requestCode.js'
+import RequestedCodes from './components/pages/requestedCodes.js'
+import SearchUsedCodes from './components/pages/searchUsedCodes.js'
 import Changelog from './components/pages/changelog.js'
 
 import React from 'react'
@@ -17,22 +15,28 @@ let { MenuItem, LeftNav, FlatButton } = Mui
 let ThemeManager = new Mui.Styles.ThemeManager()
 
 let { Route, RouteHandler,
-    DefaultRoute, NotFoundRoute, Redirect } = Router
+      DefaultRoute, NotFoundRoute, Redirect } = Router
 
 let menuItems = [
   {
      type: MenuItem.Types.LINK,
      payload: 'changelog',
      text: 'Changelog'
+  },
+  {
+     type: MenuItem.Types.LINK,
+     payload: 'https://trello.com/b/9DTy6SXm/dispense',
+     text: 'Trello',
+     target: '_blank'
   }
 ]
 
 let NotFound = React.createClass({
-    render () {
-      return (
-        <h1> No Route Found </h1>
-      )
-    }
+  render () {
+    return (
+      <h1>No Route Found</h1>
+    )
+  }
 })
 
 let App = React.createClass({
@@ -64,17 +68,22 @@ let App = React.createClass({
   },
 
   toMainSearch () {
-    var { router } = this.context
+    let { router } = this.context
     router.transitionTo('mainSearch')
   },
 
-  toAddProduct () {
-    var { router } = this.context
-    router.transitionTo('addProduct')
+  toSearchUsedCodes () {
+    let { router } = this.context
+    router.transitionTo('searchUsedCodes')
+  },
+
+  toRequestedCodes () {
+    let { router } = this.context
+    router.transitionTo('requestedCodes')
   },
 
   feedback () {
-    window.open('https://trello.com/b/9DTy6SXm/dispense', '_blank')
+    window.open('mailto:gbuler@wiley.com?subject=Dispense%20Feedback', '_blank')
   },
 
   keyMap () {
@@ -94,12 +103,11 @@ let App = React.createClass({
     document.body.style.overflow = 'auto'
   },
 
-  render () {
+  render: function () {
 
     let buttonStyle = {
-      height: '50',
-      opacity: '0.9',
-      float: 'right'
+        height: '50',
+        opacity: '0.9'
     }
 
     return (
@@ -113,40 +121,41 @@ let App = React.createClass({
       }}>
         <div>
           <div style={{zIndex: 10, position: 'fixed', right: '0', top: '0' }}>
-            <FlatButton label='Add New Product'
+            <FlatButton label='Feedback'
               style={buttonStyle}
-              onClick={this.toAddProduct}
+              onClick={this.feedback}
               secondary={true} />
             <FlatButton label='Main Search'
               style={buttonStyle}
               onClick={this.toMainSearch}
               secondary={true} />
-            <FlatButton label='Feedback'
+            <FlatButton label='Search Used Codes'
               style={buttonStyle}
-              onClick={this.feedback}
+              onClick={this.toSearchUsedCodes}
+              secondary={true} />
+            <FlatButton label='Requested Codes'
+              style={buttonStyle}
+              onClick={this.toRequestedCodes}
               secondary={true} />
           </div>
-          <div style={{position: 'relative', top: '50px'}}>
-            <RouteHandler {...this.props} toggleNav={this.toggleNav}/>
+          <div style={{position: 'relative', top: '55px'}}>
+            <RouteHandler toggleNav={this.toggleNav}/>
           </div>
           <LeftNav ref='leftNav' docked={this.state.isDocked} menuItems={menuItems}/>
-        </div >
+        </div>
       </Keybindings>
-        )
+    )
   }
 })
 
 module.exports = (
-          <Route name='app' path='/dispenseManager/' handler={App}>
-            <Redirect from='/dispenseManager' to='/dispenseManager/'/>
+          <Route name='app' path='/dispenseApp/' handler={App}>
+            <Redirect from='/dispenseApp' to='/dispenseApp/mainSearch'/>
+            <Redirect from='/dispenseApp/' to='/dispenseApp/mainSearch'/>
             <Route name='mainSearch' handler={MainSearch}/>
-            <Route name='addProduct' handler={AddProduct}/>
-            <Route name='product' path='product/:productId' handler={ManageProduct}>
-              <Route name='editProduct' handler={EditProduct}/>
-              <Route name='addCodes' handler={AddCodes}/>
-              <Route name='productStats' handler={ProductStats}/>
-              <DefaultRoute handler={EditProduct}/>
-            </Route>
+            <Route name='requestCode' path='requestCode/:productId' handler={RequestCode}/>
+            <Route name='searchUsedCodes' path='searchUsedCodes' handler={SearchUsedCodes}/>
+            <Route name='requestedCodes' path='requestedCodes' handler={RequestedCodes}/>
             <Route name='changelog' path='changelog' handler={Changelog}/>
             <DefaultRoute handler={MainSearch}/>
             <NotFoundRoute handler={NotFound}/>

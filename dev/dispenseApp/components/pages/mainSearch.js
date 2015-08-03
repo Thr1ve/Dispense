@@ -1,13 +1,11 @@
-import React from'react'
-import Router from'react-router'
+import React from 'react'
+import Router from 'react-router'
 import app from 'ampersand-app'
-var { RouteHandler } = Router
-
 import FilterableProductTable from '../composite/filterableProductTable.js'
 
-// var log = require('bows')('mainSearch.js')
+let { RouteHandler } = Router
 
-let MainSearch = React.createClass({
+var MainSearch = React.createClass({
 
   contextTypes: {
     router: React.PropTypes.func
@@ -25,12 +23,11 @@ let MainSearch = React.createClass({
         </header>
         <div>
           <FilterableProductTable toggleNav={this.props.toggleNav} products={app.products}/>
-          <RouteHandler {...this.props}/>
+          <RouteHandler/>
         </div>
       </div>
     )
   }
-
 })
 
 module.exports = MainSearch

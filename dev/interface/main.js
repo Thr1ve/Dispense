@@ -20,7 +20,7 @@ var ComponentB = React.createClass({
 var resolveRoute = function () {
 
   // If no hash or hash is '#' we lazy load the Home component
-  if (location.hash === '#/dispenseApp') {
+  if (location.pathname === '/dispenseApp') {
     require.ensure([], function () {
       var dispenseApp = require('../dispenseApp/app.js')
       // React.render(dispenseApp(), document.getElementById('app'))
@@ -29,7 +29,7 @@ var resolveRoute = function () {
     })
 
   // Or if route is #admin we lazy load that
-  } else if (location.hash === '#/dispenseManager') {
+  } else if (location.pathname === '/dispenseManager') {
     require.ensure([], function () {
       // var dispenseManager = require('../dispenseManager/app.js')
       // React.render(dispenseManager(), document.getElementById('app'))
@@ -40,7 +40,7 @@ var resolveRoute = function () {
 }
 
 // Resolve route on hash change
-window.onhashchange = resolveRoute
+// window.onhashchange = resolveRoute
 
 // Resolve current route
 resolveRoute()

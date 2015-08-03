@@ -11,12 +11,9 @@ var config = {
     // 'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/dev-server',
     './dev/interface/main.js'],
-    // './test/main.js'],
   output: {
-    // path: './dev/interface/',
     path: './build',
     filename: 'bundle.js'
-    // publicPath: '/dev/interface/'
   },
   module: {
     loaders: [{
@@ -40,7 +37,7 @@ module.exports = config
 // module.exports = {
 //   entry: ['./test/main.js'],
 //   output: {
-//     path: './build',
+//     path: './testBuild',
 //     filename: 'bundle.js'
 //   },
 //   module: {
@@ -53,7 +50,7 @@ module.exports = config
 //       loader: 'style!css'
 //     }]
 //   }
-//   // plugins: [
-//   //   new Webpack.HotModuleReplacementPlugin()
-//   // ]
+  // plugins: [
+  //   new Webpack.HotModuleReplacementPlugin()
+  // ]
 // }
