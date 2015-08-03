@@ -68,7 +68,7 @@ module.exports = function(UsedCode) {
                   // cc: "chrcollier@wiley.comgbuhler@wiley.com",
                   from: yourEmailAddress,
                   subject: "The email subject",
-                  text: "The following code was just generated in Dispense: \n\n" + response.code + "\n\n There are " + count + " codes left for this product"
+                  text: "Need More Codes For: (PRODUCT)\n\nWe only have " + count + " left"
                   //html: "<strong>HTML</strong> tags are converted"
                   }, function(err4) {
                     if(err4) {throw err4}
