@@ -1,7 +1,7 @@
 import React from 'react'
-import SearchField from './../atomic/searchField.js'
+import SearchField from '../../../components/atoms/searchField.js'
 import ProductTable from './../atomic/productTable.js'
-import MostUsedProductsTable from './../atomic/mostUsedProductsTable.js'
+import MostUsedProductsTable from '../../../components/atoms/mostUsedProductsTable.js'
 import app from 'ampersand-app'
 
 var FilterableProductTable = React.createClass({
