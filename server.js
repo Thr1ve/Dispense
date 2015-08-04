@@ -11,8 +11,10 @@ var proxy = httpProxy.createProxyServer({
   ws: true
 })
 
-var isProduction = process.env.NODE_ENV === 'production'
-var port = isProduction ? process.env.PORT : 3000
+// var isProduction = process.env.NODE_ENV === 'production'
+// var port = isProduction ? process.env.PORT : 3000
+var isProduction = true
+var port = 3000
 // var publicPath = path.resolve(__dirname, 'public')
 var apps = path.resolve(__dirname, 'apps')
 var dispenseApp = path.resolve(__dirname, 'apps/dispenseApp/index.html')

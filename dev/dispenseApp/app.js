@@ -45,7 +45,7 @@ import Code from './models/usedCode-collection'
 // import Mousetrap from 'mousetrap'
 
 var app = App.extend({
-  init (domElement) {
+  init () {
 
     this.products = new Products()
     this.newCode = new Code()
@@ -56,10 +56,11 @@ var app = App.extend({
 
     // React-Router
     Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
-      React.render(<Handler/>, domElement)
+      React.render(<Handler/>, document.body)
     })
   }
 })
 
+app.init()
+
 module.exports = app
-// app.init()

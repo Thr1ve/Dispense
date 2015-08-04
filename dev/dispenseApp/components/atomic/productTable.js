@@ -12,6 +12,7 @@ let ProductTable = React.createClass({
   },
 
   _onItemClick (e, key, menuItem) {
+    console.log('clicked')
     let { router } = this.context
     router.transitionTo('requestCode', { productId: menuItem.payload})
   },

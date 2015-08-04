@@ -31,6 +31,7 @@ let SearchForm = React.createClass({
 
   handleSubmit (e) {
     e.preventDefault()
+    console.log('hello world')
     let self = this
     let query = this.getQuery(this.refs)
 
