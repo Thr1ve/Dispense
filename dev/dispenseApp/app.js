@@ -39,8 +39,8 @@ import App from 'ampersand-app'
 import AppRoutes from './appRoutes.js'
 
 // Models **********
-import Products from './models/products'
-import Code from './models/usedCode-collection'
+import Products from './../models/products'
+import Code from './../models/usedCode-collection'
 
 // import Mousetrap from 'mousetrap'
 
