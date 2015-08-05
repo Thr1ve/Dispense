@@ -13,7 +13,7 @@ let ProductTable = React.createClass({
 
   _onItemClick (e, key, menuItem) {
     let { router } = this.context
-    router.transitionTo('product', { productId: menuItem.payload})
+    router.transitionTo(this.props.transitionTo, { productId: menuItem.payload})
   },
 
   render () {
