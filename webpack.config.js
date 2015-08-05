@@ -10,7 +10,7 @@ var config = {
   entry: [
     // 'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/dev-server',
-    './dev/interface/main.js'],
+    './dev/dev-interface/main.js'],
   output: {
     path: './build',
     filename: 'bundle.js'
