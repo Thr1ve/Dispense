@@ -1,5 +1,5 @@
 import React from 'react'
-import changelog from '!html!markdown!../../../../CHANGELOG.md'
+import changelog from '!html!markdown!../../../CHANGELOG.md'
 
 let Changelog = React.createClass({
   render () {

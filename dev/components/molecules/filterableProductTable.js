@@ -1,7 +1,7 @@
 import React from 'react'
-import SearchField from '../../../components/atoms/searchField.js'
-import ProductTable from '../../../components/atoms/productTable.js'
-import MostUsedProductsTable from '../../../components/atoms/mostUsedProductsTable.js'
+import SearchField from '../atoms/searchField.js'
+import ProductTable from '../atoms/productTable.js'
+import MostUsedProductsTable from '../atoms/mostUsedProductsTable.js'
 import app from 'ampersand-app'
 
 var FilterableProductTable = React.createClass({
@@ -62,7 +62,7 @@ var FilterableProductTable = React.createClass({
         </div>
         <div>
           {(this.state.filterText.length > 0) ?
-            (<ProductTable transitionTo='requestCode' products={this.state.data}/>) : (<MostUsedProductsTable/>) }
+            (<ProductTable transitionTo={this.props.transitionTo} products={this.state.data}/>) : (<MostUsedProductsTable/>) }
         </div>
       </div>
     )

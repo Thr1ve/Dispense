@@ -4,7 +4,7 @@ import EditProduct from './components/composite/editProduct.js'
 import AddCodes from './components/composite/addCodes.js'
 import ProductStats from './components/composite/productStats.js'
 import AddProduct from './components/pages/addProduct.js'
-import Changelog from './components/pages/changelog.js'
+import Changelog from '../components/atoms/changelog.js'
 
 import React from 'react'
 import Router from 'react-router'

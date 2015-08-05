@@ -3,7 +3,7 @@ import Router from'react-router'
 import app from 'ampersand-app'
 var { RouteHandler } = Router
 
-import FilterableProductTable from '../composite/filterableProductTable.js'
+import FilterableProductTable from '../../../components/molecules/filterableProductTable.js'
 
 // var log = require('bows')('mainSearch.js')
 
@@ -24,7 +24,7 @@ let MainSearch = React.createClass({
           zIndex: '4' }} >
         </header>
         <div>
-          <FilterableProductTable toggleNav={this.props.toggleNav} products={app.products}/>
+          <FilterableProductTable transitionTo='product' toggleNav={this.props.toggleNav} products={app.products}/>
           <RouteHandler {...this.props}/>
         </div>
       </div>

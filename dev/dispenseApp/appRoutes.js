@@ -2,7 +2,7 @@ import MainSearch from './components/pages/mainSearch.js'
 import RequestCode from './components/pages/requestCode.js'
 import RequestedCodes from './components/pages/requestedCodes.js'
 import SearchUsedCodes from './components/pages/searchUsedCodes.js'
-import Changelog from './components/pages/changelog.js'
+import Changelog from '../components/atoms/changelog.js'
 
 import React from 'react'
 import Router from 'react-router'
