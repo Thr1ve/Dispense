@@ -3,7 +3,7 @@ import Router from'react-router'
 import app from 'ampersand-app'
 var { RouteHandler } = Router
 
-import FilterableProductTable from '../../../components/molecules/filterableProductTable.js'
+import FilterableProductTable from '../../components/molecules/filterableProductTable.js'
 
 // var log = require('bows')('mainSearch.js')
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import CodeInput from '../atomic/codeInput.js'
-import CodeOutput from '../atomic/codeOutput'
+import CodeInput from '../atoms/codeInput.js'
+import CodeOutput from '../atoms/codeOutput'
 import AddCodesRequest from '../../models/addCodes.js'
 
 import Mui from 'material-ui'

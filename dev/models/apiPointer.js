@@ -1,6 +1,6 @@
+/* global env */
 // userState Collection - user-state-collection.js
-/*global env */
-let AmpCollection = require('ampersand-rest-collection')
+import AmpCollection from 'ampersand-rest-collection'
 
 module.exports = AmpCollection.extend({
 

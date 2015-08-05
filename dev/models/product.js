@@ -1,4 +1,5 @@
 let AmpersandModel = require('ampersand-model')
+import app from 'ampersand-app'
 
 // this is where we define what attributes we want available for each product
 // we'll create as many of these as needed for each individual product and store them in
@@ -23,6 +24,9 @@ module.exports = AmpersandModel.extend({
   derived: {
     id: function () {
       return this.productId
+    },
+    contact () {
+      return app.contacts.get(this.productId)
     }
     // isbn13Dashless:
     // isbn10:

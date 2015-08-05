@@ -38,9 +38,9 @@ import App from 'ampersand-app'
 import AppRoutes from './appRoutes.js'
 
 // Models **********
-import Products from './models/products'
-import Contacts from './models/contacts'
-import Code from './models/usedCode-collection'
+import Products from './../models/products'
+import Contacts from './../models/contacts'
+import Code from './../models/usedCode-collection'
 
 var app = App.extend({
   init () {

@@ -5,6 +5,7 @@ module.exports = AmpersandModel.extend({
   location: 'availableCodes-collection/addCodes',
 
   initialize () {
+    //TODO: change this to normal api location
     this.url = 'http://localhost:8080/api/' + this.location
     console.log('url', this.url)
   },

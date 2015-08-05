@@ -1,5 +1,5 @@
 import React from 'react'
-import EditProductForm from '../atomic/editProductForm.js'
+import EditProductForm from '../atoms/editProductForm.js'
 
 import Mui from 'material-ui'
 let { Paper, Snackbar } = Mui
