@@ -5,7 +5,7 @@ import Mui from 'material-ui'
 
 let { Paper } = Mui
 
-let SearchForm = require('../atomic/searchForm.js')
+let SearchForm = require('../../components/atoms/searchForm.js')
 
 let columnMetadata = [
   {'columnName': 'customerEmail', 'displayName': 'Email' },

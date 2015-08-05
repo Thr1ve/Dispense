@@ -1,7 +1,7 @@
 import React from 'react'
 import Router from 'react-router'
 import app from 'ampersand-app'
-import FilterableProductTable from '../../../components/molecules/filterableProductTable.js'
+import FilterableProductTable from '../../components/molecules/filterableProductTable.js'
 
 let { RouteHandler } = Router
 

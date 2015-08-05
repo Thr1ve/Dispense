@@ -1,7 +1,7 @@
-import MainSearch from './components/pages/mainSearch.js'
-import RequestCode from './components/pages/requestCode.js'
-import RequestedCodes from './components/pages/requestedCodes.js'
-import SearchUsedCodes from './components/pages/searchUsedCodes.js'
+import MainSearch from './pages/mainSearch.js'
+import RequestCode from './pages/requestCode.js'
+import RequestedCodes from './pages/requestedCodes.js'
+import SearchUsedCodes from './pages/searchUsedCodes.js'
 import Changelog from '../components/atoms/changelog.js'
 
 import React from 'react'

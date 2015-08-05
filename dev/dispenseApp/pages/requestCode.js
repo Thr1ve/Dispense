@@ -1,5 +1,5 @@
 import React from 'react'
-import RequestCodeForm from '../atomic/requestCodeForm.js'
+import RequestCodeForm from '../../components/atoms/requestCodeForm.js'
 import app from 'ampersand-app'
 import Mui from 'material-ui'
 
