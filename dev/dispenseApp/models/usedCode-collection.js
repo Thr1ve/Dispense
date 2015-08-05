@@ -1,4 +1,4 @@
-let AmpCollection = require('./apiPointer.js')
+let AmpCollection = require('../../models/apiPointer.js')
 let usedCode = require('./usedCode')
 
 // this holds the requests for codes that the user

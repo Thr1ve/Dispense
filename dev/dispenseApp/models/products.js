@@ -1,5 +1,5 @@
 // product Collection - product-collection.js
-let AmpCollection = require('./apiPointer.js')
+let AmpCollection = require('../../models/apiPointer.js')
 let product = require('./product')
 let Fuse = require('fuse.js')
 
