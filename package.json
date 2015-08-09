@@ -1,13 +1,12 @@
 {
-  "name": "webpack-express-boilerplate",
+  "name": "Dispense",
   "version": "0.1.0",
-  "description": "A boilerplate for running a Webpack workflow in Node express",
+  "description": "A wep-application to provide registration codes for online products for technical support purposes",
   "main": "server.js",
   "scripts": {
     "start": "node server",
     "build": "NODE_ENV=production webpack -p --config webpack.production.config.js",
     "dev": "webpack-dev-server --history-api-fallback --devtool eval --progress --colors --content-base build",
-    "test-dev": "webpack-dev-server --history-api-fallback --devtool eval --progress --colors --content-base testBuild",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gordon Buhler",
