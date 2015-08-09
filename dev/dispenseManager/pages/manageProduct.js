@@ -56,12 +56,6 @@ let ManageProduct = React.createClass({
     router.transitionTo('addCodes', {productId: productId})
   },
 
-  toProductStats () {
-    let { productId } = this.state
-    let { router } = this.context
-    router.transitionTo('productStats', {productId: productId})
-  },
-
   render () {
 
     let buttonStyle = {
@@ -74,10 +68,6 @@ let ManageProduct = React.createClass({
       return (
         <div>
           <div style={{position: 'fixed', top: '0', left: '0', zIndex: '9' }} >
-            <FlatButton label='Stats'
-              style={buttonStyle}
-              onClick={this.toProductStats}
-              secondary={true} />
             <FlatButton label='Edit Product'
               style={buttonStyle}
               onClick={this.toEditProduct}
