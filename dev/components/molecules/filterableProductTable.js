@@ -62,7 +62,7 @@ var FilterableProductTable = React.createClass({
         </div>
         <div>
           {(this.state.filterText.length > 0) ?
-            (<ProductTable transitionTo={this.props.transitionTo} products={this.state.data}/>) : (<MostUsedProductsTable/>) }
+            (<ProductTable transitionTo={this.props.transitionTo} products={this.state.data}/>) : (<MostUsedProductsTable transitionTo={this.props.transitionTo}/>) }
         </div>
       </div>
     )
