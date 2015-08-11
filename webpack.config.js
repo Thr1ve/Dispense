@@ -27,7 +27,7 @@ var config = {
   },
   plugins: [
     new Webpack.HotModuleReplacementPlugin(),
-    //isue
+    // issue
     new Webpack.DefinePlugin({ 'env.vars': JSON.stringify('http://localhost:8080/api/') })
   ]
 }
