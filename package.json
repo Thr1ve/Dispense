@@ -6,6 +6,10 @@
   "private": true,
   "main": "server/server.js",
   "scripts": {
+    "start": "node server/server.js",
+    "build": "NODE_ENV=production webpack -p --config webpack.production.config.js",
+    "dev": "webpack-dev-server --history-api-fallback --devtool eval --progress --colors --content-base build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "mainInput": "main",
   "mainOutput": "main",
