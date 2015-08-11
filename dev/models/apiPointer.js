@@ -7,6 +7,6 @@ module.exports = AmpCollection.extend({
   // pointer: env.vars.apiUrl,
 
   initialize () {
-    this.url = 'http://localhost:5000/api/' + this.location
+    this.url = 'http://localhost:8080/api/' + this.location
   }
 })
