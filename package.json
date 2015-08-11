@@ -6,9 +6,6 @@
   "private": true,
   "main": "server/server.js",
   "scripts": {
-    "build-app": "cd ./dev/dispenseApp/ && NODE_ENV=production webpack",
-    "build-manager": "cd ./dev/dispenseManager/ && NODE_ENV=production webpack",
-    "build": "npm run build-app && npm run build-manager"
   },
   "mainInput": "main",
   "mainOutput": "main",
