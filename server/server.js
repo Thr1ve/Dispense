@@ -12,11 +12,11 @@ boot(app, __dirname)
 // Example:
 // app.use(loopback.static(path.resolve(__dirname, "../client")))
 
-var dispenseApp = path.resolve(__dirname, "../client/dispenseApp")
-var dispenseManager = path.resolve(__dirname, "../client/dispenseManager")
+var apps = path.resolve(__dirname, "../apps")
+var dispenseApp = path.resolve(__dirname, "../apps/dispenseApp")
+var dispenseManager = path.resolve(__dirname, "../apps/dispenseManager")
 
-app.use(loopback.static(dispenseApp))
-app.use(loopback.static(dispenseManager))
+app.use(loopback.static(apps))
 
 app.get("/dispenseApp*", function(req, res){
    res.sendFile(dispenseApp + "/index.html")

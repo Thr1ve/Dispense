@@ -1,5 +1,10 @@
 # Changelog
 
+## August 2015
+- - -
+### 11 August 2015
+  * Text in the MainSearch input box will now persist through navigation ([Commit]())
+  * Data in input fields when requesting a code will now persist through navigation (regardless of product) ([Commit]())
 
 ## July 2015
 - - -
