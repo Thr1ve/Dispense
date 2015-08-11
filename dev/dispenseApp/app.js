@@ -53,6 +53,14 @@ var app = App.extend({
 
     this.filterText = ''
 
+    this.requestData = {
+      customerName: '',
+      customerEmail: '',
+      universityOrBusiness: '',
+      representative: '',
+      chatOrTicket: ''
+    }
+
     // Attach to window for easier debugging
     window.app = this
 

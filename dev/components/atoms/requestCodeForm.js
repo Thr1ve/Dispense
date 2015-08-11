@@ -13,11 +13,11 @@ var requestCodeForm = React.createClass({
   getInitialState () {
     return {
       productId: this.props.productId,
-      customerName: '',
-      customerEmail: '',
-      universityOrBusiness: '',
-      representative: '',
-      chatOrTicket: ''
+      customerName: app.requestData.customerName,
+      customerEmail: app.requestData.customerEmail,
+      universityOrBusiness: app.requestData.universityOrBusiness,
+      representative: app.requestData.representative,
+      chatOrTicket: app.requestData.chatOrTicket
     }
   },
 
@@ -25,6 +25,7 @@ var requestCodeForm = React.createClass({
     var newState = this.state
     newState[event.target.name] = event.target.value
     this.setState(newState)
+    app.requestData = newState
   },
 
   handleSubmit (e) {
