@@ -51,6 +51,8 @@ var app = App.extend({
     this.newCode = new Code()
     this.usedCodes = new Code()
 
+    this.filterText = ''
+
     // Attach to window for easier debugging
     window.app = this
 

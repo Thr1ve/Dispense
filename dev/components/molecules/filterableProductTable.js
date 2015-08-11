@@ -9,7 +9,7 @@ var FilterableProductTable = React.createClass({
   getInitialState () {
     return {
       data: [],
-      filterText: ''
+      filterText: app.filterText
     }
   },
 
@@ -45,6 +45,8 @@ var FilterableProductTable = React.createClass({
     } else {
       filtered = app.products
     }
+
+    app.filterText = filterText
 
     this.setState({
       filterText: filterText,
