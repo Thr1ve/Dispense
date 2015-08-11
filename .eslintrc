@@ -1,22 +1,20 @@
 {
+  "extends": "standard",
+
   "parser": "babel-ESlint",
+
   "rules": {
       "semi": [2, "never"],
       "strict": [2, "never"],
-      "camelcase": [2, {"properties": "never"}],
       "no-console": 0,
-      "no-underscore-dangle": 0
+      "no-underscore-dangle": 0,
+      "indent": [2, 2]
   },
   "ecmaFeatures": {
-      "jsx": true
+        "jsx": true
   },
-  "env": {
-    "browser": true,
-    "node": true,
-    "amd": true
-  },
+
   "plugins": [
     "react"
   ]
-
 }
