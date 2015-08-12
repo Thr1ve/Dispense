@@ -3,8 +3,8 @@
 ## August 2015
 - - -
 ### 11 August 2015
-  * Text in the MainSearch input box will now persist through navigation ([Commit]())
-  * Data in input fields when requesting a code will now persist through navigation (regardless of product) ([Commit]())
+  * Text in the MainSearch input box will now persist through navigation ([Commit](https://github.com/Thr1ve/Dispense/commit/367d79a8f63278a305c65a3b7d8fae230bab2ca4))
+  * Data in input fields when requesting a code will now persist through navigation (regardless of product) ([Commit](https://github.com/Thr1ve/Dispense/commit/9a72acf192a319aad7a3a69aaaca620d3ca99ec9))
 
 ## July 2015
 - - -
