@@ -9,6 +9,7 @@
     "start": "node server/server.js",
     "start-dev": "webpack-dev-server --history-api-fallback --devtool eval --progress --colors --content-base build",
     "build": "NODE_ENV=production webpack -p --config webpack.production.config.js",
+    "merge-to-prod": "git checkout production && git merge development",
     "dev": "parallelshell 'npm run start' 'npm run start-dev'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
