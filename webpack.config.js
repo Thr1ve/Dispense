@@ -34,24 +34,3 @@ var config = {
 }
 
 module.exports = config
-
-// module.exports = {
-//   entry: ['./test/main.js'],
-//   output: {
-//     path: './testBuild',
-//     filename: 'bundle.js'
-//   },
-//   module: {
-//     loaders: [{
-//       test: /\.js$/,
-//       loader: 'babel',
-//       exclude: [nodeModulesPath]
-//     }, {
-//       test: /\.css$/,
-//       loader: 'style!css'
-//     }]
-//   }
-  // plugins: [
-  //   new Webpack.HotModuleReplacementPlugin()
-  // ]
-// }
