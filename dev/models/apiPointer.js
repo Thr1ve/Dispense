@@ -7,6 +7,7 @@ module.exports = AmpCollection.extend({
   pointer: env.vars,
 
   initialize () {
+    console.log('a random test change')
     this.url = this.pointer + this.location
   }
 })
