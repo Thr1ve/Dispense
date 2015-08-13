@@ -15,7 +15,7 @@
   "config": {
     "api": {
       "dev": "http://localhost:5000/api/",
-      "prod": "http://10.200.32.122/api"
+      "prod": "http://10.200.32.122/api/"
     }
   },
   "mainInput": "main",

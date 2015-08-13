@@ -6,8 +6,7 @@ var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 
 var ENV = process.env
 
-var commonsPlugin =
-  new Webpack.optimize.CommonsChunkPlugin('common.js')
+var commonsPlugin = new Webpack.optimize.CommonsChunkPlugin('common.js')
 
 var config = {
 
