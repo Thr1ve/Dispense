@@ -45,6 +45,11 @@ var requestCodeForm = React.createClass({
         if (!model.code) {
           self.refs.snackbar.show()
         } else {
+          app.requestData.customerName = ''
+          app.requestData.customerEmail = ''
+          app.requestData.universityOrBusiness = ''
+          app.requestData.representative = ''
+          app.requestData.chatOrTicket = ''
           router.transitionTo('requestedCodes')
         }
       }
