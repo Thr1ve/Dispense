@@ -1,6 +1,8 @@
 var Webpack = require('webpack')
 var path = require('path')
 
+var ENV = process.env
+
 var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 // var buildPath = path.resolve(__dirname, 'public', 'build')
 
@@ -27,8 +29,7 @@ var config = {
   },
   plugins: [
     new Webpack.HotModuleReplacementPlugin(),
-    // issue
-    new Webpack.DefinePlugin({ 'env.vars': JSON.stringify('http://localhost:8080/api/') })
+    new Webpack.DefinePlugin({ 'env.vars': JSON.stringify(ENV.npm_package_config_api_dev) })
   ]
 }
 

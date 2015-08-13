@@ -4,6 +4,8 @@ var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 // var buildPath = path.resolve(__dirname, 'public', 'build')
 // var mainPath = path.resolve(__dirname, 'app', 'main.js')
 
+var ENV = process.env
+
 var commonsPlugin =
   new Webpack.optimize.CommonsChunkPlugin('common.js')
 
@@ -19,7 +21,10 @@ var config = {
     path: './apps/',
     filename: '[name]/[name].entry.js'
   },
-  plugins: [commonsPlugin],
+  plugins: [
+    commonsPlugin,
+    new Webpack.DefinePlugin({ 'env.vars': JSON.stringify(ENV.npm_package_config_api_prod) })
+  ],
   module: {
     loaders: [
       {

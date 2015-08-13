@@ -4,9 +4,9 @@ import AmpCollection from 'ampersand-rest-collection'
 
 module.exports = AmpCollection.extend({
 
-  // pointer: env.vars.apiUrl,
+  pointer: env.vars,
 
   initialize () {
-    this.url = 'http://localhost:5000/api/' + this.location
+    this.url = this.pointer + this.location
   }
 })
