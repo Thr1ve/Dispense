@@ -8,7 +8,6 @@
   "scripts": {
     "start": "node server/server.js",
     "start-dev": "webpack-dev-server --history-api-fallback --devtool eval --progress --colors --content-base build",
-    "build": "",
     "compile": "NODE_ENV=production webpack -p --config webpack.production.config.js",
     "merge-to-prod": "echo 'Checking out production branch' && git checkout production && echo 'Merging development branch into production branch' && git merge development && echo 'PLEASE BE SURE THAT create-sample-models.js AND create-lb-tables.js ARE NOT IN server/boot/'",
     "dev": "parallelshell 'npm run start' 'npm run start-dev'",
