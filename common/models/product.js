@@ -8,6 +8,7 @@ module.exports = function(Product) {
         // var products = app.datasources.mydb.models.product;
         // var contacts = app.datasources.mydb.models.contact;
         // var prodId   = modelInstance.productId;
+        // console.log(modelInstance)
         // next()
     // })
 }
