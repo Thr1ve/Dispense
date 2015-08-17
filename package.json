@@ -1,8 +1,6 @@
 {
   "name": "Dispense",
   "version": "1.0.0",
-  "description": "",
-  "repository": "",
   "private": true,
   "main": "server/server.js",
   "scripts": {
@@ -19,8 +17,6 @@
       "prod": "http://10.200.32.122/api/"
     }
   },
-  "mainInput": "main",
-  "mainOutput": "main",
   "dependencies": {
     "amp-sort-by": "^1.0.0",
     "ampersand-app": "^1.0.4",
@@ -51,10 +47,6 @@
     "serve-favicon": "^2.0.1",
     "style-loader": "^0.10.2",
     "underscore": "^1.7.0",
-    "webpack": "^1.8.5",
-    "webpack-dev-server": "^1.8.0"
-  },
-  "optionalDependencies": {
     "loopback-explorer": "^1.1.0",
     "loopback-connector-postgresql": "^1.6.1"
   },
@@ -65,7 +57,9 @@
     "eslint-plugin-react": "^3.2.0",
     "eslint-plugin-standard": "^1.2.0",
     "parallelshell": "^2.0.0",
-    "standard": "^5.0.0"
+    "standard": "^5.0.0",
+    "webpack": "^1.8.5",
+    "webpack-dev-server": "^1.8.0"
   },
   "bundleDependencies": [
     "browserify",
