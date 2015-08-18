@@ -30,7 +30,7 @@ module.exports = function (AvailableCodes) {
         {arg: 'productId', type: 'string'},
         {arg: 'codes', type: 'array'}
       ],
-      http: {path: '/addCodes' }
+      http: {path: '/addCodes'}
     }
   )
 }
