@@ -1,8 +1,6 @@
 // var app = require("../../server/server")
 
-
-module.exports = function(Product) {
-
+module.exports = function (Product) {
 
     // Product.observe("before save", function(modelInstance, next) {
         // var products = app.datasources.mydb.models.product;
