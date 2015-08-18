@@ -21,7 +21,8 @@ var config = {
     filename: '[name]/[name].entry.js'
   },
   plugins: [
-    new Webpack.DefinePlugin({ 'env.vars': JSON.stringify(ENV.npm_package_config_api_prod) })
+    new Webpack.DefinePlugin({ 'env.vars': JSON.stringify(ENV.npm_package_config_api_prod) }),
+    new Webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
   ],
   module: {
     loaders: [
