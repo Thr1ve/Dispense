@@ -1,13 +1,14 @@
+/* global env */
 import AmpersandModel from 'ampersand-model'
 
 module.exports = AmpersandModel.extend({
 
   location: 'availableCodes-collection/addCodes',
 
+  pointer: env.vars,
+
   initialize () {
-    //TODO: change this to normal api location
-    this.url = 'http://localhost:8080/api/' + this.location
-    console.log('url', this.url)
+    this.url = this.pointer + this.location
   },
 
   props: {
