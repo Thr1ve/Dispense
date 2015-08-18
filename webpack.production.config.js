@@ -18,9 +18,11 @@ var config = {
   },
   output: {
     path: './apps/',
+    publicPath: '/apps/',
     filename: '[name]/[name].entry.js'
   },
   plugins: [
+    commonsPlugin,
     new Webpack.DefinePlugin({ 'env.vars': JSON.stringify(ENV.npm_package_config_api_prod) }),
     new Webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
   ],
