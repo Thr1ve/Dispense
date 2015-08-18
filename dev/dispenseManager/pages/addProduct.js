@@ -22,8 +22,12 @@ let addProduct = React.createClass({
 
     app.products.create(productData, {
       wait: true,
-      success: function () {
-        app.contacts.create(contactData, {
+      success: function (res) {
+        let productId = res.productId
+        let fullContact = contactData
+        fullContact.productId = productId
+
+        app.contacts.create(fullContact, {
           wait: true,
           success: function () {
             self.success()
