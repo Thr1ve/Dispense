@@ -1,17 +1,14 @@
-var app = require('../../server/server')
+// var app = require("../../server/server")
 
-module.exports = function (Product) {
 
-  Product.observe('before save', function (modelInstance, next) {
+module.exports = function(Product) {
 
-    var products = app.datasources.mydb.models.product
-    var prodId = modelInstance.productId
-    // var contacts = app.datasources.mydb.models.contact
-    if (!prodId) {
-      // console.log(modelInstance)
-      console.log(products)
-      console.log(products.length)
-    }
-    next()
-  })
+
+    // Product.observe("before save", function(modelInstance, next) {
+        // var products = app.datasources.mydb.models.product;
+        // var contacts = app.datasources.mydb.models.contact;
+        // var prodId   = modelInstance.productId;
+        // console.log(modelInstance)
+        // next()
+    // })
 }
