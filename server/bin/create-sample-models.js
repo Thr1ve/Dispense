@@ -7,24 +7,27 @@ var app = require('../server')
 // var _ = require('underscore')
 
 // module.exports = function(app) {
-app.dataSources.mydb.automigrate('product', function (err) {
-  if (err) {throw err}
-  productsJSON.products.forEach(function (val) {
-    app.models.product.create([{
-      productId: val.id,
-      title: val.title,
-      isbn13: val.isbn13,
-      config: val.config,
-      popularity: val.popularity,
-      oldTable: 'none'
-    }], function (err2) {
-      if (err2) {throw err2}
+
+app.dataSources.rethinkdb.automigrate('product', function (err) {
+  if (!err) {
+    productsJSON.products.forEach(function (val) {
+      app.models.product.create([{
+        productId: val.id,
+        title: val.title,
+        isbn13: val.isbn13,
+        config: val.config,
+        nCodes: 0,
+        popularity: val.popularity,
+        oldTable: 'none'
+      }], function (err2) {
+        if (err2) {throw err2}
+      })
     })
-  })
-  console.log('Product Models created!')
+    console.log('Product Models created!')
+  }
 })
 
-app.dataSources.mydb.automigrate('contact', function (err) {
+app.dataSources.rethinkdb.automigrate('contact', function (err) {
   if (err) {throw err}
   var date = new Date(0)
   contactsJSON.contacts.forEach(function (val) {
@@ -40,7 +43,7 @@ app.dataSources.mydb.automigrate('contact', function (err) {
   console.log('Contact Models created!')
 })
 
-app.dataSources.mydb.automigrate('availableCodes', function (err) {
+app.dataSources.rethinkdb.automigrate('availableCodes', function (err) {
   if (!err) {
     testAvailableCodesJSON.availableCodes.forEach(function (val) {
       app.models.availableCodes.create([{
@@ -54,7 +57,7 @@ app.dataSources.mydb.automigrate('availableCodes', function (err) {
   }
 })
 
-app.dataSources.mydb.automigrate('usedCode', function (err) {
+app.dataSources.rethinkdb.automigrate('usedCode', function (err) {
   if (!err) {
     testUsedCodesJSON.usedCodes.forEach(function (val) {
       var fixedDate = new Date(val.date).toDateString()
@@ -74,6 +77,7 @@ app.dataSources.mydb.automigrate('usedCode', function (err) {
     console.log('usedCode table created')
   }
 })
+
 // }
 
 /*
