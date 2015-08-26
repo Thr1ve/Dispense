@@ -11,6 +11,7 @@ module.exports = AmpersandModel.extend({
     productId: 'any',
     isbn13: 'string',
     title: 'string',
+    nCodes: 'number',
     author: 'string',
     category: 'string',
     config: 'string',
