@@ -3,7 +3,6 @@
   "plural": "usedCode-collection",
   "base": "PersistedModel",
   "idInjection": true,
-  "dataSource": "mysqlDs",
   "properties": {
     "chatOrTicket": {
       "type": "string"
@@ -34,5 +33,5 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": []
+  "methods": {}
 }
