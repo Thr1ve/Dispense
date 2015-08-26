@@ -8,12 +8,12 @@ let requestedCodes = React.createClass({
 
   getInitialState () {
     return {
-			data: [],
-        currIndex: ''
-		}
+      data: [],
+      currIndex: ''
+    }
   },
 
-	componentDidMount () {
+  componentDidMount () {
     this.setState({
       data: app.newCode.models,
       currIndex: app.newCode.models.length - 1

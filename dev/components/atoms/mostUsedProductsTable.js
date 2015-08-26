@@ -9,7 +9,7 @@ let { Menu } = mui
 let MostUsedProductsTable = React.createClass({
 
   contextTypes: {
-      router: React.PropTypes.func
+    router: React.PropTypes.func
   },
 
   getInitialState () {
@@ -26,12 +26,12 @@ let MostUsedProductsTable = React.createClass({
 
   _onItemClick (e, key, menuItem) {
     let { router } = this.context
-    router.transitionTo(this.props.transitionTo, { productId: menuItem.payload})
+    router.transitionTo(this.props.transitionTo, {productId: menuItem.payload})
   },
 
   render () {
     let rows = []
-    let sorted = sortBy(this.state.data.models, 'popularity').filter((val)=> {
+    let sorted = sortBy(this.state.data.models, 'popularity').filter((val) => {
       return val.popularity > 0
     }).reverse()
 
