@@ -21,5 +21,10 @@
         }
       }
     ]
+  },
+  "rethinkdb": {
+    "name": "rethinkdb",
+    "connector": "rethinkdb",
+    "url": "http://localhost:28015/dispense"
   }
 }

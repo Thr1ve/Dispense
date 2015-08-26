@@ -30,19 +30,19 @@
     "dataSource": "emailDs"
   },
   "product": {
-    "dataSource": "mydb",
+    "dataSource": "rethinkdb",
     "public": true
   },
   "usedCode": {
-    "dataSource": "mydb",
+    "dataSource": "rethinkdb",
     "public": true
   },
   "availableCodes": {
-    "dataSource": "mydb",
+    "dataSource": "rethinkdb",
     "public": true
   },
   "contact": {
-    "dataSource": "mydb",
+    "dataSource": "rethinkdb",
     "public": true
   }
 }
