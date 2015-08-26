@@ -38,19 +38,20 @@ module.exports = function (UsedCode) {
         // delete the row
         availableCodes.destroyById(row.id, function (err2) {
           if (!err2) {
+            products.findOne({where: {productId: prodId}}, function (err3, product) {
+              if (err3) {console.log(err3)}
+              var nProduct = product
+              availableCodes.count({productId: prodId}, function (err4, count) {
+                nProduct.nCodes = count
+                nProduct.popularity = nProduct.popularity += 1
+                products.upsert(nProduct, function (err4, obj) {
+                  if (err4) {throw err4}
+                })
+              })
+            })
             // send the callback
             cb(null, response)
           }
-        })
-
-        products.findOne({where: {productId: prodId}}, function (err2, product) {
-          if (err2) {console.log(err2)}
-          var nProduct = product
-          nProduct.popularity = nProduct.popularity += 1
-          products.upsert(nProduct, function (err3, obj) {
-            if (err3) {throw err3}
-            console.log(obj)
-          })
         })
 
         availableCodes.count({productId: prodId}, function (err2, count) {
