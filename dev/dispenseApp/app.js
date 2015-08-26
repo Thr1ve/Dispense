@@ -47,6 +47,14 @@ import Code from './../models/usedCode-collection'
 var app = App.extend({
   init () {
 
+    var self = this
+
+    var io = require('socket.io-client')
+    var socket = io('http://localhost:5000')
+    // var socket = io('http://192.168.1.85')
+
+    this.socket = socket
+
     this.products = new Products()
     this.newCode = new Code()
     this.usedCodes = new Code()
@@ -60,6 +68,18 @@ var app = App.extend({
       representative: '',
       chatOrTicket: ''
     }
+
+    console.log(this.products)
+
+    socket.on('connect', function () {
+      console.log('Connection')
+      socket.on('countUpdate', function (data) {
+        // console.log('Count Update Received! \n', data)
+        // console.log('nCodes for this product was ' + self.products.get(data.old_val.productId).nCodes)
+        self.products.get(data.old_val.productId).set('nCodes', data.new_val.nCodes)
+        // console.log('nCodes for this product is now ' + self.products.get(data.old_val.productId).nCodes)
+      })
+    })
 
     // Attach to window for easier debugging
     window.app = this
