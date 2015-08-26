@@ -36,7 +36,7 @@ let MostUsedProductsTable = React.createClass({
     }).reverse()
 
     sorted.forEach(function (product) {
-      rows.push({payload: product.productId, text: product.title, data: product.isbn13})
+      rows.push({payload: product.productId, text: product.title + ' ' + product.nCodes, data: product.isbn13})
     })
 
     return (
