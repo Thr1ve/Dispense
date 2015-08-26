@@ -19,9 +19,9 @@ module.exports = function (UsedCode) {
 
     var response = requestObject.instance
     // grab the object representing the SQL data
-    var availableCodes = app.datasources.mydb.models.availableCodes
-    var contacts = app.datasources.mydb.models.contact
-    var products = app.datasources.mydb.models.product
+    var availableCodes = app.datasources.rethinkdb.models.availableCodes
+    var contacts = app.datasources.rethinkdb.models.contact
+    var products = app.datasources.rethinkdb.models.product
 
     var prodId = requestObject.instance.productId
     // search the SQL data for the correct model using the productId

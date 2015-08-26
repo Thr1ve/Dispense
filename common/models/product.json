@@ -14,8 +14,7 @@
       "type": "string"
     },
     "productId": {
-      "type": "number",
-      "id": true
+      "type": "number"
     },
     "nCodes": {
       "type": "number"
@@ -41,5 +40,5 @@
     }
   },
   "acls": [],
-  "methods": []
+  "methods": {}
 }

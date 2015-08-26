@@ -4,9 +4,9 @@ module.exports = function (Product) {
 
   Product.observe('before save', function (modelInstance, next) {
 
-    var products = app.datasources.mydb.models.product
-    var prodId = modelInstance.productId
-    var contacts = app.datasources.mydb.models.contact
+    var products = app.datasources.rethinkdb.models.product
+    var prodId = modelInstance.instance ? modelInstance.instance.productId : modelInstance.data.productId
+    var contacts = app.datasources.rethinkdb.models.contact
 
     if (prodId) {
       next()
