@@ -11,16 +11,22 @@ let ProductTable = React.createClass({
     router: React.PropTypes.func
   },
 
-  _onItemClick (e, key, menuItem) {
+  _click (e, key, menuItem) {
+    console.log('MENU ITEM CLICKED')
+    console.log(e)
+    console.log('target', e.target)
+    console.log('type', e.type)
     let { router } = this.context
-    router.transitionTo(this.props.transitionTo, {productId: menuItem.payload})
+    router.transitionTo(this.props.transitionTo + '/' + menuItem.route, {productId: menuItem.route})
   },
 
   render () {
     let rows = []
 
+    console.log(this.props.transitionTo)
+
     this.props.products.forEach(function (product) {
-      rows.push({payload: product.productId, text: product.title + ' ' + product.nCodes, data: product.isbn13})
+      rows.push({route: product.productId, text: product.title + ' ' + product.nCodes, data: product.isbn13})
     })
 
     return (
@@ -31,7 +37,7 @@ let ProductTable = React.createClass({
         }
       }}>
         <div>
-          <Menu menuItems={rows} onItemClick={this._onItemClick}/>
+          <Menu menuItems={rows} onClick={this._click}/>
         </div>
       </KeyBindings>
     )

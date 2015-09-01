@@ -42,6 +42,9 @@ import AppRoutes from './appRoutes.js'
 import Products from './../models/products'
 import Code from './../models/usedCode-collection'
 
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
+
 // import Mousetrap from 'mousetrap'
 
 var app = App.extend({
@@ -69,10 +72,7 @@ var app = App.extend({
       chatOrTicket: ''
     }
 
-    console.log(this.products)
-
     socket.on('connect', function () {
-      console.log('Connection')
       socket.on('countUpdate', function (data) {
         // console.log('Count Update Received! \n', data)
         // console.log('nCodes for this product was ' + self.products.get(data.old_val.productId).nCodes)
