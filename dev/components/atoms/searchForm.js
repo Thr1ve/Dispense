@@ -116,7 +116,7 @@ let SearchForm = React.createClass({
                   value={chatOrTicket}
                   onChange={this.handleChange} />
                 <div style={{width: '75%', marginRight: 'auto', marginLeft: 'auto'}}>
-                  <FlatButton label='Search' style={{width: '100%'}}/>
+                  <FlatButton label='Search' type='submit' style={{width: '100%'}}/>
                 </div>
               </div>
             </form>
