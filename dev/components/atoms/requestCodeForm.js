@@ -122,7 +122,7 @@ var requestCodeForm = React.createClass({
               value={representative}
               onChange={this.handleChange}/>
           </div>
-          <FlatButton label='Submit'/>
+          <FlatButton label='Submit' type='submit'/>
         </form>
         <Snackbar
           ref="snackbar"
