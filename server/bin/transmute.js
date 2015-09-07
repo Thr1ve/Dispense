@@ -22,6 +22,12 @@ var OldDb = loopback.createDataSource("mssql", {
   "user": "loopback"
 })
 
+  // "rethinkdb": {
+  //   "name": "rethinkdb",
+  //   "connector": "rethinkdb",
+  //   "url": "http://localhost:28015/dispense"
+  // }
+
 /**
 * utilities for other functions
 */
