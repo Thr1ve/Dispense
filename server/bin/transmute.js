@@ -1,32 +1,43 @@
 #!/Usr/bin/env node
 
 // isInteger polyfill
-Number.isInteger = Number.isInteger || function(value) {
-    return typeof value === "number" &&
-           isFinite(value) &&
-           Math.floor(value) === value
+Number.isInteger = Number.isInteger || function (value) {
+  return typeof value === 'number' &&
+    isFinite(value) &&
+    Math.floor(value) === value
 }
 
-var loopback = require("loopback")
-var server = require("../server")
-var DispenseDB = server.dataSources.mydb
-var program = require("commander")
+var loopback = require('loopback')
+var server = require('../server')
+// var DispenseDB = server.dataSources.mydb
+// var DispenseDB = server.dataSources.rethinkdb
+var program = require('commander')
 
 // replace this with regcodes server details for production
-var OldDb = loopback.createDataSource("mssql", {
- // "host": "10.8.2.114",
-  "host": "localhost",
-  "port": 1433,
-  "database": "RegCodes",
-  "password": "loopback",
-  "user": "loopback"
+var OldDb = loopback.createDataSource('mssql', {
+  'host': '10.8.2.114',
+  // 'host': 'localhost',
+  'port': 1433,
+  'database': 'RegCodes',
+  'password': 'loopback',
+  'user': 'loopback'
 })
 
-  // "rethinkdb": {
-  //   "name": "rethinkdb",
-  //   "connector": "rethinkdb",
-  //   "url": "http://localhost:28015/dispense"
-  // }
+var postgresDb = loopback.createDataSource('postgresql', {
+  'host': '10.200.32.122',
+  'port': 5432,
+  'database': 'dispense',
+  'password': 'loopback',
+  'user': 'loopback'
+})
+
+
+var rethinkDb = loopback.createDataSource({
+  'connector': 'rethinkdb',
+  'url': 'http://localhost:28015/dispense'
+})
+
+var DispenseDB = postgresDb
 
 /**
 * utilities for other functions
@@ -392,6 +403,23 @@ program
   .description("Pull all used codes from old site")
   .action(function(){
     pullUsedCodes()
+  })
+
+program
+  .command('list')
+  .description('testing')
+  .action(function () {
+    postgresDb.models.product.find(function(err, products){
+      if(err) {console.log(err)}
+      console.log(products);
+      // rethinkDb.automigrate('product', function(err2) {
+      //   if (!err2) {
+      //     products.forEach( function (product){
+      //       rethinkDb.models.product.create(product)
+      //     })
+      //   }
+      // })
+    })
   })
 
     // OldDb.disconnect()
