@@ -8,36 +8,44 @@ Number.isInteger = Number.isInteger || function (value) {
 }
 
 var loopback = require('loopback')
-var server = require('../server')
+// var server = require('../server')
 // var DispenseDB = server.dataSources.mydb
 // var DispenseDB = server.dataSources.rethinkdb
+// var DispenseDB = server.dataSources.postgresql
 var program = require('commander')
 
 // replace this with regcodes server details for production
-var OldDb = loopback.createDataSource('mssql', {
-  'host': '10.8.2.114',
-  // 'host': 'localhost',
-  'port': 1433,
-  'database': 'RegCodes',
-  'password': 'loopback',
-  'user': 'loopback'
-})
+// var OldDb = loopback.createDataSource('mssql', {
+//   'host': '10.8.2.114',
+//   // 'host': 'localhost',
+//   'port': 1433,
+//   'database': 'RegCodes',
+//   'password': 'loopback',
+//   'user': 'loopback'
+// })
 
-var postgresDb = loopback.createDataSource('postgresql', {
-  'host': '10.200.32.122',
-  'port': 5432,
-  'database': 'dispense',
-  'password': 'loopback',
-  'user': 'loopback'
-})
+// var postgresDb = loopback.createDataSource('postgresql', {
+//   'host': '10.200.32.122',
+//   'port': 5432,
+//   "database": "dispense_db",
+//   "user": "gitlab",
+//   "password": "password"
+// })
 
+// var postgresDb = loopback.createDataSource('postgresql', {
+//   'host': 'localhost',
+//   'port': 5432,
+//   'database': 'dispense',
+//   'password': 'loopback',
+//   'user': 'loopback'
+// })
 
-var rethinkDb = loopback.createDataSource({
-  'connector': 'rethinkdb',
-  'url': 'http://localhost:28015/dispense'
-})
+// var rethinkDb = loopback.createDataSource({
+//   'connector': 'rethinkdb',
+//   'url': 'http://localhost:28015/dispense'
+// })
 
-var DispenseDB = postgresDb
+// var DispenseDB = postgresDb
 
 /**
 * utilities for other functions
@@ -409,17 +417,28 @@ program
   .command('list')
   .description('testing')
   .action(function () {
-    postgresDb.models.product.find(function(err, products){
-      if(err) {console.log(err)}
-      console.log(products);
-      // rethinkDb.automigrate('product', function(err2) {
-      //   if (!err2) {
-      //     products.forEach( function (product){
-      //       rethinkDb.models.product.create(product)
-      //     })
-      //   }
-      // })
-    })
+    // DispenseDB.models.product.find(function(err, products){
+    //   if(err) {console.log(err)}
+    //   console.log(products);
+    //   // rethinkDb.automigrate('product', function(err2) {
+    //   //   if (!err2) {
+    //   //     products.forEach( function (product){
+    //   //       rethinkDb.models.product.create(product)
+    //   //     })
+    //   //   }
+    //   // })
+    // })
+    // DispenseDB.findModel('product', function (err, model) {
+    //   console.log(model)
+    // })
+    // DispenseDB.discoverModelDefinitions(function(error, models){
+    //   if(error){console.log(error)}
+    //   models.forEach(function (val, ind, arr) {
+    //     if (val.name == 'product') {
+          console.log(DispenseDB)
+    //     }
+    //   })
+    // })
   })
 
     // OldDb.disconnect()
