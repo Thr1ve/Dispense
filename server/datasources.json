@@ -25,6 +25,6 @@
   "rethinkdb": {
     "name": "rethinkdb",
     "connector": "rethinkdb",
-    "url": "http://localhost:28015/dispense"
+    "url": "http://192.168.1.85:28015/dispense"
   }
 }
