@@ -8,11 +8,12 @@ Number.isInteger = Number.isInteger || function (value) {
 }
 
 var loopback = require('loopback')
-// var server = require('../server')
-// var DispenseDB = server.dataSources.mydb
-// var DispenseDB = server.dataSources.rethinkdb
-// var DispenseDB = server.dataSources.postgresql
+var server = require('../server')
+// var rethinkDb = server.dataSources.rethinkdb
+var postgresDb = server.dataSources.postgresql
 var program = require('commander')
+
+// var DispenseDB = rethinkDb
 
 // replace this with regcodes server details for production
 // var OldDb = loopback.createDataSource('mssql', {
@@ -40,10 +41,10 @@ var program = require('commander')
 //   'user': 'loopback'
 // })
 
-// var rethinkDb = loopback.createDataSource({
-//   'connector': 'rethinkdb',
-//   'url': 'http://localhost:28015/dispense'
-// })
+var rethinkDb = loopback.createDataSource({
+  'connector': 'rethinkdb',
+  'url': 'http://10.200.32.122:28015/dispense'
+})
 
 // var DispenseDB = postgresDb
 
@@ -56,11 +57,10 @@ var utilities = {
   *
   * @param {string} tableName The table name we are checking (will end in _RegCodes if has available codes)
   */
-  ifRegCodes: function(tableName){
-    if(tableName.match(/.*(_RegCodes)/gi)){
+  ifRegCodes: function (tableName) {
+    if (tableName.match(/.*(_RegCodes)/gi)) {
       return true
-    }
-    else{
+    } else {
       return false
     }
   },
@@ -70,11 +70,10 @@ var utilities = {
   *
   * @param {string} tableName The table name we are checking (will end in _UsedCodes if it has available codes)
   */
-  ifUsedCodes: function (string){
-    if(string.match(/.*(_UsedCodes)/gi)){
+  ifUsedCodes: function (string) {
+    if (string.match(/.*(_UsedCodes)/gi)) {
       return true
-    }
-    else{
+    } else {
       return false
     }
   },
@@ -84,15 +83,15 @@ var utilities = {
   *
   * @param {object} product a product object
   */
-  countCodes: function(product){
+  countCodes: function (product) {
     var oldTable = product.oldTable
-    var countQuery = "select COUNT(*) from " + oldTable
+    var countQuery = 'select COUNT(*) from ' + oldTable
 
-    OldDb.connector.query( countQuery, function(err, data){
-      if(err) {console.log(err)}
-      // data[0][""] is the number codes we have total
-      var remainingCodes = data[0][""]
-      console.log(oldTable + " has " + remainingCodes + " codes left")
+    OldDb.connector.query(countQuery, function (err, data) {
+      if (err) {console.log(err)}
+      // data[0][''] is the number codes we have total
+      var remainingCodes = data[0]['']
+      console.log(oldTable + ' has ' + remainingCodes + ' codes left')
     })
   },
 
@@ -102,51 +101,48 @@ var utilities = {
    @param {number} nCodes the specific name of the table for the product in the old database
    @param {boolean} all whether or not to pull all the codes
    */
-  moveCodes: function(product, nCodes, all){
+  moveCodes: function (product, nCodes, all) {
     var oldTable = product.oldTable
-    var selectQuery = "select * from " + oldTable
-    var countQuery = "select COUNT(*) from " + oldTable
+    var selectQuery = 'select * from ' + oldTable
+    var countQuery = 'select COUNT(*) from ' + oldTable
 
     var nAll = all ? true : false
     var n = nAll ? nAll : nCodes
 
-    OldDb.connector.query( countQuery, function(err, data){
-      if(err) {console.log(err)}
-      // data[0][""] is the number codes we have total
-      var remainingCodes = data[0][""]
+    OldDb.connector.query(countQuery, function (err, data) {
+      if (err) {console.log(err)}
+      // data[0][''] is the number codes we have total
+      var remainingCodes = data[0]['']
       var toTake
-      if (nAll){
+      if (nAll) {
         // if all is true, take all the codes
         toTake = remainingCodes
-      }
-      else if(Number.isInteger(n)){
+      } else if (Number.isInteger(n)) {
         // if we asked for more codes than are available, just give us the remaining codes
         toTake = n > remainingCodes ? remainingCodes : n
-      }
-      else {
+      } else {
         // if we didn't specify anything, then give us 10% or just 100 if there's more than 1000 codes available
-        toTake = remainingCodes > 1000 ? 100 : Math.round(remainingCodes * .1)
+        toTake = remainingCodes > 1000 ? 100 : Math.round(remainingCodes * 0.1)
       }
-      OldDb.connector.query(selectQuery, function(err2, data2){
-        if(err2) {console.log(err2)}
+      OldDb.connector.query(selectQuery, function (err2, data2) {
+        if (err2) {console.log(err2)}
         // make sure there are actually codes
-        if(data2.length > 0){
+        if (data2.length > 0) {
           // take a chunk of codes
           var sliced = data2.slice(0, toTake)
-          sliced.forEach(function(code){
+          sliced.forEach(function (code) {
             // make sure regcodes isn"t blank...
-            if(code.regcodes.length > 0){
+            if (code.regcodes.length > 0) {
               var deleteQuery = "DELETE FROM " + oldTable + " WHERE regcodes='" + code.regcodes + "'"
               // delete the codes we took
-              OldDb.connector.query(deleteQuery, function(err3, data3){
-                if(err3) {console.log("error", err3)}
+              OldDb.connector.query(deleteQuery, function (err3, data3) {
+                if (err3) {console.log('error', err3)}
               })
               DispenseDB.models.availableCodes.create([
                 {
                   productId: product.id,
                   code: code.regcodes
-                }
-                ], function(err3) {
+                }], function (err3) {
                   if (err2) {console.log(product, err3)}
                 }
               )
@@ -162,13 +158,13 @@ var utilities = {
  * This will, given a product, find all used codes for that product in the old db, then copy them to the new database
  * @param {Object} product
  */
-  copyUsedCodes: function(product){
-    var query = "select * from " + product.title + "_UsedCodes"
-    OldDb.connector.query( query, function(error, data){
-      if(error) {console.log(error)}
-      data.forEach(function(val) {
+  copyUsedCodes: function (product) {
+    var query = 'select * from ' + product.title + '_UsedCodes'
+    OldDb.connector.query(query, function (error, data) {
+      if (error) {console.log(error)}
+      data.forEach(function (val) {
         var fixedDate = new Date(val.TimeStamp).toDateString()
-        var checkedCode = val.RegCode || "none"
+        var checkedCode = val.RegCode || 'none'
         DispenseDB.models.usedCode.create([{
           productId: product.id,
           chatOrTicket: val.TicketNumber,
@@ -178,7 +174,7 @@ var utilities = {
           universityOrBusiness: val.UnivName,
           code: checkedCode,
           date: fixedDate
-        }], function(err2) {
+        }], function (err2) {
           if (err2) {throw err2}
         })
       })
@@ -208,7 +204,7 @@ var utilities = {
    * ]
    * ```
    */
-  getProducts: function(models){
+  getProducts: function (models) {
     // NOTE: This sort is NOT reliable. You will get slightly different results each time; this sort is ONLY used to give some semblance of alphabetical order
     // TODO: make this give back isbn13 as well
     var self = this
@@ -221,18 +217,17 @@ var utilities = {
       }
       return 0
     })
-    .reduce(function(prev, val){
-      if(self.ifRegCodes(val.name)){
+    .reduce(function (prev, val) {
+      if (self.ifRegCodes(val.name)) {
         var id = prev.length + 1
-        var title = val.name.replace(/(_RegCodes)/gi, "")
+        var title = val.name.replace(/(_RegCodes)/gi, '')
         prev.push({
           id: id,
           title: title,
           oldTable: val.name
         })
         return prev
-      }
-      else{
+      } else {
         return prev
       }
     }, [])
@@ -246,23 +241,23 @@ var utilities = {
  *
  * #### ***WARNING***: As there does not seem to be a way to sort reliably ( nor would it be worthwhile to do so as we will not be re-arranging product ids when they are in the new database ), the order or the products in the array WILL change when this function is called. If there are already products and available codes in the database, this will tie many codes to incorrect products.
  */
-function initProducts(){
-  //WARNING: this will reset products. They will not be in the same order. ONLY use this to initialize
-  OldDb.discoverModelDefinitions(function(error, models){
-    if(error){console.log(error)}
+function initProducts () {
+  // WARNING: this will reset products. They will not be in the same order. ONLY use this to initialize
+  OldDb.discoverModelDefinitions(function (error, models) {
+    if (error) {console.log(error)}
     var products = utilities.getProducts(models)
-    DispenseDB.automigrate("product", function(err) {
+    DispenseDB.automigrate('product', function (err) {
       if (err) {throw err}
-      products.forEach(function(val) {
+      products.forEach(function (val) {
         DispenseDB.models.product.create([{
           productId: val.id,
           title: val.title,
           oldTable: val.oldTable
-        }], function(err2) {
+        }], function (err2) {
           if (err2) {throw err2}
         })
       })
-      console.log("Creating Product Models...")
+      console.log('Creating Product Models...')
     })
   })
 }
@@ -271,28 +266,27 @@ function initProducts(){
  * Pull available codes from old database. Can optionally overwrite existing codes in new database with those pulled from old database
  * @param {bool} overWrite whether or not to overwrite existing codes
  */
-function pullAvailableCodes(overWrite, nCodes, all){
+function pullAvailableCodes (overWrite, nCodes, all) {
   overWrite = overWrite || false
   nCodes = false
   all = false
-  if(!overWrite) {
-    DispenseDB.models.product.find(function(err, products){
-      if(err) {console.log(err)}
-      products.forEach( function (product){
+  if (!overWrite) {
+    DispenseDB.models.product.find(function (err, products) {
+      if (err) {console.log(err)}
+      products.forEach(function (product) {
         utilities.moveCodes(product, nCodes, all)
       })
-      console.log("Finding more codes to join the party...")
+      console.log('Finding more codes to join the party...')
     })
-  }
-  else {
-    DispenseDB.models.product.find(function(err, products){
-      if(err) {console.log(err)}
-      DispenseDB.automigrate("availableCodes", function(err2) {
+  } else {
+    DispenseDB.models.product.find(function (err, products) {
+      if (err) {console.log(err)}
+      DispenseDB.automigrate('availableCodes', function (err2) {
         if (!err2) {
-          products.forEach( function (product){
+          products.forEach(function (product) {
             utilities.moveCodes(product, nCodes, all)
           })
-          console.log("Pillaging Old Available Codes...")
+          console.log('Pillaging Old Available Codes...')
         }
       })
     })
@@ -302,144 +296,177 @@ function pullAvailableCodes(overWrite, nCodes, all){
 /**
 * This will remove the existing used codes and get them all again
 */
-function pullUsedCodes(){
-  DispenseDB.models.product.find(function(err, products){
-    if(err) {console.log(err)}
-    DispenseDB.automigrate("usedCode", function(err2) {
+function pullUsedCodes () {
+  DispenseDB.models.product.find(function (err, products) {
+    if (err) {console.log(err)}
+    DispenseDB.automigrate('usedCode', function (err2) {
       if (!err2) {
-        products.forEach( function (product){
-          utilities.usedCodes(product)
+        products.forEach(function (product) {
+          utilities.copyUsedCodes(product)
         })
-        console.log("Cloning Used Codes...")
+        console.log('Cloning Used Codes...')
       }
     })
   })
 }
 
-function dropAll(){
-  DispenseDB.automigrate("availableCodes", function(err){
-    if(err) { console.log(err)}
-    console.log("availableCodes wiped...")
+function dropAll () {
+  DispenseDB.automigrate('availableCodes', function (err) {
+    if (err) { console.log(err)}
+    console.log('availableCodes wiped...')
   })
-  DispenseDB.automigrate("product", function(err){
-    if(err) { console.log(err)}
-    console.log("products wiped...")
+  DispenseDB.automigrate('product', function (err) {
+    if (err) { console.log(err)}
+    console.log('products wiped...')
   })
-  DispenseDB.automigrate("contact", function(err){
-    if(err) { console.log(err)}
-    console.log("contacts wiped...")
+  DispenseDB.automigrate('contact', function (err) {
+    if (err) { console.log(err)}
+    console.log('contacts wiped...')
   })
-  DispenseDB.automigrate("usedCode", function(err){
-    if(err) { console.log(err)}
-    console.log("usedCodes wiped...")
+  DispenseDB.automigrate('usedCode', function (err) {
+    if (err) { console.log(err)}
+    console.log('usedCodes wiped...')
   })
 }
 
-function resetContacts() {
-  DispenseDB.automigrate("contact", function(err) {
-      if (err) {throw err}
-      var date = new Date(0)
-    DispenseDB.models.product.find(function(err, products){
-      if(err) {console.log(err)}
-      products.forEach(function(product) {
+function resetContacts () {
+  DispenseDB.automigrate('contact', function (err) {
+    if (err) {throw err}
+    var date = new Date(0)
+    DispenseDB.models.product.find(function (err, products) {
+      if (err) {console.log(err)}
+      products.forEach(function (product) {
         DispenseDB.models.contact.create([{
           productId: product.productId,
-          mainEmail: "test@test.com",
-          cc: "",
+          mainEmail: 'test@test.com',
+          cc: '',
           lastEmailed: date
-        }], function(err2) {
+        }], function (err2) {
           if (err2) {throw err2}
         })
       })
     })
-      console.log("Contact Models created!")
+    console.log('Contact Models created!')
   })
 }
 
 program
-  .command("count")
-  .description("Show the remaining codes for each product")
-  .action(function(){
-    DispenseDB.models.product.find(function(err, products){
-      if(err) {console.log(err)}
-      products.forEach( function (product){
+  .command('count')
+  .description('Show the remaining codes for each product')
+  .action(function () {
+    DispenseDB.models.product.find(function (err, products) {
+      if (err) {console.log(err)}
+      products.forEach(function (product) {
         utilities.countCodes(product)
       })
     })
   })
 
-
 program
-  .command("resetContacts")
-  .description("Reset/create the contacts for all products")
-  .action(function(){
+  .command('resetContacts')
+  .description('Reset/create the contacts for all products')
+  .action(function () {
     resetContacts()
   })
 
 program
-  .command("dropAll")
-  .description("Wipe usedCodes, availableCodes, and products")
-  .action(function(){
+  .command('dropAll')
+  .description('Wipe usedCodes, availableCodes, and products')
+  .action(function () {
     dropAll()
   })
 
 program
-  .command("initProducts")
-  .description("Get products from OldDb tables - WARNING: this will drop and reset tables. Products will be ordered differently. This means codes will be tied to incorrect products if they already exist. Good luck sorting things out if you use this incorrectly...")
-  .action(function(){
+  .command('initProducts')
+  .description('Get products from OldDb tables - WARNING: this will drop and reset tables. Products will be ordered differently. This means codes will be tied to incorrect products if they already exist. Good luck sorting things out if you use this incorrectly...')
+  .action(function () {
     initProducts()
   })
 
 program
-  .command("pullAvailableCodes")
-  .option("-o, --overwrite", "overwrites existing codes")
-  .description("Pull available codes from old database. Defaults to pull 10% of codes from each product")
-  .action(function(options){
+  .command('pullAvailableCodes')
+  .option('-o, --overwrite', 'overwrites existing codes')
+  .description('Pull available codes from old database. Defaults to pull 10% of codes from each product')
+  .action(function (options) {
     // TODO: add options for nCodes and all
-    if(options.overwrite){
-      console.log("I sure hope there weren't any codes in there...I wouldn't want their families to start hunting you down...")
+    if (options.overwrite) {
+      console.log('I sure hope there werent any codes in there...I wouldnt want their families to start hunting you down...')
       pullAvailableCodes(true)
-    }
-    else{
-      console.log("Thank you for not deleting my codes.")
+    } else {
+      console.log('Thank you for not deleting my codes.')
       pullAvailableCodes(false)
     }
   })
 
 program
-  .command("pullUsedCodes")
-  .description("Pull all used codes from old site")
-  .action(function(){
+  .command('pullUsedCodes')
+  .description('Pull all used codes from old site')
+  .action(function () {
     pullUsedCodes()
   })
 
 program
-  .command('list')
-  .description('testing')
+  .command('transfer')
+  .description('transfer data from postgresDb to empty rethinkDb database')
   .action(function () {
-    // DispenseDB.models.product.find(function(err, products){
-    //   if(err) {console.log(err)}
-    //   console.log(products);
-    //   // rethinkDb.automigrate('product', function(err2) {
-    //   //   if (!err2) {
-    //   //     products.forEach( function (product){
-    //   //       rethinkDb.models.product.create(product)
-    //   //     })
-    //   //   }
-    //   // })
-    // })
-    // DispenseDB.findModel('product', function (err, model) {
-    //   console.log(model)
-    // })
-    // DispenseDB.discoverModelDefinitions(function(error, models){
-    //   if(error){console.log(error)}
-    //   models.forEach(function (val, ind, arr) {
-    //     if (val.name == 'product') {
-          console.log(DispenseDB)
-    //     }
-    //   })
-    // })
+    postgresDb.models.product.find()
+      .then(function (products) {
+        rethinkDb.attach(postgresDb.models.product)
+        rethinkDb.automigrate('product')
+        .then(function () {
+          products.forEach(function (product) {
+            rethinkDb.models.product.create(product)
+          })
+        })
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
+    postgresDb.models.contact.find()
+      .then(function (contacts) {
+        rethinkDb.attach(postgresDb.models.contact)
+        rethinkDb.automigrate('contact')
+          .then(function () {
+            contacts.forEach(function (contact) {
+              rethinkDb.models.contact.create(contact)
+            })
+          })
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
+    postgresDb.models.availableCodes.find()
+      .then(function (codes) {
+        rethinkDb.attach(postgresDb.models.availableCodes)
+        rethinkDb.automigrate('availableCodes')
+          .then(function () {
+            codes.forEach(function (code) {
+              rethinkDb.models.availableCodes.create(code)
+            })
+          })
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
+    postgresDb.models.usedCode.find()
+      .then(function (codes) {
+        rethinkDb.attach(postgresDb.models.usedCode)
+        rethinkDb.automigrate('usedCode')
+          .then(function () {
+            codes.forEach(function (code) {
+              rethinkDb.models.usedCode.create(code)
+            })
+          })
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
   })
 
     // OldDb.disconnect()
 program.parse(process.argv)
+
+// this worked to add productId to rethinkDb after transfer ( from the admin tool )
+// r.db('dispense').table('product').forEach(function (product){
+//   return r.db('dispense').table('product').get(product('id')).update({"productId":product('id')})
+// })
