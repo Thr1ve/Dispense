@@ -4,8 +4,8 @@ var db = dataSources.rethinkdb
 var r = require('rethinkdb')
 
 r.connect({
-  host: db.host,
-  port: db.port
+  host: 'localhost',
+  port: 28015
 }, function (err, conn) {
   if (err) {throw err}
 

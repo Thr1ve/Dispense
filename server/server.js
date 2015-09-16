@@ -47,8 +47,8 @@ if (require.main === module) {
   app.io.on('connection', function (socket) {
 
     r.connect({
-      host: db.host,
-      port: db.port
+      host: 'localhost',
+      port: 28015
     }, function (err, conn) {
       if (err) {throw err}
 
