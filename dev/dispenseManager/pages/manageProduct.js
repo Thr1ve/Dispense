@@ -14,7 +14,7 @@ let ManageProduct = React.createClass({
     router: React.PropTypes.func
   },
 
-	getInitialState () {
+  getInitialState () {
     return {
       productId: this.props.params.productId,
       contact: null,
@@ -67,7 +67,7 @@ let ManageProduct = React.createClass({
     if (this.state.product && this.state.contact) {
       return (
         <div>
-          <div style={{position: 'fixed', top: '0', left: '0', zIndex: '9' }} >
+          <div style={{position: 'fixed', top: '0', left: '0', zIndex: '9'}} >
             <FlatButton label='Edit Product'
               style={buttonStyle}
               onClick={this.toEditProduct}
