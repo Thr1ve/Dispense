@@ -21,24 +21,24 @@ let { Route, RouteHandler,
 
 let menuItems = [
   {
-     type: MenuItem.Types.LINK,
-     payload: 'changelog',
-     text: 'Changelog'
+    type: MenuItem.Types.LINK,
+    payload: 'changelog',
+    text: 'Changelog'
   },
   {
-     type: MenuItem.Types.LINK,
-     payload: 'https://trello.com/b/9DTy6SXm/dispense',
-     text: 'Trello',
-     target: '_blank'
+    type: MenuItem.Types.LINK,
+    payload: 'https://trello.com/b/9DTy6SXm/dispense',
+    text: 'Trello',
+    target: '_blank'
   }
 ]
 
 let NotFound = React.createClass({
-    render () {
-      return (
-        <h1> No Route Found </h1>
-      )
-    }
+  render () {
+    return (
+      <h1> No Route Found </h1>
+    )
+  }
 })
 
 let App = React.createClass({
@@ -46,7 +46,7 @@ let App = React.createClass({
   mixins: [Router.State],
 
   contextTypes: {
-      router: React.PropTypes.func
+    router: React.PropTypes.func
   },
 
 // **
@@ -110,15 +110,15 @@ let App = React.createClass({
 
     return (
       <Keybindings keyMap={{
-          'esc': (e) => {
-            e.preventDefault()
-            this.toggleNav()
-          },
-          'tab': (e) => {e.preventDefault()},
-          'shift+tab': (e) => {e.preventDefault()}
+        'esc': (e) => {
+          e.preventDefault()
+          this.toggleNav()
+        },
+        'tab': (e) => {e.preventDefault()},
+        'shift+tab': (e) => {e.preventDefault()}
       }}>
         <div>
-          <div style={{zIndex: 10, position: 'fixed', right: '0', top: '0' }}>
+          <div style={{zIndex: 10, position: 'fixed', right: '0', top: '0'}}>
             <FlatButton label='Add New Product'
               style={buttonStyle}
               onClick={this.toAddProduct}
