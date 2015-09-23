@@ -9,9 +9,10 @@ let { Paper, TextField, FlatButton } = Mui
 let EditProductForm = React.createClass({
 
   getInitialState () {
-    let { productId, title, isbn13 } = this.props.product
+    let { id, productId, title, isbn13 } = this.props.product
     let { mainEmail, cc } = this.props.contact
     return {
+      id: id,
       productId: productId,
       title: title,
       isbn13: isbn13,
@@ -57,14 +58,15 @@ let EditProductForm = React.createClass({
   },
 
   render () {
+    console.log(this.props.product)
     let { title, isbn13 } = this.state
     let { mainEmail, cc } = this.state
 
     let textFieldStyle = {
-        display: 'block'
+      display: 'block'
     }
     let formStyle = {
-        padding: '20'
+      padding: '20'
     }
     return (
       <Paper zDepth={2} style={{width: '95%', marginTop: '30', marginRight: 'auto', marginLeft: 'auto'}}>
@@ -105,7 +107,7 @@ let EditProductForm = React.createClass({
               defaultValue={cc}
               onChange={this.handleChange}/>
           </div>
-          <FlatButton label='Submit'/>
+          <FlatButton label='Submit' type='submit'/>
         </form>
       </Paper>
     )

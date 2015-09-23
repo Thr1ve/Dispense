@@ -1,11 +1,9 @@
 import React from'react'
 import Router from'react-router'
 import app from 'ampersand-app'
-var { RouteHandler } = Router
-
 import FilterableProductTable from '../../components/molecules/filterableProductTable.js'
 
-// var log = require('bows')('mainSearch.js')
+var { RouteHandler } = Router
 
 let MainSearch = React.createClass({
 
@@ -32,6 +30,7 @@ let MainSearch = React.createClass({
   componentWillUnmount () {
     app.off('all')
   },
+
   render () {
     return (
       <div>
@@ -44,12 +43,11 @@ let MainSearch = React.createClass({
         </header>
         <div>
           <FilterableProductTable transitionTo='product' toggleNav={this.props.toggleNav} products={app.products}/>
-          <RouteHandler {...this.props}/>
+          <RouteHandler/>
         </div>
       </div>
     )
   }
-
 })
 
 module.exports = MainSearch

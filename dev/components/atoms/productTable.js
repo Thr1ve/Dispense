@@ -22,6 +22,7 @@ let ProductTable = React.createClass({
     this.props.products.forEach(function (product) {
       rows.push({
         route: product.productId,
+        id: product.id,
         text: product.title,
         data: product.isbn13,
         number: product.nCodes.toString()

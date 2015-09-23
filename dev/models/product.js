@@ -8,7 +8,8 @@ import app from 'ampersand-app'
 module.exports = AmpersandModel.extend({
 
   props: {
-    productId: 'any',
+    id: 'any',
+    productId: 'number',
     isbn13: 'string',
     title: 'string',
     nCodes: 'number',
@@ -23,9 +24,9 @@ module.exports = AmpersandModel.extend({
   },
 
   derived: {
-    id: function () {
-      return this.productId
-    },
+    // id: function () {
+    //   return this.productId
+    // },
     contact () {
       return app.contacts.get(this.productId)
     }

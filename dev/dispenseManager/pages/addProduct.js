@@ -14,7 +14,9 @@ let addProduct = React.createClass({
     let contact = this.refs.contact.getValue()
     let productData = {
       title: title,
-      isbn13: isbn13
+      isbn13: isbn13,
+      nCodes: 0,
+      popularity: 0
     }
     let contactData = {
       mainEmail: contact
@@ -90,7 +92,7 @@ let addProduct = React.createClass({
                 floatingLabelText='Contact'
                 onChange={this.handleChange}/>
             </div>
-            <FlatButton label='Submit'/>
+            <FlatButton label='Submit' type='submit'/>
           </form>
         </Paper>
         <Snackbar

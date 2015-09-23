@@ -21,6 +21,7 @@ var dispenseApp = path.resolve(__dirname, '../apps/dispenseApp')
 var dispenseManager = path.resolve(__dirname, '../apps/dispenseManager')
 
 app.use(loopback.static(apps))
+app.use(createConnection)
 
 app.get('/dispenseApp*', function (req, res) {
   res.sendFile(dispenseApp + '/index.html')
@@ -54,7 +55,7 @@ if (require.main === module) {
 
       conn.use('dispense')
 
-      r.table('product').changes().run(conn)
+      r.table('product').withFields('productId', 'nCodes').changes().run(conn)
         .then(function (cursor) {
           cursor.each(function (err, row) {
             if (err) {throw err}
@@ -64,4 +65,24 @@ if (require.main === module) {
     })
 
   })
+}
+
+function createConnection (req, res, next) {
+  r.connect({
+    host: 'localhost',
+    port: 28015
+  }, function (error, conn) {
+    if (error) {
+      handleError(res, error)
+    } else {
+      // Save the connection in `req`
+      req._rdbConn = conn
+      // Pass the current request to the next middleware
+      next()
+    }
+  })
+}
+
+function handleError (res, error) {
+  return res.send(500, {error: error.message})
 }

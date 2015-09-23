@@ -55,9 +55,10 @@ var FilterableProductTable = React.createClass({
   },
 
   render () {
+    console.log(app.products.filtered)
     return (
       <div>
-        <div style={{position: 'fixed', top: '0', left: '0', zIndex: '9' }} >
+        <div style={{position: 'fixed', top: '0', left: '0', zIndex: '9'}} >
           <SearchField
             filterText={this.state.filterText}
             onUserInput={this.handleUserInput}/>

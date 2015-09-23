@@ -5,7 +5,7 @@ module.exports = function (AvailableCodes) {
   // adding the new codes to the database
   AvailableCodes.add = function (productId, codes, cb) {
     // grab the object representing the SQL data
-    var availableCodes = app.datasources.mydb.models.availableCodes
+    var availableCodes = app.datasources.rethinkdb.models.availableCodes
     codes.forEach(function (val) {
       availableCodes.create({
         productId: productId,

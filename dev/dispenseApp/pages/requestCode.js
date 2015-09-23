@@ -19,6 +19,7 @@ let requestCode = React.createClass({
 
   componentDidMount () {
     var self = this
+    console.log(this.context.router.getCurrentParams())
     app.products.getOrFetch(this.context.router.getCurrentParams().productId,
       {all: true},
       function (err, model) {

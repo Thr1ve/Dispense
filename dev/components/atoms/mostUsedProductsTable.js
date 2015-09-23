@@ -26,7 +26,7 @@ let MostUsedProductsTable = React.createClass({
 
   _click (e, key, menuItem) {
     let { router } = this.context
-    router.transitionTo(this.props.transitionTo, {productId: menuItem.route})
+    router.transitionTo(this.props.transitionTo, {productId: menuItem.route, data: menuItem.data})
   },
 
   render () {
