@@ -47,20 +47,33 @@ injectTapEventPlugin()
 
 // import Mousetrap from 'mousetrap'
 
+let ReactRethinkdb = require('react-rethinkdb')
+
+let secure = window.location.protocol === 'https:'
+let RethinkSession = ReactRethinkdb.DefaultSession.connect({
+  host: window.location.hostname,
+  // port: window.location.port || (secure ? 443 : 80),
+  // hard-wire to 5000 for dev testing
+  port: 5000,
+  path: '/db',
+  secure: secure,
+  db: 'dispense'
+})
+
 var app = App.extend({
   init () {
 
     var self = this
 
-    var io = require('socket.io-client')
-    var socket = io('http://localhost:5000')
+    // var io = require('socket.io-client')
+    // var socket = io('http://localhost:5000')
     // var socket = io('http://192.168.1.85')
 
-    this.socket = socket
+    // this.socket = socket
 
-    this.products = new Products()
-    this.newCode = new Code()
-    this.usedCodes = new Code()
+    // this.products = []
+    // this.newCode = new Code()
+    // this.usedCodes = new Code()
 
     this.filterText = ''
 
@@ -72,17 +85,19 @@ var app = App.extend({
       chatOrTicket: ''
     }
 
-    socket.on('connect', function () {
-      socket.on('countUpdate', function (data) {
-        // console.log('Count Update Received! \n', data)
-        // console.log('nCodes for this product was ' + self.products.get(data.old_val.productId).nCodes)
-        self.products.get(data.old_val.productId).set('nCodes', data.new_val.nCodes)
-        // console.log('nCodes for this product is now ' + self.products.get(data.old_val.productId).nCodes)
-      })
-    })
+    // socket.on('connect', function () {
+    //   socket.on('countUpdate', function (data) {
+    //     // console.log('Count Update Received! \n', data)
+    //     // console.log('nCodes for this product was ' + self.products.get(data.old_val.productId).nCodes)
+    //     self.products.get(data.old_val.productId).set('nCodes', data.new_val.nCodes)
+    //     // console.log('nCodes for this product is now ' + self.products.get(data.old_val.productId).nCodes)
+    //   })
+    // })
 
     // Attach to window for easier debugging
-    window.app = this
+    // window.app = this
+
+    this.RethinkSession = RethinkSession
 
     // React-Router
     Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {

@@ -1,10 +1,17 @@
+import sortBy from 'amp-sort-by'
 import React from 'react'
 import SearchField from '../atoms/searchField.js'
-import ProductTable from '../atoms/productTable.js'
-import MostUsedProductsTable from '../atoms/mostUsedProductsTable.js'
 import app from 'ampersand-app'
+import Fuse from'fuse.js'
+import mui from 'material-ui'
+
+let { Menu } = mui
 
 var FilterableProductTable = React.createClass({
+
+  contextTypes: {
+    router: React.PropTypes.func
+  },
 
   getInitialState () {
     return {
@@ -13,39 +20,8 @@ var FilterableProductTable = React.createClass({
     }
   },
 
-  componentDidMount () {
-    var self = this
-
-    app.on('clearText', () => {
-      this.setState({filterText: ''})
-    })
-
-    // if statement added since refetching products broke app after using back button
-    // this should be handled differently...perhaps store in user state?
-    if (app.products.models.length > 0) {
-      self.setState({data: app.products})
-    } else {
-      window.app.products.fetch({
-        success: function (model, res) {
-          self.setState({data: res})
-        }
-      })
-    }
-  },
-
-  componentWillUnmount () {
-    app.off('clearText')
-  },
-
   handleUserInput (filterText) {
-    var filtered
-    if (filterText.length > 0) {
-      app.products.filter(filterText)
-      filtered = app.products.filtered
-    } else {
-      filtered = app.products
-    }
-
+    var filtered = this.filter(filterText, this.props.products)
     app.filterText = filterText
 
     this.setState({
@@ -54,8 +30,42 @@ var FilterableProductTable = React.createClass({
     })
   },
 
+  _click (e, key, menuItem) {
+    let { router } = this.context
+    router.transitionTo(this.props.transitionTo, {productId: menuItem.route, data: menuItem.data})
+  },
+
+  filter (string, models) {
+    let fuse = new Fuse(models, {
+      keys: ['isbn13', 'title'],
+      threshold: 0.35,
+      distance: 250
+    })
+
+    return fuse.search(string)
+  },
+
   render () {
-    console.log(app.products.filtered)
+    let displayedProducts, rows
+
+    if (this.state.filterText.length > 0) {
+      displayedProducts = this.state.data
+    } else {
+      displayedProducts = sortBy(this.props.products, 'popularity').filter((val) => {
+        return val.popularity > 0
+      }).reverse()
+    }
+
+    rows = displayedProducts.map(function (product) {
+      return {
+        id: product.id,
+        route: product.productId,
+        text: product.title,
+        data: product.isbn13,
+        number: product.nCodes.toString()
+      }
+    })
+
     return (
       <div>
         <div style={{position: 'fixed', top: '0', left: '0', zIndex: '9'}} >
@@ -64,8 +74,9 @@ var FilterableProductTable = React.createClass({
             onUserInput={this.handleUserInput}/>
         </div>
         <div>
-          {(this.state.filterText.length > 0) ?
-            (<ProductTable transitionTo={this.props.transitionTo} products={this.state.data}/>) : (<MostUsedProductsTable transitionTo={this.props.transitionTo}/>) }
+          <Menu
+            menuItems={rows}
+            onItemTap={this._click}/>
         </div>
       </div>
     )
