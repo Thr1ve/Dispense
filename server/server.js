@@ -5,6 +5,8 @@ var http = require('http')
 var path = require('path')
 var wsListen = require('rethinkdb-websocket-server').listen
 
+// var r = require('rethinkdb')
+
 var app = express()
 var httpServer = http.createServer(app)
 
@@ -21,6 +23,10 @@ app.get('/dispenseApp*', function (req, res) {
 app.get('/dispenseManager*', function (req, res) {
   res.sendFile(dispenseManager + '/index.html')
 })
+
+// app.post('/api/requestCode', function (req, res) {
+//
+// })
 
 //
 // ///////////////////////////////
