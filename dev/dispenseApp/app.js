@@ -85,6 +85,8 @@ var app = App.extend({
       chatOrTicket: ''
     }
 
+    this.requestedCodes = []
+
     // socket.on('connect', function () {
     //   socket.on('countUpdate', function (data) {
     //     // console.log('Count Update Received! \n', data)

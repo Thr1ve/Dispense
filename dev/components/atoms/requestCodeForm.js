@@ -1,10 +1,12 @@
 import React from 'react'
 import app from 'ampersand-app'
 
-import Mui from 'material-ui'
-var { TextField, FlatButton, Paper, Snackbar } = Mui
+let request = require('superagent')
 
-var requestCodeForm = React.createClass({
+import Mui from 'material-ui'
+let { TextField, FlatButton, Paper, Snackbar } = Mui
+
+let requestCodeForm = React.createClass({
 
   contextTypes: {
     router: React.PropTypes.func
@@ -22,7 +24,7 @@ var requestCodeForm = React.createClass({
   },
 
   handleChange (event) {
-    var newState = this.state
+    let newState = this.state
     newState[event.target.name] = event.target.value
     this.setState(newState)
     app.requestData = newState
@@ -30,30 +32,43 @@ var requestCodeForm = React.createClass({
 
   handleSubmit (e) {
     e.preventDefault()
-    var { router } = this.context
+    // change the submit button's state here so people can't accidentally double click and request 2 codes?
+
     let self = this
-    app.newCode.create({
-      customerName: this.refs.customerName.props.value,
-      customerEmail: this.refs.customerEmail.props.value,
-      universityOrBusiness: this.refs.universityOrBusiness.props.value,
-      representative: this.refs.representative.props.value,
-      chatOrTicket: this.refs.chatOrTicket.props.value,
+
+    let { router } = this.context
+
+    let { customerName, customerEmail, universityOrBusiness, representative, chatOrTicket } = this.refs
+
+    let codeRequest = {
+      customerName: customerName.props.value,
+      customerEmail: customerEmail.props.value,
+      universityOrBusiness: universityOrBusiness.props.value,
+      representative: representative.props.value,
+      chatOrTicket: chatOrTicket.props.value,
       productId: this.props.productId
-    }, {
-      wait: true,
-      success (model) {
-        if (!model.code) {
-          self.refs.snackbar.show()
-        } else {
+    }
+
+    request
+      .post('http://localhost:5000/api/requestCode')
+      .send(codeRequest)
+      .end(function (err, res) {
+        if (err) {throw err}
+
+        if (res.body) {
+          app.requestedCodes.push(res.body)
+
           app.requestData.customerName = ''
           app.requestData.customerEmail = ''
           app.requestData.universityOrBusiness = ''
           app.requestData.representative = ''
           app.requestData.chatOrTicket = ''
+
           router.transitionTo('requestedCodes')
+        } else {
+          self.refs.snackbar.show()
         }
-      }
-    })
+      })
   },
 
   render () {
@@ -62,16 +77,16 @@ var requestCodeForm = React.createClass({
       display: 'block'
     }
 
-    var formStyle = {
+    let formStyle = {
       width: '40%',
       padding: '20'
     }
 
-    var customerName = this.state.customerName
-    var customerEmail = this.state.customerEmail
-    var universityOrBusiness = this.state.universityOrBusiness
-    var representative = this.state.representative
-    var chatOrTicket = this.state.chatOrTicket
+    let customerName = this.state.customerName
+    let customerEmail = this.state.customerEmail
+    let universityOrBusiness = this.state.universityOrBusiness
+    let representative = this.state.representative
+    let chatOrTicket = this.state.chatOrTicket
 
     return (
       <Paper zDepth={2} style={{width: '95%', marginTop: '30', marginRight: 'auto', marginLeft: 'auto'}}>
