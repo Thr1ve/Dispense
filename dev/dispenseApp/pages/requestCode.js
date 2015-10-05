@@ -31,7 +31,7 @@ let requestCode = React.createClass({
     // Get the product from the server
     return {
       product: new QueryRequest({
-        query: r.table('product').filter({productId: prodId}),
+        query: r.table('products').filter({productId: prodId}),
         initial: []
       })
     }

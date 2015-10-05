@@ -15,8 +15,8 @@ let requestedCodes = React.createClass({
 
   componentDidMount () {
     this.setState({
-      data: app.newCode.models,
-      currIndex: app.newCode.models.length - 1
+      data: app.requestedCodes,
+      currIndex: app.requestedCodes.length - 1
     })
   },
 

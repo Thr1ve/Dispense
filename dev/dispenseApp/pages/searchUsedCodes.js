@@ -8,14 +8,14 @@ let { Paper } = Mui
 let SearchForm = require('../../components/atoms/searchForm.js')
 
 let columnMetadata = [
-  {'columnName': 'customerEmail', 'displayName': 'Email' },
-  {'columnName': 'customerName', 'displayName': 'Name' },
-  {'columnName': 'code', 'displayName': 'Code' },
-  {'columnName': 'representative', 'displayName': 'Rep' },
-  {'columnName': 'date', 'displayName': 'Date' },
-  {'columnName': 'universityOrBusiness', 'displayName': 'Univ' },
-  {'columnName': 'chatOrTicket', 'displayName': 'Ticket' },
-  {'columnName': 'productId', 'displayName': 'Product' }
+  {'columnName': 'customerEmail', 'displayName': 'Email'},
+  {'columnName': 'customerName', 'displayName': 'Name'},
+  {'columnName': 'code', 'displayName': 'Code'},
+  {'columnName': 'representative', 'displayName': 'Rep'},
+  {'columnName': 'date', 'displayName': 'Date'},
+  {'columnName': 'universityOrBusiness', 'displayName': 'Univ'},
+  {'columnName': 'chatOrTicket', 'displayName': 'Ticket'},
+  {'columnName': 'productId', 'displayName': 'Product'}
 ]
 
 let SearchUsedCodes = React.createClass({
@@ -47,7 +47,7 @@ let SearchUsedCodes = React.createClass({
         <Paper zDepth={2} style={{width: '95%', marginLeft: 'auto', marginRight: 'auto', marginTop: '20'}}>
           <Griddle
             results={this.state.results}
-            columns={['customerEmail', 'code', 'customerName', 'date', 'universityOrBusiness' ]}
+            columns={['customerEmail', 'code', 'customerName', 'date', 'universityOrBusiness']}
             columnMetadata={columnMetadata}
             resultsPerPage={10}
             useGriddleStyles={false}

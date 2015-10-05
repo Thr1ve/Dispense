@@ -1,3 +1,4 @@
+'use strict'
 let r = require('rethinkdb')
 
 r.connect({

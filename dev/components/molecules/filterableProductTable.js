@@ -32,7 +32,7 @@ var FilterableProductTable = React.createClass({
 
   _click (e, key, menuItem) {
     let { router } = this.context
-    router.transitionTo(this.props.transitionTo, {productId: menuItem.route, data: menuItem.data})
+    router.transitionTo(this.props.transitionTo, {productId: menuItem.route})
   },
 
   filter (string, models) {

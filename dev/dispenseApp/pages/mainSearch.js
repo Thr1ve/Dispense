@@ -24,7 +24,7 @@ var MainSearch = React.createClass({
   observe (props, state) {
     return {
       products: new ReactRethinkdb.QueryRequest({
-        query: r.table('product'),
+        query: r.table('products'),
         changes: true,
         initial: []
       })
