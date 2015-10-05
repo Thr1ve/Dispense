@@ -38,10 +38,6 @@ import Router from 'react-router'
 import App from 'ampersand-app'
 import AppRoutes from './appRoutes.js'
 
-// Models **********
-import Products from './../models/products'
-import Code from './../models/usedCode-collection'
-
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
@@ -63,18 +59,6 @@ let RethinkSession = ReactRethinkdb.DefaultSession.connect({
 var app = App.extend({
   init () {
 
-    var self = this
-
-    // var io = require('socket.io-client')
-    // var socket = io('http://localhost:5000')
-    // var socket = io('http://192.168.1.85')
-
-    // this.socket = socket
-
-    // this.products = []
-    // this.newCode = new Code()
-    // this.usedCodes = new Code()
-
     this.filterText = ''
 
     this.requestData = {
@@ -87,19 +71,10 @@ var app = App.extend({
 
     this.requestedCodes = []
 
-    // socket.on('connect', function () {
-    //   socket.on('countUpdate', function (data) {
-    //     // console.log('Count Update Received! \n', data)
-    //     // console.log('nCodes for this product was ' + self.products.get(data.old_val.productId).nCodes)
-    //     self.products.get(data.old_val.productId).set('nCodes', data.new_val.nCodes)
-    //     // console.log('nCodes for this product is now ' + self.products.get(data.old_val.productId).nCodes)
-    //   })
-    // })
+    this.RethinkSession = RethinkSession
 
     // Attach to window for easier debugging
     // window.app = this
-
-    this.RethinkSession = RethinkSession
 
     // React-Router
     Router.run(AppRoutes, Router.HistoryLocation, function (Handler) {
