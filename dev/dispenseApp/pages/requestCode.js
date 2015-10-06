@@ -14,12 +14,6 @@ let requestCode = React.createClass({
     router: React.PropTypes.func
   },
 
-  getInitialState () {
-    return {
-      data: {}
-    }
-  },
-
   observe (props, state) {
     // FIX: This should be optional; if we already have all the products, we don't need to query the server for them
     //   - can we return {} instead of a QueryRequest here or will that break things ?
