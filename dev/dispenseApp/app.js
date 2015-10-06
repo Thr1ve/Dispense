@@ -1,4 +1,3 @@
-// require('babel/polyfill')
 require('mousetrap')
 
 if (!Object.assign) {
