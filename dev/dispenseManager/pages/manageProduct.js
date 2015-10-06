@@ -35,13 +35,13 @@ let ManageProduct = React.createClass({
   },
 
   toEditProduct () {
-    let { productId } = this.state
+    let { productId } = this.data.product._value[0]
     let { router } = this.context
     router.transitionTo('editProduct', {productId: productId})
   },
 
   toAddCodes () {
-    let { productId } = this.state
+    let { productId } = this.data.product._value[0]
     let { router } = this.context
     router.transitionTo('addCodes', {productId: productId})
   },
