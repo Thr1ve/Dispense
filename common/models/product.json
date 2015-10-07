@@ -15,7 +15,8 @@
       "type": "string"
     },
     "productId": {
-      "type": "number"
+      "type": "number",
+      "id":true
     },
     "nCodes": {
       "type": "number"

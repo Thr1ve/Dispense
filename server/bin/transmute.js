@@ -422,45 +422,45 @@ program
       .catch(function (err) {
         console.log(err)
       })
-    postgresDb.models.contact.find()
-      .then(function (contacts) {
-        rethinkDb.attach(postgresDb.models.contact)
-        rethinkDb.automigrate('contact')
-          .then(function () {
-            contacts.forEach(function (contact) {
-              rethinkDb.models.contact.create(contact)
-            })
-          })
-      })
-      .catch(function (err) {
-        console.log(err)
-      })
-    postgresDb.models.availableCodes.find()
-      .then(function (codes) {
-        rethinkDb.attach(postgresDb.models.availableCodes)
-        rethinkDb.automigrate('availableCodes')
-          .then(function () {
-            codes.forEach(function (code) {
-              rethinkDb.models.availableCodes.create(code)
-            })
-          })
-      })
-      .catch(function (err) {
-        console.log(err)
-      })
-    postgresDb.models.usedCode.find()
-      .then(function (codes) {
-        rethinkDb.attach(postgresDb.models.usedCode)
-        rethinkDb.automigrate('usedCode')
-          .then(function () {
-            codes.forEach(function (code) {
-              rethinkDb.models.usedCode.create(code)
-            })
-          })
-      })
-      .catch(function (err) {
-        console.log(err)
-      })
+    // postgresDb.models.contact.find()
+    //   .then(function (contacts) {
+    //     rethinkDb.attach(postgresDb.models.contact)
+    //     rethinkDb.automigrate('contact')
+    //       .then(function () {
+    //         contacts.forEach(function (contact) {
+    //           rethinkDb.models.contact.create(contact)
+    //         })
+    //       })
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err)
+    //   })
+    // postgresDb.models.availableCodes.find()
+    //   .then(function (codes) {
+    //     rethinkDb.attach(postgresDb.models.availableCodes)
+    //     rethinkDb.automigrate('availableCodes')
+    //       .then(function () {
+    //         codes.forEach(function (code) {
+    //           rethinkDb.models.availableCodes.create(code)
+    //         })
+    //       })
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err)
+    //   })
+    // postgresDb.models.usedCode.find()
+    //   .then(function (codes) {
+    //     rethinkDb.attach(postgresDb.models.usedCode)
+    //     rethinkDb.automigrate('usedCode')
+    //       .then(function () {
+    //         codes.forEach(function (code) {
+    //           rethinkDb.models.usedCode.create(code)
+    //         })
+    //       })
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err)
+    //   })
   })
 
     // OldDb.disconnect()

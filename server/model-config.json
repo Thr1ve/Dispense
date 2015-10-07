@@ -30,19 +30,19 @@
     "dataSource": "emailDs"
   },
   "product": {
-    "dataSource": "rethinkdb",
+    "dataSource": "postgresql",
     "public": true
   },
   "usedCode": {
-    "dataSource": "rethinkdb",
+    "dataSource": "postgresql",
     "public": true
   },
   "availableCodes": {
-    "dataSource": "rethinkdb",
+    "dataSource": "postgresql",
     "public": true
   },
   "contact": {
-    "dataSource": "rethinkdb",
+    "dataSource": "postgresql",
     "public": true
   }
 }

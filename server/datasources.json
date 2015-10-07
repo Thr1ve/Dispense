@@ -25,6 +25,14 @@
   "rethinkdb": {
     "name": "rethinkdb",
     "connector": "rethinkdb",
-    "url": "http://localhost:28015/dispense"
+    "url": "http://10.200.32.122:28015/dispense"
+  },
+  "postgresql": {
+    "connector": "postgresql",
+    "host": "10.200.32.122",
+    "port": 5432,
+    "database": "dispense_db",
+    "user": "gitlab",
+    "password": "password"
   }
 }
