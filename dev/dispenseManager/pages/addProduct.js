@@ -9,6 +9,7 @@ let r = ReactRethinkdb.r
 let addProduct = React.createClass({
 
   handleSubmit (e) {
+    // TODO: make submit button inactive after click until we return sucess or error to prevent accidental double-click
     e.preventDefault()
 
     let productId
