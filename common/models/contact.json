@@ -5,7 +5,8 @@
   "idInjection": true,
   "properties": {
     "productId": {
-      "type": "number"
+      "type": "number",
+      "id":true
     },
     "mainEmail": {
       "type": "string"

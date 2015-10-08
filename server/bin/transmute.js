@@ -7,6 +7,8 @@ Number.isInteger = Number.isInteger || function (value) {
     Math.floor(value) === value
 }
 
+var r = require('rethinkdb')
+
 var loopback = require('loopback')
 var server = require('../server')
 // var rethinkDb = server.dataSources.rethinkdb
@@ -409,58 +411,115 @@ program
   .command('transfer')
   .description('transfer data from postgresDb to empty rethinkDb database')
   .action(function () {
-    postgresDb.models.product.find()
-      .then(function (products) {
-        rethinkDb.attach(postgresDb.models.product)
-        rethinkDb.automigrate('product')
-        .then(function () {
-          products.forEach(function (product) {
-            rethinkDb.models.product.create(product)
+    r.connect({
+      host: '10.200.32.122',
+      port: 28015
+    }, function (err, conn) {
+      if (err) {throw err}
+
+      conn.use('dispense')
+
+      postgresDb.models.product.find()
+        .then(function (products) {
+          var formatted = products.map((product) => {
+            return {
+              title: product.title,
+              isbn13: product.isbn13 || '',
+              productId: product.productId,
+              nCodes: 0,
+              popularity: product.popularity || 0,
+              oldTable: product.oldTable || ''
+            }
           })
+          r.tableCreate('products').run(conn)
+            .then(() => {
+              r.table('products').insert(formatted).run(conn)
+            }, (err) => {
+              console.log(err)
+            })
+            .then(() => {
+              console.log('created Products!')
+            })
         })
-      })
-      .catch(function (err) {
-        console.log(err)
-      })
-    // postgresDb.models.contact.find()
-    //   .then(function (contacts) {
-    //     rethinkDb.attach(postgresDb.models.contact)
-    //     rethinkDb.automigrate('contact')
-    //       .then(function () {
-    //         contacts.forEach(function (contact) {
-    //           rethinkDb.models.contact.create(contact)
-    //         })
-    //       })
-    //   })
-    //   .catch(function (err) {
-    //     console.log(err)
-    //   })
-    // postgresDb.models.availableCodes.find()
-    //   .then(function (codes) {
-    //     rethinkDb.attach(postgresDb.models.availableCodes)
-    //     rethinkDb.automigrate('availableCodes')
-    //       .then(function () {
-    //         codes.forEach(function (code) {
-    //           rethinkDb.models.availableCodes.create(code)
-    //         })
-    //       })
-    //   })
-    //   .catch(function (err) {
-    //     console.log(err)
-    //   })
-    // postgresDb.models.usedCode.find()
-    //   .then(function (codes) {
-    //     rethinkDb.attach(postgresDb.models.usedCode)
-    //     rethinkDb.automigrate('usedCode')
-    //       .then(function () {
-    //         codes.forEach(function (code) {
-    //           rethinkDb.models.usedCode.create(code)
-    //         })
-    //       })
-    //   })
-    //   .catch(function (err) {
-    //     console.log(err)
-    //   })
+        .catch(function (err) {
+          console.log(err)
+        })
+
+      postgresDb.models.contact.find()
+        .then(function (contacts) {
+          var formatted = contacts.map((contact) => {
+            return {
+              productId: contact.productId,
+              mainEmail: contact.mainEmail || '',
+              cc: contact.cc || '',
+              lastEmailed: contact.lastEmailed || ''
+            }
+          })
+          r.tableCreate('contacts').run(conn)
+            .then(() => {
+              r.table('contacts').insert(formatted).run(conn)
+            }, (err) => {
+              console.log(err)
+            })
+            .then(() => {
+              console.log('created Contacts!')
+            })
+        })
+        .catch(function (err) {
+          console.log(err)
+        })
+
+      postgresDb.models.availableCodes.find()
+        .then(function (codes) {
+          var formatted = codes.map((code) => {
+            return {
+              code: code.code,
+              productId: code.productId
+            }
+          })
+          r.tableCreate('availableCodes').run(conn)
+            .then(() => {
+              r.table('availableCodes').insert(formatted).run(conn)
+            }, (err) => {
+              console.log(err)
+            })
+            .then(() => {
+              console.log('created AvailableCodes!')
+            })
+        })
+        .catch(function (err) {
+          console.log(err)
+        })
+
+      postgresDb.models.usedCode.find()
+        .then(function (usedCodes) {
+          var formatted = usedCodes.map((code) => {
+            return {
+              chatOrTicket: code.chatOrTicket || '',
+              customerEmail: code.customerEmail || '',
+              customerName: code.customerName || '',
+              productId: code.productId,
+              representative: code.representative || '',
+              universityOrBusiness: code.universityOrBusiness || '',
+              code: code.code || '',
+              date: code.date || '',
+            }
+          })
+          r.tableCreate('usedCodes').run(conn)
+            .then(() => {
+              r.table('usedCodes').insert(formatted).run(conn)
+            }, (err) => {
+              console.log(err)
+            })
+            .then(() => {
+              console.log('created UsedCodes!')
+            })
+        })
+        .catch(function (err) {
+          console.log(err)
+        })
+
+    })
   })
 
     // OldDb.disconnect()
