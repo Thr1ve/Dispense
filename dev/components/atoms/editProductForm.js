@@ -1,10 +1,9 @@
 import React from 'react'
-// import app from 'ampersand-app'
 
 import Mui from 'material-ui'
 let { Paper, TextField, FlatButton } = Mui
-
-// var log = require('bows')('editProductForm.js')
+let ReactRethinkdb = require('react-rethinkdb')
+let r = ReactRethinkdb.r
 
 let EditProductForm = React.createClass({
 
@@ -29,36 +28,38 @@ let EditProductForm = React.createClass({
 
   handleSubmit (e) {
     e.preventDefault()
+
     let self = this
     let title = this.refs.title.getValue()
     let isbn13 = this.refs.isbn13.getValue()
     let mainEmail = this.refs.mainEmail.getValue()
     let cc = this.refs.cc.getValue()
+
     let productData = {
       title: title,
       isbn13: isbn13
     }
-
     let contactData = {
       mainEmail: mainEmail,
       cc: cc
     }
 
-    self.props.product.save(productData, {
-      wait: true,
-      success: function () {
-        self.props.contact.save(contactData, {
-          wait: true,
-          success: function () {
-            self.props.success()
-          }
-        })
-      }
+    var productQuery = r.table('products').get(this.props.product.id).update(productData)
+    var contactQuery = r.table('contacts').get(this.props.contact.id).update(contactData)
+
+    ReactRethinkdb.DefaultSession.runQuery(productQuery)
+    .then((res) => {
+      ReactRethinkdb.DefaultSession.runQuery(contactQuery)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .then((res) => {
+      self.props.success()
     })
   },
 
   render () {
-    console.log(this.props.product)
     let { title, isbn13 } = this.state
     let { mainEmail, cc } = this.state
 

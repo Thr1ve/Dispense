@@ -1,7 +1,7 @@
-{
-    "products": [
+    [
         {
-            "id": 1,
+            "productId": 1,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Elementary Differential Equations and Boundary Value Problems, 9th Edition International Student Version",
             "isbn13": "9780470398739",
@@ -12,7 +12,8 @@
             "status": "Active"
         },
         {
-            "id": 2,
+            "productId": 2,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Personnages: An Intermediate Course in French Language and Francophone Culture, 4th Edition",
             "isbn13": "9780470432167",
@@ -23,7 +24,8 @@
             "status": "Active"
         },
         {
-            "id": 3,
+            "productId": 3,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Introduction to Finite Element Analysis and Design",
             "isbn13": "9780470125397",
@@ -33,7 +35,8 @@
             "status": "Active"
         },
         {
-            "id": 4,
+            "productId": 4,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Differential Equations with Boundary Value Problems: An Introduction to Modern Methods and Applications",
             "isbn13": "9780470418505",
@@ -44,7 +47,8 @@
             "status": "Active"
         },
         {
-            "id": 5,
+            "productId": 5,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Contemporary Business, International Student Version, 13th Edition",
             "isbn13": "9780470445594",
@@ -52,7 +56,8 @@
             "status": "Inactive"
         },
         {
-            "id": 6,
+            "productId": 6,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Fluid Mechanics, 6th Edition SI Version",
             "isbn13": "9780470398814",
@@ -60,7 +65,8 @@
             "status": "Inactive"
         },
         {
-            "id": 7,
+            "productId": 7,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Information Technology for Management: Transforming Organizations in the Digital Economy, 6th Edition",
             "isbn13": "9780471787129",
@@ -68,7 +74,8 @@
             "status": "Inactive"
         },
         {
-            "id": 8,
+            "productId": 8,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Loss Models: From Data to Decisions, 3rd Edition",
             "isbn13": "9780470187814",
@@ -76,7 +83,8 @@
             "status": "Inactive"
         },
         {
-            "id": 9,
+            "productId": 9,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Global Marketing Management, 5th Edition International Student Version",
             "isbn13": "9780470505748",
@@ -87,7 +95,8 @@
             "status": "Active"
         },
         {
-            "id": 10,
+            "productId": 10,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Laboratory Manual for Anatomy and Physiology, 4th Edition Binder Ready Version",
             "isbn13": "9780470917534",
@@ -95,1542 +104,1803 @@
             "tlp": "http://www.wiley.com/WileyCDA/WileyTitle/productCd-0470917539.html"
         },
         {
-            "id": 11,
+            "productId": 11,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-688 LabsOnlineRegCode"
         },
         {
-            "id": 12,
+            "productId": 12,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Building Construction: Materials and Methods, 6th Edition",
             "isbn13": "9781118138915"
         },
         {
-            "id": 13,
+            "productId": 13,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Parliamo Italiano: A Communicative Approach, 4th Edition",
             "isbn13": "9780470526774"
         },
         {
-            "id": 14,
+            "productId": 14,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Government and Not-for-Profit Accounting: Concepts and Practices, 6th Edition",
             "isbn13": "9781118155974"
         },
         {
-            "id": 15,
+            "productId": 15,
+            "nCodes": 0,
             "popularity": 50,
             "title": "Real Anatomy 2.0 Web Version",
             "isbn13": "9781118516720"
         },
         {
-            "id": 16,
+            "productId": 16,
+            "nCodes": 0,
             "popularity": 21,
             "title": "MOAC 70-432 LabsOnlineRegCode"
         },
         {
-            "id": 17,
+            "productId": 17,
+            "nCodes": 0,
             "popularity": 22,
             "title": "MOAC 70-236 Labs Online Reg Code",
             "isbn13": "9780470874851"
         },
         {
-            "id": 18,
+            "productId": 18,
+            "nCodes": 0,
             "popularity": 23,
             "title": "MOAC 70-410 LabsOnline R2",
             "isbn13": "9781118966112"
         },
         {
-            "id": 19,
+            "productId": 19,
+            "nCodes": 0,
             "popularity": 0,
             "title": "¡Vívelo! Beginning Spanish",
             "isbn13": "9780471727767"
         },
         {
-            "id": 20,
+            "productId": 20,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Accounting Principles, Peachtree Complete Accounting Workbook, 9th Edition",
             "isbn13": "9780470386675"
         },
         {
-            "id": 21,
+            "productId": 21,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Financial Risk Manager Handbook + Test Bank: FRM Part I / Part II, 6th Edition",
             "isbn13": "9780470904015"
         },
         {
-            "id": 22,
+            "productId": 22,
+            "nCodes": 0,
             "popularity": 0,
             "title": "A Brief Introduction To Fluid Mechanics, 5th Edition",
             "isbn13": "9780470596791"
         },
         {
-            "id": 23,
+            "productId": 23,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Environmental Science: Earth as a Living Planet, 8th Edition",
             "isbn13": "9780470520338"
         },
         {
-            "id": 24,
+            "productId": 24,
+            "nCodes": 0,
             "popularity": 0,
             "title": "eCollege WileyPLUS"
         },
         {
-            "id": 25,
+            "productId": 25,
+            "nCodes": 0,
             "popularity": 100,
             "title": "WileyPLUS 'X' Code"
         },
         {
-            "id": 26,
+            "productId": 26,
+            "nCodes": 0,
             "popularity": 80,
             "title": "WileyPLUS 'C' Code"
         },
         {
-            "id": 27,
+            "productId": 27,
+            "nCodes": 0,
             "popularity": 0,
             "title": "WileyResourceKits"
         },
         {
-            "id": 28,
+            "productId": 28,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Loss Models: From Data to Decisions, 3rd Edition (One Year Online): Preparation for Actuarial Exam C/4",
             "isbn13": "9780470300275"
         },
         {
-            "id": 29,
+            "productId": 29,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Materials Science and Engineering: An Introduction, 8th Edition",
             "isbn13": "9780470419977"
         },
         {
-            "id": 30,
+            "productId": 30,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Contemporary Business 2010 Update, 13th Edition",
             "isbn13": "9780470496749"
         },
         {
-            "id": 31,
+            "productId": 31,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Dicho y hecho: en vivo Edition Beginning Spanish",
             "isbn13": "9781118171219"
         },
         {
-            "id": 32,
+            "productId": 32,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Dicho y hecho: Beginning Spanish, 9th Edition",
             "isbn13": "9780470880609"
         },
         {
-            "id": 33,
+            "productId": 33,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Professional Cooking for Canadian Chefs, 7th Edition",
             "isbn13": "9780470197547"
         },
         {
-            "id": 34,
+            "productId": 34,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Mechanics of Materials, 3rd Edition",
             "isbn13": "9780470481813"
         },
         {
-            "id": 35,
+            "productId": 35,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Professional Baking, 6th Edition",
             "isbn13": "9781118083741"
         },
         {
-            "id": 36,
+            "productId": 36,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Interactions: Exploring the Functions of the HumanBody, 3.0 - DVD",
             "isbn13": "9780470276617"
         },
         {
-            "id": 37,
+            "productId": 37,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Marketing Research Essentials, 8th Edition",
             "isbn13": "9781118249321"
         },
         {
-            "id": 38,
+            "productId": 38,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Modern Manufacturing: Materials, Processes, and Systems, 5th Edition",
             "isbn13": "9781118231463"
         },
         {
-            "id": 39,
+            "productId": 39,
+            "nCodes": 0,
             "popularity": 0,
             "title": "iProfile: Assessing Your Diet and Energy Balance, 3.0",
             "isbn13": "9781118176856"
         },
         {
-            "id": 40,
+            "productId": 40,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Exploring Management, 3rd Edition",
             "isbn13": "9780470878217"
         },
         {
-            "id": 41,
+            "productId": 41,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-646 LabsOnlineRegCode"
         },
         {
-            "id": 42,
+            "productId": 42,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Contemporary Business: 2012 Update, 14th Edition",
             "isbn13": "9781118010303"
         },
         {
-            "id": 43,
+            "productId": 43,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Nutrition: Science and Applications, Canadian Edition",
             "isbn13": "9780470676349"
         },
         {
-            "id": 44,
+            "productId": 44,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Professional Cooking, 7th Edition",
             "isbn13": "9780470197523"
         },
         {
-            "id": 45,
+            "productId": 45,
+            "nCodes": 0,
             "popularity": 0,
             "title": "DeGarmo's Materials and Processes in Manufacturing, 11th Edition",
             "isbn13": "9780470924679"
         },
         {
-            "id": 46,
+            "productId": 46,
+            "nCodes": 0,
             "popularity": 0,
             "title": "SS13MATHDEMO"
         },
         {
-            "id": 47,
+            "productId": 47,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Foundations of Strategy",
             "isbn13": "9780470971277"
         },
         {
-            "id": 48,
+            "productId": 48,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Research Methods for Business: A Skill-Building Approach, 6th Edition",
             "isbn13": "9781119942252"
         },
         {
-            "id": 49,
+            "productId": 49,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Psychology",
             "isbn13": "9781119941262"
         },
         {
-            "id": 50,
+            "productId": 50,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-687 Win81 R2 LabsOnline",
             "isbn13": "9781118882757"
         },
         {
-            "id": 51,
+            "productId": 51,
+            "nCodes": 0,
             "popularity": 0,
             "title": "En Vivo for Spanish 6 Session Reg Card",
             "isbn13": "9781118946619"
         },
         {
-            "id": 52,
+            "productId": 52,
+            "nCodes": 0,
             "popularity": 0,
             "title": "ASVAB For Dummies, Premier Plus (with Free Online Practice Tests)",
             "isbn13": "9781118525500"
         },
         {
-            "id": 53,
+            "productId": 53,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Quantum"
         },
         {
-            "id": 54,
+            "productId": 54,
+            "nCodes": 0,
             "popularity": 0,
             "title": "En Vivo for Spanish 12 Session Reg Card",
             "isbn13": "9781118946626"
         },
         {
-            "id": 55,
+            "productId": 55,
+            "nCodes": 0,
             "popularity": 0,
             "title": "En vivo Universal 12 Session RC",
             "isbn13": "9781118986271"
         },
         {
-            "id": 56,
+            "productId": 56,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CEC ProfessionalGardeManger"
         },
         {
-            "id": 57,
+            "productId": 57,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Contemporary Business, 15th Edition",
             "isbn13": "9781118291986"
         },
         {
-            "id": 58,
+            "productId": 58,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Anatomy and Physiology: From Science to Life, 2nd Edition International Student Version",
             "isbn13": "9780470448724"
         },
         {
-            "id": 59,
+            "productId": 59,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Contemporary Business, 14th Edition",
             "isbn13": "9780470531297"
         },
         {
-            "id": 60,
+            "productId": 60,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-410 LabsOnlineRegCode"
         },
         {
-            "id": 61,
+            "productId": 61,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-411 LabsOnlineRegCode"
         },
         {
-            "id": 62,
+            "productId": 62,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-640 LabsOnlineRegCode"
         },
         {
-            "id": 63,
+            "productId": 63,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-642 LabsOnlineRegCode"
         },
         {
-            "id": 64,
+            "productId": 64,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-643 LabsOnlineRegCode"
         },
         {
-            "id": 65,
+            "productId": 65,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-647 LabsOnlineRegCode"
         },
         {
-            "id": 66,
+            "productId": 66,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-680 LabsOnlineRegCode"
         },
         {
-            "id": 67,
+            "productId": 67,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-685 LabsOnlineRegCode"
         },
         {
-            "id": 68,
+            "productId": 68,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-687 LabsOnlineRegCode"
         },
         {
-            "id": 69,
+            "productId": 69,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MOAC 70-412 LabsOnlineRegCode"
         },
         {
-            "id": 70,
+            "productId": 70,
+            "nCodes": 0,
             "popularity": 0,
             "title": "PowerPhys 2.0",
             "isbn13": "9780470138021"
         },
         {
-            "id": 71,
+            "productId": 71,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CEC ProfessionalBaking6e"
         },
         {
-            "id": 72,
+            "productId": 72,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CEC ProfessionalCooking7e"
         },
         {
-            "id": 73,
+            "productId": 73,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CEC ProfessionalCooking8e"
         },
         {
-            "id": 74,
+            "productId": 74,
+            "nCodes": 0,
             "popularity": 0,
             "title": "FARSOnline"
         },
         {
-            "id": 75,
+            "productId": 75,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Contemporary Strategy Analysis: Text and Cases, 8th Edition",
             "isbn13": "9781119941897"
         },
         {
-            "id": 76,
+            "productId": 76,
+            "nCodes": 0,
             "popularity": 0,
             "title": "WebCT"
         },
         {
-            "id": 77,
+            "productId": 77,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Contemporary Strategy Analysis Text Only, 8th Edition",
             "isbn13": "9781119941880"
         },
         {
-            "id": 78,
+            "productId": 78,
+            "nCodes": 0,
             "popularity": 0,
             "title": "A Brief Introduction to Fluid Mechanics, 4th Edition",
             "isbn13": "9780470039625"
         },
         {
-            "id": 79,
+            "productId": 79,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Accounting: Tools for Business Decision Making, 2nd Edition",
             "isbn13": "9780470087442"
         },
         {
-            "id": 80,
+            "productId": 80,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Anatomy and Physiology: From Science to Life",
             "isbn13": "9780471613183"
         },
         {
-            "id": 81,
+            "productId": 81,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Anatomy and Physiology: From Science to Life, 2nd Edition",
             "isbn13": "9780470227589"
         },
         {
-            "id": 82,
+            "productId": 82,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Applied Statistics and Probability for Engineers, 4th Edition",
             "isbn13": "9780471745891"
         },
         {
-            "id": 83,
+            "productId": 83,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Applied Electromagnetics: Early Transmission Lines Approach",
             "isbn13": "9780470042571"
         },
         {
-            "id": 84,
+            "productId": 84,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Business Data Communications and Networking, 8th Edition",
             "isbn13": "9780471348078"
         },
         {
-            "id": 85,
+            "productId": 85,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Business Statistics: Contemporary Decision Making, 5th Edition",
             "isbn13": "9780471789567"
         },
         {
-            "id": 86,
+            "productId": 86,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Cell and Molecular Biology: Concepts and Experiments, 4th Edition",
             "isbn13": "9780471465805"
         },
         {
-            "id": 87,
+            "productId": 87,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Cell and Molecular Biology: Concepts and Experiments, 5th Edition",
             "isbn13": "9780470042175"
         },
         {
-            "id": 88,
+            "productId": 88,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Concepts in Biochemistry, 3rd Edition",
             "isbn13": "9780471661795"
         },
         {
-            "id": 89,
+            "productId": 89,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Differential Equations: An Introduction to Modern Methods and Applications, 1st Edition",
             "isbn13": "9780471651413"
         },
         {
-            "id": 90,
+            "productId": 90,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Dynamics: Analysis and Design of Systems in Motion",
             "isbn13": "9780471401988"
         },
         {
-            "id": 91,
+            "productId": 91,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Elementary Differential Equations and Boundary Value Problems, 7th Edition Course Advantage Edition",
             "isbn13": "9780471307891"
         },
         {
-            "id": 92,
+            "productId": 92,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Elementary Differential Equations, 9th Edition",
             "isbn13": "9780470039403"
         },
         {
-            "id": 93,
+            "productId": 93,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Elementary Differential Equations and Boundary Value Problems, 9th Edition",
             "isbn13": "9780470383346"
         },
         {
-            "id": 94,
+            "productId": 94,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Engineering Mechanics - Statics, 6th Edition",
             "isbn13": "9780471739326"
         },
         {
-            "id": 95,
+            "productId": 95,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Entrepreneurial Finance, 2nd Edition",
             "isbn13": "9780471230724"
         },
         {
-            "id": 96,
+            "productId": 96,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Financial Accounting: A Valuation Emphasis",
             "isbn13": "9780471203599"
         },
         {
-            "id": 97,
+            "productId": 97,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Machine Component Design, 4th Edition",
             "isbn13": "9780471661771"
         },
         {
-            "id": 98,
+            "productId": 98,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Materials Science and Engineering: An Integrated Approach, 3rd Edition",
             "isbn13": "9780470125373"
         },
         {
-            "id": 99,
+            "productId": 99,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Thermodynamics, 6th Edition",
             "isbn13": "9780471152323"
         },
         {
-            "id": 100,
+            "productId": 100,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Thermodynamics, 7th Edition",
             "isbn13": "9780470041925"
         },
         {
-            "id": 101,
+            "productId": 101,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Engineering Thermodynamics, 6th Edition",
             "isbn13": "9780471787358"
         },
         {
-            "id": 102,
+            "productId": 102,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Fluid Mechanics, 5th Edition",
             "isbn13": "9780471675822"
         },
         {
-            "id": 103,
+            "productId": 103,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Geography: Realms, Regions, and Concepts, 12th Edition",
             "isbn13": "9780471717867"
         },
         {
-            "id": 104,
+            "productId": 104,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Global Marketing Management, 4th Edition",
             "isbn13": "9780471755272"
         },
         {
-            "id": 105,
+            "productId": 105,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Heating, Ventilating and Air Conditioning: Analysis and Design, 6th Edition",
             "isbn13": "9780471470151"
         },
         {
-            "id": 106,
+            "productId": 106,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Information Technology: Strategic Decision-Making for Managers",
             "isbn13": "9780471652939"
         },
         {
-            "id": 107,
+            "productId": 107,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Information Technology for Management: Transforming Organizations in the Digital Economy, 5th Edition",
             "isbn13": "9780471705222"
         },
         {
-            "id": 108,
+            "productId": 108,
+            "nCodes": 0,
             "popularity": 0,
             "title": "International Economics, 9th Edition",
             "isbn13": "9780471794684"
         },
         {
-            "id": 109,
+            "productId": 109,
+            "nCodes": 0,
             "popularity": 0,
             "title": "International Accounting and Multinational Enterprises, 6th Edition",
             "isbn13": "9780471652694"
         },
         {
-            "id": 110,
+            "productId": 110,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Intermediate Accounting, 12th Edition",
             "isbn13": "9780471749554"
         },
         {
-            "id": 111,
+            "productId": 111,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Introduction to Engineering Thermodynamics, 2nd Edition",
             "isbn13": "9780471737599"
         },
         {
-            "id": 112,
+            "productId": 112,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Introduction to the Human Body, 8th Edition",
             "isbn13": "9780470230169"
         },
         {
-            "id": 113,
+            "productId": 113,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Introducing Physical Geography, 4th Edition",
             "isbn13": "9780471679509"
         },
         {
-            "id": 114,
+            "productId": 114,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Laboratory Manual for Anatomy and Physiology, 2nd Edition",
             "isbn13": "9780471691228"
         },
         {
-            "id": 115,
+            "productId": 115,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Laboratory Manual for Anatomy and Physiology, 3rd Edition",
             "isbn13": "9780470084700"
         },
         {
-            "id": 116,
+            "productId": 116,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Living Psychology, 1st Edition",
             "isbn13": "9780471679387"
         },
         {
-            "id": 117,
+            "productId": 117,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Management, 8th Edition",
             "isbn13": "9780471454762"
         },
         {
-            "id": 118,
+            "productId": 118,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Mastering the Financial Accounting Research System (FARS) On-Line: An Active Learning Approach",
             "isbn13": "9780471717355"
         },
         {
-            "id": 119,
+            "productId": 119,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Materials Science and Engineering: An Introduction, 7th Edition",
             "isbn13": "9780471736967"
         },
         {
-            "id": 120,
+            "productId": 120,
+            "nCodes": 0,
             "popularity": 0,
             "title": "DeGarmo's Materials and Processes in Manufacturing, 10th Edition",
             "isbn13": "9780470055120"
         },
         {
-            "id": 121,
+            "productId": 121,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Mathematics for Elementary Teachers: A Contemporary Approach, 7th Edition",
             "isbn13": "0471662933"
         },
         {
-            "id": 122,
+            "productId": 122,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Mathematics for Elementary Teachers: A Contemporary Approach, 8th Edition",
             "isbn13": "9780470105832"
         },
         {
-            "id": 123,
+            "productId": 123,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Mechanics of Materials, 6th Edition",
             "isbn13": "9780471705116"
         },
         {
-            "id": 124,
+            "productId": 124,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Microbiology: Principles and Explorations, 6th Edition",
             "isbn13": "9780471420842"
         },
         {
-            "id": 125,
+            "productId": 125,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Modern Auditing: Assurance Services and the Integrity of Financial Reporting, 8th Edition",
             "isbn13": "9780471230113"
         },
         {
-            "id": 126,
+            "productId": 126,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Operations Management: An Integrated Approach, 2nd Edition",
             "isbn13": "9780471347248"
         },
         {
-            "id": 127,
+            "productId": 127,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Organizational Behavior, 8th Edition",
             "isbn13": "9780471203674"
         },
         {
-            "id": 128,
+            "productId": 128,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Physical Geography: Science and Systems of the Human Environment, 3rd Edition",
             "isbn13": "9780471480532"
         },
         {
-            "id": 129,
+            "productId": 129,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Physical Chemistry, 4th Edition",
             "isbn13": "9780471215042"
         },
         {
-            "id": 130,
+            "productId": 130,
+            "nCodes": 0,
             "popularity": 0,
             "title": "PowerAnatomy an On-Line Laboratory Manual, 1st Edition",
             "isbn13": "9780471445586"
         },
         {
-            "id": 131,
+            "productId": 131,
+            "nCodes": 0,
             "popularity": 0,
             "title": "PowerPhys CD-ROM",
             "isbn13": "9780471662891"
         },
         {
-            "id": 132,
+            "productId": 132,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Principles of Anatomy and Physiology, 12th Edition",
             "isbn13": "9780470084717"
         },
         {
-            "id": 133,
+            "productId": 133,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Principles of Human Anatomy, 10th Edition ",
             "isbn13": "9780471420811"
         },
         {
-            "id": 134,
+            "productId": 134,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Project Management: A Managerial Approach, 6th Edition",
             "isbn13": "9780471715375"
         },
         {
-            "id": 135,
+            "productId": 135,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Soil Mechanics Lab Manual",
             "isbn13": "9780471788300"
         },
         {
-            "id": 136,
+            "productId": 136,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Statics: Analysis and Design of Systems in Equilibrium",
             "isbn13": "9780471372998"
         },
         {
-            "id": 137,
+            "productId": 137,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The Earth Through Time, 8th Edition",
             "isbn13": "9780471697435"
         },
         {
-            "id": 138,
+            "productId": 138,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Theory and Design for Mechanical Measurements, 4th Edition",
             "isbn13": "9780471445937"
         },
         {
-            "id": 139,
+            "productId": 139,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Thermodynamics: An Integrated Learning System, Text plus Web ",
             "isbn13": "9780471143437"
         },
         {
-            "id": 140,
+            "productId": 140,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Using Microsoft Office 2003: Tutorials and Projects, 1st Edition",
             "isbn13": "9780470046395"
         },
         {
-            "id": 141,
+            "productId": 141,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Visualizing Environmental Science, 1st Edition",
             "isbn13": "9780471697022"
         },
         {
-            "id": 142,
+            "productId": 142,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Visualizing Human Biology",
             "isbn13": "9780471689324"
         },
         {
-            "id": 143,
+            "productId": 143,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Visualizing Geology",
             "isbn13": "9780471747277"
         },
         {
-            "id": 144,
+            "productId": 144,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Visualizing Physical Geography, 1st Edition",
             "isbn13": "9780470095720"
         },
         {
-            "id": 145,
+            "productId": 145,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Visualizing Psychology, 1st Edition",
             "isbn13": "9780471767961"
         },
         {
-            "id": 146,
+            "productId": 146,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Web Applications: Concepts & Real World Design",
             "isbn13": "9780471204589"
         },
         {
-            "id": 147,
+            "productId": 147,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Control Systems Engineering, 4th Edition",
             "isbn13": "9780471445777"
         },
         {
-            "id": 148,
+            "productId": 148,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Anatomy and Physiology for the Manual Therapies",
             "isbn13": "9780470044964"
         },
         {
-            "id": 149,
+            "productId": 149,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Helping Children Learn Mathematics, 9th Edition",
             "isbn13": "9780470403068"
         },
         {
-            "id": 150,
+            "productId": 150,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Contemporary Business, 13th Edition",
             "isbn13": "9780470433683"
         },
         {
-            "id": 151,
+            "productId": 151,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Product and Process Design Principles: Synthesis, Analysis and Design, 3rd Edition",
             "isbn13": "9780470048955"
         },
         {
-            "id": 152,
+            "productId": 152,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Fluid Mechanics, 6th Edition",
             "isbn13": "9780470262849"
         },
         {
-            "id": 153,
+            "productId": 153,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Because Teaching Matters: An Introduction to the Profession, 2nd Edition",
             "isbn13": "9780470408209"
         },
         {
-            "id": 154,
+            "productId": 154,
+            "nCodes": 0,
             "popularity": 0,
             "title": "1,001 Algebra I Practice Problems For Dummies (1-Year Online Subscription)",
             "isbn13": "9781118675557"
         },
         {
-            "id": 155,
+            "productId": 155,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Algebra II: 1,001 Practice Problems For Dummies (+ Free Online Practice)",
             "isbn13": "9781118446621"
         },
         {
-            "id": 156,
+            "productId": 156,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The American Institute of Architects Official Guide to the 2007 AIA Contract Documents",
             "isbn13": "9780470251669"
         },
         {
-            "id": 157,
+            "productId": 157,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Landscape Architectural Graphic Standards, 1.0 CD-ROM",
             "isbn13": "9780470379370"
         },
         {
-            "id": 158,
+            "productId": 158,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Valuation 5E"
         },
         {
-            "id": 159,
+            "productId": 159,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The CSI Construction Contract Administration Practice Guide",
             "isbn13": "9780470635186"
         },
         {
-            "id": 160,
+            "productId": 160,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The CSI Construction Specifications Practice Guide",
             "isbn13": "9780470635209"
         },
         {
-            "id": 161,
+            "productId": 161,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The CSI Project Delivery Practice Guide",
             "isbn13": "9780470635193"
         },
         {
-            "id": 162,
+            "productId": 162,
+            "nCodes": 0,
             "popularity": 0,
             "title": "TheLawofTaxExempt Organizations10th"
         },
         {
-            "id": 163,
+            "productId": 163,
+            "nCodes": 0,
             "popularity": 0,
             "title": "GoogleCoupon"
         },
         {
-            "id": 164,
+            "productId": 164,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Office 2010 eLearning Kit For Dummies",
             "isbn13": "9781118029725"
         },
         {
-            "id": 165,
+            "productId": 165,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Excel 2010 eLearning Kit For Dummies",
             "isbn13": "9781118110799"
         },
         {
-            "id": 166,
+            "productId": 166,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Windows 7 eLearning Kit For Dummies",
             "isbn13": "9781118031599"
         },
         {
-            "id": 167,
+            "productId": 167,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CPAExcel 2012 Exam Review Online Test Bank 1 Year Subscription: Auditing and Attestation",
             "isbn13": "9785ECPA00069"
         },
         {
-            "id": 168,
+            "productId": 168,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CPAExcel 2012 Exam Review Online Test Bank 1 Year Subscription: Financial Accounting and Reporting",
             "isbn13": "9785ECPA00083"
         },
         {
-            "id": 169,
+            "productId": 169,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Registered Tax Return Preparer Exam Review 2012, Website",
             "isbn13": "9781118036570"
         },
         {
-            "id": 170,
+            "productId": 170,
+            "nCodes": 0,
             "popularity": 0,
             "title": "WileyGAAP2013"
         },
         {
-            "id": 171,
+            "productId": 171,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Wilmott Conference Live Streaming",
             "isbn13": "9781118511015"
         },
         {
-            "id": 172,
+            "productId": 172,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley IFRS 2012: Interpretation and Application of International Financial Reporting Standards",
             "isbn13": "9781118221327"
         },
         {
-            "id": 173,
+            "productId": 173,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Tax Planning and Compliance for Tax-Exempt Organizations: Rules, Checklists, Procedures, 5th Edition",
             "isbn13": "9780470903445"
         },
         {
-            "id": 174,
+            "productId": 174,
+            "nCodes": 0,
             "popularity": 0,
             "title": "RGS CD"
         },
         {
-            "id": 175,
+            "productId": 175,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The Official Guide for GMAT Review, 13th Edition",
             "isbn13": "9781118109793"
         },
         {
-            "id": 176,
+            "productId": 176,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CCNA eTestPrep (640-802)",
             "isbn13": "9781118271766"
         },
         {
-            "id": 177,
+            "productId": 177,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CompTIA Network+ eTestPrep Authorized Courseware: Exam N10-005",
             "isbn13": "9781118271773"
         },
         {
-            "id": 178,
+            "productId": 178,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CompTIA Security+ eTestPrep Authorized Courseware: Exam SY0-301",
             "isbn13": "9781118271780"
         },
         {
-            "id": 179,
+            "productId": 179,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Windows 8 eLearning Kit For Dummies",
             "isbn13": "9781118202876"
         },
         {
-            "id": 180,
+            "productId": 180,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Beginning Windows 8 Application Development",
             "isbn13": "9781118012680"
         },
         {
-            "id": 181,
+            "productId": 181,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CCNA Virtual Lab, Titanium Edition 2.0: (Exam 640-802)",
             "isbn13": "9780470392591"
         },
         {
-            "id": 182,
+            "productId": 182,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CCNA Virtual Lab, Titanium Edition 3.0",
             "isbn13": "9781118431993"
         },
         {
-            "id": 183,
+            "productId": 183,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CCENT Cisco Certified Entry Networking Technician Virtual Lab (ICND1 Exam 640-822)",
             "isbn13": "9781118435243"
         },
         {
-            "id": 184,
+            "productId": 184,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Exploring Leadership: For College Students Who Want to Make a Difference, 3rd Edition",
             "isbn13": "9781118417485"
         },
         {
-            "id": 185,
+            "productId": 185,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The Family Wealth Sustainability Toolkit: The Manual",
             "isbn13": "9781118345863"
         },
         {
-            "id": 186,
+            "productId": 186,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CompTIA A+ eTestPrep Authorized Courseware: Exams 220-801 and 220-802",
             "isbn13": "9781118388419"
         },
         {
-            "id": 187,
+            "productId": 187,
+            "nCodes": 0,
             "popularity": 0,
             "title": "PHR / SPHR: Professional in Human Resources eTestPrep",
             "isbn13": "9781118469699"
         },
         {
-            "id": 188,
+            "productId": 188,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The Architect's Handbook of Professional Practice, 14th Edition",
             "isbn13": "9780470009574"
         },
         {
-            "id": 189,
+            "productId": 189,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CIA Exam Review 2013 Online Test Bank 1-Year Access: Complete Set",
             "isbn13": "9781118550984"
         },
         {
-            "id": 190,
+            "productId": 190,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CMA Exam Review 2013 Online Intensive Review + Test Bank: Complete Set",
             "isbn13": "9781118481509"
         },
         {
-            "id": 191,
+            "productId": 191,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CMA Learning System Exam Review 2013, Part 1, Financial Planning, Performance and Control, + Test Bank",
             "isbn13": "9781118480588"
         },
         {
-            "id": 192,
+            "productId": 192,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CMA Learning System Exam Review 2013, Complete Set, Test Bank",
             "isbn13": "9781118480571"
         },
         {
-            "id": 193,
+            "productId": 193,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CMA Learning System Exam Review 2013, Part 2, Financial Decision Making, + Test Bank",
             "isbn13": "9781118480601"
         },
         {
-            "id": 194,
+            "productId": 194,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CMA Exam Review 2013 Online Intensive Review + Test Bank: Part 1, Financial Planning, Performance and Control",
             "isbn13": "9781118481523"
         },
         {
-            "id": 195,
+            "productId": 195,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CMA Exam Review 2013 Online Intensive Review + Test Bank: Part 2, Financial Decision Making",
             "isbn13": "9781118481493"
         },
         {
-            "id": 196,
+            "productId": 196,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CMA Learning System Exam Review 2013, Part 1, Financial Planning, Performance and Control, Online Intensive Review + Test Bank",
             "isbn13": "9781118480687"
         },
         {
-            "id": 197,
+            "productId": 197,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CMA Learning System Exam Review 2013, Part 2, Financial Decision Making, Online Intensive Review + Test Bank",
             "isbn13": "9781118480700"
         },
         {
-            "id": 198,
+            "productId": 198,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CMA Learning System Exam Review 2013, Complete Set, Online Intensive Review + Test Bank",
             "isbn13": "9781118480663"
         },
         {
-            "id": 199,
+            "productId": 199,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley IFRS 2013: Interpretation and Application of International Financial Reporting Standards",
             "isbn13": "9781118419793"
         },
         {
-            "id": 200,
+            "productId": 200,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The Architect's Handbook of Professional Practice, 14th Edition",
             "isbn13": "9780470009574"
         },
         {
-            "id": 201,
+            "productId": 201,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Basic Math & Pre-Algebra: 1,001 Practice Problems For Dummies (+ Free Online Practice)",
             "isbn13": "9781118446546"
         },
         {
-            "id": 202,
+            "productId": 202,
+            "nCodes": 0,
             "popularity": 0,
             "title": "1,001 Basic Math & Pre-Algebra Practice Problems For Dummies (1-Year Online Subscription)",
             "isbn13": "9781118677421"
         },
         {
-            "id": 203,
+            "productId": 203,
+            "nCodes": 0,
             "popularity": 0,
             "title": "ASVAB For Dummies, Premier Plus (with Free Online Practice Tests)",
             "isbn13": "9781118525531"
         },
         {
-            "id": 204,
+            "productId": 204,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Avoiding Option Trading Traps: What to Look for Strategies for Success, 2nd Edition",
             "isbn13": "9781118633571"
         },
         {
-            "id": 205,
+            "productId": 205,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The CSI Sustainable Design and Construction Practice Guide",
             "isbn13": "9781118078556"
         },
         {
-            "id": 206,
+            "productId": 206,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Office 2013 eLearning Kit For Dummies",
             "isbn13": "9781118490327"
         },
         {
-            "id": 207,
+            "productId": 207,
+            "nCodes": 0,
             "popularity": 0,
             "title": "1,001 CCNA Routing and Switching Practice Questions For Dummies (+ Free Online Practice)",
             "isbn13": "9781118794296"
         },
         {
-            "id": 208,
+            "productId": 208,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Calculus: 1,001 Practice Problems For Dummies (+ Free Online Practice)",
             "isbn13": "9781118496718"
         },
         {
-            "id": 209,
+            "productId": 209,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Java eLearning Kit For Dummies",
             "isbn13": "9781118098783"
         },
         {
-            "id": 210,
+            "productId": 210,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The Official Guide for GMAT Review 2015 with Online Question Bank and Exclusive Video",
             "isbn13": "9781118914090"
         },
         {
-            "id": 211,
+            "productId": 211,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The Official Guide for GMAT Verbal Review 2015, With Online Question Bank and Exclusive Video",
             "isbn13": "9781118914182"
         },
         {
-            "id": 212,
+            "productId": 212,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The Official Guide for GMAT Quantitative Review 2015 with Online Question Bank and Exclusive Video",
             "isbn13": "9781118914144"
         },
         {
-            "id": 213,
+            "productId": 213,
+            "nCodes": 0,
             "popularity": 0,
             "title": "The Interior Design Productivity Toolbox: Checklists and Best Practices to Manage Your Workflow",
             "isbn13": "9781118680438"
         },
         {
-            "id": 214,
+            "productId": 214,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Sun, Wind, and Light: Architectural Design Strategies, 3rd Edition",
             "isbn13": "9780470945780"
         },
         {
-            "id": 215,
+            "productId": 215,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 3 Exam Review 2015 + Test Bank: The National Commodity Futures Examination",
             "isbn13": "9781118939970"
         },
         {
-            "id": 216,
+            "productId": 216,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 6 Exam Review 2015 + Test Bank: The Investment Company Products / Variable Contracts Limited Representative Examination",
             "isbn13": "9781118857045"
         },
         {
-            "id": 217,
+            "productId": 217,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 7 Exam Review 2015 + Test Bank: The General Securities Representative Examination",
             "isbn13": "9781118856857"
         },
         {
-            "id": 218,
+            "productId": 218,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 9 Exam Review 2015 + Test Bank: The General Securities Sales Supervisor Qualification Examination--Option Module",
             "isbn13": "9781118857113"
         },
         {
-            "id": 219,
+            "productId": 219,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 10 Exam Review 2015 + Test Bank: The General Securities Sales Supervisor Qualification Examination--General Module",
             "isbn13": "9781118856956"
         },
         {
-            "id": 220,
+            "productId": 220,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 24 Exam Review 2015 + Test Bank: The General Securities Principal Qualification Examination",
             "isbn13": "9781118856925"
         },
         {
-            "id": 221,
+            "productId": 221,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 26 Exam Review 2015 + Test Bank: The Investment Company Products/Variable Contracts Limited Principal Qualification Examination",
             "isbn13": "9781118856741"
         },
         {
-            "id": 222,
+            "productId": 222,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 55 Exam Review 2015 + Test Bank: The Equity Trader Qualification Examination",
             "isbn13": "9781118856987"
         },
         {
-            "id": 223,
+            "productId": 223,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 62 Exam Review 2015 + Test Bank: The Corporate Securities Limited Representative Examination",
             "isbn13": "9781118857168"
         },
         {
-            "id": 224,
+            "productId": 224,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 63 Exam Review 2015 + Test Bank: The Uniform Securities Examination",
             "isbn13": "9781118857052"
         },
         {
-            "id": 225,
+            "productId": 225,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 65 Exam Review 2015 + Test Bank: The Uniform Investment Advisor Law Examination",
             "isbn13": "9781118857069"
         },
         {
-            "id": 226,
+            "productId": 226,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 66 Exam Review 2015 + Test Bank: The Uniform Combined State Law Examination",
             "isbn13": "9781118857144"
         },
         {
-            "id": 227,
+            "productId": 227,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 99 Exam Review 2015 + Test Bank: The Operations Professional Qualification Examination",
             "isbn13": "9781118857311"
         },
         {
-            "id": 228,
+            "productId": 228,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CPAExcel 2012 Exam Review Online Test Bank 1 Year Subscription: Business Environment and Concepts",
             "isbn13": "9785ECPA00076"
         },
         {
-            "id": 229,
+            "productId": 229,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CPAExcel 2012 Exam Review Online Test Bank 1 Year Subscription: Regulation",
             "isbn13": "9785ECPA00090"
         },
         {
-            "id": 230,
+            "productId": 230,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley CPAExcel 2012 Exam Review Online Test Bank 1 Year Subscription: Complete Exam",
             "isbn13": "9780470621905"
         },
         {
-            "id": 231,
+            "productId": 231,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Algebra I: 1,001 Practice Problems For Dummies (+ Free Online Practice)",
             "isbn13": "9781118446713"
         },
         {
-            "id": 232,
+            "productId": 232,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Grammar: 1,001 Practice Questions For Dummies (+ Free Online Practice)",
             "isbn13": "9781118745014"
         },
         {
-            "id": 233,
+            "productId": 233,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 4 Exam Review 2015 + Test Bank: The Registered Options Principal Qualification Examination",
             "isbn13": "9781118857014"
         },
         {
-            "id": 234,
+            "productId": 234,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Algebra I: 1,001 Practice Problems For Dummies (+ Free Online Practice)",
             "isbn13": "9781118446669"
         },
         {
-            "id": 235,
+            "productId": 235,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Basic Math & Pre-Algebra: 1,001 Practice Problems For Dummies (+ Free Online Practice)",
             "isbn13": "9781118446560"
         },
         {
-            "id": 236,
+            "productId": 236,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 6 Exam Review 2013 + Test Bank: The Investment Company Products/Variable Contracts Limited Representative Examination",
             "isbn13": "9781118671085"
         },
         {
-            "id": 237,
+            "productId": 237,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 7 Exam Review 2013 + Test Bank: The General Securities Representative Examination",
             "isbn13": "9781118672709"
         },
         {
-            "id": 238,
+            "productId": 238,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 65 Exam Review 2013 + Test Bank: The Uniform Investment Adviser Law Examination",
             "isbn13": "9781118671108"
         },
         {
-            "id": 239,
+            "productId": 239,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 4 Exam Review 2013 + Test Bank: The Registered Options Principal Qualification Examination",
             "isbn13": "9781118671030"
         },
         {
-            "id": 240,
+            "productId": 240,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 24 Exam Review 2013 + Test Bank: The General Securities Principal Qualification Examination",
             "isbn13": "9781118672532"
         },
         {
-            "id": 241,
+            "productId": 241,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 63 Exam Review 2013 + Test Bank: The Uniform Securities Examination",
             "isbn13": "9781118671184"
         },
         {
-            "id": 242,
+            "productId": 242,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 66 Exam Review 2013 + Test Bank: The Uniform Combined State Law Examination",
             "isbn13": "9781118671122"
         },
         {
-            "id": 243,
+            "productId": 243,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 55 Exam Review 2013 + Test Bank: The Equity Trader Qualification Examination",
             "isbn13": "9781118672594"
         },
         {
-            "id": 244,
+            "productId": 244,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 62 Exam Review 2013 + Test Bank: The Corporate Securities Limited Representative Examination",
             "isbn13": "9781118671207"
         },
         {
-            "id": 245,
+            "productId": 245,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 99 Exam Review 2013 + Test Bank: The Operations Professional Qualification Examination",
             "isbn13": "9781118670972"
         },
         {
-            "id": 246,
+            "productId": 246,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 9 Exam Review 2013 + Test Bank: The General Securities Sales Supervisor Qualification Examination",
             "isbn13": "9781118671115"
         },
         {
-            "id": 247,
+            "productId": 247,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 10 Exam Review 2013 + Test Bank: The General Securities Sales Supervisor Qualification Examination – General Module",
             "isbn13": "9781118671146"
         },
         {
-            "id": 248,
+            "productId": 248,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Wiley Series 26 Exam Review 2013 + Test Bank: The Investment Company Products/Variable Contracts Limited Principal Qualification Examination",
             "isbn13": "9781118671054"
         },
         {
-            "id": 249,
+            "productId": 249,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Excel 2013 eLearning Kit For Dummies",
             "isbn13": "9781118493045"
         },
         {
-            "id": 250,
+            "productId": 250,
+            "nCodes": 0,
             "popularity": 0,
             "title": "LSAT For Dummies (with Free Online Practice Tests), 2nd Edition",
             "isbn13": "9781118678237"
         },
         {
-            "id": 251,
+            "productId": 251,
+            "nCodes": 0,
             "popularity": 0,
             "title": "AGSCD"
         },
         {
-            "id": 252,
+            "productId": 252,
+            "nCodes": 0,
             "popularity": 0,
             "title": "CC4"
         },
         {
-            "id": 253,
+            "productId": 253,
+            "nCodes": 0,
             "popularity": 0,
             "title": "PfeiferLibrary"
         },
         {
-            "id": 254,
+            "productId": 254,
+            "nCodes": 0,
             "popularity": 0,
             "title": "TSE"
         },
         {
-            "id": 255,
+            "productId": 255,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Chemistry: 1,001 Practice Problems For Dummies (+ Free Online Practice)",
             "isbn13": "9781118549322"
         },
         {
-            "id": 256,
+            "productId": 256,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Windows 8 For Dummies, Book + DVD Bundle",
             "isbn13": "9781118271674"
         },
         {
-            "id": 257,
+            "productId": 257,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Essential Endocrinology and Diabetes, Includes Desktop Edition, 6th Edition",
             "isbn13": "9781444330045"
         },
         {
-            "id": 258,
+            "productId": 258,
+            "nCodes": 0,
             "popularity": 0,
             "title": "MRI in Practice, 4th Edition",
             "isbn13": "9781444337433"
         },
         {
-            "id": 259,
+            "productId": 259,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Atlas of Human Infectious Diseases, Includes Desktop Edition",
             "isbn13": "9781405184403"
         },
         {
-            "id": 260,
+            "productId": 260,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Essential Medical Genetics, Includes Desktop Edition, 6th Edition",
             "isbn13": "9781405169745"
         },
         {
-            "id": 261,
+            "productId": 261,
+            "nCodes": 0,
             "popularity": 0,
             "title": "How the Immune System Works, Includes Desktop Edition, 4th Edition",
             "isbn13": "9780470657294"
         },
         {
-            "id": 262,
+            "productId": 262,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Essential Haematology, Includes Desktop Edition, 6th Edition",
             "isbn13": "9781405198905"
         },
         {
-            "id": 263,
+            "productId": 263,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Paediatrics and Child Health, Includes Desktop Edition, 3rd Edition",
             "isbn13": "9781405194747"
         },
         {
-            "id": 264,
+            "productId": 264,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Essential Neonatal Medicine, Includes Desktop Edition, 5th Edition",
             "isbn13": "9780470670408"
         },
         {
-            "id": 265,
+            "productId": 265,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Roitt's Essential Immunology, Includes Desktop Edition, 12th Edition",
             "isbn13": "9781405196833"
         },
         {
-            "id": 266,
+            "productId": 266,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Schiff's Diseases of the Liver, 11th Edition",
             "isbn13": "9780470654682"
         },
         {
-            "id": 267,
+            "productId": 267,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Textbook of Diabetes, 4th Edition",
             "isbn13": "9781405191814"
         },
         {
-            "id": 268,
+            "productId": 268,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Primer on Transplantation, 3rd Edition",
             "isbn13": "9781405142670"
         },
         {
-            "id": 269,
+            "productId": 269,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Implantable Cardioverter - Defibrillators Step by Step: An Illustrated Guide",
             "isbn13": "9781405186384"
         },
         {
-            "id": 270,
+            "productId": 270,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Medicine at a Glance: Core Cases",
             "isbn13": "9781444335118"
         },
         {
-            "id": 271,
+            "productId": 271,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Fundamentals of Infection Prevention and Control: Theory and Practice",
             "isbn13": "9781118306659"
         },
         {
-            "id": 272,
+            "productId": 272,
+            "nCodes": 0,
             "popularity": 0,
             "title": "Gregory's Pediatric Anesthesia, With Wiley Desktop Edition, 5th Edition",
             "isbn13": "9781444333466"
         }
     ]
-}

@@ -1,7 +1,5 @@
-
-var dataSources = require('../datasources.json')
-var db = dataSources.rethinkdb
-var r = require('rethinkdb')
+'use strict'
+let r = require('rethinkdb')
 
 r.connect({
   host: 'localhost',
@@ -15,12 +13,11 @@ r.connect({
     .then(function (cursor) {
       cursor.each(function (err, row) {
         if (err) throw err
-        var prodId = parseInt(row.group)
-        r.table('product').filter({productId: prodId}).update({nCodes: row.reduction}).run(conn)
+        let prodId = parseInt(row.group, 10)
+        r.table('products').filter({productId: prodId}).update({nCodes: row.reduction}).run(conn)
           .then(function (cursor2) {
             console.log('Changes for Product ID ' + row.group + ' :\n', cursor2)
           })
       })
     })
-
 })

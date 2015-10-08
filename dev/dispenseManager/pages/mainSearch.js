@@ -1,11 +1,15 @@
-import React from'react'
-import Router from'react-router'
-import app from 'ampersand-app'
+import React from 'react'
+import Router from 'react-router'
 import FilterableProductTable from '../../components/molecules/filterableProductTable.js'
 
-var { RouteHandler } = Router
+let ReactRethinkdb = require('react-rethinkdb')
+let r = ReactRethinkdb.r
 
-let MainSearch = React.createClass({
+let { RouteHandler } = Router
+
+var MainSearch = React.createClass({
+
+  mixins: [ReactRethinkdb.DefaultMixin],
 
   contextTypes: {
     router: React.PropTypes.func
@@ -17,21 +21,20 @@ let MainSearch = React.createClass({
     }
   },
 
-  componentDidMount () {
-    app.products.on('change', (model, val) => {
-      // currently useless...I think I should pass down the products as state instead
-      // of referencing app.products in deeper components...
-      // this means possibly restructuring where the filtered array resides
-      // attach it to app ?
-      this.setState({products: app.products})
-    })
-  },
-
-  componentWillUnmount () {
-    app.off('all')
+  observe (props, state) {
+    return {
+      products: new ReactRethinkdb.QueryRequest({
+        query: r.table('products'),
+        changes: true,
+        initial: []
+      })
+    }
   },
 
   render () {
+
+    let products = this.data.products.value()
+
     return (
       <div>
         <header style={{
@@ -39,10 +42,10 @@ let MainSearch = React.createClass({
           top: '0', left: '0',
           width: '100%', height: '50px',
           opacity: '0.8', backgroundColor: 'white',
-          zIndex: '4' }} >
+          zIndex: '4'}}>
         </header>
         <div>
-          <FilterableProductTable transitionTo='product' toggleNav={this.props.toggleNav} products={app.products}/>
+          <FilterableProductTable transitionTo='product' toggleNav={this.props.toggleNav} products={products}/>
           <RouteHandler/>
         </div>
       </div>

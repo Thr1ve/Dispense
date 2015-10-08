@@ -19,15 +19,15 @@ let { Route, RouteHandler,
 
 let menuItems = [
   {
-     type: MenuItem.Types.LINK,
-     payload: 'changelog',
-     text: 'Changelog'
+    type: MenuItem.Types.LINK,
+    payload: 'changelog',
+    text: 'Changelog'
   },
   {
-     type: MenuItem.Types.LINK,
-     payload: 'https://trello.com/b/9DTy6SXm/dispense',
-     text: 'Trello',
-     target: '_blank'
+    type: MenuItem.Types.LINK,
+    payload: 'https://trello.com/b/9DTy6SXm/dispense',
+    text: 'Trello',
+    target: '_blank'
   }
 ]
 
@@ -44,7 +44,7 @@ let App = React.createClass({
   mixins: [Router.State],
 
   contextTypes: {
-      router: React.PropTypes.func
+    router: React.PropTypes.func
   },
 
 // **
@@ -105,22 +105,24 @@ let App = React.createClass({
 
   render: function () {
 
+    // console.log(this.data)
+
     let buttonStyle = {
-        height: '50',
-        opacity: '0.9'
+      height: '50',
+      opacity: '0.9'
     }
 
     return (
       <Keybindings keyMap={{
-          'esc': (e) => {
-            e.preventDefault()
-            this.toggleNav()
-          },
-          'tab': (e) => {e.preventDefault()},
-          'shift+tab': (e) => {e.preventDefault()}
+        'esc': (e) => {
+          e.preventDefault()
+          this.toggleNav()
+        },
+        'tab': (e) => {e.preventDefault()},
+        'shift+tab': (e) => {e.preventDefault()}
       }}>
         <div>
-          <div style={{zIndex: 10, position: 'fixed', right: '0', top: '0' }}>
+          <div style={{zIndex: 10, position: 'fixed', right: '0', top: '0'}}>
             <FlatButton label='Feedback'
               style={buttonStyle}
               onClick={this.feedback}

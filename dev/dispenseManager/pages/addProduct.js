@@ -1,17 +1,22 @@
 import React from 'react'
-import app from 'ampersand-app'
 
 import Mui from 'material-ui'
 let { TextField, FlatButton, Paper, Snackbar } = Mui
 
+let ReactRethinkdb = require('react-rethinkdb')
+let r = ReactRethinkdb.r
+
 let addProduct = React.createClass({
 
   handleSubmit (e) {
+    // TODO: make submit button inactive after click until we return sucess or error to prevent accidental double-click
     e.preventDefault()
-    let self = this
+
+    let productId
     let title = this.refs.title.getValue()
     let isbn13 = this.refs.isbn13.getValue()
     let contact = this.refs.contact.getValue()
+
     let productData = {
       title: title,
       isbn13: isbn13,
@@ -22,20 +27,23 @@ let addProduct = React.createClass({
       mainEmail: contact
     }
 
-    app.products.create(productData, {
-      wait: true,
-      success: function (res) {
-        let productId = res.productId
-        let fullContact = contactData
-        fullContact.productId = productId
+    let countProductsQuery = r.table('products').count()
 
-        app.contacts.create(fullContact, {
-          wait: true,
-          success: function () {
-            self.success()
-          }
-        })
-      }
+    ReactRethinkdb.DefaultSession.runQuery(countProductsQuery)
+    .then((val) => {
+      productId = val + 1
+      productData.productId = productId
+      ReactRethinkdb.DefaultSession.runQuery(r.table('products').insert(productData))
+    })
+    .then(() => {
+      contactData.productId = productId
+      ReactRethinkdb.DefaultSession.runQuery(r.table('contacts').insert(contactData))
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .then(() => {
+      this.success()
     })
   },
 

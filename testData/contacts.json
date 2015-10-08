@@ -1,5 +1,4 @@
-{
-    "contacts": [
+    [
         {
             "productId": 1,
             "mainEmail": "testEmail1@test.com",
@@ -1361,4 +1360,3 @@
             "cc": "testccEmail272@test.com"
         }
     ]
-}

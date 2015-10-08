@@ -1,27 +1,22 @@
-var loopback = require('loopback')
-var boot = require('loopback-boot')
-var path = require('path')
-var app = module.exports = loopback()
+'use strict'
 
-var dataSources = require('./datasources.json')
-var db = dataSources.rethinkdb
-var r = require('rethinkdb')
+let express = require('express')
+let http = require('http')
+let path = require('path')
+let wsListen = require('rethinkdb-websocket-server').listen
+let bodyParser = require('body-parser')
 
-boot(app, __dirname)
+let r = require('rethinkdb')
 
-// ///////////////////////////////
-// -- Mount static files here--
-// All static middleware should be registered at the end, as all requests
-// passing the static middleware are hitting the file system
-// Example:
-// app.use(loopback.static(path.resolve(__dirname, '../client')))
-//
-var apps = path.resolve(__dirname, '../apps')
-var dispenseApp = path.resolve(__dirname, '../apps/dispenseApp')
-var dispenseManager = path.resolve(__dirname, '../apps/dispenseManager')
+let app = express()
+let httpServer = http.createServer(app)
 
-app.use(loopback.static(apps))
-app.use(createConnection)
+let apps = path.resolve(__dirname, '../apps')
+let dispenseApp = path.resolve(__dirname, '../apps/dispenseApp')
+let dispenseManager = path.resolve(__dirname, '../apps/dispenseManager')
+
+app.use(bodyParser.json())
+app.use(express.static(apps))
 
 app.get('/dispenseApp*', function (req, res) {
   res.sendFile(dispenseApp + '/index.html')
@@ -31,58 +26,83 @@ app.get('/dispenseManager*', function (req, res) {
   res.sendFile(dispenseManager + '/index.html')
 })
 
-//
-// ///////////////////////////////
+// allow CORS for development.
+// http://enable-cors.org/server_expressjs.html
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
 
-app.start = function () {
-  return app.listen(function () {
-    app.emit('started')
-    console.log('Web server listening at: %s', app.get('url'))
-  })
-}
+// Query to create usedCode / delete availableCode
+app.post('/api/requestCode', function (req, res) {
+  let request = req.body
+  let date = new Date().toDateString()
+  let productId = parseInt(req.body.productId, 10)
 
-// start the server if `$ node server.js`
-if (require.main === module) {
-  app.io = require('socket.io')(app.start())
+  r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
+    if (err) {throw err}
 
-  app.io.on('connection', function (socket) {
+    conn.use('dispense')
 
-    r.connect({
-      host: 'localhost',
-      port: 28015
-    }, function (err, conn) {
+    r.table('availableCodes')
+    // find the available codes for our specific product
+    .filter({productId: productId})
+    // pull a random one out
+    .sample(1)
+    // delete it, but return the changes so we can create a new usedCode with it.
+    // the deleted code will be found at returned.changes[0].old_val
+    .delete({returnChanges: true}).run(conn, function (err, returned) {
       if (err) {throw err}
 
-      conn.use('dispense')
-
-      r.table('product').withFields('productId', 'nCodes').changes().run(conn)
-        .then(function (cursor) {
-          cursor.each(function (err, row) {
-            if (err) {throw err}
-            socket.emit('countUpdate', row)
-          })
+      // If there was an available code for this product...
+      if (returned.changes) {
+        // decrement nCodes for this products by one since we just deleted a code
+        r.table('products')
+        .filter({productId: productId})
+        .update({nCodes: r.row('nCodes').sub(1)}).run(conn, function (err) {
+          if (err) {throw err}
         })
+
+        // construct our new usedCode object
+        let usedCode = {
+          productId: productId,
+          code: returned.changes[0].old_val.code,
+          date: date,
+          representative: request.representative,
+          customerName: request.customerName,
+          customerEmail: request.customerEmail,
+          universityOrBusiness: request.universityOrBusiness,
+          chatOrTicket: request.chatOrTicket
+        }
+
+        r.table('usedCodes')
+        // insert our new usedCode into the database, returning the changes so we can send it to the client
+        .insert(usedCode, {returnChanges: true}).run(conn, function (err, response) {
+          if (err) {throw err}
+
+          let newUsedCode = response.changes[0].new_val
+          res.send(newUsedCode)
+        })
+      // if there were no codes left for this product...
+      } else {
+        res.send('No codes remaining for this product')
+      }
     })
-
   })
-}
+})
 
-function createConnection (req, res, next) {
-  r.connect({
-    host: 'localhost',
-    port: 28015
-  }, function (error, conn) {
-    if (error) {
-      handleError(res, error)
-    } else {
-      // Save the connection in `req`
-      req._rdbConn = conn
-      // Pass the current request to the next middleware
-      next()
-    }
-  })
-}
+//
+// ///////////////////////////////
+// Configure rethinkdb-websocket-server to listen on the /db path
+wsListen({
+  httpServer: httpServer,
+  httpPath: '/db',
+  dbHost: 'localhost',
+  dbPort: 28015,
+  unsafelyAllowAnyQuery: true
+})
 
-function handleError (res, error) {
-  return res.send(500, {error: error.message})
-}
+// Start the HTTP server on the configured port
+httpServer.listen(5000)
+console.log('server started')

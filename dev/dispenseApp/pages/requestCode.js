@@ -1,46 +1,50 @@
 import React from 'react'
 import RequestCodeForm from '../../components/atoms/requestCodeForm.js'
-import app from 'ampersand-app'
 import Mui from 'material-ui'
+
+import {r, DefaultMixin, QueryRequest} from 'react-rethinkdb'
 
 let { Paper } = Mui
 
 let requestCode = React.createClass({
 
+  mixins: [DefaultMixin],
+
   contextTypes: {
     router: React.PropTypes.func
   },
 
-  getInitialState () {
-    return {
-      data: {}
-    }
-  },
+  observe (props, state) {
+    // FIX: This should be optional; if we already have all the products, we don't need to query the server for them
+    //   - can we return {} instead of a QueryRequest here or will that break things ?
+    //      - Yes we can, thanks to 'this.data.product &&' in line 45
 
-  componentDidMount () {
-    var self = this
-    console.log(this.context.router.getCurrentParams())
-    app.products.getOrFetch(this.context.router.getCurrentParams().productId,
-      {all: true},
-      function (err, model) {
-        if (err) {
-          console.error('model not found', err)
-        }
-        self.setState({data: model})
-      }
-    )
+    // Turn our route into a number ( can't query with string )
+    let prodId = parseInt(this.context.router.getCurrentParams().productId, 10)
+
+    // Get the product from the server
+    return {
+      product: new QueryRequest({
+        query: r.table('products').filter({productId: prodId}),
+        initial: []
+      })
+    }
   },
 
   render () {
-    var title, isbn13
-    if (this.state.data) {
-      title = this.state.data.title
-      isbn13 = this.state.data.isbn13
+    let title, isbn13
+
+    // SLOPPY ?
+    // If we have the product, display it
+    if (this.data.product && this.data.product._value.length > 0) {
+      title = this.data.product._value[0].title
+      isbn13 = this.data.product._value[0].isbn13
     } else {
-      console.log('this.state.data NOT FOUND')
+    // If we don't have the product, display empty space so we don't break things
       title = ' '
       isbn13 = ' '
     }
+
     return (
       <div>
         <Paper zDepth={2} style={{width: '95%', marginRight: 'auto', marginLeft: 'auto'}}>

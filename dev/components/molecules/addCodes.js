@@ -1,12 +1,12 @@
 import React from 'react'
 import CodeInput from '../atoms/codeInput.js'
 import CodeOutput from '../atoms/codeOutput'
-import AddCodesRequest from '../../models/addCodes.js'
 
 import Mui from 'material-ui'
 let { Paper, Snackbar } = Mui
 
-// var log = require('bows')('addCodes.js')
+let ReactRethinkdb = require('react-rethinkdb')
+let r = ReactRethinkdb.r
 
 let AddCodes = React.createClass({
 
@@ -36,21 +36,22 @@ let AddCodes = React.createClass({
   },
 
   submit () {
-    let self = this
-    let addCodesRequest = new AddCodesRequest()
-    addCodesRequest.save({
-      'productId': this.props.productId,
-      'codes': self.state.formattedCodes
-    }, {
-      wait: true,
-      isNew: true,
-      success: function () {
-        self.notifySuccess()
-      },
-      error: function (model, response) {
-        self.notifyError()
-        console.log('error...', model, response)
+    // TODO: make submit button inactive after click until we return sucess or error to prevent accidental double-click
+    let codes = this.state.formattedCodes.map((code) => {
+      return {
+        code: code,
+        productId: this.props.product.productId
       }
+    })
+    let addCodesQuery = r.table('availableCodes').insert(codes)
+
+    ReactRethinkdb.DefaultSession.runQuery(addCodesQuery)
+    .catch((err) => {
+      console.log(err)
+      this.notifyError()
+    })
+    .then((val) => {
+      this.notifySuccess()
     })
   },
 
@@ -70,14 +71,11 @@ let AddCodes = React.createClass({
           <h2 className='mui-font-style-headline' style={{textAlign: 'center', padding: 5}}>Add Codes for: {title}</h2>
           <h4 style={{textAlign: 'center'}}>{isbn13}</h4>
         </Paper>
-
         <CodeInput
           onUserInput={this.handleUserInput}/>
-
         <CodeOutput
           codes={this.state.formattedCodes}
           submit={this.submit}/>
-
         <Snackbar
           ref='successSnackbar'
           message='Codes added!'/>
