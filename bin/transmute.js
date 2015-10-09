@@ -18,8 +18,8 @@ var program = require('commander')
 // var DispenseDB = rethinkDb
 
 // replace this with regcodes server details for production
-var OldDb = loopback.createDataSource('mssql', {
-})
+// var OldDb = loopback.createDataSource('mssql', {
+// })
 
 /**
 * utilities for other functions
@@ -512,8 +512,3 @@ program
 
     // OldDb.disconnect()
 program.parse(process.argv)
-
-// this worked to add productId to rethinkDb after transfer ( from the admin tool )
-// r.db('dispense').table('product').forEach(function (product){
-//   return r.db('dispense').table('product').get(product('id')).update({"productId":product('id')})
-// })

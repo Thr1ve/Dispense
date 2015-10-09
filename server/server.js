@@ -98,7 +98,7 @@ app.post('/api/requestCode', function (req, res) {
 wsListen({
   httpServer: httpServer,
   httpPath: '/db',
-  dbHost: 'localhost',
+  dbHost: 'rethinkdb',
   dbPort: 28015,
   unsafelyAllowAnyQuery: true
 })
