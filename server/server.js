@@ -98,11 +98,11 @@ app.post('/api/requestCode', function (req, res) {
 wsListen({
   httpServer: httpServer,
   httpPath: '/db',
-  dbHost: 'localhost',
+  dbHost: 'rethinkdb',
   dbPort: 28015,
   unsafelyAllowAnyQuery: true
 })
 
 // Start the HTTP server on the configured port
-httpServer.listen(5000)
+httpServer.listen(80)
 console.log('server started')
