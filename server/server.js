@@ -1,19 +1,19 @@
 'use strict'
 
-let express = require('express')
-let http = require('http')
-let path = require('path')
-let wsListen = require('rethinkdb-websocket-server').listen
-let bodyParser = require('body-parser')
+var express = require('express')
+var http = require('http')
+var path = require('path')
+var wsListen = require('rethinkdb-websocket-server').listen
+var bodyParser = require('body-parser')
 
-let r = require('rethinkdb')
+var r = require('rethinkdb')
 
-let app = express()
-let httpServer = http.createServer(app)
+var app = express()
+var httpServer = http.createServer(app)
 
-let apps = path.resolve(__dirname, '../apps')
-let dispenseApp = path.resolve(__dirname, '../apps/dispenseApp')
-let dispenseManager = path.resolve(__dirname, '../apps/dispenseManager')
+var apps = path.resolve(__dirname, '../apps')
+var dispenseApp = path.resolve(__dirname, '../apps/dispenseApp')
+var dispenseManager = path.resolve(__dirname, '../apps/dispenseManager')
 
 app.use(bodyParser.json())
 app.use(express.static(apps))
@@ -36,9 +36,9 @@ app.use(function (req, res, next) {
 
 // Query to create usedCode / delete availableCode
 app.post('/api/requestCode', function (req, res) {
-  let request = req.body
-  let date = new Date().toDateString()
-  let productId = parseInt(req.body.productId, 10)
+  var request = req.body
+  var date = new Date().toDateString()
+  var productId = parseInt(req.body.productId, 10)
 
   r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
     if (err) {throw err}
@@ -65,7 +65,7 @@ app.post('/api/requestCode', function (req, res) {
         })
 
         // construct our new usedCode object
-        let usedCode = {
+        var usedCode = {
           productId: productId,
           code: returned.changes[0].old_val.code,
           date: date,
@@ -81,7 +81,7 @@ app.post('/api/requestCode', function (req, res) {
         .insert(usedCode, {returnChanges: true}).run(conn, function (err, response) {
           if (err) {throw err}
 
-          let newUsedCode = response.changes[0].new_val
+          var newUsedCode = response.changes[0].new_val
           res.send(newUsedCode)
         })
       // if there were no codes left for this product...
