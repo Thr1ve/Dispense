@@ -47,9 +47,9 @@ let ReactRethinkdb = require('react-rethinkdb')
 let secure = window.location.protocol === 'https:'
 let RethinkSession = ReactRethinkdb.DefaultSession.connect({
   host: window.location.hostname,
-  // port: window.location.port || (secure ? 443 : 80),
+  port: window.location.port || (secure ? 443 : 80),
   // hard-wire to 5000 for dev testing
-  port: 5000,
+  // port: 5000,
   path: '/db',
   secure: secure,
   db: 'dispense'
