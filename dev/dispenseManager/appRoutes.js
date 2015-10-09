@@ -14,7 +14,7 @@ import Mui from 'material-ui'
 import Keybindings from 'react-side-effect-mousetrap'
 
 let { MenuItem, LeftNav, FlatButton } = Mui
-let ThemeManager = new Mui.Styles.ThemeManager()
+// let ThemeManager = new Mui.Styles.ThemeManager()
 
 let { Route, RouteHandler,
     DefaultRoute, NotFoundRoute, Redirect } = Router
@@ -51,15 +51,15 @@ let App = React.createClass({
 
 // **
 // Needed for Material-ui
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext () {
-    return {
-      muiTheme: ThemeManager.getCurrentTheme()
-    }
-  },
+  // childContextTypes: {
+  //   muiTheme: React.PropTypes.object
+  // },
+  //
+  // getChildContext () {
+  //   return {
+  //     muiTheme: ThemeManager.getCurrentTheme()
+  //   }
+  // },
 // **
 
   getInitialState () {
