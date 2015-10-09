@@ -2,7 +2,7 @@
 let r = require('rethinkdb')
 
 r.connect({
-  host: 'localhost',
+  host: '10.200.32.122',
   port: 28015
 }, function (err, conn) {
   if (err) {throw err}
