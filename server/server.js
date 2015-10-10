@@ -40,7 +40,7 @@ app.post('/api/requestCode', function (req, res) {
   var date = new Date().toDateString()
   var productId = parseInt(req.body.productId, 10)
 
-  r.connect({ host: 'localhost', port: 28015 }, function (err, conn) {
+  r.connect({ host: 'rethinkdb', port: 28015 }, function (err, conn) {
     if (err) {throw err}
 
     conn.use('dispense')
