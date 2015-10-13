@@ -50,7 +50,7 @@ let requestCodeForm = React.createClass({
     }
 
     request
-      .post('http://localhost:5000/api/requestCode')
+      .post('/api/requestCode')
       .send(codeRequest)
       .end(function (err, res) {
         if (err) {throw err}
